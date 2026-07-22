@@ -95,6 +95,7 @@
   </style>
   <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/astro-optimization.css">
+  <link rel="stylesheet" href="/astro-lead-modal.css?v=20260722-modal2">
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -230,7 +231,7 @@
           <p>Uzrakstiet, kas šobrīd notiek objektā: dokumenti, būvdarbi, nodošana, apdrošināšana, grafiki vai konkrēta problēma. Pēc tam varam noteikt, kurš pakalpojums būs pareizais sākumpunkts.</p>
           <div class="cta__actions">
             <a href="tel:+37129963618" class="btn-primary">Zvanīt</a>
-            <a href="mailto:info@astroconstruction.lv" class="btn-outline">Rakstīt e-pastu</a>
+            <a href="#astro-lead-modal" class="btn-outline">Rakstīt e-pastu</a>
           </div>
         </div>
         <div class="contact-options">
@@ -272,7 +273,10 @@ const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(ent
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('.faq__question').forEach(button=>{button.addEventListener('click',()=>{const item=button.closest('.faq__item');const isOpen=item.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen))})});
 </script>
-  <script src="/astro-optimization.js" defer></script>
+  <script src="/astro-lead-modal.js?v=20260722-modal2" defer></script>
+<script src="/astro-forms.js?v=20260722-modal" defer></script>
+<script src="/astro-optimization.js" defer></script>
+
 <script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>

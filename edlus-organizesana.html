@@ -35,6 +35,7 @@
   <!-- Fonts -->
   <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/astro-optimization.css">
+  <link rel="stylesheet" href="/astro-lead-modal.css?v=20260722-modal2">
 
   <script type="application/ld+json">
   {
@@ -468,7 +469,7 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
         </div>
         <div class="cta__actions">
           <a href="/kontakti.html" class="btn-primary">Sazināties</a>
-          <a href="mailto:info@astroconstruction.lv" class="btn-outline">info@astroconstruction.lv</a>
+          <a href="#astro-lead-modal" class="btn-outline">info@astroconstruction.lv</a>
         </div>
       </div>
     </div>
@@ -551,7 +552,10 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 
   document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 </script>
-  <script src="/astro-optimization.js" defer></script>
+  <script src="/astro-lead-modal.js?v=20260722-modal2" defer></script>
+<script src="/astro-forms.js?v=20260722-modal" defer></script>
+<script src="/astro-optimization.js" defer></script>
+
 <script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>

@@ -9,7 +9,8 @@
   const STATUS_POLL_INTERVAL_MS = 1500;
   const MAX_FILE_BYTES = 8 * 1024 * 1024;
   const MAX_TOTAL_FILE_BYTES = 18 * 1024 * 1024;
-  const CONSENT_TEXT = 'Nosūtot formu, jūs piekrītat, ka SIA ASTRO CONSTRUCTION apstrādā norādītos datus, lai sazinātos par jūsu pieprasījumu.';
+  const CONSENT_TEXT = 'Nosūtot pieteikumu, jūs piekrītat mūsu Privātuma politikai.';
+  const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
   function pushDataLayer(eventName, params) {
     window.dataLayer = window.dataLayer || [];
@@ -17,6 +18,32 @@
       event: eventName,
       page_path: window.location.pathname
     }, params || {}));
+  }
+
+  function persistUtmParams() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const saved = {};
+      let hasUtm = false;
+      UTM_KEYS.forEach(function (key) {
+        const value = params.get(key);
+        if (value) {
+          saved[key] = value;
+          hasUtm = true;
+        }
+      });
+      if (hasUtm) sessionStorage.setItem('astro_utm_params', JSON.stringify(saved));
+    } catch (error) {
+      // UTM persistence is best-effort only.
+    }
+  }
+
+  function getStoredUtmParams() {
+    try {
+      return JSON.parse(sessionStorage.getItem('astro_utm_params') || '{}') || {};
+    } catch (error) {
+      return {};
+    }
   }
 
   function base64EncodeUtf8(value) {
@@ -68,8 +95,8 @@
     if (form.querySelector('.astro-form-consent')) return;
     const consent = document.createElement('p');
     consent.className = 'astro-form-consent';
-    consent.innerHTML = CONSENT_TEXT + ' <a href="' + PRIVACY_URL + '">Privātuma politika</a>.';
-    submitButton.insertAdjacentElement('beforebegin', consent);
+    consent.innerHTML = 'Nosūtot pieteikumu, jūs piekrītat mūsu <a href="' + PRIVACY_URL + '">Privātuma politikai</a>.';
+    submitButton.insertAdjacentElement('afterend', consent);
   }
 
   function addHoneypot(form) {
@@ -214,7 +241,8 @@
 
   function buildPayload(form, values, attachments, requestId) {
     const config = getConfig();
-    const known = ['name', 'phone', 'email', 'message', 'service', 'need', 'requirements', 'company_url'];
+    const known = ['name', 'phone', 'email', 'message', 'city', 'service', 'need', 'requirements', 'source_cta', 'source_page', 'page_url', 'page_title', 'referrer', 'company_url']
+      .concat(UTM_KEYS);
     const extra = {};
     const enteredContact = String(values.phone || '').trim();
     const enteredEmail = String(values.email || '').trim();
@@ -223,10 +251,15 @@
       if (known.indexOf(key) === -1) extra[key] = values[key];
     });
     const selected = values.service || values.need || values.requirements || config.service;
+    const storedUtm = getStoredUtmParams();
+    UTM_KEYS.forEach(function (key) {
+      if (!values[key] && storedUtm[key]) values[key] = storedUtm[key];
+    });
+
     return {
       timestamp: new Date().toISOString(),
       requestId: requestId,
-      sourcePage: window.location.href,
+      sourcePage: values.source_page || window.location.href,
       sourcePath: window.location.pathname,
       formType: config.type,
       name: values.name || '',
@@ -234,7 +267,18 @@
       email: enteredEmail || (contactIsEmail ? enteredContact : ''),
       service: Array.isArray(selected) ? selected.join(', ') : (selected || config.service),
       message: values.message || '',
-      extraFields: extra,
+      extraFields: Object.assign(extra, {
+        city: values.city || '',
+        source_cta: values.source_cta || form.dataset.sourceCta || '',
+        page_url: values.page_url || window.location.href,
+        page_title: values.page_title || document.title,
+        referrer: values.referrer || document.referrer || '',
+        utm_source: values.utm_source || '',
+        utm_medium: values.utm_medium || '',
+        utm_campaign: values.utm_campaign || '',
+        utm_term: values.utm_term || '',
+        utm_content: values.utm_content || ''
+      }),
       consent: CONSENT_TEXT,
       userAgent: navigator.userAgent,
       attachments: attachments
@@ -418,6 +462,15 @@
           file_upload_used: attachments.length > 0 ? 'yes' : 'no',
           is_test: /test|tests|тест|pārbaude/i.test([payload.name, payload.phone, payload.email, payload.message].join(' ')) ? 'yes' : 'no'
         });
+        pushDataLayer('generate_lead', {
+          page_location: payload.extraFields.page_url || window.location.href,
+          page_title: payload.extraFields.page_title || document.title,
+          source_page: payload.sourcePage,
+          source_cta: payload.extraFields.source_cta || '',
+          service: payload.service || '',
+          city: payload.extraFields.city || '',
+          request_id: requestId
+        });
         form.dataset.astroSubmittedRequestId = requestId;
         delete form.dataset.astroPendingRequestId;
         showSuccess(form, successElement, button, requestId);
@@ -445,8 +498,14 @@
     document.querySelectorAll('form').forEach(setupForm);
   }
 
+  persistUtmParams();
+  window.AstroForms = window.AstroForms || {};
+  window.AstroForms.initializeForms = initializeForms;
+  window.AstroForms.setupForm = setupForm;
+
   initializeForms();
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeForms, { once: true });
   }
+  document.addEventListener('astro:forms-ready-request', initializeForms);
 })();

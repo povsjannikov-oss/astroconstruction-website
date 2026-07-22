@@ -35,6 +35,7 @@
   <!-- Fonts -->
   <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/astro-optimization.css">
+  <link rel="stylesheet" href="/astro-lead-modal.css?v=20260722-modal2">
 
   <script type="application/ld+json">
   {
@@ -347,7 +348,7 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
     </div>
     <div class="nav__cta">
       <a href="tel:+37129963618" class="nav__phone">+371 29 963 618</a>
-      <a href="mailto:info@astroconstruction.lv" class="nav__button">Rakstīt</a>
+      <a href="#astro-lead-modal" class="nav__button">Rakstīt</a>
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
       <span></span>
@@ -377,7 +378,7 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
         </p>
         <div class="hero__actions reveal reveal-delay-3">
           <a href="tel:+37129963618" class="btn-primary">Zvanīt: +371 29 963 618</a>
-          <a href="mailto:info@astroconstruction.lv?subject=Būvniecības%20situācijas%20izvērtējums" class="btn-outline">Rakstīt e-pastu</a>
+          <a href="#astro-lead-modal" class="btn-outline">Rakstīt e-pastu</a>
         </div>
       </div>
     </div>
@@ -530,7 +531,7 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
           <p>Ja dokumentu vēl nav, pietiek ar aprakstu. Ja dokumenti ir pieejami, pievienojiet tos e-pastā, lai varam precīzāk saprast, kur process atrodas.</p>
         </div>
         <div class="cta__actions">
-          <a href="mailto:info@astroconstruction.lv?subject=Būvniecības%20situācijas%20izvērtējums" class="btn-primary">Rakstīt e-pastu</a>
+          <a href="#astro-lead-modal" class="btn-primary">Rakstīt e-pastu</a>
           <a href="tel:+37129963618" class="btn-outline">Zvanīt</a>
         </div>
       </div>
@@ -612,7 +613,10 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 </script>
-  <script src="/astro-optimization.js" defer></script>
+  <script src="/astro-lead-modal.js?v=20260722-modal2" defer></script>
+<script src="/astro-forms.js?v=20260722-modal" defer></script>
+<script src="/astro-optimization.js" defer></script>
+
 <script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>

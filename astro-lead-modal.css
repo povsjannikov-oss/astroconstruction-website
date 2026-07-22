@@ -1,0 +1,185 @@
+.astro-lead-modal[hidden],
+.astro-floating-lead[hidden] {
+  display: none !important;
+}
+
+.astro-lead-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(15, 15, 14, .72);
+  backdrop-filter: blur(10px);
+}
+
+.astro-lead-modal__panel {
+  width: min(100%, 520px);
+  max-height: min(720px, calc(100vh - 44px));
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px;
+  background: #10100f;
+  color: #fff;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
+}
+
+.astro-lead-modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 26px 26px 14px;
+}
+
+.astro-lead-modal__title {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.astro-lead-modal__close {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.astro-lead-modal__close:focus-visible,
+.astro-floating-lead:focus-visible {
+  outline: 2px solid #dfc9a6;
+  outline-offset: 3px;
+}
+
+.astro-lead-form {
+  display: grid;
+  gap: 14px;
+  padding: 0 26px 26px;
+}
+
+.astro-lead-form__row {
+  display: grid;
+  gap: 7px;
+}
+
+.astro-lead-form label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .74);
+}
+
+.astro-lead-form input,
+.astro-lead-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  font: inherit;
+  padding: 13px 14px;
+}
+
+.astro-lead-form textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.astro-lead-form input:focus,
+.astro-lead-form textarea:focus {
+  outline: 2px solid rgba(223, 201, 166, .86);
+  outline-offset: 1px;
+  border-color: rgba(223, 201, 166, .78);
+}
+
+.astro-lead-form__submit {
+  min-height: 52px;
+  border: 0;
+  border-radius: 4px;
+  background: #fff;
+  color: #10100f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.astro-lead-form__privacy {
+  margin: -2px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .68);
+}
+
+.astro-lead-form__privacy a {
+  color: #dfc9a6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.astro-lead-modal .form-success {
+  display: none;
+  margin: 0 26px 26px;
+  padding: 18px;
+  border: 1px solid rgba(223, 201, 166, .32);
+  border-radius: 6px;
+  background: rgba(223, 201, 166, .12);
+  color: #fff;
+}
+
+.astro-lead-modal .form-success.visible {
+  display: block;
+}
+
+.astro-floating-lead {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 7000;
+  min-height: 48px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 999px;
+  background: #10100f;
+  color: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .28);
+  padding: 0 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body.astro-modal-open {
+  overflow: hidden;
+}
+
+body.astro-modal-open .astro-floating-lead {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .astro-lead-modal {
+    padding: 12px;
+    align-items: end;
+  }
+
+  .astro-lead-modal__panel {
+    max-height: calc(100vh - 24px);
+  }
+
+  .astro-lead-modal__head,
+  .astro-lead-form {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .astro-floating-lead {
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+    width: auto;
+  }
+}
