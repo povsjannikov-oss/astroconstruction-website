@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/assets/fonts/InterVariable.woff2") format("woff2");
+}
+
+.nav__mobile[hidden] {
+  display: none !important;
+}
+
+.footer p,
+.footer a,
+.footer__desc,
+.footer__bottom,
+.footer__legal,
+.footer__contact,
+.footer__text {
+  color: rgba(255, 255, 255, .76) !important;
+}
+
+.footer a:hover,
+.footer__link:hover {
+  color: #fff !important;
+}
+
+.footer__bottom a,
+.footer__legal a {
+  color: rgba(255, 255, 255, .82) !important;
+}
+
+.section-label,
+.service-card__link,
+.btn-text {
+  color: #7a5a2f !important;
+}
+
+.process__number {
+  color: #8a642f !important;
+}

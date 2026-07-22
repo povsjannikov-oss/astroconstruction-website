@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <title>Būvdarbu žurnāls BIS | Aizpildīšana un kārtība | ASTRO CONSTRUCTION</title>
   <meta name="description" content="Būvdarbu žurnāla aizpildīšana un kārtības uzturēšana BIS portālā. ASTRO sakārto būvdarbu ierakstu loģiku, izpilddokumentāciju un nodošanai nepieciešamo dokumentu plūsmu.">
   <meta name="keywords" content="būvdarbu žurnāls, BIS būvdarbu žurnāls, būvdarbu žurnāla aizpildīšana, būvdarbu žurnāls BIS, būvniecības dokumentācija būvdarbu laikā, veikto būvdarbu pieņemšanas akts, segto darbu akti, izpilddokumentācija">
@@ -105,10 +100,10 @@
 .sticky-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(15,15,14,.94);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:12px 14px;box-shadow:0 12px 40px rgba(0,0,0,.24);opacity:0;transform:translateY(18px);pointer-events:none;transition:.18s}.sticky-bar.visible{opacity:1;transform:none;pointer-events:auto}.sticky-bar__text{font-size:14px;line-height:1.25}.sticky-bar__button{background:#fff;color:#111;border-radius:4px;padding:10px 14px;font-size:14px;font-weight:600}@media(min-width:760px){.sticky-bar{display:none}}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:none}.d1{transition-delay:80ms}.d2{transition-delay:160ms}.d3{transition-delay:240ms}@media(max-width:640px){.hero{min-height:auto;padding-bottom:56px}.hero h1{font-size:clamp(38px,11vw,44px);line-height:1.08;overflow-wrap:break-word;hyphens:auto}.actions a{width:100%}.section,.faq,.cta{padding:80px 0}.card,.step,.notice{padding:28px}.faq{padding-bottom:150px}}
   </style>
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="nav" id="nav">
   <div class="container nav__inner">
     <a href="/index.html" class="nav__brand">ASTRO CONSTRUCTION</a>
@@ -123,7 +118,7 @@
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="Atvērt izvēlni" aria-expanded="false"><span></span></button>
   </div>
-  <div class="nav__mobile">
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobil? izv?lne" aria-hidden="true" inert hidden>
     <a href="/pakalpojumi.html" class="nav__mobile-link">Pakalpojumi</a>
     <a href="/par-mums.html" class="nav__mobile-link">Par mums</a>
     <a href="/kontakti.html" class="nav__mobile-link">Kontakti</a>
@@ -271,7 +266,8 @@ const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(ent
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('.faq__question').forEach(button=>{button.addEventListener('click',()=>{const item=button.closest('.faq__item');const isOpen=item.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen))})});
 </script>
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>

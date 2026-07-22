@@ -4,11 +4,27 @@
   const STORAGE_KEY = 'astro_cookie_consent';
   const BANNER_ID = 'astro-consent-banner';
   const SETTINGS_ID = 'astro-consent-settings';
+  const GTM_ID = 'GTM-PKFJTQJ7';
 
   function gtagConsent(command, value) {
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
     window.gtag('consent', command, value);
+  }
+
+  function loadGtm() {
+    if (window.__astroGtmLoaded) return;
+    window.__astroGtmLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+    const firstScript = document.getElementsByTagName('script')[0];
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    firstScript.parentNode.insertBefore(script, firstScript);
   }
 
   function applyConsent(value) {
@@ -19,6 +35,7 @@
       ad_user_data: 'denied',
       ad_personalization: 'denied'
     });
+    if (granted) loadGtm();
   }
 
   function saveConsent(value) {

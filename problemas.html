@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <title>Būvniecības problēmas un risinājumi | ASTRO CONSTRUCTION</title>
   <meta name="description" content="Būvatļauja ir saņemta, bet darbus nevar sākt? Māja nav nodota ekspluatācijā, trūkst dokumentu vai saņemts būvvaldes pieprasījums? Atrodiet savu situāciju un nākamo procesa virzienu.">
   <meta name="keywords" content="būvniecības problēmas, būvatļauja bet nevar sākt būvdarbus, būvdarbi apturēti, māja nav nodota ekspluatācijā, trūkst izpilddokumentācijas, būvvaldes piezīmes, būves legalizācija, apdrošinātājs prasa tāmi">
@@ -27,9 +22,10 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://astroconstruction.lv/problemas.html">
   <meta name="theme-color" content="#0F0F0E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,8 +70,6 @@
   </style>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="nav" aria-label="Galvenā navigācija">
   <div class="container nav__inner">
     <a href="/index.html" class="nav__brand">ASTRO CONSTRUCTION</a>
@@ -87,7 +81,7 @@
     </div>
     <button class="nav__toggle" id="navToggle" type="button" aria-label="Atvērt izvēlni" aria-expanded="false"><span></span></button>
   </div>
-  <div class="nav__mobile">
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobil? izv?lne" aria-hidden="true" inert hidden>
     <a href="/pakalpojumi.html" class="nav__mobile-link">Pakalpojumi</a>
     <a href="/problemas.html" class="nav__mobile-link">Situācijas</a>
     <a href="/par-mums.html" class="nav__mobile-link">Par mums</a>
@@ -204,7 +198,8 @@ document.querySelectorAll('.nav__mobile-link').forEach(link => link.addEventList
   navToggle.setAttribute('aria-expanded', 'false');
 }));
 </script>
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>

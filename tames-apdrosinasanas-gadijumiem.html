@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <title>Remonta tāme apdrošinātājam | Defektu akts un bojājumu tāme | ASTRO</title>
   <meta name="description" content="Tāmes apdrošināšanas gadījumiem: remonta tāme apdrošinātājam, defektu akts, bojājumu apraksts, fotofiksācija un izmaksu aprēķins pēc ūdens noplūdes, ugunsgrēka, auto trieciena ēkā vai trešo personu bojājumiem. Rīga, Pierīga, visa Latvija.">
   <meta name="keywords" content="remonta tāme apdrošinātājam, defektu akts apdrošinātājam, bojājumu tāme, tāme apdrošināšanas gadījumam, bojājumu apraksts apdrošinātājam, bojājumu fotofiksācija, remonta izmaksu aprēķins, darbu apjoma tāme, īpašuma bojājumu tāme, tāme pēc applūšanas, tāme pēc ūdens noplūdes, tāme pēc ugunsgrēka, auto iebrauca ēkā tāme, remonta tāme pēc auto trieciena, trešās personas bojājumi, fasādes bojājumu tāme, vārtu bojājumu tāme, būvkomersanta tāme, tāme apdrošinātājam Rīga">
@@ -25,9 +20,10 @@
   <meta property="og:title" content="Remonta tāme apdrošinātājam | ASTRO CONSTRUCTION">
   <meta property="og:description" content="Būvkomersanta sagatavota remonta tāme, defektu akts, bojājumu apraksts, fotofiksācija un darbu apjoma aprēķins pēc ūdens, uguns, auto trieciena vai cita apdrošināšanas gadījuma.">
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
 
   <script type="application/ld+json">
   {
@@ -445,9 +441,6 @@ input,textarea{font-family:var(--font)}
   <script src="/astro-forms.js?v=20260527-4" defer></script>
 </head>
 <body>
-
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- NAV -->
 <header>
   <nav class="nav" id="nav" aria-label="Galvenā navigācija">
@@ -468,7 +461,7 @@ input,textarea{font-family:var(--font)}
       </div>
     </div>
   </nav>
-  <div class="nav__mobile" id="mobile-menu" aria-hidden="true">
+  <div class="nav__mobile" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobil? izv?lne" inert hidden>
     <ul class="nav__mobile-links" role="list">
       <li><a href="/index.html#pakalpojumi" class="nav__mobile-link">Pakalpojumi</a></li>
       <li><a href="/par-mums.html" class="nav__mobile-link">Par mums</a></li>
@@ -1247,7 +1240,8 @@ input,textarea{font-family:var(--font)}
 
 })();
 </script>
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>

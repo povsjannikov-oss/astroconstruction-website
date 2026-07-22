@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <title>Būvuzraudzība — Neatkarīga Būvdarbu Kontrole | ASTRO CONSTRUCTION</title>
   <meta name="description" content="Būvuzraudzība un neatkarīga būvdarbu kontrole Latvijā. Atbilstība projektam, kvalitātes pārbaude, būvdarbu žurnāls un pasūtītāja interešu aizsardzība.">
   <meta name="keywords" content="būvuzraudzība, būvuzraugs, neatkarīga būvdarbu kontrole, būvuzraudzība privātmājai, būvvalde pieprasa būvuzraugu, BUN būvuzraudzība, būvdarbu kvalitātes pārbaude, vai būvē pareizi, būvuzraudzība Latvija, būvuzraudzība Rīga">
@@ -32,9 +27,10 @@
   <meta name="twitter:title" content="Būvuzraudzība — Neatkarīga Kontrole | ASTRO CONSTRUCTION">
   <meta name="twitter:description" content="Būvuzraudzība un neatkarīga būvdarbu kontrole Latvijā. Atbilstība projektam, kvalitātes pārbaude, būvdarbu žurnāls un pasūtītāja interešu aizsardzība.">
   <meta name="theme-color" content="#0F0F0E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
 
   <script type="application/ld+json">
   {
@@ -457,9 +453,6 @@ input,textarea{font-family:var(--font)}
   <script src="/astro-forms.js?v=20260527-4" defer></script>
 </head>
 <body>
-
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- NAV -->
 <nav class="nav" id="nav" role="navigation" aria-label="Galvenā navigācija">
   <div class="nav__inner">
@@ -471,7 +464,7 @@ input,textarea{font-family:var(--font)}
       <a href="/kontakti.html" class="nav__link" role="listitem">Kontakti</a>
     </div>
     <div class="nav__actions">
-      <a href="tel:+37129963618" class="nav__phone" aria-label="Zvanīt">+371 29 963 618</a>
+      <a href="tel:+37129963618" class="nav__phone">+371 29 963 618</a>
       <a href="#sazinaties" class="btn-nav">Sazināties</a>
       <button class="nav__hamburger" id="hamburger" aria-label="Atvērt izvēlni" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -481,7 +474,7 @@ input,textarea{font-family:var(--font)}
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobilā izvēlne">
+<div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobilā izvēlne" aria-hidden="true" inert hidden>
   <nav class="nav__mobile-links">
     <a href="/index.html#pakalpojumi" class="nav__mobile-link">Pakalpojumi</a>
     <a href="/par-mums.html" class="nav__mobile-link">Par mums</a>
@@ -1189,7 +1182,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>

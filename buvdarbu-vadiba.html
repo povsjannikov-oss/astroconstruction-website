@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Būvdarbu vadība un būvlaukuma organizēšana | ASTRO CONSTRUCTION</title>
@@ -37,9 +32,9 @@
   <meta name="twitter:title" content="Būvdarbu vadība — ASTRO CONSTRUCTION">
   <meta name="twitter:description" content="Būvdarbu procesa vadība, būvlaukuma koordinācija un dokumentācijas kārtība.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
 
   <script type="application/ld+json">
   {
@@ -265,8 +260,6 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 </style>
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="nav" id="nav">
   <div class="container nav__inner">
     <a href="/index.html" class="nav__brand" aria-label="ASTRO CONSTRUCTION sākumlapa">ASTRO CONSTRUCTION</a>
@@ -281,7 +274,7 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
     </div>
     <button class="nav__toggle" id="navToggle" aria-label="Atvērt izvēlni" aria-expanded="false"><span></span></button>
   </div>
-  <div class="nav__mobile" id="mobileMenu">
+  <div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobil? izv?lne" aria-hidden="true" inert hidden>
     <a href="/index.html#pakalpojumi" class="nav__mobile-link">Pakalpojumi</a>
     <a href="/par-mums.html" class="nav__mobile-link">Par mums</a>
     <a href="/kontakti.html" class="nav__mobile-link">Kontakti</a>
@@ -576,7 +569,8 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 </script>
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>

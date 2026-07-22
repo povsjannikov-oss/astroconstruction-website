@@ -13,11 +13,6 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PKFJTQJ7');</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- Primary SEO -->
@@ -36,9 +31,8 @@
   <meta property="og:site_name" content="ASTRO CONSTRUCTION">
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/astro-optimization.css">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -1874,9 +1868,6 @@ input, textarea { font-family: var(--font); }
 </head>
 
 <body>
-
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKFJTQJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================================================
      NAVIGATION
      ============================================================ -->
@@ -1895,7 +1886,7 @@ input, textarea { font-family: var(--font); }
       </ul>
 
       <div class="nav__actions">
-        <a href="tel:+37129963618" class="nav__phone" aria-label="Zvanīt">+371 29 963 618</a>
+        <a href="tel:+37129963618" class="nav__phone">+371 29 963 618</a>
         <a href="#cta" class="btn btn-primary" aria-label="Sazināties ar ASTRO CONSTRUCTION">Sazināties</a>
         <button class="nav__hamburger" id="hamburger" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu">
           <span></span>
@@ -1908,7 +1899,7 @@ input, textarea { font-family: var(--font); }
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobilā navigācija" aria-hidden="true">
+  <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobilā navigācija" aria-hidden="true" aria-modal="true" inert hidden>
     <ul class="nav__mobile-links" role="list">
       <li><a href="/bis-dokumentacija.html" class="nav__mobile-link">BIS dokumentācija</a></li>
       <li><a href="/legalizacija.html" class="nav__mobile-link">Legalizācija</a></li>
@@ -2035,7 +2026,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 4. BIS dokumentācija -->
         <li class="reveal">
-          <a href="/bis-dokumentacija.html" class="service-card" aria-label="Problēmas ar BIS dokumentiem — uzzināt vairāk">
+          <a href="/bis-dokumentacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="8" y="4" width="20" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M12 12h12M12 17h12M12 22h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2051,7 +2042,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 6. Būvdarbu uzsākšanas nosacījumu izpilde -->
         <li class="reveal reveal-delay-2">
-          <a href="/bun-izpilde.html" class="service-card" aria-label="Būvdarbu uzsākšanas nosacījumi — uzzināt vairāk">
+          <a href="/bun-izpilde.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="8" y="6" width="24" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M14 14h12M14 19h12M14 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2066,7 +2057,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 1. Nodošana ekspluatācijā -->
         <li class="reveal">
-          <a href="/nodosana-ekspluatacija.html" class="service-card" aria-label="Nevar nodot ēku ekspluatācijā — uzzināt vairāk">
+          <a href="/nodosana-ekspluatacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
               <path d="M13 20l5 5 9-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2080,7 +2071,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 2. Legalizācija -->
         <li class="reveal reveal-delay-1">
-          <a href="/legalizacija.html" class="service-card" aria-label="Jālegalizē ēka vai pārbūve — uzzināt vairāk">
+          <a href="/legalizacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M20 4L6 10v12c0 8 6 13 14 14 8-1 14-6 14-14V10L20 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
               <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2094,7 +2085,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 9. Izpilddokumentācija -->
         <li class="reveal reveal-delay-2">
-          <a href="/izpilddokumentacija.html" class="service-card" aria-label="Izpilddokumentācija — uzzināt vairāk">
+          <a href="/izpilddokumentacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="4" y="8" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <rect x="10" y="12" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -2110,7 +2101,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 3. Tāmes apdrošināšanas gadījumiem -->
         <li class="reveal reveal-delay-2">
-          <a href="/tames-apdrosinasanas-gadijumiem.html" class="service-card" aria-label="Apdrošinātājs prasa tāmi — uzzināt vairāk">
+          <a href="/tames-apdrosinasanas-gadijumiem.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M20 4L4 11v11c0 9 7 14 16 15 9-1 16-6 16-15V11L20 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
               <path d="M12 20h16M12 25h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2124,7 +2115,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 8. Būvuzraudzība -->
         <li class="reveal reveal-delay-1">
-          <a href="/buvuzraudziba.html" class="service-card" aria-label="Vajadzīga neatkarīga kontrole būvdarbos — uzzināt vairāk">
+          <a href="/buvuzraudziba.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="8" y="8" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M14 16h12M14 22h12M14 28h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2140,7 +2131,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 8. Būvdarbu vadība -->
         <li class="reveal">
-          <a href="/buvdarbu-vadiba.html" class="service-card" aria-label="Nepieciešama darbu organizēšana objektā — uzzināt vairāk">
+          <a href="/buvdarbu-vadiba.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
               <path d="M8 36c0-7 5.4-12 12-12s12 5 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2155,7 +2146,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 7. Būvkomersants -->
         <li class="reveal reveal-delay-3">
-          <a href="/buvkomersants.html" class="service-card" aria-label="Būvkomersants — uzzināt vairāk">
+          <a href="/buvkomersants.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="8" y="10" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M14 10V7h12v3M14 18h12M14 23h12M14 28h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2170,7 +2161,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 5. Privātmāju būvniecība -->
         <li class="reveal reveal-delay-1">
-          <a href="/privatmaju-buvnieciba.html" class="service-card" aria-label="Vajadzīga privātmājas būvniecība — uzzināt vairāk">
+          <a href="/privatmaju-buvnieciba.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M6 18L20 6l14 12v16H26v-9h-12v9H6V18z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
               <rect x="16" y="25" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
@@ -2184,7 +2175,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 10. Ģeodēzija -->
         <li class="reveal">
-          <a href="/geodezija.html" class="service-card" aria-label="Ģeodēzija — uzzināt vairāk">
+          <a href="/geodezija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <circle cx="20" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/>
               <path d="M20 4v4M20 28v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2201,7 +2192,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 11. Ģeoloģija -->
         <li class="reveal reveal-delay-1">
-          <a href="/geologija.html" class="service-card" aria-label="Ģeoloģija — uzzināt vairāk">
+          <a href="/geologija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M6 28h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               <path d="M8 22c5-3 9-3 14 0s8 3 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2218,7 +2209,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 12. Elektroinstalāciju pārbaudes -->
         <li class="reveal reveal-delay-2">
-          <a href="/elektroinstalaciju-parbaudes.html" class="service-card" aria-label="Elektroinstalāciju pārbaudes — uzzināt vairāk">
+          <a href="/elektroinstalaciju-parbaudes.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M22 4l-8 18h8l-4 14 14-20h-8L22 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -2231,7 +2222,7 @@ input, textarea { font-family: var(--font); }
 
         <!-- 12. EDLUS un darba laika uzskaite būvlaukumā -->
         <li class="reveal reveal-delay-2">
-          <a href="/edlus-organizesana.html" class="service-card" aria-label="EDLUS un darba laika uzskaite būvlaukumā — uzzināt vairāk">
+          <a href="/edlus-organizesana.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <rect x="6" y="10" width="28" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M6 16h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -2430,7 +2421,7 @@ input, textarea { font-family: var(--font); }
         <p class="section-label reveal">Biežākie jautājumi</p>
         <h2 id="faq-heading" class="reveal reveal-delay-1">Atbildes uz jūsu jautājumiem</h2>
 
-        <dl class="faq__list">
+        <div class="faq__list">
 
           <div class="faq__item reveal" itemscope itemtype="https://schema.org/Question">
             <button class="faq__question" aria-expanded="false" aria-controls="faq-1">
@@ -2522,7 +2513,7 @@ input, textarea { font-family: var(--font); }
             </div>
           </div>
 
-        </dl>
+        </div>
 
         <div class="faq__footer reveal">
           <p class="faq__footer-label">Neatradāt atbildi uz savu jautājumu?</p>
@@ -2833,7 +2824,8 @@ input, textarea { font-family: var(--font); }
 })();
 </script>
 
-  <script src="/astro-consent.js" defer></script>
+  <script src="/astro-optimization.js" defer></script>
+<script src="/astro-consent.js" defer></script>
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>
