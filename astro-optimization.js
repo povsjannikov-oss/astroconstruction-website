@@ -3,6 +3,51 @@
 
   window.__astroOptimizationLoaded = true;
 
+  function setupPageState() {
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const isHome = path === '' || path === '/index.html';
+    document.body.classList.toggle('astro-page-home', isHome);
+    document.body.classList.toggle('astro-page-inner', !isHome);
+    syncStickyBarState();
+
+    window.addEventListener('resize', function () {
+      const stickyBar = document.querySelector('.sticky-bar');
+      if (stickyBar) updateStickyBarHeight(stickyBar);
+    }, { passive: true });
+  }
+
+  function syncStickyBarState() {
+    const stickyBar = document.querySelector('.sticky-bar');
+    const floatingLead = document.querySelector('.astro-floating-lead');
+    if (stickyBar) {
+      document.body.classList.add('astro-has-sticky-bar');
+      updateStickyBarHeight(stickyBar);
+      if (floatingLead && window.matchMedia('(max-width: 1199px)').matches) {
+        floatingLead.hidden = true;
+      }
+    } else {
+      document.body.classList.remove('astro-has-sticky-bar');
+      if (floatingLead) floatingLead.hidden = false;
+    }
+  }
+
+  function updateStickyBarHeight(stickyBar) {
+    if (!stickyBar) return;
+    const rect = stickyBar.getBoundingClientRect();
+    const height = Math.max(68, Math.ceil(rect.height || stickyBar.offsetHeight || 76));
+    document.documentElement.style.setProperty('--astro-mobile-cta-height', height + 'px');
+  }
+
+  function setupFloatingElementState() {
+    const observer = new MutationObserver(function () {
+      const consentOpen = !!document.getElementById('astro-consent-banner');
+      document.body.classList.toggle('astro-consent-open', consentOpen);
+      syncStickyBarState();
+    });
+    observer.observe(document.body, { childList: true, subtree: false });
+    document.body.classList.toggle('astro-consent-open', !!document.getElementById('astro-consent-banner'));
+  }
+
   function focusableElements(root) {
     if (!root) return [];
     return Array.prototype.slice.call(root.querySelectorAll(
@@ -27,6 +72,7 @@
     menu.setAttribute('aria-hidden', 'true');
     menu.hidden = true;
     menu.inert = true;
+    setMenuFocusable(false);
 
     function setMenuFocusable(enabled) {
       menu.querySelectorAll('a[href], button, input, select, textarea, [tabindex]').forEach(function (element) {
@@ -124,10 +170,14 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      setupPageState();
+      setupFloatingElementState();
       setupMobileNavigation();
       setupFaqAccordions();
     }, { once: true });
   } else {
+    setupPageState();
+    setupFloatingElementState();
     setupMobileNavigation();
     setupFaqAccordions();
   }

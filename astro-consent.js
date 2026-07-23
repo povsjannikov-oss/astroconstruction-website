@@ -4,6 +4,7 @@
   const STORAGE_KEY = 'astro_cookie_consent';
   const BANNER_ID = 'astro-consent-banner';
   const SETTINGS_ID = 'astro-consent-settings';
+  const FOOTER_SETTINGS_ID = 'astro-consent-footer-settings';
   const GTM_ID = 'GTM-PKFJTQJ7';
 
   function gtagConsent(command, value) {
@@ -42,16 +43,18 @@
     localStorage.setItem(STORAGE_KEY, value);
     applyConsent(value);
     hideBanner();
-    showSettingsButton();
+    showSettingsControl();
   }
 
   function hideBanner() {
     const banner = document.getElementById(BANNER_ID);
     if (banner) banner.remove();
+    document.body.classList.remove('astro-consent-open');
   }
 
   function showBanner() {
     if (document.getElementById(BANNER_ID)) return;
+    document.body.classList.add('astro-consent-open');
 
     const banner = document.createElement('div');
     banner.id = BANNER_ID;
@@ -77,19 +80,30 @@
   }
 
   function showSettingsButton() {
-    if (document.getElementById(SETTINGS_ID)) return;
+    showSettingsControl();
+  }
+
+  function openSettings() {
+    localStorage.removeItem(STORAGE_KEY);
+    showBanner();
+  }
+
+  function showSettingsControl() {
+    const floating = document.getElementById(SETTINGS_ID);
+    if (floating) floating.remove();
+    if (document.getElementById(FOOTER_SETTINGS_ID)) return;
+
+    const footerTarget = document.querySelector('.footer__bottom, footer .footer__legal, footer, .footer');
+    if (!footerTarget) return;
 
     const button = document.createElement('button');
-    button.id = SETTINGS_ID;
+    button.id = FOOTER_SETTINGS_ID;
     button.type = 'button';
-    button.className = 'astro-consent-settings';
-    button.textContent = 'Sīkdatnes';
-    button.addEventListener('click', function () {
-      localStorage.removeItem(STORAGE_KEY);
-      showBanner();
-      button.remove();
-    });
-    document.body.appendChild(button);
+    button.className = 'astro-consent-footer-settings';
+    button.textContent = 'Sīkdatņu iestatījumi';
+    button.setAttribute('aria-label', 'Atvērt sīkdatņu iestatījumus');
+    button.addEventListener('click', openSettings);
+    footerTarget.appendChild(button);
   }
 
   function injectStyles() {
@@ -99,7 +113,8 @@
       '.astro-consent__text{display:grid;gap:6px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.78)}',
       '.astro-consent__text strong{color:#fff;font-size:14px}.astro-consent__text a{color:#dfc9a6;text-decoration:underline;text-underline-offset:2px}',
       '.astro-consent__actions{display:flex;gap:10px;flex-shrink:0}.astro-consent__button{border:1px solid #dfc9a6;background:#dfc9a6;color:#101010;border-radius:4px;padding:10px 14px;font-weight:700;cursor:pointer}.astro-consent__button--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}',
-      '.astro-consent-settings{position:fixed;right:14px;bottom:14px;z-index:9998;border:1px solid rgba(255,255,255,.18);background:rgba(15,15,14,.86);color:#fff;border-radius:999px;padding:8px 12px;font-size:12px;cursor:pointer}',
+      '.astro-consent-footer-settings{display:inline-flex;align-items:center;min-height:32px;border:0;background:transparent;color:rgba(255,255,255,.82);font:inherit;font-size:14px;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}',
+      '.astro-consent-footer-settings:hover,.astro-consent-footer-settings:focus-visible{color:#fff}.astro-consent-footer-settings:focus-visible{outline:2px solid #dfc9a6;outline-offset:3px}',
       '@media(max-width:680px){.astro-consent{display:grid;bottom:10px;left:10px;right:10px}.astro-consent__actions{display:grid;grid-template-columns:1fr 1fr}.astro-consent__button{width:100%}}'
     ].join('');
     document.head.appendChild(style);
@@ -111,7 +126,7 @@
 
     if (consent === 'accepted' || consent === 'rejected') {
       applyConsent(consent);
-      showSettingsButton();
+      showSettingsControl();
     } else {
       showBanner();
     }
