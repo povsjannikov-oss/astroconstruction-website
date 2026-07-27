@@ -102,6 +102,14 @@
           "@type": "Answer",
           "text": "Kad kompetentā iestāde ir veikusi atzīmi par Būvdarbu uzsākšanas nosacījumu izpildi un tā ir atspoguļota BIS lietā, var pāriet uz būvdarbu žurnālu un sākt būvdarbus, ja konkrētajā lietā nav citu šķēršļu."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Cik ilgi aizņem Būvdarbu uzsākšanas nosacījumu izpilde?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Orientējoši Būvdarbu uzsākšanas nosacījumu izpildes sagatavošana var aizņemt no 2 dienām līdz 15 darba dienām. Termiņš ir atkarīgs no būvatļaujā noteikto nosacījumu skaita un satura. Tas neietver trešo personu, projektētāju, ekspertu vai institūciju gaidīšanas laiku."
+        }
       }
     ]
   }
@@ -214,6 +222,8 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 .step h3 { font-size: 23px; line-height: 1.2; font-weight: var(--fw-medium); margin-bottom: var(--sp-2); }
 .step p { color: var(--c-grey); }
 @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+.process__note { margin-top: var(--sp-5); padding: var(--sp-4); border: 1px solid rgba(200,169,126,.32); border-left: 3px solid var(--c-sand); border-radius: var(--radius-md); background: rgba(200,169,126,.1); color: var(--c-grey); font-size: 15px; line-height: 1.7; max-width: 860px; }
+.process__note strong { display: block; color: var(--c-graphite); font-weight: var(--fw-semibold); margin-bottom: 6px; }
 .notice { background: rgba(200,169,126,.12); border: 1px solid rgba(200,169,126,.32); border-radius: var(--radius-md); padding: var(--sp-5); }
 .notice h3 { font-size: 24px; line-height: 1.2; font-weight: var(--fw-medium); margin-bottom: var(--sp-2); }
 .notice p { color: var(--c-grey); }
@@ -434,6 +444,10 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
           <p>Pēc atzīmes par nosacījumu izpildi var pāriet uz būvdarbu žurnālu un faktisko darbu organizēšanu.</p>
         </article>
       </div>
+      <div class="process__note reveal">
+        <strong>Orientējošs sagatavošanas termiņš</strong>
+        Būvdarbu uzsākšanas nosacījumu izpildes sagatavošana parasti var aizņemt no 2 dienām līdz 15 darba dienām. Termiņš ir atkarīgs no būvatļaujā noteikto nosacījumu skaita un satura. Tas neietver trešo personu, projektētāju, ekspertu vai institūciju gaidīšanas laiku.
+      </div>
     </div>
   </section>
 
@@ -472,6 +486,10 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
         <div class="faq__item reveal reveal-delay-3">
           <button class="faq__question" aria-expanded="false"><span>Kas notiek pēc BUN izpildes?</span><svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
           <div class="faq__answer">Kad kompetentā iestāde ir veikusi atzīmi par Būvdarbu uzsākšanas nosacījumu izpildi un tā ir atspoguļota BIS lietā, var pāriet uz būvdarbu žurnālu un sākt būvdarbus, ja konkrētajā lietā nav citu šķēršļu.</div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__question" aria-expanded="false"><span>Cik ilgi aizņem Būvdarbu uzsākšanas nosacījumu izpilde?</span><svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <div class="faq__answer">Orientējoši Būvdarbu uzsākšanas nosacījumu izpildes sagatavošana var aizņemt no 2 dienām līdz 15 darba dienām. Termiņš ir atkarīgs no būvatļaujā noteikto nosacījumu skaita un satura. Tas neietver trešo personu, projektētāju, ekspertu vai institūciju gaidīšanas laiku.</div>
         </div>
       </div>
     </div>

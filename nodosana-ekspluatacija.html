@@ -73,7 +73,7 @@
         "name": "Cik ilgs ir nodošanas ekspluatācijā process?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Atkarībā no objekta sarežģītības, dokumentācijas gatavības un iesaistīto institūciju prasībām — no dažām nedēļām līdz vairākiem mēnešiem. Privātmājām ar sakārtotu dokumentāciju process parasti ir īsāks. Mēs pārņemam dokumentācijas koordināciju, saziņu ar iesaistītajām pusēm un iesniegšanu BIS portālā, lai process virzītos strukturēti."
+          "text": "Vidēji privātmājas nodošana ekspluatācijā no sākotnējā pieteikuma līdz gala lēmumam aizņem aptuveni sešus mēnešus. Šis ir orientējošs termiņš. Faktiskais procesa ilgums ir atkarīgs no pieejamās dokumentācijas, atkāpēm no būvprojekta, nepieciešamajiem atzinumiem, projektētāju un institūciju noslodzes."
         }
       },
       {
@@ -105,7 +105,7 @@
         "name": "Cik maksā nodošana ekspluatācijā?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cena atkarīga no objekta veida, sarežģītības, trūkstošās dokumentācijas apjoma un iesaistīto institūciju prasībām. Privātmājām cena var sākties no 500 EUR, bet precīzu darba apjomu un izmaksas nosakām pēc dokumentācijas un BIS lietas statusa izvērtēšanas."
+          "text": "Nodošanas izmaksas veido vairāki posmi: kadastrālā uzmērīšana, elektroinstalācijas pārbaude un mērījumi, skursteņslauķa atzinums vai akts, ģeodēziskais izpildmērījums un citi konkrētajam objektam nepieciešamie dokumenti. ASTRO CONSTRUCTION pakalpojuma izmaksas tiek aprēķinātas individuāli pēc dokumentu izvērtēšanas. Gala cena ir atkarīga no objekta sarežģītības, pieejamās dokumentācijas un nepieciešamā darbu apjoma."
         }
       },
       {
@@ -242,8 +242,6 @@ input,textarea{font-family:var(--font)}
 .btn-primary-dark:hover{background:var(--c-warm-white);transform:translateY(-1px);box-shadow:0 4px 20px rgba(200,169,126,.2)}
 .btn-phone-hero{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);font-size:15px;font-weight:var(--fw-medium);border-radius:var(--radius-sm);transition:border-color var(--dur-base),color var(--dur-base)}
 .btn-phone-hero:hover{border-color:rgba(255,255,255,.55);color:var(--c-white)}
-.hero__trust{font-size:13px;color:rgba(255,255,255,.4);display:flex;flex-wrap:wrap;gap:6px}
-.hero__trust-dot{color:var(--c-sand);opacity:.6}
 
 /* PROBLEM SECTION */
 .problem{background:var(--c-white);padding:clamp(64px,8vw,112px) 0}
@@ -311,6 +309,26 @@ input,textarea{font-family:var(--font)}
 .process__title{font-size:17px;font-weight:var(--fw-medium);color:var(--c-graphite);margin-bottom:8px;letter-spacing:-.01em}
 .process__desc{font-size:14px;color:var(--c-grey);line-height:1.65}
 .process__badge{display:inline-block;font-size:11px;font-weight:var(--fw-semibold);letter-spacing:.06em;text-transform:uppercase;color:var(--c-success);background:rgba(74,124,89,.1);padding:3px 10px;border-radius:2px;margin-bottom:var(--sp-1)}
+.process__note{margin-top:clamp(32px,4vw,48px);padding:var(--sp-4);border:1px solid rgba(200,169,126,.35);border-left:3px solid var(--c-sand);border-radius:var(--radius-md);background:rgba(200,169,126,.08);color:var(--c-grey);font-size:15px;line-height:1.75;max-width:860px}
+.process__note strong{display:block;color:var(--c-graphite);font-weight:var(--fw-semibold);margin-bottom:6px}
+
+/* COSTS */
+.costs{background:var(--c-white);padding:clamp(64px,8vw,112px) 0}
+.costs h2{font-size:clamp(26px,3.5vw,40px);font-weight:var(--fw-light);letter-spacing:-.025em;line-height:1.1;color:var(--c-graphite);margin-bottom:var(--sp-2)}
+.costs__intro{font-size:17px;color:var(--c-grey);line-height:1.7;max-width:760px;margin-bottom:var(--sp-5)}
+.costs__table-wrap{overflow-x:auto;border:1px solid var(--c-border);border-radius:var(--radius-md);background:var(--c-white)}
+.costs__table{width:100%;border-collapse:collapse;min-width:620px}
+.costs__table th,.costs__table td{padding:18px 20px;border-bottom:1px solid var(--c-border);text-align:left;vertical-align:top}
+.costs__table th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--c-sand);font-weight:var(--fw-semibold);background:var(--c-warm-white)}
+.costs__table td{font-size:15px;color:var(--c-grey);line-height:1.55}
+.costs__table td:first-child{color:var(--c-graphite);font-weight:var(--fw-medium)}
+.costs__table tr:last-child td{border-bottom:none}
+.costs__astro{margin-top:var(--sp-4);padding:var(--sp-4);border-radius:var(--radius-md);background:var(--c-warm-white);border:1px solid var(--c-border)}
+.costs__astro p{font-size:15px;color:var(--c-grey);line-height:1.75;margin:0}
+.costs__astro p + p{margin-top:12px}
+.costs__astro strong{color:var(--c-graphite);font-weight:var(--fw-semibold)}
+.costs__note{font-size:13px;color:var(--c-grey);line-height:1.65;max-width:760px;margin-top:var(--sp-3)}
+.costs .btn-sand{margin-top:var(--sp-4)}
 
 /* TRUST STRIP */
 .trust-strip{background:var(--c-white);padding:clamp(48px,6vw,80px) 0;border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border)}
@@ -509,15 +527,6 @@ input,textarea{font-family:var(--font)}
           +371 29 963 618
         </a>
       </div>
-      <p class="hero__trust">
-        <span>Sertificēti speciālisti</span>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Būvkomersants</span>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Visa Latvija</span>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Procesa pārņemšana</span>
-      </p>
     </div>
   </div>
 </section>
@@ -694,37 +703,97 @@ input,textarea{font-family:var(--font)}
 <section class="process" aria-labelledby="process-heading">
   <div class="container">
     <p class="section-label reveal">Kā tas notiek</p>
-    <h2 id="process-heading" class="reveal reveal-delay-1">Pieci soļi līdz pieņemšanai ekspluatācijā</h2>
-    <p class="process__sub reveal reveal-delay-2">Skaidrs process. Jūs zināt, kas notiek katrā posmā.</p>
+    <h2 id="process-heading" class="reveal reveal-delay-1">Pieci posmi līdz ēkas nodošanai ekspluatācijā</h2>
+    <p class="process__sub reveal reveal-delay-2">Privātmājas nodošana ekspluatācijā parasti nav viens iesniegums. Procesu veido dokumentu pārbaude, kadastrālā uzmērīšana, nepieciešamie atzinumi, iespējamās projekta izmaiņas un būvvaldes izskatīšana.</p>
 
     <div class="process__steps">
       <div class="process__step reveal">
         <div class="process__number" aria-hidden="true">01</div>
-        <div class="process__title">Situācijas izvērtējums</div>
-        <div class="process__desc">Iepazīstamies ar objektu un dokumentāciju. Novērtējam esošo stāvokli, BIS lietas statusu un identificējam trūkumus.</div>
+        <div class="process__title">Dokumentu sākotnējā izvērtēšana</div>
+        <div class="process__desc">Pēc dokumentu saņemšanas pārbaudām būvniecības lietu, pieejamo dokumentāciju un sagatavojam nepieciešamo darbību sarakstu. Parasti līdz 1 nedēļai.</div>
       </div>
       <div class="process__step reveal reveal-delay-1">
         <div class="process__number" aria-hidden="true">02</div>
-        <div class="process__title">Dokumentācijas audits</div>
-        <div class="process__desc">Pilnīga izpilddokumentācijas pārbaude. Saraksts ar trūkumiem un precīzs rīcības plāns.</div>
+        <div class="process__title">Ēkas kadastrālās uzmērīšanas lieta</div>
+        <div class="process__desc">Privātmājai šis posms praksē bieži ir ilgākais. Vidēji aptuveni 3 mēneši, atkarībā no Valsts zemes dienesta, mērnieka noslodzes un objekta sarežģītības.</div>
       </div>
       <div class="process__step reveal reveal-delay-2">
         <div class="process__number" aria-hidden="true">03</div>
-        <div class="process__title">Dokumentu sakārtošana</div>
-        <div class="process__desc">Trūkstošo dokumentu sagatavošana, BIS portāla aizpildīšana un dokumentācijas sakārtošana iesniegšanai.</div>
+        <div class="process__title">Paralēlie dokumenti un pārbaudes</div>
+        <div class="process__desc">Kamēr tiek sagatavota kadastrālās uzmērīšanas lieta, organizējam elektroinstalācijas pārbaudi un mērījumus, ēkas novietojuma izpildmērījumu, skursteņslauķa atzinumu vai aktu un citus būvatļaujā noteiktos dokumentus.</div>
       </div>
       <div class="process__step reveal reveal-delay-3">
         <div class="process__number" aria-hidden="true">04</div>
-        <div class="process__title">Apsekošana</div>
-        <div class="process__desc">Koordinācija ar būvvaldi un uzraugošajām institūcijām. Piedalīšanās objekta apsekošanā.</div>
+        <div class="process__title">Būvprojekta izmaiņas, ja nepieciešams</div>
+        <div class="process__desc">Ja pēc kadastrālās uzmērīšanas vai faktiskā stāvokļa pārbaudes vajadzīgas izmaiņas būvprojektā, arhitekts tās sagatavo atkarībā no izmaiņu apjoma un noslodzes. Bieži līdz 1 mēnesim.</div>
       </div>
       <div class="process__step reveal reveal-delay-4">
         <div class="process__number" aria-hidden="true">05</div>
-        <div class="process__title">Kompetentās institūcijas lēmums</div>
+        <div class="process__title">Būvvaldes izskatīšana</div>
         <span class="process__badge">Mērķis</span>
-        <div class="process__desc">Apliecinājums par gatavību iesniegts BIS portālā. Pēc kompetentās institūcijas pieņemšanas lēmums vai akts tiek fiksēts BIS lietā, un ēka ir juridiski nodota ekspluatācijā.</div>
+        <div class="process__desc">Pēc visu dokumentu iesniegšanas būvvalde izskata lietu. Termiņu var ietekmēt būvvaldes noslodze un precizējumu pieprasījumi. Orientējoši līdz 1 mēnesim.</div>
       </div>
     </div>
+    <div class="process__note reveal">
+      <strong>Orientējošais kopējais termiņš privātmājai</strong>
+      Vidēji privātmājas nodošana ekspluatācijā no sākotnējā pieteikuma līdz gala lēmumam aizņem aptuveni sešus mēnešus. Faktiskais termiņš ir atkarīgs no pieejamās dokumentācijas, atkāpēm no būvprojekta, nepieciešamajiem atzinumiem, projektētāju un institūciju noslodzes.
+    </div>
+  </div>
+</section>
+
+<!-- COSTS -->
+<section class="costs" aria-labelledby="costs-heading">
+  <div class="container">
+    <p class="section-label reveal">Izmaksu orientieri</p>
+    <h2 id="costs-heading" class="reveal reveal-delay-1">Cik maksā privātmājas nodošana ekspluatācijā?</h2>
+    <p class="costs__intro reveal reveal-delay-2">Nodošanas izmaksas neveido viena pozīcija. Parasti jārēķinās ar vairākām ārējām izmaksām par mērījumiem, atzinumiem un dokumentiem, bet ASTRO CONSTRUCTION pakalpojuma cena tiek aprēķināta individuāli pēc dokumentu izvērtēšanas.</p>
+
+    <div class="costs__table-wrap reveal">
+      <table class="costs__table">
+        <thead>
+          <tr>
+            <th scope="col">Pozīcija</th>
+            <th scope="col">Orientējošās izmaksas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ēkas kadastrālās uzmērīšanas lieta privātmājai</td>
+            <td>vidēji ap 1 000 EUR</td>
+          </tr>
+          <tr>
+            <td>Ēkai virs 200 m²</td>
+            <td>orientējoši 3 000–5 000 EUR atkarībā no ēkas un projekta</td>
+          </tr>
+          <tr>
+            <td>Elektroinstalācijas pārbaude un mērījumi</td>
+            <td>aptuveni 350–400 EUR</td>
+          </tr>
+          <tr>
+            <td>Skursteņslauķa atzinums vai akts</td>
+            <td>aptuveni 300–350 EUR</td>
+          </tr>
+          <tr>
+            <td>Ģeodēziskais izpildmērījums</td>
+            <td>aptuveni 400 EUR</td>
+          </tr>
+          <tr>
+            <td>ASTRO CONSTRUCTION pakalpojums</td>
+            <td>individuāls aprēķins pēc dokumentu izvērtēšanas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="costs__astro reveal reveal-delay-1">
+      <p><strong>ASTRO CONSTRUCTION uzņemas pilnu ēkas nodošanas ekspluatācijā procesu — izvērtē dokumentāciju, organizē nepieciešamo speciālistu darbu, sagatavo nepieciešamos dokumentus un nodrošina komunikāciju ar būvvaldi līdz ēkas nodošanai ekspluatācijā.</strong></p>
+      <p><strong>Pakalpojuma izmaksas tiek aprēķinātas individuāli pēc dokumentu izvērtēšanas. Gala cena ir atkarīga no objekta sarežģītības, pieejamās dokumentācijas un nepieciešamā darbu apjoma.</strong></p>
+    </div>
+
+    <p class="costs__note reveal reveal-delay-2">Norādītās summas ir orientējošas ārējo pakalpojumu izmaksas privātmājas nodošanas procesā. Ne katram objektam nepieciešamas visas pozīcijas, un faktiskās izmaksas var mainīties pēc objekta, dokumentiem un iesaistīto speciālistu piedāvājumiem.</p>
+    <p class="costs__note reveal reveal-delay-2">Valsts zemes dienesta, būvvaldes un citu institūciju termiņi un izmaksas ir atkarīgi no konkrētās lietas un attiecīgo institūciju kārtības.</p>
+
+    <a href="#sazinaties" class="btn-sand reveal reveal-delay-3" data-astro-lead>Saņemt situācijas un izmaksu izvērtējumu</a>
   </div>
 </section>
 
@@ -822,7 +891,7 @@ input,textarea{font-family:var(--font)}
           <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="faq__answer" role="region">
-          <div class="faq__answer-inner">Atkarībā no objekta sarežģītības, dokumentācijas gatavības un iesaistīto institūciju prasībām — no dažām nedēļām līdz vairākiem mēnešiem. Privātmājām ar sakārtotu dokumentāciju process parasti ir īsāks. Mēs pārņemam dokumentācijas koordināciju, saziņu ar iesaistītajām pusēm un iesniegšanu BIS portālā, lai process virzītos strukturēti.</div>
+          <div class="faq__answer-inner">Vidēji privātmājas nodošana ekspluatācijā no sākotnējā pieteikuma līdz gala lēmumam aizņem aptuveni sešus mēnešus. Šis ir orientējošs termiņš. Faktiskais procesa ilgums ir atkarīgs no pieejamās dokumentācijas, atkāpēm no būvprojekta, nepieciešamajiem atzinumiem, projektētāju un institūciju noslodzes.</div>
         </div>
       </div>
 
@@ -892,7 +961,7 @@ input,textarea{font-family:var(--font)}
           <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
         <div class="faq__answer" role="region">
-          <div class="faq__answer-inner">Cena atkarīga no objekta veida, sarežģītības, trūkstošās dokumentācijas apjoma un iesaistīto institūciju prasībām. Privātmājām cena var sākties no 500 EUR, bet precīzu darba apjomu un izmaksas nosakām pēc dokumentācijas un BIS lietas statusa izvērtēšanas.</div>
+          <div class="faq__answer-inner">Nodošanas izmaksas veido vairāki posmi: kadastrālā uzmērīšana, elektroinstalācijas pārbaude un mērījumi, skursteņslauķa atzinums vai akts, ģeodēziskais izpildmērījums un citi konkrētajam objektam nepieciešamie dokumenti. ASTRO CONSTRUCTION pakalpojuma izmaksas tiek aprēķinātas individuāli pēc dokumentu izvērtēšanas. Gala cena ir atkarīga no objekta sarežģītības, pieejamās dokumentācijas un nepieciešamā darbu apjoma.</div>
         </div>
       </div>
     </div>

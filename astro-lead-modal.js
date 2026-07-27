@@ -4,21 +4,14 @@
   const CTA_TEXT = /sazināties|nosūtīt|aprakstīt|pieteikt|pieteik|konsult|rakstīt/i;
   const CTA_CLASS = /btn|button|cta|sticky|nav__button/i;
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-  const CITY_PRIORITY = ['Rīga', 'Mārupe', 'Jūrmala', 'Ķekava', 'Salaspils', 'Ādaži', 'Ogre', 'Jelgava', 'Sigulda', 'Saulkrasti'];
-  const CITY_LIST = CITY_PRIORITY.concat([
-    'Babīte', 'Piņķi', 'Baloži', 'Ikšķile', 'Carnikava', 'Valmiera', 'Cēsis', 'Liepāja',
-    'Ventspils', 'Daugavpils', 'Rēzekne', 'Jēkabpils', 'Tukums', 'Talsi', 'Saldus',
-    'Kuldīga', 'Bauska', 'Dobele', 'Aizkraukle', 'Limbaži', 'Madona', 'Gulbene',
-    'Alūksne', 'Preiļi', 'Ludza', 'Krāslava', 'Balvi'
-  ]);
-  const CITY_OPTIONS = CITY_LIST.filter(function (city, index, list) {
-    return list.indexOf(city) === index;
-  });
+  const CITY_DATA_URL = '/assets/data/latvia-cities.json';
   const MAX_CITY_OPTIONS = 12;
   let modal;
   let form;
   let opener = null;
   let cityComboboxId = 0;
+  let cityOptions = [];
+  let cityOptionsPromise = null;
 
   function nativeForm() {
     return document.querySelector('form:not(.astro-lead-form):not(.astro-form-honeypot)');
@@ -78,22 +71,55 @@
       .trim();
   }
 
+  function loadCityOptions() {
+    if (cityOptionsPromise) return cityOptionsPromise;
+    cityOptionsPromise = fetch(CITY_DATA_URL, { cache: 'force-cache' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('city_data_unavailable');
+        return response.json();
+      })
+      .then(function (data) {
+        const places = Array.isArray(data && data.places) ? data.places : [];
+        cityOptions = places
+          .filter(function (place) { return place && place.name; })
+          .map(function (place, index) {
+            const priority = Number(place.priority);
+            return {
+              name: String(place.name),
+              type: place.type ? String(place.type) : '',
+              priority: Number.isFinite(priority) ? priority : 1000 + index
+            };
+          });
+        return cityOptions;
+      })
+      .catch(function () {
+        cityOptions = [];
+        return cityOptions;
+      });
+    return cityOptionsPromise;
+  }
+
+  function cityOptionLabel(place) {
+    return place.type ? place.name + ' · ' + place.type : place.name;
+  }
+
   function cityMatches(query) {
     const normalizedQuery = normalizeCity(query);
-    const options = CITY_OPTIONS.map(function (city, index) {
-      const normalizedCity = normalizeCity(city);
+    const options = cityOptions.map(function (place, index) {
+      const normalizedCity = normalizeCity(place.name);
       const starts = normalizedQuery && normalizedCity.indexOf(normalizedQuery) === 0;
       const contains = normalizedQuery && normalizedCity.indexOf(normalizedQuery) > 0;
-      return { city: city, index: index, starts: starts, contains: contains };
+      return { place: place, index: index, starts: starts, contains: contains };
     }).filter(function (item) {
       return !normalizedQuery || item.starts || item.contains;
     });
 
     return options.sort(function (a, b) {
       if (a.starts !== b.starts) return a.starts ? -1 : 1;
+      if (a.place.priority !== b.place.priority) return a.place.priority - b.place.priority;
       return a.index - b.index;
     }).slice(0, MAX_CITY_OPTIONS).map(function (item) {
-      return item.city;
+      return item.place;
     });
   }
 
@@ -104,9 +130,10 @@
       document.title || '',
       window.location.pathname || ''
     ].join(' '));
-    return CITY_OPTIONS.find(function (city) {
-      return source.indexOf(normalizeCity(city)) !== -1;
-    }) || '';
+    const match = cityOptions.find(function (place) {
+      return source.indexOf(normalizeCity(place.name)) !== -1;
+    });
+    return match ? match.name : '';
   }
 
   function setupCityCombobox(input) {
@@ -133,10 +160,13 @@
     let activeIndex = -1;
     let blurTimer = null;
 
-    if (!input.value) {
-      const inferredCity = inferCityFromPage();
-      if (inferredCity) input.value = inferredCity;
-    }
+    loadCityOptions().then(function () {
+      if (!input.value) {
+        const inferredCity = inferCityFromPage();
+        if (inferredCity) input.value = inferredCity;
+      }
+      if (document.activeElement === input) render(input.value);
+    });
 
     function positionListbox() {
       if (listbox.hidden) return;
@@ -193,18 +223,24 @@
     }
 
     function render(query) {
+      if (!cityOptions.length) {
+        options = [];
+        listbox.innerHTML = '';
+        setExpanded(false);
+        return;
+      }
       options = cityMatches(query);
       listbox.innerHTML = '';
-      options.forEach(function (city, index) {
+      options.forEach(function (place, index) {
         const option = document.createElement('div');
         option.id = listbox.id + '-option-' + index;
         option.className = 'astro-city-option';
         option.setAttribute('role', 'option');
         option.setAttribute('aria-selected', 'false');
-        option.textContent = city;
+        option.textContent = cityOptionLabel(place);
         option.addEventListener('pointerdown', function (event) {
           event.preventDefault();
-          selectOption(city);
+          selectOption(place.name);
           input.focus({ preventScroll: true });
         });
         listbox.appendChild(option);
@@ -216,10 +252,16 @@
     input.addEventListener('focus', function () {
       window.clearTimeout(blurTimer);
       render(input.value);
+      loadCityOptions().then(function () {
+        if (document.activeElement === input) render(input.value);
+      });
     });
 
     input.addEventListener('input', function () {
       render(input.value);
+      loadCityOptions().then(function () {
+        if (document.activeElement === input) render(input.value);
+      });
     });
 
     input.addEventListener('keydown', function (event) {
@@ -238,7 +280,7 @@
       }
       if (event.key === 'Enter' && expanded && activeIndex >= 0) {
         event.preventDefault();
-        selectOption(options[activeIndex]);
+        selectOption(options[activeIndex].name);
         return;
       }
       if (event.key === 'Escape' && expanded) {
@@ -315,7 +357,7 @@
     form.insertBefore(createField('text', 'name', 'Vārds', true), submit);
     form.insertBefore(createField('tel', 'phone', 'Telefons', true), submit);
     form.insertBefore(createField('email', 'email', 'E-pasts', false), submit);
-    form.insertBefore(createField('text', 'city', 'Pilsēta', false), submit);
+    form.insertBefore(createField('text', 'city', 'Pilsēta vai apdzīvota vieta', false), submit);
     form.insertBefore(createField('textarea', 'message', 'Komentārs', false, 'Īsi aprakstiet savu situāciju...'), submit);
 
     document.body.appendChild(modal);
