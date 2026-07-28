@@ -48,7 +48,7 @@ Low
 ### Create `pilna-cikla-buvnieciba.html`
 
 Priority: High
-Status: Todo
+Status: Done
 Owner: Codex
 
 Depends on:
@@ -62,13 +62,25 @@ Related files:
 ```text
 pilna-cikla-buvnieciba.html
 index.html
-astro-optimization.css
+pakalpojumi.html
 sitemap.xml
 ```
 
 Notes:
 
-Homepage already links to `/pilna-cikla-buvnieciba.html`, but the page does not exist yet. Do not silently replace this URL with `privatmaju-buvnieciba.html`. The page should likely become the flagship full-cycle construction service page after explicit instruction.
+Completed in `ad89265 Add full-cycle construction service page`.
+
+Done:
+
+```text
+Create pilna-cikla-buvnieciba.html
+Update homepage broad construction link
+Update pakalpojumi broad construction link
+Add new URL to sitemap.xml
+Run desktop/mobile/schema/link QA
+```
+
+The page is the broad flagship SEO/service page for `pilna cikla ēku būvniecība`. QA passed on desktop 1440 and mobile 320/360/375/390/430; no horizontal overflow, valid local links, valid BreadcrumbList/Service/FAQPage JSON-LD, working FAQ accordion and CTA modal.
 
 ### Finish service page trust-strip cleanup
 
@@ -185,7 +197,7 @@ Depends on:
 
 ```text
 Trust-strip cleanup resolved
-Missing full-cycle page decision
+Full-cycle page created
 ```
 
 Related files:

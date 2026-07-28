@@ -87,7 +87,7 @@ https://astroconstruction.lv/
 
 Последняя проверенная информация: technical domain Cloudflare Pages работает и показывает новую главную страницу. Custom domain ранее из среды Codex нормально не резолвился; не считать его рабочим без отдельной проверки.
 
-Активный сайт состоит из 39 tracked HTML-файлов в корне проекта. Папки `_backup_stage3_20260722-125654/`, `prototype-v2/`, `CLAUDE BAZA ZNANIJ/`, `integrations/`, QA PNG/JSON и внутренние документы не считать опубликованной частью сайта.
+Активный сайт состоит из 40 tracked HTML-файлов в корне проекта. Папки `_backup_stage3_20260722-125654/`, `prototype-v2/`, `CLAUDE BAZA ZNANIJ/`, `integrations/`, QA PNG/JSON и внутренние документы не считать опубликованной частью сайта.
 
 ## 2. Git / опубликованные commit
 
@@ -100,8 +100,9 @@ main
 Текущее состояние Git:
 
 ```text
-main contains the project management documentation commit.
-After push, origin/main should contain the same commit.
+tracked working tree clean
+staging empty
+main and origin/main synchronized after the latest push
 ```
 
 Последний опубликованный website commit:
@@ -128,6 +129,12 @@ Minor cleanup commit:
 3b60808 Fix residential construction CTA aria label
 ```
 
+Full-cycle construction page commit:
+
+```text
+ad89265 Add full-cycle construction service page
+```
+
 Опубликованные commit в `origin/main`:
 
 ```text
@@ -144,6 +151,8 @@ docs: add project management documentation
 7ab57b7 Remove hero trust strips from service pages
 3b60808 Fix residential construction CTA aria label
 docs: update minor cleanup status
+ad89265 Add full-cycle construction service page
+docs: record full-cycle construction page
 ```
 
 Не републиковать и не пересоздавать старые commit.
@@ -161,6 +170,12 @@ git branch --show-current
 
 ```text
 none
+```
+
+Текущий staging:
+
+```text
+empty
 ```
 
 Project management documentation files are intended to be tracked in Git:
@@ -215,6 +230,34 @@ Approved wording:
 
 ```text
 Sazināties par dzīvojamās ēkas būvniecību
+```
+
+`pilna-cikla-buvnieciba.html` создана как broad flagship SEO/service page for pilna cikla ēku būvniecība в commit:
+
+```text
+ad89265 Add full-cycle construction service page
+```
+
+Интеграция:
+
+```text
+index.html -> primary service card now links to /pilna-cikla-buvnieciba.html
+pakalpojumi.html -> broad construction card now links to /pilna-cikla-buvnieciba.html
+sitemap.xml -> new URL added
+```
+
+QA для `pilna-cikla-buvnieciba.html`:
+
+```text
+desktop 1440 passed
+mobile 320/360/375/390/430 passed
+horizontal overflow absent
+FAQ accordion works
+CTA modal works
+local links valid
+JSON-LD BreadcrumbList, Service and FAQPage valid
+canonical and OG URL correct
+hero trust strip absent
 ```
 
 ## 5. Архитектурные решения
@@ -539,16 +582,14 @@ HOME_PAGE_STRATEGY.md
 
 ## 14. Известные проблемы и риски
 
-1. Dirty working tree. Нельзя использовать `git add .`, иначе можно случайно добавить service page diffs, QA screenshots, JSON, strategy docs и prototype.
-2. Missing page: homepage links to `/pilna-cikla-buvnieciba.html`, but file does not exist yet. Это pending Phase 4 destination, не silent URL bugfix.
-3. Custom domain `https://astroconstruction.lv/` ранее не резолвился из Codex environment; нужна отдельная DNS/Cloudflare проверка.
-4. Internal/private docs and backend setup files must stay out of public GitHub.
+1. Dirty working tree contains untracked QA/strategy/prototype artifacts. Нельзя использовать `git add .`, иначе можно случайно добавить QA screenshots, JSON, strategy docs и prototype.
+2. Custom domain `https://astroconstruction.lv/` ранее не резолвился из Codex environment; нужна отдельная DNS/Cloudflare проверка.
+3. Internal/private docs and backend setup files must stay out of public GitHub.
 
 ## 15. Ближайшие задачи
 
 1. Решить судьбу QA artifacts and `HOME_PAGE_STRATEGY.md`: оставить локально, добавить в `.gitignore`, переместить в ignored archive или commit selected docs only if explicitly approved.
-2. Создать missing page `pilna-cikla-buvnieciba.html` only after explicit instruction.
-3. Проверить custom domain DNS/Cloudflare only if requested or if owner reports issue.
+2. Проверить custom domain DNS/Cloudflare only if requested or if owner reports issue.
 
 Детальный backlog и task metadata ведутся в `TASKS.md`.
 
@@ -572,6 +613,7 @@ HOME_PAGE_STRATEGY.md
 - Removed hero trust strips from five service pages in `7ab57b7 Remove hero trust strips from service pages`.
 - Fixed residential construction CTA `aria-label` in `3b60808 Fix residential construction CTA aria label`.
 - Restored accidental whitespace-only diff in `bun-izpilde.html` to `HEAD`.
+- Created and verified `pilna-cikla-buvnieciba.html` as broad flagship SEO/service page for pilna cikla ēku būvniecība in `ad89265 Add full-cycle construction service page`; updated `index.html`, `pakalpojumi.html` and `sitemap.xml`.
 
 ## 17. Изменения в работе
 
@@ -579,7 +621,6 @@ Pending local website work:
 
 ```text
 QA/prototype artifact decision
-missing pilna-cikla-buvnieciba.html page decision
 ```
 
 ## 18. Рабочий процесс для следующих задач
