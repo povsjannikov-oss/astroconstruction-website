@@ -116,6 +116,12 @@ Project management documentation commit:
 docs: add project management documentation
 ```
 
+Service cleanup commit:
+
+```text
+7ab57b7 Remove hero trust strips from service pages
+```
+
 Опубликованные commit в `origin/main`:
 
 ```text
@@ -129,6 +135,7 @@ d904bb1 Update construction service terminology
 6c34a82 fix: remove mobile horizontal overflow
 f953175 Update homepage positioning and service flow
 docs: add project management documentation
+7ab57b7 Remove hero trust strips from service pages
 ```
 
 Не републиковать и не пересоздавать старые commit.
@@ -145,13 +152,8 @@ git branch --show-current
 Текущие modified files:
 
 ```text
-bis-dokumentacija.html
 bun-izpilde.html
-buvuzraudziba.html
-izpilddokumentacija.html
-legalizacija.html
 privatmaju-buvnieciba.html
-tames-apdrosinasanas-gadijumiem.html
 ```
 
 Project management documentation files are intended to be tracked in Git:
@@ -186,19 +188,11 @@ remove-trust-home-*.png
 
 ## 4. Значение текущих локальных diff
 
-Вероятная незавершенная задача: remove hero trust strips from service pages.
-
-Файлы, где локально удалялась hero trust line и CSS `.hero__trust`:
+Service-page hero trust strip cleanup завершен в commit:
 
 ```text
-bis-dokumentacija.html
-buvuzraudziba.html
-izpilddokumentacija.html
-legalizacija.html
-tames-apdrosinasanas-gadijumiem.html
+7ab57b7 Remove hero trust strips from service pages
 ```
-
-Нужно перед commit проверить diff каждого файла, отсутствие пустых контейнеров, mobile/desktop layout и возможную лишнюю indentation issue в `bis-dokumentacija.html`.
 
 Файл `bun-izpilde.html` сейчас выглядит как accidental whitespace/indentation-only diff. Не включать в commit без отдельной проверки и причины.
 
@@ -536,21 +530,13 @@ HOME_PAGE_STRATEGY.md
 1. Dirty working tree. Нельзя использовать `git add .`, иначе можно случайно добавить service page diffs, QA screenshots, JSON, strategy docs и prototype.
 2. Missing page: homepage links to `/pilna-cikla-buvnieciba.html`, but file does not exist yet. Это pending Phase 4 destination, не silent URL bugfix.
 3. Custom domain `https://astroconstruction.lv/` ранее не резолвился из Codex environment; нужна отдельная DNS/Cloudflare проверка.
-4. Service-page trust-strip cleanup локально начат, но не проверен и не закоммичен.
-5. `bun-izpilde.html` может содержать accidental whitespace-only diff.
-6. Internal/private docs and backend setup files must stay out of public GitHub.
+4. `bun-izpilde.html` может содержать accidental whitespace-only diff.
+5. Internal/private docs and backend setup files must stay out of public GitHub.
 
 ## 15. Ближайшие задачи
 
-1. Закрыть service-page trust-strip cleanup:
-   - проверить diff в `bis-dokumentacija.html`, `buvuzraudziba.html`, `izpilddokumentacija.html`, `legalizacija.html`, `tames-apdrosinasanas-gadijumiem.html`;
-   - убедиться, что изменения только удаляют generic hero trust strip;
-   - исправить accidental whitespace в `bis-dokumentacija.html`, если нужно;
-   - сделать mobile/desktop QA;
-   - stage only exact files;
-   - commit message: `Remove hero trust strips from service pages`;
-   - push only if explicitly requested.
-2. Отдельно решить micro cleanup в `privatmaju-buvnieciba.html`.
+1. Отдельно решить micro cleanup в `privatmaju-buvnieciba.html`.
+2. Review `bun-izpilde.html` accidental whitespace diff and decide whether to revert/clean in a separate task.
 3. Решить судьбу QA artifacts and `HOME_PAGE_STRATEGY.md`: оставить локально, добавить в `.gitignore`, переместить в ignored archive или commit selected docs only if explicitly approved.
 4. Создать missing page `pilna-cikla-buvnieciba.html` only after explicit instruction.
 5. Проверить custom domain DNS/Cloudflare only if requested or if owner reports issue.
@@ -574,14 +560,15 @@ HOME_PAGE_STRATEGY.md
 - Added rule to check after each completed stage whether `PROJECT_STATE.md` and `DECISIONS.md` need updates.
 - Created `TASKS.md` as project backlog and priority tracker.
 - Added rule to check after each completed stage whether `TASKS.md` needs updates.
+- Removed hero trust strips from five service pages in `7ab57b7 Remove hero trust strips from service pages`.
 
 ## 17. Изменения в работе
 
 Pending local website work:
 
 ```text
-service-page hero trust-strip cleanup
 residential construction aria wording micro cleanup
+bun-izpilde.html whitespace diff review
 QA/prototype artifact decision
 missing pilna-cikla-buvnieciba.html page decision
 ```

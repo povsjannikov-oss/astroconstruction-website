@@ -73,7 +73,7 @@ Homepage already links to `/pilna-cikla-buvnieciba.html`, but the page does not 
 ### Finish service page trust-strip cleanup
 
 Priority: High
-Status: Todo
+Status: Done
 Owner: Codex
 
 Depends on:
@@ -95,7 +95,7 @@ tames-apdrosinasanas-gadijumiem.html
 
 Notes:
 
-Local diffs already appear to remove generic hero trust strips from these service pages. Review each diff, confirm no empty containers or broken layout, fix only necessary whitespace, run mobile/desktop QA, stage exact files only.
+Completed in `7ab57b7 Remove hero trust strips from service pages`. Desktop/mobile QA passed for the five service pages; no horizontal overflow and no remaining `.hero__trust` markup.
 
 ### Review `bun-izpilde.html` local whitespace diff
 
