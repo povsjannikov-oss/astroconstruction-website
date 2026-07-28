@@ -100,7 +100,7 @@ Completed in `7ab57b7 Remove hero trust strips from service pages`. Desktop/mobi
 ### Review `bun-izpilde.html` local whitespace diff
 
 Priority: High
-Status: Todo
+Status: Done
 Owner: Codex
 
 Depends on:
@@ -117,7 +117,29 @@ bun-izpilde.html
 
 Notes:
 
-Current diff appears to be accidental indentation-only change. Do not commit it unless there is a meaningful reviewed cleanup.
+Audited as accidental indentation-only change and restored to `HEAD`. No commit was needed for `bun-izpilde.html`.
+
+### Fix residential construction CTA `aria-label`
+
+Priority: High
+Status: Done
+Owner: Codex
+
+Depends on:
+
+```text
+Audit of `privatmaju-buvnieciba.html`
+```
+
+Related files:
+
+```text
+privatmaju-buvnieciba.html
+```
+
+Notes:
+
+Completed in `3b60808 Fix residential construction CTA aria label`. The CTA section now uses `aria-label="Sazināties par dzīvojamās ēkas būvniecību"`.
 
 ### Decide and commit project management documentation
 

@@ -122,6 +122,12 @@ Service cleanup commit:
 7ab57b7 Remove hero trust strips from service pages
 ```
 
+Minor cleanup commit:
+
+```text
+3b60808 Fix residential construction CTA aria label
+```
+
 Опубликованные commit в `origin/main`:
 
 ```text
@@ -136,6 +142,8 @@ d904bb1 Update construction service terminology
 f953175 Update homepage positioning and service flow
 docs: add project management documentation
 7ab57b7 Remove hero trust strips from service pages
+3b60808 Fix residential construction CTA aria label
+docs: update minor cleanup status
 ```
 
 Не републиковать и не пересоздавать старые commit.
@@ -149,11 +157,10 @@ git status --short
 git branch --show-current
 ```
 
-Текущие modified files:
+Текущие modified tracked HTML files:
 
 ```text
-bun-izpilde.html
-privatmaju-buvnieciba.html
+none
 ```
 
 Project management documentation files are intended to be tracked in Git:
@@ -168,6 +175,8 @@ TASKS.md
 
 ```text
 HOME_PAGE_STRATEGY.md
+QA PNG/JSON files
+screenshot/QA artifacts
 entry-path-links-*.png
 entry-path-links-qa.json
 flow-links-*.png
@@ -194,16 +203,19 @@ Service-page hero trust strip cleanup завершен в commit:
 7ab57b7 Remove hero trust strips from service pages
 ```
 
-Файл `bun-izpilde.html` сейчас выглядит как accidental whitespace/indentation-only diff. Не включать в commit без отдельной проверки и причины.
+`bun-izpilde.html` was restored to `HEAD` after audit and no longer has a local diff.
 
-Файл `privatmaju-buvnieciba.html` содержит маленькую правку `aria-label`:
+`privatmaju-buvnieciba.html` CTA `aria-label` cleanup завершен в commit:
 
 ```text
-Sazināties par dzīvojamo ēku būvniecību
--> Sazināties par dzīvojamās ēkas būvniecību
+3b60808 Fix residential construction CTA aria label
 ```
 
-Это лучше делать отдельным micro commit только после одобрения.
+Approved wording:
+
+```text
+Sazināties par dzīvojamās ēkas būvniecību
+```
 
 ## 5. Архитектурные решения
 
@@ -530,16 +542,13 @@ HOME_PAGE_STRATEGY.md
 1. Dirty working tree. Нельзя использовать `git add .`, иначе можно случайно добавить service page diffs, QA screenshots, JSON, strategy docs и prototype.
 2. Missing page: homepage links to `/pilna-cikla-buvnieciba.html`, but file does not exist yet. Это pending Phase 4 destination, не silent URL bugfix.
 3. Custom domain `https://astroconstruction.lv/` ранее не резолвился из Codex environment; нужна отдельная DNS/Cloudflare проверка.
-4. `bun-izpilde.html` может содержать accidental whitespace-only diff.
-5. Internal/private docs and backend setup files must stay out of public GitHub.
+4. Internal/private docs and backend setup files must stay out of public GitHub.
 
 ## 15. Ближайшие задачи
 
-1. Отдельно решить micro cleanup в `privatmaju-buvnieciba.html`.
-2. Review `bun-izpilde.html` accidental whitespace diff and decide whether to revert/clean in a separate task.
-3. Решить судьбу QA artifacts and `HOME_PAGE_STRATEGY.md`: оставить локально, добавить в `.gitignore`, переместить в ignored archive или commit selected docs only if explicitly approved.
-4. Создать missing page `pilna-cikla-buvnieciba.html` only after explicit instruction.
-5. Проверить custom domain DNS/Cloudflare only if requested or if owner reports issue.
+1. Решить судьбу QA artifacts and `HOME_PAGE_STRATEGY.md`: оставить локально, добавить в `.gitignore`, переместить в ignored archive или commit selected docs only if explicitly approved.
+2. Создать missing page `pilna-cikla-buvnieciba.html` only after explicit instruction.
+3. Проверить custom domain DNS/Cloudflare only if requested or if owner reports issue.
 
 Детальный backlog и task metadata ведутся в `TASKS.md`.
 
@@ -561,14 +570,14 @@ HOME_PAGE_STRATEGY.md
 - Created `TASKS.md` as project backlog and priority tracker.
 - Added rule to check after each completed stage whether `TASKS.md` needs updates.
 - Removed hero trust strips from five service pages in `7ab57b7 Remove hero trust strips from service pages`.
+- Fixed residential construction CTA `aria-label` in `3b60808 Fix residential construction CTA aria label`.
+- Restored accidental whitespace-only diff in `bun-izpilde.html` to `HEAD`.
 
 ## 17. Изменения в работе
 
 Pending local website work:
 
 ```text
-residential construction aria wording micro cleanup
-bun-izpilde.html whitespace diff review
 QA/prototype artifact decision
 missing pilna-cikla-buvnieciba.html page decision
 ```
