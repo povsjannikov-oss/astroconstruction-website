@@ -389,3 +389,94 @@ body.astro-consent-open .astro-floating-lead {
     margin-right: max(0px, env(safe-area-inset-right)) !important;
   }
 }
+
+
+/* Mobile overflow guardrails. These rules keep existing components inside the
+   viewport without hiding real layout issues globally. */
+.cta__box,
+.cta__box > *,
+.contact-options,
+.contact-option,
+.split > *,
+.costs__table-wrap,
+.scope-grid,
+.damage-grid {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.contact-options,
+.contact-option {
+  width: 100% !important;
+}
+
+#bun-request-form,
+#bun-request-form *,
+.request-form,
+.request-form *,
+.geo-form,
+.geo-form * {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.costs__table-wrap {
+  display: block !important;
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.costs__table {
+  min-width: 620px !important;
+}
+
+@media (max-width: 479px) {
+  .scope-grid,
+  .damage-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .scope-grid > *,
+  .damage-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .split {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .cta__box {
+    padding-left: clamp(24px, 7vw, 32px) !important;
+    padding-right: clamp(24px, 7vw, 32px) !important;
+  }
+}
+
+@media (max-width: 359px) {
+  .nav__actions {
+    gap: 10px !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .nav__actions .btn-nav,
+  .nav__actions a.btn-nav,
+  a.btn-nav {
+    display: none !important;
+  }
+
+  .nav__actions .nav__phone {
+    display: none !important;
+  }
+
+  .nav__hamburger,
+  .nav__toggle,
+  #hamburger {
+    flex: 0 0 auto !important;
+  }
+}
