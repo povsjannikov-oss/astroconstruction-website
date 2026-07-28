@@ -69,10 +69,10 @@
       {"@type":"Question","name":"Kas ir BIS, un ko tajā dara?","acceptedAnswer":{"@type":"Answer","text":"BIS ir Būvniecības informācijas sistēmas portāls, kurā ievada un iesniedz būvniecības dokumentus un uztur būvniecības lietu, tostarp būvdarbu žurnālu. Administratīvos lēmumus un atzīmes pieņem būvvalde, BVKB vai cita kompetentā institūcija atbilstoši objektam."}},
       {"@type":"Question","name":"Saņemta būvatļauja - vai drīkst sākt būvdarbus?","acceptedAnswer":{"@type":"Answer","text":"Ne vienmēr. Ja būvatļaujā noteikta būvdarbu uzsākšanas nosacījumu izpilde, vispirms jāsagatavo konkrētajā būvatļaujā prasītie dokumenti un jāsaņem būvvaldes atzīme BIS lietā. Prasības ir atkarīgas no objekta un būvatļaujas."}},
       {"@type":"Question","name":"Kas notiek, ja ēka vai pārbūve nav legalizēta?","acceptedAnswer":{"@type":"Answer","text":"Nelegalizēta ēka vai pārbūve var radīt problēmas pārdošanas, kreditēšanas, apdrošināšanas vai nodošanas procesā. Vispirms jānoskaidro faktiskais stāvoklis, teritorijas un būvvaldes prasības un iespējamais legalizācijas ceļš."}},
-      {"@type":"Question","name":"Cik ilgi aizņem nodošana ekspluatācijā?","acceptedAnswer":{"@type":"Answer","text":"Termiņš ir atkarīgs no ēkas faktiskā stāvokļa, pieejamās izpilddokumentācijas, nepieciešamajiem atzinumiem un institūciju prasībām. Pēc dokumentu un situācijas izvērtēšanas var noteikt nākamos soļus un aptuveno procesa virzienu."}},
+      {"@type":"Question","name":"Cik ilgi aizņem nodošana ekspluatācijā?","acceptedAnswer":{"@type":"Answer","text":"Termiņš ir atkarīgs no ēkas faktiskā stāvokļa, pieejamās izpilddokumentācijas, nepieciešamajiem atzinumiem un institūciju prasībām. Pēc dokumentu un objekta stāvokļa pārbaudes nosakām veicamos darbus un procesa virzienu."}},
       {"@type":"Question","name":"Vai palīdzat tikai privātpersonām?","acceptedAnswer":{"@type":"Answer","text":"Nē. Strādājam gan ar privātiem pasūtītājiem, gan ar būvniekiem, speciālistiem un uzņēmumiem, kuriem nepieciešama būvniecības dokumentācija, praktiski būvdarbi vai risinājums sarežģītai situācijai objektā."}},
       {"@type":"Question","name":"Vai ASTRO pieņem lēmumus būvvaldes vietā?","acceptedAnswer":{"@type":"Answer","text":"Nē. Būvvalde, BVKB, apdrošinātājs vai cita kompetentā institūcija pieņem savus lēmumus. ASTRO palīdz sagatavot dokumentus, sakārtot informāciju un koordinēt nepieciešamos soļus."}},
-      {"@type":"Question","name":"Vai varat palīdzēt, ja iepriekšējais būvnieks atstājis nepilnīgu dokumentāciju?","acceptedAnswer":{"@type":"Answer","text":"Jā, izvērtējam esošo dokumentāciju un faktisko situāciju, nosakām, ko iespējams atjaunot vai sagatavot, un piedāvājam tālāko rīcības plānu."}},
+      {"@type":"Question","name":"Vai varat palīdzēt, ja iepriekšējais būvnieks atstājis nepilnīgu dokumentāciju?","acceptedAnswer":{"@type":"Answer","text":"Jā. Pārbaudām esošo dokumentāciju un faktisko situāciju, nosakām, ko iespējams atjaunot vai sagatavot, un turpinām darbu ar konkrētiem dokumentācijas vai būvdarbu uzdevumiem."}},
       {"@type":"Question","name":"Vai strādājat visā Latvijā?","acceptedAnswer":{"@type":"Answer","text":"Jā, strādājam visā Latvijā. Izbraukuma nepieciešamība ir atkarīga no pakalpojuma un konkrētās situācijas."}}
     ]
   }
@@ -507,12 +507,17 @@ input, textarea { font-family: var(--font); }
    ============================================================ */
 .hero {
   position: relative;
-  min-height: 100svh;
-  min-height: 100vh;
+  min-height: 86svh;
   display: flex;
   align-items: center;
   background: var(--c-graphite);
   overflow: hidden;
+}
+@media (min-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    min-height: 100vh;
+  }
 }
 
 /* Engineering grid background */
@@ -567,8 +572,14 @@ input, textarea { font-family: var(--font); }
 .hero__inner {
   position: relative;
   z-index: 2;
-  padding-top: calc(var(--nav-h) + var(--sp-8));
-  padding-bottom: var(--sp-8);
+  padding-top: calc(var(--nav-h) + var(--sp-5));
+  padding-bottom: var(--sp-5);
+}
+@media (min-width: 768px) {
+  .hero__inner {
+    padding-top: calc(var(--nav-h) + var(--sp-8));
+    padding-bottom: var(--sp-8);
+  }
 }
 
 .hero__label {
@@ -592,22 +603,22 @@ input, textarea { font-family: var(--font); }
 }
 
 .hero h1 {
-  font-size: clamp(40px, 7vw, 76px);
+  font-size: clamp(36px, 10vw, 76px);
   font-weight: var(--fw-light);
   line-height: 1.04;
   letter-spacing: -0.03em;
   color: var(--c-white);
-  max-width: 740px;
+  max-width: 820px;
   margin-bottom: var(--sp-4);
 }
 
 .hero__subline {
   font-size: clamp(16px, 2vw, 19px);
   font-weight: var(--fw-regular);
-  line-height: 1.65;
+  line-height: 1.58;
   color: rgba(255,255,255,0.75);
-  max-width: 520px;
-  margin-bottom: var(--sp-6);
+  max-width: 680px;
+  margin-bottom: var(--sp-5);
 }
 
 .hero__actions {
@@ -615,7 +626,7 @@ input, textarea { font-family: var(--font); }
   flex-direction: column;
   gap: var(--sp-2);
   align-items: flex-start;
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-3);
 }
 @media (min-width: 480px) {
   .hero__actions { flex-direction: row; align-items: center; }
@@ -628,6 +639,23 @@ input, textarea { font-family: var(--font); }
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+.hero__trust a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--dur-fast);
+}
+.hero__trust a:hover {
+  color: rgba(255,255,255,0.72);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.hero__trust a:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 .hero__trust-dot {
   color: var(--c-sand);
@@ -658,79 +686,270 @@ input, textarea { font-family: var(--font); }
 .hero__scroll svg { opacity: 0.4; }
 
 /* ============================================================
-   TRUST BAR
+   CONSTRUCTION LIFECYCLE
    ============================================================ */
-.trust-bar {
-  background: var(--c-white);
+.lifecycle {
+  background: var(--c-warm-white);
+  padding: clamp(56px, 8vw, 112px) 0;
   border-bottom: 1px solid var(--c-border);
 }
 
-.trust-bar__grid {
+.lifecycle__header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+  margin-bottom: clamp(36px, 6vw, 64px);
 }
-@media (min-width: 768px) { .trust-bar__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) {
+  .lifecycle__header {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--sp-10);
+    align-items: end;
+  }
+}
 
-.trust-bar__cell {
-  padding: var(--sp-5) var(--sp-3);
-  text-align: center;
-  border-right: 1px solid var(--c-border);
+.lifecycle h2 {
+  font-size: clamp(30px, 4.8vw, 56px);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  color: var(--c-graphite);
+}
+
+.lifecycle__intro {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--c-grey);
+  max-width: 700px;
+}
+
+.lifecycle__track {
+  counter-reset: lifecycle;
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin-bottom: clamp(36px, 5vw, 56px);
   position: relative;
 }
-.trust-bar__cell:nth-child(2) { border-right: none; }
-.trust-bar__cell:nth-child(3) { border-top: 1px solid var(--c-border); }
-.trust-bar__cell:nth-child(4) { border-top: 1px solid var(--c-border); border-right: none; }
-@media (min-width: 768px) {
-  .trust-bar__cell { border-top: none !important; }
-  .trust-bar__cell:nth-child(2) { border-right: 1px solid var(--c-border); }
-  .trust-bar__cell:last-child  { border-right: none; }
+@media (min-width: 760px) {
+  .lifecycle__track {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-@media (max-width: 480px) {
-  .trust-bar__cell {
-    min-width: 0;
-    padding: var(--sp-4) var(--sp-1);
-  }
-  .trust-bar__number {
-    font-size: 28px;
-    letter-spacing: 0;
-  }
-  .trust-bar__label {
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    overflow-wrap: anywhere;
+@media (min-width: 1120px) {
+  .lifecycle__track {
+    grid-template-columns: repeat(8, 1fr);
   }
 }
 
-.trust-bar__number {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: var(--fw-light);
-  letter-spacing: -0.025em;
-  color: var(--c-graphite);
-  line-height: 1;
-  margin-bottom: 6px;
+.lifecycle__step {
+  counter-increment: lifecycle;
+  position: relative;
+  border-left: 1px solid var(--c-border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.18));
 }
-
-.trust-bar__icon {
-  width: clamp(36px, 4vw, 46px);
-  height: clamp(36px, 4vw, 46px);
+.lifecycle__step-link {
+  position: relative;
   display: block;
-  margin: 0 auto 8px;
-  color: var(--c-graphite);
+  min-height: 100%;
+  padding: var(--sp-4) var(--sp-3) var(--sp-4) var(--sp-6);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--dur-fast), color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.lifecycle__step-link::before {
+  content: counter(lifecycle, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: var(--sp-4);
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--c-graphite);
+  color: var(--c-sand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 6px var(--c-warm-white);
+}
+.lifecycle__step-link:hover {
+  background: rgba(214, 169, 74, 0.06);
+}
+.lifecycle__step-link:hover .lifecycle__title {
+  color: #171717;
+}
+.lifecycle__step-link:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+.lifecycle__step:last-child {
+  border-left-color: transparent;
+}
+@media (min-width: 760px) {
+  .lifecycle__step {
+    min-height: 142px;
+    border-left: none;
+    border-top: 1px solid var(--c-border);
+  }
+  .lifecycle__step-link {
+    padding: var(--sp-5) var(--sp-3) var(--sp-3);
+  }
+  .lifecycle__step-link::before {
+    left: 0;
+    top: 0;
+    transform: translateY(-50%);
+  }
+  .lifecycle__step:last-child {
+    border-top-color: var(--c-border);
+  }
 }
 
-.trust-bar__number sup {
-  font-size: 0.55em;
-  vertical-align: super;
-  color: var(--c-sand);
+.lifecycle__title {
+  font-size: 16px;
   font-weight: var(--fw-medium);
+  color: var(--c-graphite);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-.trust-bar__label {
+.lifecycle__note {
+  background: var(--c-graphite);
+  color: var(--c-white);
+  border-radius: var(--radius-md);
+  padding: clamp(24px, 4vw, 40px);
+  display: grid;
+  gap: var(--sp-3);
+}
+@media (min-width: 860px) {
+  .lifecycle__note {
+    grid-template-columns: 5fr 6fr;
+    align-items: center;
+  }
+}
+.lifecycle__note-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.lifecycle__note-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+}
+
+/* ============================================================
+   ENTRY PATHS
+   ============================================================ */
+.entry-paths {
+  background: var(--c-white);
+  padding: clamp(56px, 8vw, 104px) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.entry-paths__header {
+  max-width: 720px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.entry-paths h2 {
+  font-size: clamp(30px, 4.5vw, 52px);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--c-graphite);
+  margin-bottom: var(--sp-3);
+}
+
+.entry-paths__intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--c-grey);
+}
+
+.entry-paths__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-2);
+}
+@media (min-width: 780px) {
+  .entry-paths__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.entry-card {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 4vw, 40px);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-white);
+  color: var(--c-graphite);
+  overflow: hidden;
+  transition: box-shadow var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+}
+.entry-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: rgba(200,169,126,0.65);
+}
+.entry-card--primary {
+  background: var(--c-graphite);
+  border-color: var(--c-graphite);
+  color: var(--c-white);
+}
+.entry-card__kicker {
   font-size: 11px;
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--c-sand);
+  margin-bottom: var(--sp-3);
+}
+.entry-card__title {
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: var(--sp-3);
+}
+.entry-card__summary {
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--c-grey);
+  margin-bottom: var(--sp-4);
+  flex-grow: 1;
+}
+.entry-card--primary .entry-card__summary {
+  color: rgba(255,255,255,0.72);
+}
+.entry-card__link {
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  color: var(--c-sand);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.entry-card:not(.entry-card--primary) .entry-card__kicker,
+.entry-card:not(.entry-card--primary) .entry-card__link {
+  color: #6F552C;
+}
+.entry-card__link svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.entry-card:hover .entry-card__link svg {
+  transform: translateX(4px);
 }
 
 /* ============================================================
@@ -918,6 +1137,7 @@ input, textarea { font-family: var(--font); }
   border: 1px solid var(--c-border);
   border-radius: var(--radius-md);
   padding: var(--sp-4);
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -976,9 +1196,113 @@ input, textarea { font-family: var(--font); }
 }
 .service-card:hover .service-card__link { gap: 10px; }
 
-.services__footer {
-  margin-top: clamp(32px, 4vw, 48px);
-  text-align: left;
+.service-card__kicker {
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-sand);
+  margin-bottom: 8px;
+}
+
+.service-card--primary {
+  background: linear-gradient(145deg, var(--c-white) 0%, #fbfaf7 100%);
+  border-left-color: var(--c-sand);
+}
+
+/* ============================================================
+   ADDITIONAL SERVICES
+   ============================================================ */
+.additional-services {
+  background: var(--c-warm-white);
+  padding: clamp(44px, 6vw, 80px) 0;
+}
+
+.additional-services__details {
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-white);
+  overflow: hidden;
+}
+
+.additional-services__details summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: clamp(22px, 4vw, 34px);
+  color: var(--c-graphite);
+}
+
+.additional-services__details summary::-webkit-details-marker { display: none; }
+
+.additional-services__details summary strong {
+  display: block;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: var(--fw-light);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-top: 8px;
+}
+
+.additional-services__details summary svg {
+  flex-shrink: 0;
+  color: var(--c-sand);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.additional-services__details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.additional-services__panel {
+  border-top: 1px solid var(--c-border);
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.additional-services__intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--c-grey);
+  max-width: 720px;
+  margin-bottom: var(--sp-4);
+}
+
+.additional-services__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .additional-services__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .additional-services__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.additional-services__grid a {
+  display: block;
+  min-height: 48px;
+  padding: 14px 16px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  color: var(--c-graphite);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  background: var(--c-white);
+  transition: border-color var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out);
+}
+
+.additional-services__grid a:hover {
+  color: var(--c-sand);
+  border-color: var(--c-sand);
 }
 
 /* ============================================================
@@ -1883,6 +2207,7 @@ input, textarea { font-family: var(--font); }
 
       <ul class="nav__links" role="list">
         <li><a href="/pakalpojumi.html" class="nav__link">Pakalpojumi</a></li>
+        <li><a href="#buvniecibas-cels" class="nav__link">Būvniecības ceļš</a></li>
         <li><a href="/par-mums.html" class="nav__link">Par mums</a></li>
         <li><a href="/kontakti.html" class="nav__link">Kontakti</a></li>
       </ul>
@@ -1903,10 +2228,8 @@ input, textarea { font-family: var(--font); }
   <!-- Mobile Menu -->
   <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobilā navigācija" aria-hidden="true" aria-modal="true" inert hidden>
     <ul class="nav__mobile-links" role="list">
-      <li><a href="/bis-dokumentacija.html" class="nav__mobile-link">BIS dokumentācija</a></li>
-      <li><a href="/legalizacija.html" class="nav__mobile-link">Legalizācija</a></li>
-      <li><a href="/nodosana-ekspluatacija.html" class="nav__mobile-link">Nodošana ekspluatācijā</a></li>
-      <li><a href="/privatmaju-buvnieciba.html" class="nav__mobile-link">Dzīvojamo māju un industriālo ēku būvniecība</a></li>
+      <li><a href="/pakalpojumi.html" class="nav__mobile-link">Pakalpojumi</a></li>
+      <li><a href="#buvniecibas-cels" class="nav__mobile-link">Būvniecības ceļš</a></li>
       <li><a href="/par-mums.html" class="nav__mobile-link">Par mums</a></li>
       <li><a href="/kontakti.html" class="nav__mobile-link">Kontakti</a></li>
     </ul>
@@ -1925,41 +2248,45 @@ input, textarea { font-family: var(--font); }
     <div class="hero__shape" aria-hidden="true"></div>
 
     <div class="container hero__inner">
-      <p class="hero__label reveal" aria-label="Inženiertehniski risinājumi būvniecībā">
-        Inženiertehniski risinājumi būvniecībā
+      <p class="hero__label reveal" aria-label="Eksperti būvniecībā un būvniecības dokumentācijā">
+        Eksperti būvniecībā un būvniecības dokumentācijā
       </p>
 
       <h1 class="reveal reveal-delay-1">
-        No būvniecības dokumentācijas<br>
-        līdz ēkas nodošanai ekspluatācijā
+        Viens partneris visam<br>
+        būvniecības procesam.
       </h1>
 
       <p class="hero__subline reveal reveal-delay-2">
-        Nodošana ekspluatācijā, būvniecības un BIS dokumentācija, legalizācija, tāmes apdrošinātājiem un būvniecība visā Latvijā.<br>
-        ASTRO CONSTRUCTION risina jautājumus, kuros jāapvieno būvniecības prakse,<br>
-        dokumentu kārtība, būvvaldes prasības un reāla izpilde objektā.
+        No pirmajiem dokumentiem līdz būvdarbiem un ēkas nodošanai ekspluatācijā.
       </p>
 
       <div class="hero__actions reveal reveal-delay-3">
-        <a href="#pakalpojumi" class="btn btn-primary btn-lg btn-arrow" aria-label="Skatīt pakalpojumus">
-          Skatīt pakalpojumus
+        <a href="#cta" class="btn btn-primary btn-lg btn-arrow" aria-label="Aprakstīt situāciju">
+          Aprakstīt situāciju
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="#cta" class="btn-text" style="color:rgba(255,255,255,0.65);font-size:15px;">
-          Sazināties ar inženieri
+        <a href="#buvniecibas-cels" class="btn-text" style="color:rgba(255,255,255,0.65);font-size:15px;">
+          Skatīt būvniecības posmus
         </a>
       </div>
 
       <p class="hero__trust reveal reveal-delay-4" aria-label="Papildu informācija">
-        <span>Dokumentācija</span>
+        <a href="/buvdarbu-vadiba.html">Būvdarbi</a>
         <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Legalizācija</span>
+        <a href="/izpilddokumentacija.html">Būvniecības dokumentācija</a>
         <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Nodošana ekspluatācijā</span>
+        <a href="/buvuzraudziba.html">Būvuzraudzība</a>
         <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <span>Būvdarbi</span>
+        <a href="/legalizacija.html">Legalizācija</a>
+        <span class="hero__trust-dot" aria-hidden="true">·</span>
+        <a href="/geodezija.html">Ģeodēzija</a>
+        <span class="hero__trust-dot" aria-hidden="true">·</span>
+        <a href="/elektroinstalaciju-parbaudes.html">Elektroinstalāciju pārbaudes</a>
+        <span class="hero__trust-dot" aria-hidden="true">·</span>
+        <a href="/tames-apdrosinasanas-gadijumiem.html">Tāmes apdrošināšanas gadījumiem</a>
       </p>
     </div>
 
@@ -1973,119 +2300,152 @@ input, textarea { font-family: var(--font); }
     </div>
   </section>
 
+
   <!-- ============================================================
-       TRUST BAR
+       ENTRY PATHS
        ============================================================ -->
-  <section class="trust-bar" aria-label="Uzņēmuma informācija">
-    <div class="trust-bar__grid container">
-      <div class="trust-bar__cell reveal">
-        <div class="trust-bar__number">20<sup>+</sup></div>
-        <div class="trust-bar__label">Pieredze būvniecībā</div>
+  <section class="entry-paths" aria-labelledby="entry-paths-heading">
+    <div class="container">
+      <div class="entry-paths__header">
+        <p class="section-label reveal">Ar ko sākt</p>
+        <h2 id="entry-paths-heading" class="reveal reveal-delay-1">Izvēlieties tuvāko situāciju.</h2>
+        <p class="entry-paths__intro reveal reveal-delay-2">
+          Nav jāzina precīzs pakalpojuma nosaukums. Sāciet ar to, kas jums šobrīd ir vajadzīgs.
+        </p>
       </div>
-      <div class="trust-bar__cell reveal reveal-delay-1">
-        <svg class="trust-bar__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M25 4l8 5 3 8 6 5-2 9-7 4-5 8-9-2-6 3-5-7 2-8-4-7 6-6 3-8 10-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-          <path d="M20 15l6 5-2 8 4 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="trust-bar__label">Strādājam visā Latvijā</div>
-      </div>
-      <div class="trust-bar__cell reveal reveal-delay-2">
-        <svg class="trust-bar__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <rect x="12" y="6" width="24" height="32" rx="2" stroke="currentColor" stroke-width="1.7"/>
-          <path d="M18 16h12M18 22h12M18 28h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <path d="M18 38l6 4 6-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="trust-bar__label">Sertificēti speciālisti</div>
-      </div>
-      <div class="trust-bar__cell reveal reveal-delay-3">
-        <svg class="trust-bar__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M8 32h32M12 24h24M16 16h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-          <rect x="10" y="32" width="28" height="8" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
-          <rect x="14" y="24" width="20" height="8" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
-          <rect x="18" y="16" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.7"/>
-          <path d="M34 10l5 5M38 6l5 5M35 9l5-5 4 4-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="trust-bar__label">Būvkomersants</div>
+
+      <div class="entry-paths__grid">
+        <a href="/pilna-cikla-buvnieciba.html" class="entry-card entry-card--primary reveal">
+          <p class="entry-card__kicker">Būvniecība</p>
+          <h3 class="entry-card__title">Gribu būvēt.</h3>
+          <p class="entry-card__summary">Vajadzīgs būvniecības partneris, kas saprot būvdarbus, dokumentāciju un ceļu līdz nodošanai ekspluatācijā.</p>
+          <span class="entry-card__link">Skatīt pilna cikla būvniecību <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="#papildu-pakalpojumi" class="entry-card reveal reveal-delay-1">
+          <p class="entry-card__kicker">Dokumenti un process</p>
+          <h3 class="entry-card__title">Ir jāatrisina esoša situācija.</h3>
+          <p class="entry-card__summary">Būvatļauja, būvniecības dokumentācija, legalizācija, trūkstoši dokumenti vai nodošana ekspluatācijā.</p>
+          <span class="entry-card__link">Skatīt visus pakalpojumus <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a href="/tames-apdrosinasanas-gadijumiem.html" class="entry-card reveal reveal-delay-2">
+          <p class="entry-card__kicker">Apdrošināšana</p>
+          <h3 class="entry-card__title">Tāmes apdrošināšanas gadījumiem</h3>
+          <p class="entry-card__summary">Palīdzam tehniski pamatot pienākošās atlīdzības apjomu ar remonta tāmi un bojājumu dokumentāciju.</p>
+          <span class="entry-card__link">Pieteikt tāmi <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SERVICES GRID
+       CONSTRUCTION LIFECYCLE
+       ============================================================ -->
+  <section class="lifecycle" id="buvniecibas-cels" aria-labelledby="lifecycle-heading">
+    <div class="container">
+      <div class="lifecycle__header">
+        <div>
+          <p class="section-label reveal">Būvniecības ceļš</p>
+          <h2 id="lifecycle-heading" class="reveal reveal-delay-1">Viens partneris visam būvniecības ceļam.</h2>
+        </div>
+        <p class="lifecycle__intro reveal reveal-delay-2">
+          Būvniecībā lielākās problēmas bieži rodas starp posmiem: projekts, būvatļauja, dokumenti, būvdarbi, speciālisti un nodošana ekspluatācijā. ASTRO CONSTRUCTION savieno šos posmus vienā pārskatāmā būvniecības ceļā.
+        </p>
+      </div>
+
+      <ol class="lifecycle__track" role="list" aria-label="Būvniecības procesa posmi">
+        <li class="lifecycle__step reveal">
+          <a href="/privatmaju-buvnieciba.html" class="lifecycle__step-link" aria-label="Iecere - skatīt pilna cikla būvniecību">
+            <h3 class="lifecycle__title">Iecere</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-1">
+          <a href="/geodezija-geologija.html" class="lifecycle__step-link" aria-label="Projekts - skatīt ģeodēzijas un ģeoloģijas pakalpojumus">
+            <h3 class="lifecycle__title">Projekts</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-1">
+          <a href="/buvatlauja-ir-bet-nevar-sakt-buvdarbus.html" class="lifecycle__step-link" aria-label="Būvatļauja - skatīt informāciju par būvatļauju un būvdarbu sākšanu">
+            <h3 class="lifecycle__title">Būvatļauja</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-2">
+          <a href="/bun-izpilde.html" class="lifecycle__step-link" aria-label="Būvdarbu uzsākšanas nosacījumu izpilde - skatīt BUN izpildes pakalpojumu">
+            <h3 class="lifecycle__title">Būvdarbu uzsākšanas nosacījumu izpilde</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-2">
+          <a href="/buvdarbu-vadiba.html" class="lifecycle__step-link" aria-label="Būvdarbi - skatīt būvdarbu vadības pakalpojumu">
+            <h3 class="lifecycle__title">Būvdarbi</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-3">
+          <a href="/izpilddokumentacija.html" class="lifecycle__step-link" aria-label="Būvniecības dokumentācija - skatīt izpilddokumentācijas pakalpojumu">
+            <h3 class="lifecycle__title">Būvniecības dokumentācija</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-3">
+          <a href="/nodosana-ekspluatacija.html" class="lifecycle__step-link" aria-label="Nodošana ekspluatācijā - skatīt nodošanas ekspluatācijā pakalpojumu">
+            <h3 class="lifecycle__title">Nodošana ekspluatācijā</h3>
+          </a>
+        </li>
+        <li class="lifecycle__step reveal reveal-delay-4">
+          <a href="/nodosana-ekspluatacija.html" class="lifecycle__step-link" aria-label="Ēka nodota ekspluatācijā - skatīt nodošanas ekspluatācijā pakalpojumu">
+            <h3 class="lifecycle__title">Ēka nodota ekspluatācijā</h3>
+          </a>
+        </li>
+      </ol>
+
+      <div class="lifecycle__note reveal">
+        <p class="lifecycle__note-title">Varat uzticēt visu procesu vai piesaistīt ASTRO CONSTRUCTION konkrētam posmam.</p>
+        <p class="lifecycle__note-text">Tas var būt pilns būvniecības ceļš, dokumentācijas sakārtošana, nodošana ekspluatācijā, legalizācija vai tehniski pamatota tāme apdrošinātājam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRIMARY SERVICES
        ============================================================ -->
   <section class="services" id="pakalpojumi" aria-labelledby="services-heading">
     <div class="container">
       <div class="services__header">
-        <p class="section-label reveal">Pakalpojumi</p>
-        <h2 id="services-heading" class="reveal reveal-delay-1">Pakalpojumi būvniecības dokumentācijai un objektiem</h2>
+        <p class="section-label reveal">Galvenie pakalpojumi</p>
+        <h2 id="services-heading" class="reveal reveal-delay-1">Būvniecība, dokumentācija un nodošana ekspluatācijā</h2>
         <p class="services__subline reveal reveal-delay-2">
-          Inženiertehniski risinājumi dokumentācijai, būvvaldes prasībām, objektu nodošanai ekspluatācijā, legalizācijai, būvuzraudzībai, tāmēm un būvniecībai.
+          Seši galvenie virzieni, kuros ASTRO CONSTRUCTION risina būvniecības jautājumus: no pilna cikla būvniecības līdz dokumentācijai, būvvaldes prasībām un apdrošināšanas tāmēm.
         </p>
       </div>
 
       <ul class="services__grid" role="list">
-
-
-        <!-- 4. BIS dokumentācija -->
         <li class="reveal">
-          <a href="/bis-dokumentacija.html" class="service-card">
+          <!-- Temporary Phase 2 link: pilna cikla būvniecība points to the existing construction page until /pilna-cikla-buvnieciba.html is created in Phase 4. -->
+          <a href="/privatmaju-buvnieciba.html" class="service-card service-card--primary">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="8" y="4" width="20" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M12 12h12M12 17h12M12 22h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="30" cy="30" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M27 30l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 18L20 6l14 12v16H6V18z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M13 34V22h14v12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M16 27h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <h3 class="service-card__title">BIS dokumentācija</h3>
-            <p class="service-card__desc">Dokumentu sagatavošana, strukturēšana un iesniegšana Būvniecības informācijas sistēmas lietā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="service-card__kicker">Flagmanis</p>
+            <h3 class="service-card__title">Pilna cikla būvniecība</h3>
+            <p class="service-card__desc">Ja vēlaties būvēt, bet negribat atsevišķi koordinēt būvdarbus, dokumentāciju un nodošanu ekspluatācijā, ASTRO CONSTRUCTION savieno šos posmus vienā būvniecības ceļā.</p>
+            <span class="service-card__link">Skatīt būvniecību <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </li>
 
-
-        <!-- 6. Būvdarbu uzsākšanas nosacījumu izpilde -->
-        <li class="reveal reveal-delay-2">
-          <a href="/bun-izpilde.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="8" y="6" width="24" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 14h12M14 19h12M14 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M22 32l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Būvdarbu uzsākšanas nosacījumi</h3>
-            <p class="service-card__desc">Būvatļaujā prasīto dokumentu kopums būvdarbu uzsākšanas nosacījumu izpildei.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 1. Nodošana ekspluatācijā -->
-        <li class="reveal">
+        <li class="reveal reveal-delay-1">
           <a href="/nodosana-ekspluatacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
               <path d="M13 20l5 5 9-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
+            <p class="service-card__kicker">Rezultāts</p>
             <h3 class="service-card__title">Nodošana ekspluatācijā</h3>
-            <p class="service-card__desc">Dokumentācijas, atzinumu un iesaistīto pušu koordinēšana līdz būvvaldes lēmumam par pieņemšanu ekspluatācijā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="service-card__desc">Kad objekts ir uzbūvēts vai tuvojas pabeigšanai, sakārtojam nepieciešamo dokumentu plūsmu, atzinumus un iesaistīto pušu koordināciju līdz būvvaldes lēmumam.</p>
+            <span class="service-card__link">Skatīt pakalpojumu <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </li>
 
-
-        <!-- 2. Legalizācija -->
-        <li class="reveal reveal-delay-1">
-          <a href="/legalizacija.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M20 4L6 10v12c0 8 6 13 14 14 8-1 14-6 14-14V10L20 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Legalizācija</h3>
-            <p class="service-card__desc">Legalizācijas iespēju izvērtēšana, dokumentu sagatavošana un virzība būvvaldes procesā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 9. Izpilddokumentācija -->
         <li class="reveal reveal-delay-2">
           <a href="/izpilddokumentacija.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -2094,249 +2454,122 @@ input, textarea { font-family: var(--font); }
               <rect x="16" y="16" width="16" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
               <path d="M20 22h8M20 26h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <h3 class="service-card__title">Izpilddokumentācija</h3>
-            <p class="service-card__desc">Būvdarbu žurnāls, akti, protokoli, materiālu dokumenti un izpilduzmērījumi vienotā dokumentācijas kopumā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="service-card__kicker">Dokumenti</p>
+            <h3 class="service-card__title">Būvniecības dokumentācija</h3>
+            <p class="service-card__desc">Sakārtojam būvdarbu žurnālu, aktus, protokolus, materiālu dokumentus, izpilduzmērījumus un citu dokumentāciju, kas apliecina paveikto.</p>
+            <span class="service-card__link">Skatīt dokumentāciju <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </li>
 
+        <li class="reveal">
+          <a href="/bun-izpilde.html" class="service-card">
+            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="8" y="6" width="24" height="30" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 14h12M14 19h12M14 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 32l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="service-card__kicker">Sākums</p>
+            <h3 class="service-card__title">Būvatļauja un būvdarbu uzsākšana</h3>
+            <p class="service-card__desc">Ja būvatļauja ir saņemta, bet būvdarbus vēl nevar sākt, sagatavojam būvatļaujā prasītos dokumentus būvdarbu uzsākšanas nosacījumu izpildei.</p>
+            <span class="service-card__link">Skatīt BUN <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </li>
 
-        <!-- 3. Tāmes apdrošināšanas gadījumiem -->
+        <li class="reveal reveal-delay-1">
+          <a href="/bis-dokumentacija.html" class="service-card">
+            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="8" y="4" width="20" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 12h12M12 17h12M12 22h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="30" cy="30" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M27 30l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="service-card__kicker">BIS</p>
+            <h3 class="service-card__title">Būvniecības informācijas sistēma (BIS)</h3>
+            <p class="service-card__desc">Strukturējam un iesniedzam dokumentus Būvniecības informācijas sistēmas lietā, sekojot tam, lai informācija būtu ievadīta pareizajā vietā.</p>
+            <span class="service-card__link">Skatīt BIS dokumentāciju <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </li>
+
         <li class="reveal reveal-delay-2">
           <a href="/tames-apdrosinasanas-gadijumiem.html" class="service-card">
             <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path d="M20 4L4 11v11c0 9 7 14 16 15 9-1 16-6 16-15V11L20 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
               <path d="M12 20h16M12 25h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
+            <p class="service-card__kicker">Apdrošināšana</p>
             <h3 class="service-card__title">Tāmes apdrošināšanas gadījumiem</h3>
-            <p class="service-card__desc">Bojājumu apraksts, darbu apjoms un remonta izmaksu aprēķins iesniegšanai apdrošinātājam.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <p class="service-card__desc">Pēc īpašuma bojājumiem sagatavojam tehniski pamatotu remonta tāmi, bojājumu aprakstu un darbu apjomu iesniegšanai apdrošinātājam.</p>
+            <span class="service-card__link">Pieteikt tāmi <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </a>
         </li>
-
-
-        <!-- 8. Būvuzraudzība -->
-        <li class="reveal reveal-delay-1">
-          <a href="/buvuzraudziba.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="8" y="8" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 16h12M14 22h12M14 28h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M26 4v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M14 4v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <h3 class="service-card__title">Būvuzraudzība</h3>
-            <p class="service-card__desc">Neatkarīga būvdarbu kontrole atbilstoši projektam, būvnormatīviem un būvuzraudzības plānam.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 8. Būvdarbu vadība -->
-        <li class="reveal">
-          <a href="/buvdarbu-vadiba.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M8 36c0-7 5.4-12 12-12s12 5 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M28 10l2-2 4 4-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Būvdarbu vadība</h3>
-            <p class="service-card__desc">Būvdarbu secība, kvalitātes kontrole, speciālistu koordinēšana un dokumentācijas kārtība objektā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 7. Būvkomersants -->
-        <li class="reveal reveal-delay-3">
-          <a href="/buvkomersants.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="8" y="10" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 10V7h12v3M14 18h12M14 23h12M14 28h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M25 29l2.5 2.5L33 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Būvkomersants</h3>
-            <p class="service-card__desc">Būvkomersanta iesaiste objektos, kur nepieciešama profesionāla būvdarbu izpilde un atbildība.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 5. Dzīvojamo māju un industriālo ēku būvniecība -->
-        <li class="reveal reveal-delay-1">
-          <a href="/privatmaju-buvnieciba.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M6 18L20 6l14 12v16H26v-9h-12v9H6V18z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <rect x="16" y="25" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-            <h3 class="service-card__title">Dzīvojamo māju un industriālo ēku būvniecība</h3>
-            <p class="service-card__desc">Dzīvojamo māju un industriālo ēku būvniecība ar dokumentāciju, būvdarbu vadību un sagatavošanos nodošanai ekspluatācijā.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 10. Ģeodēzija -->
-        <li class="reveal">
-          <a href="/geodezija.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <circle cx="20" cy="18" r="6" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M20 4v4M20 28v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M14 12l4-4M22 24l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M10 18H6M34 18h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M20 24c0 0-8 6-8 12h16c0-6-8-12-8-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Ģeodēzija</h3>
-            <p class="service-card__desc">Topogrāfija, nospraušana un izpilduzmērījumi projektēšanai, būvdarbiem un dokumentācijai.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 11. Ģeoloģija -->
-        <li class="reveal reveal-delay-1">
-          <a href="/geologija.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M6 28h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 22c5-3 9-3 14 0s8 3 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 16c5-3 9-3 14 0s8 3 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M12 8h16l-4 8h-8L12 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M20 16v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <h3 class="service-card__title">Ģeoloģija</h3>
-            <p class="service-card__desc">Grunts izpēte pirms projektēšanas, lai pamatu risinājums balstītos uz reāliem datiem.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 12. Elektroinstalāciju pārbaudes -->
-        <li class="reveal reveal-delay-2">
-          <a href="/elektroinstalaciju-parbaudes.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <path d="M22 4l-8 18h8l-4 14 14-20h-8L22 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">Elektroinstalāciju pārbaudes</h3>
-            <p class="service-card__desc">Elektroinstalācijas pārbaudes, mērījumi un protokoli nodošanai ekspluatācijā vai apdrošināšanas prasībām.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
-
-        <!-- 12. EDLUS un darba laika uzskaite būvlaukumā -->
-        <li class="reveal reveal-delay-2">
-          <a href="/edlus-organizesana.html" class="service-card">
-            <svg class="service-card__icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-              <rect x="6" y="10" width="28" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 16h28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M13 24h4M13 28h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="30" cy="26" r="4" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M30 24v2l1.5 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="service-card__title">EDLUS un darba laika uzskaite būvlaukumā</h3>
-            <p class="service-card__desc">Elektroniskā darba laika uzskaite būvlaukumā, datu aprite un EDLUS prasību ievērošana.</p>
-            <span class="service-card__link">Uzzināt vairāk <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </a>
-        </li>
-
       </ul>
-
-      <div class="services__footer reveal">
-        <a href="/pakalpojumi.html" class="btn btn-ghost btn-arrow">
-          Skatīt visus pakalpojumus
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- ============================================================
-       ABOUT SNIPPET
+       UNIQUE VALUE
        ============================================================ -->
   <section class="about" aria-labelledby="about-heading">
     <div class="container">
       <div class="about__inner">
-
         <div class="about__image reveal" aria-label="ASTRO CONSTRUCTION" role="img"></div>
 
         <div class="about__content">
           <p class="section-label reveal" id="about-heading">Kāpēc ASTRO</p>
-          <h2 class="about__heading reveal reveal-delay-1">Inženiertehniska pieeja dokumentiem un būvlaukumam</h2>
+          <h2 class="about__heading reveal reveal-delay-1">Kāpēc izvēlas ASTRO CONSTRUCTION</h2>
           <p class="about__text reveal reveal-delay-2">
-            Būvniecības problēmas reti ir tikai papīros vai tikai būvlaukumā. Bieži jāredz kopaina: projekts, būvatļauja, būvvaldes prasības, faktiski paveiktie darbi, dokumentācija un speciālistu atbildība. ASTRO CONSTRUCTION apvieno praktisku būvniecības pieredzi ar inženiertehnisku pieeju un dokumentu kārtību.
+            Būvniecībā problēmas bieži rodas starp posmiem: būvlaukums, dokumenti, speciālisti, būvvalde un nodošana ekspluatācijā. ASTRO CONSTRUCTION apvieno praktisku būvniecības pieredzi ar dokumentācijas kārtību, lai klientam būtu viens koordinēts ceļš, nevis atsevišķu darbu un dokumentu kopums.
           </p>
           <ul class="about__points reveal reveal-delay-3" role="list">
-            <li>būvniecības dokumentācijas un normatīvo prasību izpratne</li>
-            <li>praktiska būvdarbu pieredze</li>
-            <li>sadarbība ar nepieciešamajiem sertificētajiem speciālistiem</li>
-            <li>skaidra komunikācija ar klientu un iesaistītajām pusēm</li>
-            <li>komandas pieeja sarežģītu situāciju risināšanai</li>
+            <li><span><strong>Sarežģītu un nestandarta situāciju risināšana.</strong> Risinām sarežģītas un nestandarta būvniecības situācijas — no nepabeigtiem objektiem un legalizācijas līdz apdrošināšanas gadījumiem un nodošanai ekspluatācijā.</span></li>
+            <li><span><strong>Praktiska būvniecības pieredze.</strong> Apvienojam praktisku būvniecības pieredzi ar profesionālu būvniecības dokumentācijas pārvaldību.</span></li>
+            <li><span><strong>Viens partneris visam procesam.</strong> No pirmajiem dokumentiem līdz būvdarbiem un ēkas nodošanai ekspluatācijā.</span></li>
           </ul>
           <div class="about__separator reveal reveal-delay-3" aria-hidden="true"></div>
           <p class="about__statement reveal reveal-delay-4">
-            SIA ASTRO CONSTRUCTION ir būvkomersants Latvijā. Uzņēmums risina būvniecības dokumentācijas, legalizācijas, nodošanas ekspluatācijā, apdrošināšanas tāmju, būvuzraudzības un nepieciešamo būvdarbu jautājumus.
+            Klients var uzticēt ASTRO CONSTRUCTION pilnu būvniecības ceļu vai piesaistīt komandu konkrētam posmam: dokumentācijai, būvdarbiem, nodošanai ekspluatācijā, legalizācijai vai apdrošināšanas tāmei.
           </p>
           <a href="/par-mums.html" class="btn-text btn-text--dark btn-arrow reveal reveal-delay-4">
-            Uzzināt vairāk par mums
+            Uzzināt vairāk par uzņēmumu
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       PROBLEM STATEMENT
+       ADDITIONAL SERVICES
        ============================================================ -->
-  <section class="problem" aria-labelledby="problem-heading">
+  <section class="additional-services" id="papildu-pakalpojumi" aria-labelledby="additional-services-heading">
     <div class="container">
-      <div class="problem__inner">
-        <p class="section-label reveal">Tipiskas situācijas</p>
-        <h2 id="problem-heading" class="reveal reveal-delay-1">
-          Kad nepieciešama mūsu iesaiste
-        </h2>
-        <p class="services__subline reveal reveal-delay-2">
-          Būvniecībā problēma reti ir tikai vienā dokumentā. Bieži jāizvērtē būvatļauja, būvvaldes prasības, projekta risinājumi, faktiski paveiktie darbi un dokumentācijas stāvoklis.
-        </p>
-
-        <ul class="problem__list" role="list">
-          <li class="problem__item reveal reveal-delay-1">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>pēc būvatļaujas vēl nav skaidrs, kad drīkst sākt būvdarbus</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-2">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>jānodod ēka ekspluatācijā</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-3">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>jālegalizē ēka vai pārbūve</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-4">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>jāatjauno vai jāsakārto izpilddokumentācija</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-5">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>apdrošinātājam nepieciešama remonta tāme</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-6">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>būvvalde prasa precizējumus vai papildu dokumentus</span>
-          </li>
-          <li class="problem__item reveal reveal-delay-6">
-            <span class="problem__dash" aria-hidden="true">—</span>
-            <span>nepieciešams būvkomersants, būvuzraudzība vai praktiski būvdarbi</span>
-          </li>
-        </ul>
-
-        <div class="problem__bridge reveal reveal-delay-2">
-          <p class="problem__bridge-line">ASTRO CONSTRUCTION apvieno būvniecības praksi, dokumentācijas kārtību un speciālistu koordinēšanu.</p>
-          <p class="problem__bridge-sub">
-            Izvērtējam situāciju, nosakām nepieciešamos soļus un pēc vienošanās sagatavojam dokumentus, piesaistām speciālistus vai organizējam praktisku izpildi objektā.
-          </p>
+      <details class="additional-services__details reveal">
+        <summary>
+          <span>
+            <span class="section-label">Papildu pakalpojumi</span>
+            <strong id="additional-services-heading">Skatīt citus būvniecības risinājumus</strong>
+          </span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="additional-services__panel">
+          <p class="additional-services__intro">Šie pakalpojumi papildina galvenos virzienus un tiek piesaistīti atkarībā no objekta, dokumentācijas un praktiskās situācijas.</p>
+          <ul class="additional-services__grid" role="list">
+            <li><a href="/legalizacija.html">Legalizācija</a></li>
+            <li><a href="/buvuzraudziba.html">Būvuzraudzība</a></li>
+            <li><a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a></li>
+            <li><a href="/buvkomersants.html">Būvkomersants</a></li>
+            <li><a href="/geodezija.html">Ģeodēzija</a></li>
+            <li><a href="/geologija.html">Ģeoloģija</a></li>
+            <li><a href="/elektroinstalaciju-parbaudes.html">Elektroinstalāciju pārbaudes</a></li>
+            <li><a href="/darba-aizsardziba.html">Darba aizsardzība</a></li>
+            <li><a href="/dvp-izstrade.html">DVP izstrāde</a></li>
+            <li><a href="/buvdarbu-zurnals-bis.html">Būvdarbu žurnāls</a></li>
+            <li><a href="/kalendarie-grafiki.html">Kalendārie grafiki</a></li>
+            <li><a href="/nodosanas-procesa-vadisana.html">Nodošanas procesa koordinēšana</a></li>
+            <li><a href="/edlus-organizesana.html">EDLUS un darba laika uzskaite</a></li>
+          </ul>
         </div>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -2347,10 +2580,10 @@ input, textarea { font-family: var(--font); }
     <div class="container">
       <div class="lead-magnet__inner">
         <div>
-          <p class="section-label reveal">Inženiertehniska izvērtēšana</p>
-          <h2 id="lead-heading" class="reveal reveal-delay-1">Nosūtiet dokumentus vai situācijas aprakstu izvērtēšanai</h2>
+          <p class="section-label reveal">Dokumenti un nākamais solis</p>
+          <h2 id="lead-heading" class="reveal reveal-delay-1">Nosūtiet dokumentus vai situācijas aprakstu</h2>
           <p class="lead-magnet__text reveal reveal-delay-2">
-            Izskatām pieejamo informāciju, objekta statusu un dokumentācijas stāvokli, lai noteiktu iespējamo tālāko rīcību: iesniegumi, būvdarbu uzsākšanas nosacījumi, legalizācija, nodošana ekspluatācijā, tāme, būvuzraudzība vai praktiski būvdarbi.
+            Pārbaudām pieejamo informāciju, objekta statusu un dokumentācijas stāvokli, lai pārietu pie konkrētiem darbiem: iesniegumiem, būvdarbu uzsākšanas nosacījumu izpildes, legalizācijas, nodošanas ekspluatācijā, tāmes, būvuzraudzības vai praktiskiem būvdarbiem.
           </p>
         </div>
         <div class="lead-magnet__panel reveal reveal-delay-2">
@@ -2360,7 +2593,7 @@ input, textarea { font-family: var(--font); }
             <li>varēsiet pieņemt pamatotu lēmumu par tālāko rīcību</li>
           </ul>
           <a href="#cta" class="btn btn-primary btn-arrow">
-            Pieteikt izvērtēšanu
+            Nosūtīt situāciju
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -2377,7 +2610,7 @@ input, textarea { font-family: var(--font); }
         <p class="section-label reveal">Kā mēs strādājam</p>
         <h2 id="process-heading" class="reveal reveal-delay-1">Kā notiek sadarbība</h2>
         <p class="process__subline reveal reveal-delay-2">
-          Sākam ar situācijas izvērtēšanu un pārejam pie konkrētas rīcības.
+          No sākotnējās informācijas pārejam pie konkrētiem dokumentācijas vai būvdarbu uzdevumiem.
         </p>
       </div>
 
@@ -2389,12 +2622,12 @@ input, textarea { font-family: var(--font); }
         </li>
         <li class="process__step reveal reveal-delay-1">
           <div class="process__number" aria-hidden="true">02</div>
-          <h3 class="process__title">Inženiertehniska izvērtēšana</h3>
-          <p class="process__desc">Izvērtējam dokumentāciju, objekta statusu, būvvaldes prasības un iespējamos riskus.</p>
+          <h3 class="process__title">Dokumentu un objekta pārbaude</h3>
+          <p class="process__desc">Pārbaudām dokumentāciju, objekta statusu, būvvaldes prasības un iespējamos riskus.</p>
         </li>
         <li class="process__step reveal reveal-delay-2">
           <div class="process__number" aria-hidden="true">03</div>
-          <h3 class="process__title">Rīcības plāns</h3>
+          <h3 class="process__title">Konkrēti uzdevumi</h3>
           <p class="process__desc">Nosakām nepieciešamos dokumentus, speciālistus, iesniegumus vai praktiskos darbus.</p>
         </li>
         <li class="process__step reveal reveal-delay-3">
@@ -2409,7 +2642,7 @@ input, textarea { font-family: var(--font); }
           Aprakstīt situāciju
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <p class="process__cta-sub">Sāksim ar situācijas izvērtēšanu.</p>
+        <p class="process__cta-sub">Sāksim ar dokumentiem, objektu un konkrēto uzdevumu.</p>
       </div>
     </div>
   </section>
@@ -2471,7 +2704,7 @@ input, textarea { font-family: var(--font); }
               <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
             <div class="faq__answer" id="faq-5" role="region" itemscope itemtype="https://schema.org/Answer">
-              <div class="faq__answer-inner" itemprop="text">Termiņš ir atkarīgs no ēkas faktiskā stāvokļa, pieejamās izpilddokumentācijas, nepieciešamajiem atzinumiem un institūciju prasībām. Pēc dokumentu un situācijas izvērtēšanas var noteikt nākamos soļus un aptuveno procesa virzienu.</div>
+              <div class="faq__answer-inner" itemprop="text">Termiņš ir atkarīgs no ēkas faktiskā stāvokļa, pieejamās izpilddokumentācijas, nepieciešamajiem atzinumiem un institūciju prasībām. Pēc dokumentu un objekta stāvokļa pārbaudes nosakām veicamos darbus un procesa virzienu.</div>
             </div>
           </div>
 
@@ -2501,7 +2734,7 @@ input, textarea { font-family: var(--font); }
               <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </button>
             <div class="faq__answer" id="faq-8" role="region" itemscope itemtype="https://schema.org/Answer">
-              <div class="faq__answer-inner" itemprop="text">Jā, izvērtējam esošo dokumentāciju un faktisko situāciju, nosakām, ko iespējams atjaunot vai sagatavot, un piedāvājam tālāko rīcības plānu.</div>
+              <div class="faq__answer-inner" itemprop="text">Jā. Pārbaudām esošo dokumentāciju un faktisko situāciju, nosakām, ko iespējams atjaunot vai sagatavot, un turpinām darbu ar konkrētiem dokumentācijas vai būvdarbu uzdevumiem.</div>
             </div>
           </div>
 
@@ -2813,9 +3046,13 @@ input, textarea { font-family: var(--font); }
   /* --- SMOOTH ANCHOR SCROLLING ------------------------------ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const targetSelector = anchor.getAttribute('href');
+      const target = document.querySelector(targetSelector);
       if (!target) return;
       e.preventDefault();
+      if (targetSelector === '#papildu-pakalpojumi') {
+        target.querySelector('details')?.setAttribute('open', '');
+      }
       const offset = nav.offsetHeight + 24;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });

@@ -170,14 +170,22 @@ body.astro-consent-open .astro-floating-lead {
 }
 
 @media (max-width: 759px) {
+  body.astro-page-home .nav__actions > .btn {
+    display: none !important;
+  }
+
   .hero,
   body.astro-page-inner .hero {
     min-height: auto !important;
   }
 
+  body.astro-page-home .hero {
+    min-height: 86svh !important;
+  }
+
   .hero__inner {
-    padding-top: calc(var(--nav-h, 72px) + 46px) !important;
-    padding-bottom: 52px !important;
+    padding-top: calc(var(--nav-h, 72px) + 30px) !important;
+    padding-bottom: 34px !important;
   }
 
   .hero__breadcrumb {
@@ -189,34 +197,50 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   .hero h1 {
-    font-size: clamp(34px, 10.5vw, 46px) !important;
-    line-height: 1.08 !important;
+    font-size: clamp(31px, 8.8vw, 38px) !important;
+    line-height: 1.06 !important;
     max-width: 100% !important;
-    margin-bottom: 18px !important;
+    margin-bottom: 16px !important;
     letter-spacing: 0 !important;
   }
 
   .hero__subline,
   .hero__lead {
-    font-size: 16px !important;
-    line-height: 1.52 !important;
-    max-width: 100% !important;
-    margin-bottom: 24px !important;
+    font-size: 15px !important;
+    line-height: 1.48 !important;
+    max-width: min(100%, 34rem) !important;
+    margin-bottom: 18px !important;
+    overflow-wrap: anywhere !important;
   }
 
   .hero__actions,
   .actions {
     gap: 10px !important;
-    margin-top: 24px !important;
-    margin-bottom: 0 !important;
+    margin-top: 18px !important;
+    margin-bottom: 12px !important;
   }
 
-  .hero__actions a,
+  body.astro-page-home .hero__actions {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .hero__actions .btn,
   .actions a,
   .btn-primary-dark,
   .btn-phone-hero {
     width: 100%;
     justify-content: center;
+  }
+
+  body.astro-page-home .hero__actions .btn-text {
+    width: auto !important;
+    font-size: 14px !important;
+  }
+
+  body.astro-page-home .hero__trust {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
   }
 
   .section,
@@ -389,7 +413,6 @@ body.astro-consent-open .astro-floating-lead {
     margin-right: max(0px, env(safe-area-inset-right)) !important;
   }
 }
-
 
 /* Mobile overflow guardrails. These rules keep existing components inside the
    viewport without hiding real layout issues globally. */
