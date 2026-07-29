@@ -9,7 +9,7 @@
   const STATUS_POLL_INTERVAL_MS = 1500;
   const MAX_FILE_BYTES = 8 * 1024 * 1024;
   const MAX_TOTAL_FILE_BYTES = 18 * 1024 * 1024;
-  const CONSENT_TEXT = 'Nosūtot pieteikumu, jūs piekrītat mūsu Privātuma politikai.';
+  const CONSENT_TEXT = 'Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — Privātuma politikā.';
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
   function pushDataLayer(eventName, params) {
@@ -95,7 +95,7 @@
     if (form.querySelector('.astro-form-consent')) return;
     const consent = document.createElement('p');
     consent.className = 'astro-form-consent';
-    consent.innerHTML = 'Nosūtot pieteikumu, jūs piekrītat mūsu <a href="' + PRIVACY_URL + '">Privātuma politikai</a>.';
+    consent.innerHTML = 'Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — <a href="' + PRIVACY_URL + '">Privātuma politikā</a>.';
     submitButton.insertAdjacentElement('afterend', consent);
   }
 

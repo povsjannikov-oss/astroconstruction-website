@@ -346,7 +346,7 @@
       '<input type="hidden" name="utm_term">',
       '<input type="hidden" name="utm_content">',
       '<button class="astro-lead-form__submit" type="submit"><span class="submit-text">Nosūtīt pieteikumu</span></button>',
-      '<p class="astro-lead-form__privacy astro-form-consent">Nosūtot pieteikumu, jūs piekrītat mūsu <a href="/privatuma-politika.html">Privātuma politikai</a>.</p>',
+      '<p class="astro-lead-form__privacy astro-form-consent">Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — <a href="/privatuma-politika.html">Privātuma politikā</a>.</p>',
       '</form>',
       '<div class="form-success" aria-live="polite" tabindex="-1">Paldies! Jūsu pieteikums ir nosūtīts.</div>',
       '</div>'
