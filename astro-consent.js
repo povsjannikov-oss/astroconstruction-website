@@ -6,6 +6,7 @@
   const SETTINGS_ID = 'astro-consent-settings';
   const FOOTER_SETTINGS_ID = 'astro-consent-footer-settings';
   const GTM_ID = 'GTM-PKFJTQJ7';
+  let consentResizeObserver;
 
   function gtagConsent(command, value) {
     window.dataLayer = window.dataLayer || [];
@@ -48,8 +49,16 @@
 
   function hideBanner() {
     const banner = document.getElementById(BANNER_ID);
+    if (consentResizeObserver) consentResizeObserver.disconnect();
     if (banner) banner.remove();
     document.body.classList.remove('astro-consent-open');
+    document.body.style.removeProperty('--astro-consent-space');
+  }
+
+  function updateConsentSpacing() {
+    const banner = document.getElementById(BANNER_ID);
+    if (!banner) return;
+    document.body.style.setProperty('--astro-consent-space', Math.ceil(banner.getBoundingClientRect().height + 24) + 'px');
   }
 
   function showBanner() {
@@ -59,6 +68,9 @@
     const banner = document.createElement('div');
     banner.id = BANNER_ID;
     banner.className = 'astro-consent';
+    banner.setAttribute('role', 'region');
+    banner.setAttribute('aria-labelledby', 'astro-consent-title');
+    banner.setAttribute('aria-describedby', 'astro-consent-description');
     banner.innerHTML = [
       '<div class="astro-consent__text">',
       '<strong>Sīkdatņu izvēle</strong>',
@@ -72,11 +84,21 @@
     ].join('');
 
     document.body.appendChild(banner);
+    const title = banner.querySelector('strong');
+    const description = banner.querySelector('span');
+    if (title) title.id = 'astro-consent-title';
+    if (description) description.id = 'astro-consent-description';
     banner.querySelectorAll('[data-consent]').forEach(function (button) {
       button.addEventListener('click', function () {
         saveConsent(button.getAttribute('data-consent'));
       });
     });
+    updateConsentSpacing();
+    requestAnimationFrame(updateConsentSpacing);
+    if ('ResizeObserver' in window) {
+      consentResizeObserver = new ResizeObserver(updateConsentSpacing);
+      consentResizeObserver.observe(banner);
+    }
   }
 
   function showSettingsButton() {
@@ -113,12 +135,15 @@
       '.astro-consent__text{display:grid;gap:6px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.78)}',
       '.astro-consent__text strong{color:#fff;font-size:14px}.astro-consent__text a{color:#dfc9a6;text-decoration:underline;text-underline-offset:2px}',
       '.astro-consent__actions{display:flex;gap:10px;flex-shrink:0}.astro-consent__button{border:1px solid #dfc9a6;background:#dfc9a6;color:#101010;border-radius:4px;padding:10px 14px;font-weight:700;cursor:pointer}.astro-consent__button--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}',
+      '.astro-consent__button:focus-visible{outline:2px solid #dfc9a6;outline-offset:3px}',
       '.astro-consent-footer-settings{display:inline-flex;align-items:center;min-height:32px;border:0;background:transparent;color:rgba(255,255,255,.82);font:inherit;font-size:14px;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}',
       '.astro-consent-footer-settings:hover,.astro-consent-footer-settings:focus-visible{color:#fff}.astro-consent-footer-settings:focus-visible{outline:2px solid #dfc9a6;outline-offset:3px}',
-      '@media(max-width:680px){.astro-consent{display:grid;bottom:10px;left:10px;right:10px}.astro-consent__actions{display:grid;grid-template-columns:1fr 1fr}.astro-consent__button{width:100%}}'
+      '@media(max-width:680px){body.astro-consent-open .hero{padding-top:calc(var(--nav-h,72px) + var(--astro-consent-space,0px) + 24px)}.astro-consent{box-sizing:border-box;display:grid;top:calc(var(--nav-h,72px) + 10px);bottom:auto;left:10px;right:10px;gap:12px;max-width:calc(100vw - 20px);max-height:min(46vh,320px);overflow-y:auto;padding:12px}.astro-consent__text{gap:5px;font-size:12.5px;line-height:1.45}.astro-consent__actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.astro-consent__button{min-height:44px;width:100%;padding:10px 12px}}'
     ].join('');
     document.head.appendChild(style);
   }
+
+  window.addEventListener('resize', updateConsentSpacing, { passive: true });
 
   document.addEventListener('DOMContentLoaded', function () {
     injectStyles();
