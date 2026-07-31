@@ -202,12 +202,12 @@ body.home-v2-page {
   padding-top: var(--nav-h, 72px);
   overflow: hidden;
   background:
-    linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.97) 30%, rgba(255,255,255,0.78) 44%, rgba(255,255,255,0.18) 68%),
+    linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.97) 27%, rgba(255,255,255,0.74) 39%, rgba(255,255,255,0.16) 62%),
     linear-gradient(180deg, rgba(237,246,255,0.28), rgba(255,255,255,0.04)),
     image-set(
       url("assets/home-v2/hero-final.avif") type("image/avif"),
       url("assets/home-v2/hero-final.webp") type("image/webp")
-    ) 54% center / cover no-repeat;
+    ) 52% center / cover no-repeat;
 }
 
 .home-v2-page .home-hero::after {
@@ -264,7 +264,7 @@ body.home-v2-page {
 }
 
 .home-v2-page .scenario-section {
-  padding: clamp(30px, 3.2vw, 42px) 0 44px;
+  padding: clamp(54px, 4.2vw, 70px) 0 44px;
   background: #fff;
 }
 
@@ -893,7 +893,7 @@ body.home-v2-page {
   }
 
   .home-v2-page .scenario-section {
-    padding-top: 24px;
+    padding-top: 34px;
     overflow: hidden;
   }
 
@@ -905,7 +905,8 @@ body.home-v2-page {
     grid-template-columns: none;
     gap: var(--home-gap-featured);
     width: calc(100% + var(--home-pad-mobile));
-    margin-right: calc(var(--home-pad-mobile) * -1);
+    margin-left: 10px;
+    margin-right: calc((var(--home-pad-mobile) + 10px) * -1);
     overflow-x: auto;
     overflow-y: visible;
     overscroll-behavior-x: contain;
