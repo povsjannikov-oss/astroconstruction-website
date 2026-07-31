@@ -16,7 +16,7 @@
   --home-radius-button: 8px;
   --home-header-height-desktop: 88px;
   --home-header-height-mobile: 52px;
-  --home-hero-height-desktop: 360px;
+  --home-hero-height-desktop: clamp(430px, 34vw, 520px);
   --home-color-ink: #10213c;
   --home-color-blue: #08234a;
   --home-color-orange: #c8a97e;
@@ -44,6 +44,7 @@
 
 .home-v2-page {
   min-width: 320px;
+  overflow-x: clip;
   background: var(--home-color-bg);
   color: var(--home-color-ink);
   font-family: "Inter", Arial, sans-serif;
@@ -198,14 +199,15 @@ body.home-v2-page {
 .home-v2-page .home-hero {
   position: relative;
   min-height: var(--home-hero-height-desktop);
+  padding-top: var(--nav-h, 72px);
   overflow: hidden;
   background:
-    linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.96) 32%, rgba(255,255,255,0.68) 50%, rgba(255,255,255,0.10) 72%),
+    linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.97) 30%, rgba(255,255,255,0.78) 44%, rgba(255,255,255,0.18) 68%),
     linear-gradient(180deg, rgba(237,246,255,0.28), rgba(255,255,255,0.04)),
     image-set(
       url("assets/home-v2/hero-final.avif") type("image/avif"),
       url("assets/home-v2/hero-final.webp") type("image/webp")
-    ) 42% center / cover no-repeat;
+    ) 54% center / cover no-repeat;
 }
 
 .home-v2-page .home-hero::after {
@@ -223,19 +225,18 @@ body.home-v2-page {
   z-index: 1;
   min-height: var(--home-hero-height-desktop);
   display: grid;
-  grid-template-columns: 42% 58%;
+  grid-template-columns: minmax(430px, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
 }
 
 .home-v2-page .home-hero__content {
-  padding: 12px 0 18px;
+  padding: clamp(24px, 3vw, 44px) 0 clamp(28px, 3.3vw, 48px);
 }
 
 .home-v2-page .home-hero h1 {
-  width: min(640px, 48vw);
-  max-width: none;
+  max-width: 680px;
   margin: 0 0 24px;
-  font-size: clamp(38px, 3.7vw, 52px);
+  font-size: clamp(42px, 3.55vw, 56px);
   line-height: 1.12;
   font-weight: 590;
   letter-spacing: 0;
@@ -263,7 +264,7 @@ body.home-v2-page {
 }
 
 .home-v2-page .scenario-section {
-  padding: 28px 0 44px;
+  padding: clamp(30px, 3.2vw, 42px) 0 44px;
   background: #fff;
 }
 
@@ -423,6 +424,9 @@ body.home-v2-page {
   line-height: 1.18;
   font-weight: 570;
   letter-spacing: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .home-v2-page .scenario-card--compact .scenario-card__title {
@@ -437,6 +441,9 @@ body.home-v2-page {
   color: #2f3c4e;
   font-size: 16px;
   line-height: 1.58;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .home-v2-page .scenario-card--compact .scenario-card__text {
@@ -730,7 +737,7 @@ body.home-v2-page {
   }
 
   .home-v2-page .home-hero h1 {
-    font-size: 42px;
+    font-size: clamp(40px, 3.45vw, 48px);
   }
 
   .home-v2-page .scenario-card--featured {
@@ -761,12 +768,24 @@ body.home-v2-page {
   .home-v2-page .home-menu-button {
     display: grid;
   }
+
+  .home-v2-page .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-v2-page .featured-grid > li:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .home-v2-page .compact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 767px) {
   .home-v2-page {
-    --home-gap-featured: 7px;
-    --home-gap-compact: 6px;
+    --home-gap-featured: 14px;
+    --home-gap-compact: 14px;
   }
 
   .home-v2-page .home-shell {
@@ -817,14 +836,15 @@ body.home-v2-page {
   }
 
   .home-v2-page .home-hero {
-    min-height: clamp(292px, 76vw, 326px);
+    min-height: clamp(370px, 92vw, 430px);
+    padding-top: calc(var(--nav-h, 72px) + env(safe-area-inset-top));
     background:
-      linear-gradient(90deg, rgba(255,255,255,0.99) 0%, rgba(255,255,255,0.82) 43%, rgba(255,255,255,0.18) 82%),
+      linear-gradient(90deg, rgba(255,255,255,0.995) 0%, rgba(255,255,255,0.92) 48%, rgba(255,255,255,0.28) 82%),
       linear-gradient(180deg, rgba(237,246,255,0.22), rgba(255,255,255,0.06)),
       image-set(
         url("assets/home-v2/hero-final.avif") type("image/avif"),
         url("assets/home-v2/hero-final.webp") type("image/webp")
-      ) 66% center / cover no-repeat;
+      ) 64% center / cover no-repeat;
   }
 
   .home-v2-page .home-hero::after {
@@ -832,9 +852,10 @@ body.home-v2-page {
   }
 
   .home-v2-page .home-hero__inner {
-    min-height: clamp(292px, 76vw, 326px);
+    min-height: clamp(370px, 92vw, 430px);
     display: block;
-    padding-top: 24px;
+    padding-top: clamp(18px, 5vw, 28px);
+    padding-bottom: 26px;
   }
 
   .home-v2-page .home-hero__content {
@@ -848,7 +869,7 @@ body.home-v2-page {
     width: auto;
     max-width: 360px;
     margin-bottom: 12px;
-    font-size: clamp(27px, 7.6vw, 30px);
+    font-size: clamp(26px, 7vw, 31px);
     line-height: 1.16;
   }
 
@@ -872,18 +893,47 @@ body.home-v2-page {
   }
 
   .home-v2-page .scenario-section {
-    padding-top: 37px;
+    padding-top: 24px;
+    overflow: hidden;
+  }
+
+  .home-v2-page .featured-grid,
+  .home-v2-page .compact-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(272px, 84vw, 360px);
+    grid-template-columns: none;
+    gap: var(--home-gap-featured);
+    width: calc(100% + var(--home-pad-mobile));
+    margin-right: calc(var(--home-pad-mobile) * -1);
+    overflow-x: auto;
+    overflow-y: visible;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0 var(--home-pad-mobile);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .home-v2-page .featured-grid::-webkit-scrollbar,
+  .home-v2-page .compact-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .home-v2-page .featured-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--home-gap-featured);
+    padding-bottom: 4px;
   }
 
   .home-v2-page .compact-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--home-gap-compact);
     margin-top: 20px;
+    grid-auto-columns: clamp(272px, 84vw, 344px);
+    gap: var(--home-gap-compact);
+  }
+
+  .home-v2-page .featured-grid > li,
+  .home-v2-page .compact-grid > li {
+    min-width: 0;
+    scroll-snap-align: start;
   }
 
   .home-v2-page .scenario-card {
@@ -897,23 +947,23 @@ body.home-v2-page {
   }
 
   .home-v2-page .scenario-card--featured {
-    height: 332px;
-    min-height: 0;
-    padding: 16px 12px 13px;
+    min-height: 342px;
+    height: auto;
+    padding: 24px 22px 20px;
   }
 
   .home-v2-page .scenario-card--compact {
-    height: 306px;
-    min-height: 0;
-    padding: 16px 9px 13px;
+    min-height: 318px;
+    height: auto;
+    padding: 24px 22px 20px;
   }
 
   .home-v2-page .scenario-card__badge {
-    top: 15px;
-    right: 7px;
+    top: 18px;
+    right: 18px;
     min-height: 21px;
-    padding-inline: 4px;
-    font-size: 7px;
+    padding-inline: 8px;
+    font-size: 9px;
     letter-spacing: 0.06em;
   }
 
@@ -941,28 +991,30 @@ body.home-v2-page {
 
   .home-v2-page .scenario-card__title {
     max-width: 100%;
-    margin-top: 22px;
-    font-size: clamp(15px, 4.1vw, 17px);
-    line-height: 1.16;
-    overflow-wrap: anywhere;
+    margin-top: 24px;
+    font-size: clamp(22px, 6vw, 26px);
+    line-height: 1.18;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .home-v2-page .scenario-card--compact .scenario-card__title {
-    font-size: clamp(12px, 3.35vw, 14px);
+    font-size: clamp(20px, 5.3vw, 23px);
     line-height: 1.18;
   }
 
   .home-v2-page .scenario-card__text {
-    margin-top: 13px;
-    font-size: clamp(10px, 2.9vw, 12px);
-    line-height: 1.5;
-    overflow-wrap: anywhere;
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.54;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .home-v2-page .scenario-card--compact .scenario-card__text {
-    margin-top: 12px;
-    font-size: clamp(9px, 2.4vw, 10px);
-    line-height: 1.48;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .home-v2-page .scenario-card__arrow {
@@ -1120,6 +1172,7 @@ body.home-v2-page {
 
 @media (max-width: 380px) {
   .home-v2-page .home-hero {
+    min-height: clamp(384px, 104vw, 430px);
     background:
       linear-gradient(90deg, rgba(255,255,255,0.995) 0%, rgba(255,255,255,0.92) 38%, rgba(255,255,255,0.42) 62%, rgba(255,255,255,0.12) 86%),
       radial-gradient(ellipse at 22% 32%, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.58) 34%, rgba(255,255,255,0) 68%),
@@ -1153,22 +1206,10 @@ body.home-v2-page {
     font-size: 13px;
   }
 
-  .home-v2-page .featured-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .home-v2-page .featured-grid li {
-    min-width: 0;
-  }
-
-  .home-v2-page .featured-grid li:nth-child(3) {
-    grid-column: 1 / -1;
-  }
-
+  .home-v2-page .featured-grid,
   .home-v2-page .compact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    grid-auto-columns: minmax(268px, 84vw);
+    gap: 12px;
   }
 
   .home-v2-page .scenario-card::after {
@@ -1178,12 +1219,8 @@ body.home-v2-page {
 
   .home-v2-page .scenario-card--featured {
     height: auto;
-    min-height: 306px;
-    padding: 17px 12px 14px;
-  }
-
-  .home-v2-page .featured-grid li:nth-child(3) .scenario-card--featured {
-    min-height: 238px;
+    min-height: 330px;
+    padding: 22px 18px 18px;
   }
 
   .home-v2-page .scenario-card__badge {
@@ -1203,8 +1240,8 @@ body.home-v2-page {
 
   .home-v2-page .scenario-card--compact {
     height: auto;
-    min-height: 264px;
-    padding: 16px 12px 14px;
+    min-height: 306px;
+    padding: 22px 18px 18px;
   }
 
   .home-v2-page .scenario-card--compact .scenario-card__icon {

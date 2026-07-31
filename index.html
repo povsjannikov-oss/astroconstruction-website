@@ -2587,13 +2587,21 @@ input, textarea { font-family: var(--font); }
   const nav = document.getElementById('nav');
   let lastScroll = 0;
 
+  function syncNavHeight() {
+    if (!nav) return;
+    document.documentElement.style.setProperty('--nav-h', `${Math.ceil(nav.getBoundingClientRect().height)}px`);
+  }
+
   function onScroll() {
     const y = window.scrollY;
     nav.classList.toggle('scrolled', y > 40);
     lastScroll = y;
   }
 
+  syncNavHeight();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', syncNavHeight, { passive: true });
+  window.addEventListener('orientationchange', syncNavHeight);
   onScroll();
 
   /* --- MOBILE MENU ------------------------------------------ */
