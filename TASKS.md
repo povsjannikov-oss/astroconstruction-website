@@ -2,7 +2,7 @@
 
 План работ ASTRO CONSTRUCTION.
 
-Последнее обновление: 2026-07-28.
+Последнее обновление: 2026-08-02.
 
 ## Назначение файла
 
@@ -18,11 +18,11 @@ TASKS.md         -> что делать дальше и в каком поряд
 
 Правила:
 
-- Это не changelog и не место для подробной истории.
-- Завершенные задачи можно держать кратко или удалять после отражения результата в `PROJECT_STATE.md`.
-- Каждая задача должна иметь priority, status, owner, dependencies, related files и notes.
-- Если задача выполнена, обновить `PROJECT_STATE.md`; если в задаче принято долгосрочное решение, обновить `DECISIONS.md`.
-- Не хранить секреты, credentials, private backend URLs, tokens, passwords или private keys.
+- это не changelog;
+- каждая задача должна иметь priority, status, owner, dependencies, related files и notes;
+- не хранить секреты, credentials, private backend URLs, tokens, passwords или private keys;
+- не использовать `git add .`;
+- один визуальный компонент — одна задача — один commit.
 
 Статусы:
 
@@ -32,6 +32,7 @@ In Progress
 Review
 Done
 Blocked
+Closed
 ```
 
 Приоритеты:
@@ -43,128 +44,19 @@ Medium
 Low
 ```
 
-## High Priority
+## Critical
 
-### Create `pilna-cikla-buvnieciba.html`
+### Maintain V1 as production baseline
 
-Priority: High
-Status: Done
-Owner: Codex
-
-Depends on:
-
-```text
-Homepage Phase 2 published in f953175
-```
-
-Related files:
-
-```text
-pilna-cikla-buvnieciba.html
-index.html
-pakalpojumi.html
-sitemap.xml
-```
-
-Notes:
-
-Completed in `ad89265 Add full-cycle construction service page`.
-
-Done:
-
-```text
-Create pilna-cikla-buvnieciba.html
-Update homepage broad construction link
-Update pakalpojumi broad construction link
-Add new URL to sitemap.xml
-Run desktop/mobile/schema/link QA
-```
-
-The page is the broad flagship SEO/service page for `pilna cikla ēku būvniecība`. QA passed on desktop 1440 and mobile 320/360/375/390/430; no horizontal overflow, valid local links, valid BreadcrumbList/Service/FAQPage JSON-LD, working FAQ accordion and CTA modal.
-
-### Finish service page trust-strip cleanup
-
-Priority: High
-Status: Done
-Owner: Codex
+Priority: Critical
+Status: In Progress
+Owner: Codex / User
 
 Depends on:
 
 ```text
-Homepage trust bar removal accepted
-DECISIONS.md D010
-```
-
-Related files:
-
-```text
-bis-dokumentacija.html
-buvuzraudziba.html
-izpilddokumentacija.html
-legalizacija.html
-tames-apdrosinasanas-gadijumiem.html
-```
-
-Notes:
-
-Completed in `7ab57b7 Remove hero trust strips from service pages`. Desktop/mobile QA passed for the five service pages; no horizontal overflow and no remaining `.hero__trust` markup.
-
-### Review `bun-izpilde.html` local whitespace diff
-
-Priority: High
-Status: Done
-Owner: Codex
-
-Depends on:
-
-```text
-Dirty working tree audit
-```
-
-Related files:
-
-```text
-bun-izpilde.html
-```
-
-Notes:
-
-Audited as accidental indentation-only change and restored to `HEAD`. No commit was needed for `bun-izpilde.html`.
-
-### Fix residential construction CTA `aria-label`
-
-Priority: High
-Status: Done
-Owner: Codex
-
-Depends on:
-
-```text
-Audit of `privatmaju-buvnieciba.html`
-```
-
-Related files:
-
-```text
-privatmaju-buvnieciba.html
-```
-
-Notes:
-
-Completed in `3b60808 Fix residential construction CTA aria label`. The CTA section now uses `aria-label="Sazināties par dzīvojamās ēkas būvniecību"`.
-
-### Decide and commit project management documentation
-
-Priority: High
-Status: Done
-Owner: Codex
-
-Depends on:
-
-```text
-PROJECT_STATE.md created
-DECISIONS.md created
-TASKS.md created
+Rollback commit dcc1594d261186cbdd8fabc43d17e60f18b2a69b
+DECISIONS.md D004
 ```
 
 Related files:
@@ -177,15 +69,85 @@ TASKS.md
 
 Notes:
 
-These three docs are included in a separate documentation-only commit:
+V1 is the approved production design. Future changes must be small, isolated and verified on a preview branch before entering `main`.
+
+## High Priority
+
+### Full Home V2 production integration
+
+Priority: High
+Status: Closed
+Owner: Codex
+
+Depends on:
 
 ```text
-docs: add project management documentation
+Home V2 experiment
+Rollback to V1
+DECISIONS.md D004
 ```
 
-Website HTML/CSS diffs and QA artifacts were not included.
+Related files:
+
+```text
+index.html
+home-v2.css
+assets/home-v2/
+```
+
+Notes:
+
+Closed after 02.08.2026 decision. Home V2 must not be fully reintegrated into `main` without a new explicit decision.
+
+### Document V1 rollback decision
+
+Priority: High
+Status: Done
+Owner: Codex
+
+Depends on:
+
+```text
+Successful rollback to V1
+```
+
+Related files:
+
+```text
+PROJECT_STATE.md
+DECISIONS.md
+TASKS.md
+```
+
+Notes:
+
+Rollback to V1 completed in `dcc1594d261186cbdd8fabc43d17e60f18b2a69b`. This documentation task records V1 as the official production baseline and Home V2 as archived experiment.
 
 ## Medium Priority
+
+### Backlog: selectively review useful Home V2 elements
+
+Priority: Medium
+Status: Todo
+Owner: User / Codex
+
+Depends on:
+
+```text
+V1 baseline remains stable
+Separate approval for each element
+```
+
+Related files:
+
+```text
+Home V2 branches/worktree
+preview branches
+```
+
+Notes:
+
+Possible future work may reuse individual successful Home V2 ideas or components, but only one element at a time. Each candidate must be evaluated against V1, implemented on a preview branch and committed separately.
 
 ### Check internal linking
 
@@ -196,8 +158,7 @@ Owner: Codex
 Depends on:
 
 ```text
-Trust-strip cleanup resolved
-Full-cycle page created
+V1 baseline stable after rollback
 ```
 
 Related files:
@@ -209,7 +170,7 @@ sitemap.xml
 
 Notes:
 
-Check service pages, problem pages, homepage lifecycle links and related-card links. Avoid changing URLs silently; report broken or missing destinations first.
+Check service pages, problem pages, homepage links and related-card links. Avoid changing URLs silently; report broken or missing destinations first.
 
 ### Add or review schema.org on service pages
 
@@ -233,53 +194,6 @@ service HTML pages
 Notes:
 
 Review existing structured data before adding new schema. FAQ visible text must match FAQ schema exactly.
-
-### FAQ optimization
-
-Priority: Medium
-Status: Todo
-Owner: Codex
-
-Depends on:
-
-```text
-Service page content stable
-```
-
-Related files:
-
-```text
-service HTML pages
-problem HTML pages
-```
-
-Notes:
-
-Improve clarity for Latvian construction search intent. Avoid keyword stuffing and unsafe guarantees.
-
-### GEO / AI Overview optimization
-
-Priority: Medium
-Status: Todo
-Owner: Codex
-
-Depends on:
-
-```text
-FAQ optimization
-Schema.org review
-```
-
-Related files:
-
-```text
-service HTML pages
-problem HTML pages
-```
-
-Notes:
-
-Strengthen entity clarity, definitions and answer-oriented sections for AI search. Keep terminology exact and factual.
 
 ## Low Priority
 
@@ -329,6 +243,30 @@ Notes:
 Do not use director photo, AI portraits, fake staff images or fictional team photos. Prefer construction objects, documents, drawings and engineering process visuals.
 
 ## Done
+
+### Rollback production to V1
+
+Priority: Critical
+Status: Done
+Owner: Codex
+
+Depends on:
+
+```text
+Backup verification completed
+```
+
+Related files:
+
+```text
+index.html
+home-v2.css
+assets/home-v2/
+```
+
+Notes:
+
+Rollback completed 02.08.2026 in commit `dcc1594d261186cbdd8fabc43d17e60f18b2a69b`. The rollback commit tree matches V1 tree SHA `f264db051ca057a3ba18bbc09e23ea248c537dc0`.
 
 ### Establish project management documentation system
 
