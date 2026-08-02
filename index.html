@@ -657,6 +657,12 @@ input, textarea { font-family: var(--font); }
   transform: translateY(-1px);
 }
 
+.hero-task-card:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(200,169,126,0.22);
+}
+
 .hero-task-card::before {
   content: "✓";
   flex: 0 0 auto;
