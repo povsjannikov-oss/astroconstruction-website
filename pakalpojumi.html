@@ -111,14 +111,27 @@
   <link rel="stylesheet" href="/astro-optimization.css">
   <link rel="stylesheet" href="/astro-lead-modal.css?v=20260722-city2">
   <style>
-body.services-page .hero{min-height:auto!important;align-items:flex-end!important;padding:calc(var(--nav-h,72px) + 34px) 0 42px!important}
+body.services-page .hero{height:286px!important;min-height:0!important;align-items:flex-end!important;padding:calc(var(--nav-h,72px) + 18px) 0 32px!important}
 body.services-page .hero__inner{padding-top:0!important;padding-bottom:0!important;transform:none!important}
-body.services-page .hero .breadcrumbs{margin-bottom:26px!important}
+body.services-page .hero .breadcrumbs{margin-bottom:18px!important}
 body.services-page .hero .label{margin-bottom:12px!important}
-body.services-page .hero h1{font-size:clamp(42px,7vw,82px)!important;max-width:900px!important;margin-bottom:16px!important}
+body.services-page .hero h1{font-size:clamp(38px,5.8vw,66px)!important;max-width:760px!important;margin-bottom:12px!important}
 body.services-page .hero__lead{max-width:620px!important;margin-bottom:0!important}
-body.services-page .services-catalog{padding-top:30px}
+body.services-page .services-catalog{padding-top:22px}
 body.services-page .consent-option input{flex:0 0 18px!important;width:18px!important;height:18px!important}
+body.services-page .popular-services{background:#fff;padding:22px 0 8px}
+body.services-page .popular-services__box{border:1px solid var(--c-border);border-radius:6px;background:var(--c-light);padding:18px;display:grid;gap:14px}
+body.services-page .popular-services__head{display:flex;align-items:baseline;justify-content:space-between;gap:18px}
+body.services-page .popular-services__head h2{font-size:clamp(18px,2vw,24px);font-weight:500;line-height:1.15;margin:0}
+body.services-page .popular-services__head p{color:var(--c-grey);font-size:14px;line-height:1.4;margin:0;max-width:420px}
+body.services-page .popular-services__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+body.services-page .popular-link{min-height:46px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(200,169,126,.28);border-radius:4px;background:#fff;padding:10px 12px;font-size:14px;font-weight:600;line-height:1.2}
+body.services-page .popular-link::after{content:"→";color:var(--c-sand);font-size:18px;line-height:1}
+body.services-page .popular-link:hover{border-color:rgba(200,169,126,.7);transform:translateY(-1px)}
+body.services-page .popular-link:focus-visible{outline:3px solid var(--c-sand);outline-offset:3px}
+body.services-page .quick-help{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--c-border);padding-top:14px;color:var(--c-grey);font-size:14px;line-height:1.4}
+body.services-page .quick-help a{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;background:var(--c-graphite);color:#fff;padding:0 16px;font-weight:600;white-space:nowrap}
+body.services-page .quick-help a:focus-visible{outline:3px solid var(--c-sand);outline-offset:3px}
 body.services-page .service-section{padding:36px 0!important}
 body.services-page .service-section:first-child{padding-top:0!important}
 body.services-page .service-section__head{margin-bottom:16px!important;max-width:760px!important}
@@ -144,12 +157,20 @@ body.services-page .services-faq .section-head h2{font-size:clamp(30px,4vw,52px)
 body.services-page .faq__question{min-height:58px;padding:18px 20px;font-size:17px}
 body.services-page .faq__answer{padding:0 20px 20px}
 @media(max-width:640px){
-  body.services-page .hero{padding:calc(var(--nav-h,72px) + 22px) 0 28px!important}
-  body.services-page .hero .breadcrumbs{margin-bottom:16px!important}
+  body.services-page .hero{height:238px!important;padding:calc(var(--nav-h,72px) + 12px) 0 22px!important}
+  body.services-page .hero .breadcrumbs{margin-bottom:12px!important}
   body.services-page .hero .label{margin-bottom:8px!important}
-  body.services-page .hero h1{font-size:clamp(38px,11vw,44px)!important;line-height:1.08!important;margin-bottom:10px!important}
-  body.services-page .hero__lead{font-size:16px!important;line-height:1.42!important}
-  body.services-page .services-catalog{padding-top:18px}
+  body.services-page .hero h1{font-size:clamp(34px,10vw,40px)!important;line-height:1.06!important;margin-bottom:8px!important}
+  body.services-page .hero__lead{font-size:15px!important;line-height:1.36!important}
+  body.services-page .popular-services{padding:16px 0 6px}
+  body.services-page .popular-services__box{padding:14px;gap:12px}
+  body.services-page .popular-services__head{display:block}
+  body.services-page .popular-services__head p{margin-top:5px;font-size:13px}
+  body.services-page .popular-services__grid{grid-template-columns:1fr;gap:7px}
+  body.services-page .popular-link{min-height:44px;font-size:14px;padding:9px 11px}
+  body.services-page .quick-help{display:block;padding-top:12px}
+  body.services-page .quick-help a{width:100%;margin-top:10px}
+  body.services-page .services-catalog{padding-top:14px}
   body.services-page .service-section{padding:28px 0!important}
   body.services-page .service-section__head{margin-bottom:12px!important}
   body.services-page .service-section__head h2{font-size:24px!important}
@@ -162,11 +183,12 @@ body.services-page .faq__answer{padding:0 20px 20px}
   body.services-page .services-faq{padding:58px 0!important}
 }
 @media(min-width:760px) and (max-width:1023px){
-  body.services-page .hero{height:309px!important;padding:calc(var(--nav-h,72px) + 30px) 0 38px!important}
-  body.services-page .hero h1{font-size:clamp(42px,6.4vw,56px)!important}
+  body.services-page .hero{height:258px!important;padding:calc(var(--nav-h,72px) + 18px) 0 30px!important}
+  body.services-page .hero h1{font-size:clamp(38px,5.6vw,50px)!important}
 }
 @media(min-width:1024px){
-  body.services-page .hero{height:352px!important;padding:calc(var(--nav-h,72px) + 34px) 0 42px!important}
+  body.services-page .hero{height:286px!important;padding:calc(var(--nav-h,72px) + 18px) 0 32px!important}
+  body.services-page .popular-services__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
   </style>
 </head>
@@ -216,9 +238,32 @@ body.services-page .faq__answer{padding:0 20px 20px}
         <div class="breadcrumbs reveal">
           <a href="/index.html">Sākums</a><span>/</span><span>Pakalpojumi</span>
         </div>
-        <p class="label reveal">Būvniecības process Latvijā</p>
         <h1 class="reveal d1">Būvniecības pakalpojumi</h1>
         <p class="hero__lead reveal d2">Izvēlieties nepieciešamo pakalpojumu vai aprakstiet savu situāciju.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="popular-services" aria-labelledby="popular-heading">
+    <div class="container">
+      <div class="popular-services__box reveal">
+        <div class="popular-services__head">
+          <h2 id="popular-heading">Biežāk meklētie pakalpojumi</h2>
+          <p>Ātrākais ceļš uz biežāk pieprasītajiem būvniecības procesiem.</p>
+        </div>
+        <div class="popular-services__grid" role="list">
+          <a class="popular-link" role="listitem" href="/nodosana-ekspluatacija.html">Nodošana ekspluatācijā</a>
+          <a class="popular-link" role="listitem" href="/legalizacija.html">Legalizācija</a>
+          <a class="popular-link" role="listitem" href="/bis-dokumentacija.html">BIS dokumentācija</a>
+          <a class="popular-link" role="listitem" href="/buvatlaujas-sanemsana.html">Būvatļaujas saņemšana</a>
+          <a class="popular-link" role="listitem" href="/bun-izpilde.html">BUN izpilde</a>
+          <a class="popular-link" role="listitem" href="/tames-apdrosinasanas-gadijumiem.html">Tāmes apdrošinātājiem</a>
+          <a class="popular-link" role="listitem" href="/privatmaju-buvnieciba.html">Privātmāju būvniecība</a>
+        </div>
+        <div class="quick-help">
+          <span>Nezināt, kuru pakalpojumu izvēlēties?</span>
+          <a href="#sazinaties">Aprakstīt situāciju</a>
+        </div>
       </div>
     </div>
   </section>
@@ -234,14 +279,14 @@ body.services-page .faq__answer{padding:0 20px 20px}
           <p class="reveal d2">Dokumenti, atļaujas un digitālā būvniecības lieta vienā pārskatāmā katalogā.</p>
         </div>
         <div class="service-grid">
-          <a href="/bis-dokumentacija.html" class="service-card reveal"><span class="service-card__kicker">BIS</span><h3>BIS dokumentācija</h3><p>Dokumentu sagatavošana, ievade un lietas sakārtošana Būvniecības informācijas sistēmā.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/buvatlaujas-sanemsana.html" class="service-card reveal d1"><span class="service-card__kicker">Būvatļauja</span><h3>Būvatļaujas saņemšana</h3><p>Palīdzam sagatavot būvniecības ieceres dokumentāciju un koordinēt būvatļaujas procesu BIS.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/bun-izpilde.html" class="service-card reveal d2"><span class="service-card__kicker">BUN</span><h3>BUN nosacījumu izpilde</h3><p>Sakārtojam dokumentus un atbildīgās personas, kas vajadzīgas pirms būvdarbu sākšanas.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/izpilddokumentacija.html" class="service-card reveal"><span class="service-card__kicker">Dokumenti</span><h3>Izpilddokumentācija</h3><p>Akti, protokoli, foto fiksācija un būvdarbu gaitas dokumenti objekta pabeigšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/buvdarbu-zurnals-bis.html" class="service-card reveal d1"><span class="service-card__kicker">BIS žurnāls</span><h3>Būvdarbu žurnāls BIS</h3><p>Būvdarbu žurnāla ierakstu kārtība, darbu fiksācija un saikne ar izpilddokumentāciju.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/dvp-izstrade.html" class="service-card reveal d2"><span class="service-card__kicker">DVP</span><h3>DVP izstrāde</h3><p>Darbu veikšanas projekta sagatavošana darbu secībai, tehnoloģijai un drošai izpildei.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/edlus-organizesana.html" class="service-card reveal"><span class="service-card__kicker">EDLUS</span><h3>EDLUS organizēšana</h3><p>Elektroniskās darba laika uzskaites procesa sakārtošana būvlaukumā un datos.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/kalendarie-grafiki.html" class="service-card reveal d1"><span class="service-card__kicker">Plānošana</span><h3>Kalendārie grafiki</h3><p>Būvdarbu grafiki tenderiem, līgumiem un projekta kontrolei ar darbu secību.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/bis-dokumentacija.html" class="service-card reveal"><span class="service-card__kicker">BIS</span><h3>BIS dokumentācija</h3><p>Sakārtojam BIS dokumentāciju.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/buvatlaujas-sanemsana.html" class="service-card reveal d1"><span class="service-card__kicker">Būvatļauja</span><h3>Būvatļaujas saņemšana</h3><p>Dokumenti būvatļaujas procesam.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/bun-izpilde.html" class="service-card reveal d2"><span class="service-card__kicker">BUN</span><h3>BUN nosacījumu izpilde</h3><p>Sakārtojam nosacījumus būvdarbu sākšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/izpilddokumentacija.html" class="service-card reveal"><span class="service-card__kicker">Dokumenti</span><h3>Izpilddokumentācija</h3><p>Dokumenti objekta pabeigšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/buvdarbu-zurnals-bis.html" class="service-card reveal d1"><span class="service-card__kicker">BIS žurnāls</span><h3>Būvdarbu žurnāls BIS</h3><p>Būvdarbu žurnāla kārtība BIS.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/dvp-izstrade.html" class="service-card reveal d2"><span class="service-card__kicker">DVP</span><h3>DVP izstrāde</h3><p>Darbu veikšanas projekta sagatavošana.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/edlus-organizesana.html" class="service-card reveal"><span class="service-card__kicker">EDLUS</span><h3>EDLUS organizēšana</h3><p>EDLUS procesa sakārtošana būvlaukumā.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/kalendarie-grafiki.html" class="service-card reveal d1"><span class="service-card__kicker">Plānošana</span><h3>Kalendārie grafiki</h3><p>Grafiki tenderiem un būvdarbu kontrolei.</p><span class="service-card__link">Uzzināt vairāk</span></a>
         </div>
       </section>
 
@@ -252,10 +297,10 @@ body.services-page .faq__answer{padding:0 20px 20px}
           <p class="reveal d2">Objekta pabeigšana, legalizācija un tehniskās pārbaudes pirms gala lēmuma.</p>
         </div>
         <div class="service-grid">
-          <a href="/nodosana-ekspluatacija.html" class="service-card reveal"><span class="service-card__kicker">Nodošana</span><h3>Nodošana ekspluatācijā</h3><p>Pārņemam nodošanas procesu: dokumenti, atzinumi, iesaistītās puses un gala darbības.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/nodosanas-procesa-vadisana.html" class="service-card reveal d1"><span class="service-card__kicker">Vadība</span><h3>Nodošanas procesa vadīšana</h3><p>Koordinējam nodošanas posmu, kamēr būvdarbu komanda pabeidz objektu.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/legalizacija.html" class="service-card reveal d2"><span class="service-card__kicker">Legalizācija</span><h3>Legalizācija</h3><p>Esošas būves, piebūves vai pārbūves procesa izvērtēšana un dokumentu virzīšana.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/elektroinstalaciju-parbaudes.html" class="service-card reveal"><span class="service-card__kicker">Elektro</span><h3>Elektroinstalāciju pārbaudes</h3><p>Elektrotehniskie mērījumi, pārbaudes akts un protokoli nodošanai vai apdrošināšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/nodosana-ekspluatacija.html" class="service-card reveal"><span class="service-card__kicker">Nodošana</span><h3>Nodošana ekspluatācijā</h3><p>Dokumenti ēkas nodošanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/nodosanas-procesa-vadisana.html" class="service-card reveal d1"><span class="service-card__kicker">Vadība</span><h3>Nodošanas procesa vadīšana</h3><p>Koordinējam nodošanas posmu.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/legalizacija.html" class="service-card reveal d2"><span class="service-card__kicker">Legalizācija</span><h3>Legalizācija</h3><p>Sakārtojam būves statusu.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/elektroinstalaciju-parbaudes.html" class="service-card reveal"><span class="service-card__kicker">Elektro</span><h3>Elektroinstalāciju pārbaudes</h3><p>Pārbaudes akti nodošanai vai apdrošināšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
         </div>
       </section>
 
@@ -266,7 +311,7 @@ body.services-page .faq__answer{padding:0 20px 20px}
           <p class="reveal d2">Tehniski pamatots bojājumu un remonta apjoma aprēķins apdrošināšanas lietām.</p>
         </div>
         <div class="service-grid">
-          <a href="/tames-apdrosinasanas-gadijumiem.html" class="service-card reveal"><span class="service-card__kicker">Tāme</span><h3>Tāmes apdrošināšanas gadījumiem</h3><p>Remonta tāmes, bojājumu apraksti un darbu apjoma aprēķini pēc īpašuma bojājumiem.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/tames-apdrosinasanas-gadijumiem.html" class="service-card reveal"><span class="service-card__kicker">Tāme</span><h3>Tāmes apdrošināšanas gadījumiem</h3><p>Remonta tāmes apdrošinātājiem.</p><span class="service-card__link">Uzzināt vairāk</span></a>
         </div>
       </section>
     </div>
@@ -279,14 +324,14 @@ body.services-page .faq__answer{padding:0 20px 20px}
           <p class="reveal d2">Būvdarbi, procesa vadība, kontrole un tehniskā izpēte pirms būvniecības.</p>
         </div>
         <div class="service-grid">
-          <a href="/privatmaju-buvnieciba.html" class="service-card reveal"><span class="service-card__kicker">Mājas</span><h3>Dzīvojamo māju būvniecība</h3><p>Privātmāju un dzīvojamo ēku būvniecība ar sakārtotu procesu no sākuma līdz nodošanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/pilna-cikla-buvnieciba.html" class="service-card reveal d1"><span class="service-card__kicker">Pilns cikls</span><h3>Pilna cikla būvniecība</h3><p>Vienots būvniecības process no sagatavošanas un dokumentiem līdz darbu organizēšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/buvdarbu-vadiba.html" class="service-card reveal d2"><span class="service-card__kicker">Būvlaukums</span><h3>Būvdarbu vadība</h3><p>Darbu secība, apakšuzņēmēju koordinācija, dokumentācijas plūsma un ikdienas kontrole.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/buvuzraudziba.html" class="service-card reveal"><span class="service-card__kicker">Kontrole</span><h3>Būvuzraudzība</h3><p>Neatkarīga kontrole pasūtītāja interesēs: kvalitāte, atbilstība projektam un būtiskie posmi.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/buvkomersants.html" class="service-card reveal d1"><span class="service-card__kicker">Būvkomersants</span><h3>Būvkomersanta pakalpojumi</h3><p>Profesionāls būvniecības partneris darbu organizēšanai, vadībai un kvalitātes kontrolei.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/darba-aizsardziba.html" class="service-card reveal d2"><span class="service-card__kicker">Drošība</span><h3>Darba aizsardzība</h3><p>Darba aizsardzības dokumentācija, risku analīze, instruktāžas un drošības kontrole būvlaukumā.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/geodezija.html" class="service-card reveal"><span class="service-card__kicker">Ģeodēzija</span><h3>Ģeodēzija</h3><p>Topogrāfija, nospraušana, izpilduzmērījumi un dati būvniecības dokumentiem.</p><span class="service-card__link">Uzzināt vairāk</span></a>
-          <a href="/geologija.html" class="service-card reveal d1"><span class="service-card__kicker">Grunts</span><h3>Ģeoloģija</h3><p>Grunts izpēte pirms projektēšanas, lai pamatu risinājumi balstītos uz reāliem datiem.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/privatmaju-buvnieciba.html" class="service-card reveal"><span class="service-card__kicker">Mājas</span><h3>Dzīvojamo māju būvniecība</h3><p>Privātmāju būvniecības process.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/pilna-cikla-buvnieciba.html" class="service-card reveal d1"><span class="service-card__kicker">Pilns cikls</span><h3>Pilna cikla būvniecība</h3><p>Būvniecība no sagatavošanas līdz nodošanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/buvdarbu-vadiba.html" class="service-card reveal d2"><span class="service-card__kicker">Būvlaukums</span><h3>Būvdarbu vadība</h3><p>Būvdarbu ikdienas organizēšana.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/buvuzraudziba.html" class="service-card reveal"><span class="service-card__kicker">Kontrole</span><h3>Būvuzraudzība</h3><p>Neatkarīga kvalitātes kontrole.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/buvkomersants.html" class="service-card reveal d1"><span class="service-card__kicker">Būvkomersants</span><h3>Būvkomersanta pakalpojumi</h3><p>Būvkomersants procesa organizēšanai.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/darba-aizsardziba.html" class="service-card reveal d2"><span class="service-card__kicker">Drošība</span><h3>Darba aizsardzība</h3><p>Drošības dokumentācija būvlaukumam.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/geodezija.html" class="service-card reveal"><span class="service-card__kicker">Ģeodēzija</span><h3>Ģeodēzija</h3><p>Uzmērījumi būvniecības dokumentiem.</p><span class="service-card__link">Uzzināt vairāk</span></a>
+          <a href="/geologija.html" class="service-card reveal d1"><span class="service-card__kicker">Grunts</span><h3>Ģeoloģija</h3><p>Grunts izpēte pirms projektēšanas.</p><span class="service-card__link">Uzzināt vairāk</span></a>
         </div>
       </div>
     </section>
