@@ -482,6 +482,14 @@ body.astro-consent-open .astro-floating-lead {
     padding-bottom: 34px !important;
   }
 
+  body.astro-page-inner .hero {
+    padding-top: calc(var(--nav-h, 72px) + 104px) !important;
+  }
+
+  body.astro-page-inner .hero__inner {
+    padding-top: 56px !important;
+  }
+
   .hero__breadcrumb {
     margin-bottom: 18px !important;
   }
@@ -572,6 +580,10 @@ body.astro-consent-open .astro-floating-lead {
   .hero__inner {
     padding-top: calc(var(--nav-h, 72px) + 56px) !important;
     padding-bottom: 58px !important;
+  }
+
+  body.astro-page-inner .hero__inner {
+    padding-top: 16px !important;
   }
 
   body.astro-page-home .hero__inner {
@@ -675,7 +687,7 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-inner .hero__inner {
-    padding-top: calc(var(--nav-h, 72px) + 64px) !important;
+    padding-top: 80px !important;
     padding-bottom: 68px !important;
   }
 
@@ -685,6 +697,12 @@ body.astro-consent-open .astro-floating-lead {
 
   body.astro-has-sticky-bar .astro-floating-lead {
     display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  body.astro-page-inner .hero__inner {
+    transform: translateY(-40px) !important;
   }
 }
 
