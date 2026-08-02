@@ -2172,7 +2172,6 @@ input, textarea { font-family: var(--font); }
   opacity: 0.6;
 }
 
-
 /* ============================================================
    UTILITIES
    ============================================================ */
@@ -2296,7 +2295,6 @@ input, textarea { font-family: var(--font); }
       </svg>
     </div>
   </section>
-
 
   <!-- ============================================================
        ENTRY PATHS
@@ -2839,7 +2837,6 @@ input, textarea { font-family: var(--font); }
     </div>
   </section>
 
-
 </main>
 
 <!-- ============================================================
@@ -2927,7 +2924,6 @@ input, textarea { font-family: var(--font); }
   <a href="#cta" class="sticky-bar__cta" aria-label="Sazināties ar ASTRO CONSTRUCTION">Sazināties</a>
 </div>
 
-
 <script>
 /* ============================================================
    ASTRO CONSTRUCTION — JavaScript
@@ -2948,32 +2944,6 @@ input, textarea { font-family: var(--font); }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  /* --- MOBILE MENU ------------------------------------------ */
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  let menuOpen = false;
-
-  function toggleMenu() {
-    menuOpen = !menuOpen;
-    hamburger.classList.toggle('open', menuOpen);
-    mobileMenu.classList.toggle('open', menuOpen);
-    mobileMenu.setAttribute('aria-hidden', !menuOpen);
-    hamburger.setAttribute('aria-expanded', menuOpen);
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-  }
-
-  hamburger.addEventListener('click', toggleMenu);
-
-  mobileMenu.querySelectorAll('.nav__mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      if (menuOpen) toggleMenu();
-    });
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && menuOpen) toggleMenu();
-  });
 
   /* --- MOBILE STICKY BAR ------------------------------------ */
   const stickyBar = document.getElementById('sticky-bar');
@@ -3053,7 +3023,6 @@ input, textarea { font-family: var(--font); }
       const offset = nav.offsetHeight + 24;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
-      if (menuOpen) toggleMenu();
     });
   });
 

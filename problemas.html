@@ -208,15 +208,6 @@
 </footer>
 <script>
 const nav = document.querySelector('.nav');
-const navToggle = document.getElementById('hamburger');
-navToggle.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', String(open));
-});
-document.querySelectorAll('.nav__mobile-link').forEach(link => link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  navToggle.setAttribute('aria-expanded', 'false');
-}));
 </script>
   <script src="/astro-lead-modal.js?v=20260722-city2" defer></script>
 <script src="/astro-forms.js?v=20260722-modal" defer></script>

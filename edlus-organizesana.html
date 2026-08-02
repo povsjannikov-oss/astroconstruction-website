@@ -533,7 +533,6 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 
 <script>
   const nav = document.getElementById('nav');
-  const navToggle = document.getElementById('hamburger');
   const stickyBar = document.getElementById('stickyBar');
 
   const updateNav = () => {
@@ -543,11 +542,6 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
-
-  navToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
 
   document.querySelectorAll('.faq__question').forEach((button) => {
     button.addEventListener('click', () => {

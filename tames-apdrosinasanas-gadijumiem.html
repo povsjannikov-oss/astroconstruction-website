@@ -1186,21 +1186,6 @@ input,textarea{font-family:var(--font)}
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  let menuOpen = false;
-  function toggleMenu(){
-    menuOpen = !menuOpen;
-    hamburger.classList.toggle('open', menuOpen);
-    mobileMenu.classList.toggle('open', menuOpen);
-    mobileMenu.setAttribute('aria-hidden', !menuOpen);
-    hamburger.setAttribute('aria-expanded', menuOpen);
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-  }
-  hamburger.addEventListener('click', toggleMenu);
-  mobileMenu.querySelectorAll('.nav__mobile-link').forEach(l => l.addEventListener('click', () => { if(menuOpen) toggleMenu(); }));
-  document.addEventListener('keydown', e => { if(e.key==='Escape' && menuOpen) toggleMenu(); });
-
   const stickyBar = document.getElementById('sticky-bar');
   window.addEventListener('scroll', () => stickyBar.classList.toggle('visible', window.scrollY > 400), {passive:true});
 
@@ -1232,7 +1217,6 @@ input,textarea{font-family:var(--font)}
       const target = document.querySelector(a.getAttribute('href'));
       if(!target) return; e.preventDefault();
       window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 24, behavior:'smooth' });
-      if(menuOpen) toggleMenu();
     });
   });
 

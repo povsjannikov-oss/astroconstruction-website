@@ -663,7 +663,6 @@ button { border: 0; background: none; cursor: pointer; }
 
 <script>
 const nav = document.getElementById('nav');
-const navToggle = document.getElementById('hamburger');
 const stickyBar = document.querySelector('.sticky-bar');
 
 function updateNav() {
@@ -673,18 +672,6 @@ function updateNav() {
 
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav();
-
-navToggle.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('open');
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-document.querySelectorAll('.nav__mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
-});
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

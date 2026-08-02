@@ -403,8 +403,6 @@
 
 <script>
   const nav = document.getElementById('nav');
-  const navToggle = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
   const stickyBar = document.querySelector('.sticky-bar');
 
   function updateNav() {
@@ -412,20 +410,8 @@
     stickyBar?.classList.toggle('visible', window.scrollY > 520);
   }
 
-  function setMobileMenuState(isOpen) {
-    nav.classList.toggle('open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    mobileMenu.hidden = !isOpen;
-    mobileMenu.inert = !isOpen;
-    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-  }
-
   window.addEventListener('scroll', updateNav, { passive: true });
   updateNav();
-  setMobileMenuState(false);
-
-  navToggle.addEventListener('click', () => setMobileMenuState(!nav.classList.contains('open')));
-  document.querySelectorAll('.nav__mobile-link').forEach(link => link.addEventListener('click', () => setMobileMenuState(false)));
 
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
