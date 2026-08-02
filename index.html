@@ -219,10 +219,11 @@ input, textarea { font-family: var(--font); }
   height: var(--nav-h);
   display: flex;
   align-items: center;
+  background: rgba(15,15,14,0.98);
   transition: background 180ms var(--ease-out),
               border-color 180ms var(--ease-out),
               box-shadow 180ms var(--ease-out);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .nav.scrolled {
@@ -231,6 +232,14 @@ input, textarea { font-family: var(--font); }
   -webkit-backdrop-filter: blur(12px);
   border-bottom-color: var(--c-border);
   box-shadow: 0 1px 24px rgba(15,15,14,0.06);
+}
+
+body.astro-page-home .nav:not(.scrolled) {
+  background: rgba(15,15,14,0.98) !important;
+  border-bottom-color: rgba(255,255,255,0.08) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .nav__inner {
@@ -555,20 +564,6 @@ input, textarea { font-family: var(--font); }
   pointer-events: none;
 }
 
-/* Coordinate label decorative */
-.hero__coords {
-  position: absolute;
-  bottom: var(--sp-5);
-  right: var(--gutter);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: rgba(200,169,126,0.4);
-  writing-mode: vertical-rl;
-  text-transform: uppercase;
-  display: none;
-}
-@media (min-width: 1024px) { .hero__coords { display: block; } }
-
 .hero__inner {
   position: relative;
   z-index: 2;
@@ -675,6 +670,33 @@ input, textarea { font-family: var(--font); }
   color: var(--c-sand);
   font-size: 15px;
   line-height: 1;
+}
+
+.hero-helper-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  color: rgba(255,255,255,0.64);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+  text-decoration: underline;
+  text-decoration-color: rgba(200,169,126,0.46);
+  text-underline-offset: 5px;
+  transition: color var(--dur-fast), text-decoration-color var(--dur-fast);
+}
+
+.hero-helper-link:hover {
+  color: var(--c-white);
+  text-decoration-color: var(--c-sand);
+}
+
+.hero-helper-link:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  border-radius: 2px;
+  color: var(--c-white);
 }
 
 .hero-construction {
@@ -796,29 +818,6 @@ input, textarea { font-family: var(--font); }
   color: var(--c-sand);
   opacity: 0.6;
 }
-/* Scroll indicator */
-.hero__scroll {
-  position: absolute;
-  bottom: var(--sp-5);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.35);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  animation: scrollBounce 2.5s ease-in-out infinite;
-  display: none;
-}
-@media (min-width: 768px) { .hero__scroll { display: flex; } }
-@keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(6px); }
-}
-.hero__scroll svg { opacity: 0.4; }
 
 /* ============================================================
    CONSTRUCTION LIFECYCLE
@@ -2447,13 +2446,12 @@ input, textarea { font-family: var(--font); }
     <div class="hero__shape" aria-hidden="true"></div>
 
     <div class="container hero__inner">
-      <p class="hero__label reveal" aria-label="Eksperti būvniecībā un būvniecības dokumentācijā">
-        Eksperti būvniecībā un būvniecības dokumentācijā
+      <p class="hero__label reveal" aria-label="BIS, BUN, nodošana un būvniecība">
+        BIS · BUN · NODOŠANA · BŪVNIECĪBA
       </p>
 
       <h1 class="reveal reveal-delay-1">
-        Viens partneris visam<br>
-        būvniecības procesam.
+        Dokumenti, būvdarbi un nodošana ekspluatācijā.
       </h1>
 
       <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties dokumentu un atļauju uzdevumu">
@@ -2465,6 +2463,8 @@ input, textarea { font-family: var(--font); }
         <a href="/tames-apdrosinasanas-gadijumiem.html" class="hero-task-card">Sagatavot tāmi apdrošinātājam</a>
       </div>
 
+      <a href="#astro-lead-modal" class="hero-helper-link hero-helper-cta reveal reveal-delay-4">Nezināt, kurš pakalpojums nepieciešams? Aprakstiet situāciju.</a>
+
       <div class="hero-construction reveal reveal-delay-4" aria-labelledby="hero-construction-heading">
         <p class="hero-construction__title" id="hero-construction-heading">Būvniecība</p>
         <div class="hero-construction__links" aria-label="Būvniecības virzieni">
@@ -2474,15 +2474,6 @@ input, textarea { font-family: var(--font); }
           <a href="/geodezija-geologija.html">Ģeodēzija un ģeoloģija</a>
         </div>
       </div>
-    </div>
-
-    <div class="hero__coords" aria-hidden="true">56.9460° N · 24.1059° E · RĪGA</div>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <span>Ritināt</span>
-      <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-        <path d="M8 4v16M3 15l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
     </div>
   </section>
 
@@ -2547,7 +2538,7 @@ input, textarea { font-family: var(--font); }
       <div class="lifecycle__header">
         <div>
           <p class="section-label reveal">Būvniecības ceļš</p>
-          <h2 id="lifecycle-heading" class="reveal reveal-delay-1">Viens partneris visam būvniecības ceļam.</h2>
+          <h2 id="lifecycle-heading" class="reveal reveal-delay-1">Būvniecības ceļš no ieceres līdz ēkas nodošanai.</h2>
         </div>
         <p class="lifecycle__intro reveal reveal-delay-2">
           Būvniecībā lielākās problēmas bieži rodas starp posmiem: projekts, būvatļauja, dokumenti, būvdarbi, speciālisti un nodošana ekspluatācijā. ASTRO CONSTRUCTION savieno šos posmus vienā pārskatāmā būvniecības ceļā.
