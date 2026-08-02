@@ -494,19 +494,31 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-inner .hero {
-    padding-top: calc(var(--nav-h, 72px) + 64px) !important;
+    padding-top: calc(var(--nav-h, 72px) + 44px) !important;
+    padding-bottom: 36px !important;
+    align-items: flex-start !important;
   }
 
   body.astro-page-inner .hero__inner {
-    padding-top: 24px !important;
+    padding-top: 12px !important;
+    padding-bottom: 22px !important;
   }
 
   .hero__breadcrumb {
     margin-bottom: 18px !important;
   }
 
+  body.astro-page-inner .hero .breadcrumbs {
+    margin-bottom: 18px !important;
+  }
+
   .hero__label {
     margin-bottom: 14px !important;
+  }
+
+  body.astro-page-inner .hero .label,
+  body.astro-page-inner .hero .section-label {
+    margin-bottom: 10px !important;
   }
 
   .hero h1 {
@@ -526,10 +538,16 @@ body.astro-consent-open .astro-floating-lead {
     overflow-wrap: anywhere !important;
   }
 
+  body.astro-page-inner .hero__lead {
+    font-size: 13.5px !important;
+    line-height: 1.36 !important;
+    margin-bottom: 12px !important;
+  }
+
   .hero__actions,
   .actions {
     gap: 10px !important;
-    margin-top: 18px !important;
+    margin-top: 12px !important;
     margin-bottom: 12px !important;
   }
 
@@ -573,6 +591,49 @@ body.astro-consent-open .astro-floating-lead {
     font-size: clamp(30px, 8.8vw, 40px) !important;
     line-height: 1.12 !important;
   }
+
+  body.astro-page-inner .hero + .section,
+  body.astro-page-inner .hero + .section--white,
+  body.astro-page-inner .hero + .section--light {
+    padding-top: 30px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head,
+  body.astro-page-inner .hero + .section .head {
+    margin-bottom: 12px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head h2,
+  body.astro-page-inner .hero + .section .head h2 {
+    font-size: clamp(18px, 5vw, 22px) !important;
+    line-height: 1.16 !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head p:not(.label):not(.section-label),
+  body.astro-page-inner .hero + .section .head p:not(.label):not(.section-label) {
+    max-height: 3.9em !important;
+    margin-top: 5px !important;
+    overflow: hidden !important;
+    font-size: 12.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero h1 {
+    font-size: clamp(27px, 7.8vw, 32px) !important;
+    line-height: 1.08 !important;
+  }
+
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero__actions,
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero .actions {
+    display: none !important;
+  }
+
+  body.astro-page-inner .hero + .section .project-card,
+  body.astro-page-inner .hero + .section .card,
+  body.astro-page-inner .hero + .section .kc-public-topic,
+  body.astro-page-inner .hero + .section .contact-card {
+    padding-top: 20px !important;
+  }
 }
 
 @media (min-width: 760px) and (max-width: 1023px) {
@@ -585,7 +646,10 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-inner .hero {
-    min-height: min(640px, 72svh) !important;
+    min-height: min(560px, 62svh) !important;
+    padding-top: calc(var(--nav-h, 72px) + 42px) !important;
+    padding-bottom: 42px !important;
+    align-items: flex-start !important;
   }
 
   .hero__inner {
@@ -606,8 +670,17 @@ body.astro-consent-open .astro-floating-lead {
     margin-bottom: 22px !important;
   }
 
+  body.astro-page-inner .hero .breadcrumbs {
+    margin-bottom: 22px !important;
+  }
+
   .hero__label {
     margin-bottom: 16px !important;
+  }
+
+  body.astro-page-inner .hero .label,
+  body.astro-page-inner .hero .section-label {
+    margin-bottom: 12px !important;
   }
 
   .hero h1 {
@@ -630,10 +703,16 @@ body.astro-consent-open .astro-floating-lead {
     margin-bottom: 26px !important;
   }
 
+  body.astro-page-inner .hero__lead {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
+  }
+
   .hero__actions,
   .actions {
     gap: 12px !important;
-    margin-top: 26px !important;
+    margin-top: 16px !important;
     margin-bottom: 0 !important;
   }
 
@@ -660,6 +739,46 @@ body.astro-consent-open .astro-floating-lead {
   .cta-section h2 {
     font-size: clamp(38px, 5.4vw, 52px) !important;
     line-height: 1.1 !important;
+  }
+
+  body.astro-page-inner .hero + .section,
+  body.astro-page-inner .hero + .section--white,
+  body.astro-page-inner .hero + .section--light {
+    padding-top: 34px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head,
+  body.astro-page-inner .hero + .section .head {
+    max-width: 680px !important;
+    margin-bottom: 14px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head h2,
+  body.astro-page-inner .hero + .section .head h2 {
+    font-size: clamp(22px, 3vw, 28px) !important;
+    line-height: 1.16 !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head p:not(.label):not(.section-label),
+  body.astro-page-inner .hero + .section .head p:not(.label):not(.section-label) {
+    max-width: 620px !important;
+    max-height: 3.9em !important;
+    margin-top: 6px !important;
+    overflow: hidden !important;
+    font-size: 13.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero h1 {
+    font-size: clamp(36px, 5.6vw, 48px) !important;
+    line-height: 1.06 !important;
+  }
+
+  body.astro-page-inner .hero + .section .project-card,
+  body.astro-page-inner .hero + .section .card,
+  body.astro-page-inner .hero + .section .kc-public-topic,
+  body.astro-page-inner .hero + .section .contact-card {
+    padding-top: 24px !important;
   }
 }
 
@@ -694,16 +813,44 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-inner .hero {
-    min-height: min(720px, 82svh) !important;
+    min-height: min(600px, 66svh) !important;
+    padding-top: calc(var(--nav-h, 72px) + 34px) !important;
+    padding-bottom: 34px !important;
+    align-items: flex-start !important;
   }
 
   body.astro-page-inner .hero__inner {
-    padding-top: 80px !important;
-    padding-bottom: 68px !important;
+    padding-top: 46px !important;
+    padding-bottom: 42px !important;
   }
 
   body.astro-page-inner .hero h1 {
     font-size: clamp(50px, 5.6vw, 64px) !important;
+  }
+
+  body.astro-page-inner .hero .breadcrumbs {
+    margin-bottom: 24px !important;
+  }
+
+  body.astro-page-inner .hero .label,
+  body.astro-page-inner .hero .section-label {
+    margin-bottom: 12px !important;
+  }
+
+  body.astro-page-inner .hero__lead {
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.astro-page-inner .hero__actions,
+  body.astro-page-inner .actions {
+    margin-top: 16px !important;
+  }
+
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero h1 {
+    font-size: clamp(42px, 4.6vw, 56px) !important;
+    line-height: 1.05 !important;
   }
 
   body.astro-has-sticky-bar .astro-floating-lead {
@@ -712,8 +859,82 @@ body.astro-consent-open .astro-floating-lead {
 }
 
 @media (min-width: 1200px) {
+  body.astro-page-inner .hero {
+    min-height: min(600px, 66svh) !important;
+    padding-top: calc(var(--nav-h, 72px) + 30px) !important;
+    padding-bottom: 34px !important;
+    align-items: flex-start !important;
+  }
+
   body.astro-page-inner .hero__inner {
-    transform: translateY(-40px) !important;
+    padding-top: 52px !important;
+    padding-bottom: 42px !important;
+    transform: translateY(-18px) !important;
+  }
+
+  body.astro-page-inner .hero h1 {
+    font-size: clamp(42px, 5.2vw, 72px) !important;
+    line-height: 1.04 !important;
+  }
+
+  body.astro-page-inner .hero .breadcrumbs {
+    margin-bottom: 24px !important;
+  }
+
+  body.astro-page-inner .hero .label,
+  body.astro-page-inner .hero .section-label {
+    margin-bottom: 12px !important;
+  }
+
+  body.astro-page-inner .hero__lead {
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.astro-page-inner .hero__actions,
+  body.astro-page-inner .actions {
+    margin-top: 16px !important;
+  }
+
+  body.astro-page-inner .hero + .section,
+  body.astro-page-inner .hero + .section--white,
+  body.astro-page-inner .hero + .section--light {
+    padding-top: 24px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head,
+  body.astro-page-inner .hero + .section .head {
+    max-width: 720px !important;
+    margin-bottom: 12px !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head h2,
+  body.astro-page-inner .hero + .section .head h2 {
+    font-size: clamp(20px, 1.7vw, 26px) !important;
+    line-height: 1.16 !important;
+  }
+
+  body.astro-page-inner .hero + .section .section-head p:not(.label):not(.section-label),
+  body.astro-page-inner .hero + .section .head p:not(.label):not(.section-label) {
+    max-width: 640px !important;
+    max-height: 2.7em !important;
+    margin-top: 6px !important;
+    overflow: hidden !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  body.astro-page-inner:has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero h1 {
+    font-size: clamp(42px, 4.2vw, 58px) !important;
+    line-height: 1.05 !important;
+  }
+
+  body.astro-page-inner .hero + .section .project-card,
+  body.astro-page-inner .hero + .section .card,
+  body.astro-page-inner .hero + .section .kc-public-topic,
+  body.astro-page-inner .hero + .section .contact-card {
+    padding-top: 24px !important;
   }
 }
 
