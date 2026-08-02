@@ -899,7 +899,7 @@ input, textarea { font-family: var(--font); }
 
 .entry-paths__header {
   max-width: 720px;
-  margin-bottom: clamp(32px, 5vw, 56px);
+  margin-bottom: clamp(24px, 4vw, 40px);
 }
 
 .entry-paths h2 {
@@ -929,13 +929,46 @@ input, textarea { font-family: var(--font); }
   line-height: 1.72;
 }
 
+.entry-paths__overview {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 1080px;
+}
+
+@media (min-width: 720px) {
+  .entry-paths__overview {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.entry-service-group {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--c-border);
+}
+
+.entry-service-group h3 {
+  font-size: clamp(20px, 2.4vw, 24px);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  color: var(--c-graphite);
+}
+
+.entry-service-group p {
+  font-size: 15px;
+  line-height: 1.58;
+  color: var(--c-grey);
+}
+
 .entry-paths__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-top: var(--sp-2);
+  gap: 6px 12px;
+  margin-top: 2px;
   color: var(--c-grey);
-  font-size: 14px;
+  font-size: 13.5px;
 }
 
 .entry-paths__links a {
@@ -2365,51 +2398,47 @@ input, textarea { font-family: var(--font); }
       <div class="entry-paths__header">
         <p class="section-label reveal">Pēc izvēles</p>
         <h2 id="entry-paths-heading" class="reveal reveal-delay-1">Par mūsu pakalpojumiem</h2>
+        <p class="entry-paths__intro">
+          ASTRO CONSTRUCTION palīdz sakārtot būvniecības procesu no dokumentācijas un BIS līdz būvdarbu vadībai un ēkas nodošanai ekspluatācijā.
+        </p>
       </div>
 
-      <div class="entry-paths__copy">
-        <p class="entry-paths__intro">
-          No pirmajiem dokumentiem līdz būvdarbiem un ēkas nodošanai ekspluatācijā.
-        </p>
-        <p>
-          Nav jāzina precīzs pakalpojuma nosaukums. Sāciet ar to, kas jums šobrīd ir vajadzīgs.
-        </p>
-        <p>
-          Pakalpojumu ceļš sākas ar tuvāko situāciju: "Gribu būvēt", "Ir jāatrisina esoša situācija" vai "Tāmes apdrošināšanas gadījumiem".
-        </p>
-        <p>
-          Vajadzīgs būvniecības partneris, kas saprot būvdarbus, dokumentāciju un ceļu līdz nodošanai ekspluatācijā. Būvatļauja, būvniecības dokumentācija, legalizācija, trūkstoši dokumenti vai nodošana ekspluatācijā tiek skatīti kā viens praktisks process.
-        </p>
-        <p>
-          Palīdzam tehniski pamatot pienākošās atlīdzības apjomu ar remonta tāmi un bojājumu dokumentāciju, kā arī sakārtot objektu, ja situācija jau ir sākusies vai process ir apstājies.
-        </p>
+      <div class="entry-paths__overview">
+        <article class="entry-service-group">
+          <h3>Dokumentācija un BIS</h3>
+          <p>
+            Palīdzam sakārtot BIS dokumentāciju, būvatļaujas un BUN jautājumus, izpilddokumentāciju un trūkstošos dokumentus vienotā procesā.
+          </p>
+          <div class="entry-paths__links" aria-label="Dokumentācijas pakalpojumu saites">
+            <a href="/bis-dokumentacija.html">BIS dokumentācija</a>
+            <a href="/bun-izpilde.html">BUN izpilde</a>
+            <a href="/izpilddokumentacija.html">Izpilddokumentācija</a>
+          </div>
+        </article>
 
-        <div class="entry-paths__links" aria-label="Pakalpojumu saites">
-          <a href="/buvdarbu-vadiba.html">Būvdarbi</a>
-          <a href="/izpilddokumentacija.html">Būvniecības dokumentācija</a>
-          <a href="/buvuzraudziba.html">Būvuzraudzība</a>
-          <a href="/legalizacija.html">Legalizācija</a>
-          <a href="/geodezija.html">Ģeodēzija</a>
-          <a href="/elektroinstalaciju-parbaudes.html">Elektroinstalāciju pārbaudes</a>
-          <a href="/tames-apdrosinasanas-gadijumiem.html">Tāmes apdrošināšanas gadījumiem</a>
-        </div>
+        <article class="entry-service-group">
+          <h3>Nodošana un legalizācija</h3>
+          <p>
+            Koordinējam ēku nodošanu ekspluatācijā, būvju legalizāciju un nepieciešamo atzinumu vai dokumentu sakārtošanu pirms iesniegšanas.
+          </p>
+          <div class="entry-paths__links" aria-label="Nodošanas un legalizācijas saites">
+            <a href="/nodosana-ekspluatacija.html">Nodošana ekspluatācijā</a>
+            <a href="/legalizacija.html">Legalizācija</a>
+            <a href="/trukst-izpilddokumentacijas.html">Trūkst dokumentu</a>
+          </div>
+        </article>
 
-        <div class="entry-paths__actions">
-          <a href="#cta" class="btn btn-primary btn-arrow" aria-label="Aprakstīt situāciju">
-            Aprakstīt situāciju
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <a href="#buvniecibas-cels" class="btn-text btn-arrow">
-            Skatīt būvniecības posmus
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#papildu-pakalpojumi" class="btn-text btn-arrow">
-            Skatīt visus pakalpojumus
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
+        <article class="entry-service-group">
+          <h3>Būvniecība un projektu vadība</h3>
+          <p>
+            Strādājam ar privātmāju būvniecību, būvdarbu vadību, industriāliem un komerciāliem projektiem, kur vajadzīga pilna cikla koordinēšana.
+          </p>
+          <div class="entry-paths__links" aria-label="Būvniecības un projektu vadības saites">
+            <a href="/privatmaju-buvnieciba.html">Privātmāju būvniecība</a>
+            <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
+            <a href="/pilna-cikla-buvnieciba.html">Pilna cikla būvniecība</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
