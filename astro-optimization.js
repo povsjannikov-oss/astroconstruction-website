@@ -131,8 +131,29 @@
     }, true);
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+
+      if (event.key === 'Escape') {
         closeMenu(true);
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusable = focusableElements(menu);
+        if (!focusable.length) {
+          event.preventDefault();
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus({ preventScroll: true });
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus({ preventScroll: true });
+        }
       }
     });
   }
