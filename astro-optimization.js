@@ -77,6 +77,8 @@
     const menu = document.getElementById('mobileMenu') || document.getElementById('mobile-menu') || document.querySelector('.nav__mobile');
 
     if (!toggle || !menu) return;
+    if (menu.dataset.astroMobileNavReady === 'true') return;
+    menu.dataset.astroMobileNavReady = 'true';
 
     if (!menu.id) menu.id = 'mobile-menu';
     toggle.setAttribute('aria-controls', menu.id);
@@ -174,6 +176,17 @@
         }
       }
     });
+
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+    const handleDesktopQueryChange = function (event) {
+      if (!event.matches || toggle.getAttribute('aria-expanded') !== 'true') return;
+      closeMenu(menu.contains(document.activeElement));
+    };
+    if (desktopQuery.addEventListener) {
+      desktopQuery.addEventListener('change', handleDesktopQueryChange);
+    } else if (desktopQuery.addListener) {
+      desktopQuery.addListener(handleDesktopQueryChange);
+    }
   }
 
   function setupFaqAccordions() {
