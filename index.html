@@ -219,9 +219,9 @@ input, textarea { font-family: var(--font); }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  transition: background var(--dur-base) var(--ease-out),
-              border-color var(--dur-base) var(--ease-out),
-              box-shadow var(--dur-base) var(--ease-out);
+  transition: background 180ms var(--ease-out),
+              border-color 180ms var(--ease-out),
+              box-shadow 180ms var(--ease-out);
   border-bottom: 1px solid transparent;
 }
 
@@ -626,7 +626,7 @@ input, textarea { font-family: var(--font); }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   max-width: 760px;
-  margin-top: var(--sp-4);
+  margin-top: 0;
 }
 
 @media (min-width: 860px) {
@@ -679,18 +679,18 @@ input, textarea { font-family: var(--font); }
 
 .hero-construction {
   max-width: 760px;
-  margin-top: var(--sp-3);
-  padding-top: var(--sp-3);
-  border-top: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.66);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid rgba(200,169,126,0.36);
+  color: var(--c-white);
 }
 
 .hero-construction__title {
-  margin-bottom: 4px;
+  margin-bottom: 12px;
   color: var(--c-sand);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -702,21 +702,22 @@ input, textarea { font-family: var(--font); }
 }
 
 .hero-construction__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .hero-construction__links a {
-  min-height: 44px;
+  min-height: 58px;
   display: inline-flex;
   align-items: center;
-  padding: 0 12px;
-  border: 1px solid rgba(255,255,255,0.12);
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,0.16);
   border-radius: var(--radius-sm);
-  color: rgba(255,255,255,0.78);
-  font-size: 13.5px;
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(14.5px, 1.5vw, 16px);
   font-weight: var(--fw-semibold);
+  line-height: 1.22;
   text-decoration: none;
   transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
 }
@@ -745,8 +746,8 @@ input, textarea { font-family: var(--font); }
   }
 
   .hero-construction {
-    margin-top: 14px;
-    padding-top: 14px;
+    margin-top: 16px;
+    padding-top: 16px;
   }
 
   .hero-construction__text {
@@ -755,13 +756,14 @@ input, textarea { font-family: var(--font); }
   }
 
   .hero-construction__links {
-    gap: 6px;
+    grid-template-columns: 1fr;
+    gap: 7px;
   }
 
   .hero-construction__links a {
-    flex: 1 1 calc(50% - 6px);
-    padding: 0 10px;
-    font-size: 12.5px;
+    min-height: 48px;
+    padding: 10px 12px;
+    font-size: 13.5px;
   }
 }
 
@@ -2393,7 +2395,7 @@ input, textarea { font-family: var(--font); }
 <script src="/astro-forms.js?v=20260527-4" defer></script>
 </head>
 
-<body>
+<body class="astro-page-home">
 <!-- ============================================================
      NAVIGATION
      ============================================================ -->
@@ -2454,10 +2456,6 @@ input, textarea { font-family: var(--font); }
         būvniecības procesam.
       </h1>
 
-      <p class="hero__subline reveal reveal-delay-2">
-        Izvēlieties savu situāciju un ejiet uz atbilstošo risinājumu.
-      </p>
-
       <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties dokumentu un atļauju uzdevumu">
         <a href="/nodosana-ekspluatacija.html" class="hero-task-card">Nodot māju ekspluatācijā</a>
         <a href="/bis-dokumentacija.html" class="hero-task-card">Sakārtot BIS dokumentāciju</a>
@@ -2469,11 +2467,10 @@ input, textarea { font-family: var(--font); }
 
       <div class="hero-construction reveal reveal-delay-4" aria-labelledby="hero-construction-heading">
         <p class="hero-construction__title" id="hero-construction-heading">Būvniecība</p>
-        <p class="hero-construction__text">Māju būvniecība, būvdarbu vadība un būvniecības sagatavošanas darbi.</p>
         <div class="hero-construction__links" aria-label="Būvniecības virzieni">
           <a href="/privatmaju-buvnieciba.html">Dzīvojamo māju būvniecība</a>
-          <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
           <a href="/pilna-cikla-buvnieciba.html">Pilna cikla būvniecība</a>
+          <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
           <a href="/geodezija-geologija.html">Ģeodēzija un ģeoloģija</a>
         </div>
       </div>
@@ -3142,16 +3139,19 @@ input, textarea { font-family: var(--font); }
 
   /* --- NAV SCROLL BEHAVIOR ---------------------------------- */
   const nav = document.getElementById('nav');
-  let lastScroll = 0;
+  const firstLightSection = document.querySelector('.entry-paths');
+  if (nav) nav.dataset.astroScrollReady = 'true';
 
-  function onScroll() {
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 40);
-    lastScroll = y;
+  function updateNavTheme() {
+    if (!nav || !firstLightSection) return;
+    const navBottom = nav.getBoundingClientRect().bottom;
+    const lightSectionTop = firstLightSection.getBoundingClientRect().top;
+    nav.classList.toggle('scrolled', navBottom >= lightSectionTop);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  window.addEventListener('scroll', updateNavTheme, { passive: true });
+  window.addEventListener('resize', updateNavTheme, { passive: true });
+  updateNavTheme();
 
   /* --- MOBILE STICKY BAR ------------------------------------ */
   const stickyBar = document.getElementById('sticky-bar');
