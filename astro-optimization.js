@@ -35,7 +35,7 @@
   function updateStickyBarHeight(stickyBar) {
     if (!stickyBar) return;
     const rect = stickyBar.getBoundingClientRect();
-    const height = Math.max(68, Math.ceil(rect.height || stickyBar.offsetHeight || 76));
+    const height = Math.max(54, Math.ceil(rect.height || stickyBar.offsetHeight || 54));
     document.documentElement.style.setProperty('--astro-mobile-cta-height', height + 'px');
   }
 

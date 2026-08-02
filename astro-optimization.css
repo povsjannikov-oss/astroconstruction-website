@@ -419,7 +419,8 @@ body.astro-consent-open .astro-floating-lead {
 
 @media (max-width: 1023px) {
   :root {
-    --astro-mobile-cta-height: 82px;
+    --astro-mobile-cta-height: 54px;
+    --astro-mobile-cta-gap: 12px;
   }
 
   body.astro-has-sticky-bar {
@@ -427,39 +428,49 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   .sticky-bar {
-    left: max(12px, env(safe-area-inset-left)) !important;
-    right: max(12px, env(safe-area-inset-right)) !important;
-    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    left: max(8px, env(safe-area-inset-left)) !important;
+    right: max(8px, env(safe-area-inset-right)) !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
     height: auto !important;
-    min-height: 56px !important;
-    max-width: calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)) !important;
+    min-height: 52px !important;
+    max-width: calc(100vw - 16px - env(safe-area-inset-left) - env(safe-area-inset-right)) !important;
     margin: 0 auto !important;
-    padding: 10px 12px !important;
+    padding: 4px 8px !important;
     border-radius: 8px !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
 
   .sticky-bar__text {
     min-width: 0 !important;
-    font-size: 13px !important;
-    line-height: 1.22 !important;
+    font-size: 12.5px !important;
+    line-height: 1.18 !important;
   }
 
   .sticky-bar__actions {
     flex: 0 0 auto !important;
+    gap: 8px !important;
   }
 
   .sticky-bar__icon-btn {
-    width: 46px !important;
-    height: 46px !important;
+    flex: 0 0 44px !important;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   .sticky-bar__button,
   .sticky-bar__cta {
-    min-height: 46px !important;
-    height: auto !important;
-    padding: 0 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 14px !important;
     white-space: nowrap !important;
+  }
+
+  .sticky-bar a:focus-visible {
+    outline: 2px solid var(--c-sand, #c8a97e) !important;
+    outline-offset: 3px !important;
   }
 }
 
