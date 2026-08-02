@@ -618,18 +618,63 @@ input, textarea { font-family: var(--font); }
   line-height: 1.58;
   color: rgba(255,255,255,0.75);
   max-width: 680px;
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-4);
 }
 
-.hero__actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-  align-items: flex-start;
-  margin-bottom: var(--sp-3);
+.hero-task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 760px;
+  margin-top: var(--sp-4);
 }
-@media (min-width: 480px) {
-  .hero__actions { flex-direction: row; align-items: center; }
+
+@media (min-width: 860px) {
+  .hero-task-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.hero-task-card {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.055);
+  color: var(--c-white);
+  font-size: clamp(14px, 2.7vw, 17px);
+  font-weight: var(--fw-semibold);
+  line-height: 1.22;
+  transition: background var(--dur-fast), border-color var(--dur-fast), transform var(--dur-fast);
+}
+
+.hero-task-card:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(200,169,126,0.52);
+  transform: translateY(-1px);
+}
+
+.hero-task-card::before {
+  content: "✓";
+  flex: 0 0 auto;
+  color: var(--c-sand);
+  font-size: 15px;
+  line-height: 1;
+}
+
+@media (max-width: 430px) {
+  .hero-task-grid {
+    gap: 8px;
+  }
+
+  .hero-task-card {
+    min-height: 62px;
+    padding: 10px 11px;
+    font-size: 13.5px;
+  }
 }
 
 .hero__trust {
@@ -870,6 +915,41 @@ input, textarea { font-family: var(--font); }
   font-size: 17px;
   line-height: 1.7;
   color: var(--c-grey);
+}
+
+.entry-paths__copy {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 860px;
+  color: var(--c-grey);
+}
+
+.entry-paths__copy p {
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.entry-paths__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: var(--sp-2);
+  color: var(--c-grey);
+  font-size: 14px;
+}
+
+.entry-paths__links a {
+  color: var(--c-graphite);
+  text-decoration: underline;
+  text-decoration-color: rgba(200,169,126,0.45);
+  text-underline-offset: 4px;
+}
+
+.entry-paths__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
 }
 
 .entry-paths__grid {
@@ -2254,36 +2334,17 @@ input, textarea { font-family: var(--font); }
       </h1>
 
       <p class="hero__subline reveal reveal-delay-2">
-        No pirmajiem dokumentiem līdz būvdarbiem un ēkas nodošanai ekspluatācijā.
+        Izvēlieties savu situāciju un ejiet uz atbilstošo risinājumu.
       </p>
 
-      <div class="hero__actions reveal reveal-delay-3">
-        <a href="#cta" class="btn btn-primary btn-lg btn-arrow" aria-label="Aprakstīt situāciju">
-          Aprakstīt situāciju
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="#buvniecibas-cels" class="btn-text" style="color:rgba(255,255,255,0.65);font-size:15px;">
-          Skatīt būvniecības posmus
-        </a>
+      <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties būvniecības uzdevumu">
+        <a href="/nodosana-ekspluatacija.html" class="hero-task-card">Nodot māju ekspluatācijā</a>
+        <a href="/bis-dokumentacija.html" class="hero-task-card">Sakārtot BIS dokumentāciju</a>
+        <a href="/legalizacija.html" class="hero-task-card">Legalizēt būvi</a>
+        <a href="/buvdarbu-vadiba.html" class="hero-task-card">Būvniecība jau notiek</a>
+        <a href="/privatmaju-buvnieciba.html" class="hero-task-card">Uzbūvēt privātmāju</a>
+        <a href="/pilna-cikla-buvnieciba.html" class="hero-task-card">Industriālie projekti</a>
       </div>
-
-      <p class="hero__trust reveal reveal-delay-4" aria-label="Papildu informācija">
-        <a href="/buvdarbu-vadiba.html">Būvdarbi</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/izpilddokumentacija.html">Būvniecības dokumentācija</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/buvuzraudziba.html">Būvuzraudzība</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/legalizacija.html">Legalizācija</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/geodezija.html">Ģeodēzija</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/elektroinstalaciju-parbaudes.html">Elektroinstalāciju pārbaudes</a>
-        <span class="hero__trust-dot" aria-hidden="true">·</span>
-        <a href="/tames-apdrosinasanas-gadijumiem.html">Tāmes apdrošināšanas gadījumiem</a>
-      </p>
     </div>
 
     <div class="hero__coords" aria-hidden="true">56.9460° N · 24.1059° E · RĪGA</div>
@@ -2302,34 +2363,53 @@ input, textarea { font-family: var(--font); }
   <section class="entry-paths" aria-labelledby="entry-paths-heading">
     <div class="container">
       <div class="entry-paths__header">
-        <p class="section-label reveal">Ar ko sākt</p>
-        <h2 id="entry-paths-heading" class="reveal reveal-delay-1">Izvēlieties tuvāko situāciju.</h2>
-        <p class="entry-paths__intro reveal reveal-delay-2">
-          Nav jāzina precīzs pakalpojuma nosaukums. Sāciet ar to, kas jums šobrīd ir vajadzīgs.
-        </p>
+        <p class="section-label reveal">Pēc izvēles</p>
+        <h2 id="entry-paths-heading" class="reveal reveal-delay-1">Par mūsu pakalpojumiem</h2>
       </div>
 
-      <div class="entry-paths__grid">
-        <a href="/pilna-cikla-buvnieciba.html" class="entry-card entry-card--primary reveal">
-          <p class="entry-card__kicker">Būvniecība</p>
-          <h3 class="entry-card__title">Gribu būvēt.</h3>
-          <p class="entry-card__summary">Vajadzīgs būvniecības partneris, kas saprot būvdarbus, dokumentāciju un ceļu līdz nodošanai ekspluatācijā.</p>
-          <span class="entry-card__link">Skatīt pilna cikla būvniecību <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
+      <div class="entry-paths__copy">
+        <p class="entry-paths__intro">
+          No pirmajiem dokumentiem līdz būvdarbiem un ēkas nodošanai ekspluatācijā.
+        </p>
+        <p>
+          Nav jāzina precīzs pakalpojuma nosaukums. Sāciet ar to, kas jums šobrīd ir vajadzīgs.
+        </p>
+        <p>
+          Pakalpojumu ceļš sākas ar tuvāko situāciju: "Gribu būvēt", "Ir jāatrisina esoša situācija" vai "Tāmes apdrošināšanas gadījumiem".
+        </p>
+        <p>
+          Vajadzīgs būvniecības partneris, kas saprot būvdarbus, dokumentāciju un ceļu līdz nodošanai ekspluatācijā. Būvatļauja, būvniecības dokumentācija, legalizācija, trūkstoši dokumenti vai nodošana ekspluatācijā tiek skatīti kā viens praktisks process.
+        </p>
+        <p>
+          Palīdzam tehniski pamatot pienākošās atlīdzības apjomu ar remonta tāmi un bojājumu dokumentāciju, kā arī sakārtot objektu, ja situācija jau ir sākusies vai process ir apstājies.
+        </p>
 
-        <a href="#papildu-pakalpojumi" class="entry-card reveal reveal-delay-1">
-          <p class="entry-card__kicker">Dokumenti un process</p>
-          <h3 class="entry-card__title">Ir jāatrisina esoša situācija.</h3>
-          <p class="entry-card__summary">Būvatļauja, būvniecības dokumentācija, legalizācija, trūkstoši dokumenti vai nodošana ekspluatācijā.</p>
-          <span class="entry-card__link">Skatīt visus pakalpojumus <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
+        <div class="entry-paths__links" aria-label="Pakalpojumu saites">
+          <a href="/buvdarbu-vadiba.html">Būvdarbi</a>
+          <a href="/izpilddokumentacija.html">Būvniecības dokumentācija</a>
+          <a href="/buvuzraudziba.html">Būvuzraudzība</a>
+          <a href="/legalizacija.html">Legalizācija</a>
+          <a href="/geodezija.html">Ģeodēzija</a>
+          <a href="/elektroinstalaciju-parbaudes.html">Elektroinstalāciju pārbaudes</a>
+          <a href="/tames-apdrosinasanas-gadijumiem.html">Tāmes apdrošināšanas gadījumiem</a>
+        </div>
 
-        <a href="/tames-apdrosinasanas-gadijumiem.html" class="entry-card reveal reveal-delay-2">
-          <p class="entry-card__kicker">Apdrošināšana</p>
-          <h3 class="entry-card__title">Tāmes apdrošināšanas gadījumiem</h3>
-          <p class="entry-card__summary">Palīdzam tehniski pamatot pienākošās atlīdzības apjomu ar remonta tāmi un bojājumu dokumentāciju.</p>
-          <span class="entry-card__link">Pieteikt tāmi <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </a>
+        <div class="entry-paths__actions">
+          <a href="#cta" class="btn btn-primary btn-arrow" aria-label="Aprakstīt situāciju">
+            Aprakstīt situāciju
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#buvniecibas-cels" class="btn-text btn-arrow">
+            Skatīt būvniecības posmus
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#papildu-pakalpojumi" class="btn-text btn-arrow">
+            Skatīt visus pakalpojumus
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -3035,6 +3115,3 @@ input, textarea { font-family: var(--font); }
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>
-
-
-
