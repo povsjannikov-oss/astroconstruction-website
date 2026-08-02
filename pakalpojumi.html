@@ -136,7 +136,8 @@ body.services-page .service-section{padding:36px 0!important}
 body.services-page .service-section:first-child{padding-top:0!important}
 body.services-page .service-section__head{margin-bottom:16px!important;max-width:760px!important}
 body.services-page .service-section__head .label{margin-bottom:8px!important}
-body.services-page .service-section__head h2{font-size:clamp(24px,3vw,36px)!important;line-height:1.08!important}
+body.services-page .service-section__head h2{display:flex;align-items:center;gap:12px;font-size:clamp(24px,3vw,36px)!important;line-height:1.08!important}
+body.services-page .service-section__head h2::before{content:"";width:18px;height:18px;flex:0 0 18px;border:1px solid rgba(200,169,126,.58);border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--c-sand) 0 2px,transparent 2.5px)}
 body.services-page .service-section__head p{margin-top:8px!important;font-size:15px!important;line-height:1.45!important;max-width:620px!important}
 body.services-page .service-grid{gap:12px!important}
 body.services-page .service-card{position:relative;display:grid!important;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;column-gap:14px;row-gap:6px;min-height:128px!important;height:128px;padding:18px 18px 16px!important;overflow:hidden}
@@ -147,6 +148,7 @@ body.services-page .service-card__link{grid-column:2;grid-row:1 / span 2;align-s
 body.services-page .service-card__link::after{content:"→";font-size:20px;line-height:1}
 body.services-page .service-section--build{margin-top:28px!important;padding:46px 0!important;background:linear-gradient(135deg,#0f0f0e,#1b1a18)!important}
 body.services-page .service-section--build .service-card__link{border-color:rgba(223,201,166,.42)}
+body.services-page .service-section--build .service-section__head h2::before{border-color:rgba(223,201,166,.7);background:radial-gradient(circle at 50% 50%,var(--c-sand-light) 0 2px,transparent 2.5px)}
 body.services-page .services-seo{padding:72px 0!important}
 body.services-page .seo-grid{gap:16px!important}
 body.services-page .seo-block{padding:22px!important}
@@ -157,11 +159,12 @@ body.services-page .services-faq .section-head h2{font-size:clamp(30px,4vw,52px)
 body.services-page .faq__question{min-height:58px;padding:18px 20px;font-size:17px}
 body.services-page .faq__answer{padding:0 20px 20px}
 @media(max-width:640px){
-  body.services-page .hero{height:238px!important;padding:calc(var(--nav-h,72px) + 12px) 0 22px!important}
+  body.services-page .hero{height:238px!important;padding:calc(var(--nav-h,72px) + 2px) 0 32px!important}
+  body.services-page .hero__inner{transform:translateY(-12px)!important}
   body.services-page .hero .breadcrumbs{margin-bottom:12px!important}
   body.services-page .hero .label{margin-bottom:8px!important}
   body.services-page .hero h1{font-size:clamp(34px,10vw,40px)!important;line-height:1.06!important;margin-bottom:8px!important}
-  body.services-page .hero__lead{font-size:15px!important;line-height:1.36!important}
+  body.services-page .hero__lead{font-size:15px!important;line-height:1.36!important;margin-bottom:10px!important}
   body.services-page .popular-services{padding:16px 0 6px}
   body.services-page .popular-services__box{padding:14px;gap:12px}
   body.services-page .popular-services__head{display:block}
@@ -173,7 +176,8 @@ body.services-page .faq__answer{padding:0 20px 20px}
   body.services-page .services-catalog{padding-top:14px}
   body.services-page .service-section{padding:28px 0!important}
   body.services-page .service-section__head{margin-bottom:12px!important}
-  body.services-page .service-section__head h2{font-size:24px!important}
+  body.services-page .service-section__head h2{gap:10px;font-size:24px!important}
+  body.services-page .service-section__head h2::before{width:16px;height:16px;flex-basis:16px}
   body.services-page .service-section__head p{font-size:14px!important;line-height:1.4!important}
   body.services-page .service-card{height:122px;min-height:122px!important;padding:16px!important}
   body.services-page .service-card h3{font-size:17px!important}
@@ -495,8 +499,25 @@ body.services-page .faq__answer{padding:0 20px 20px}
 <script>
 const nav=document.getElementById('nav');
 const stickyBar=document.getElementById('stickyBar');
-const onScroll=()=>{const y=window.scrollY;nav.classList.toggle('scrolled',y>20);stickyBar.classList.toggle('visible',y>520)};
-window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+let lastScrollY=window.scrollY;
+let stickyTicking=false;
+const updateStickyBar=()=>{
+  const y=window.scrollY;
+  const scrollingDown=y>lastScrollY+6;
+  const blocked=document.body.classList.contains('astro-consent-open')||document.getElementById('astro-consent-banner')||nav.classList.contains('open');
+  nav.classList.toggle('scrolled',y>20);
+  stickyBar.classList.toggle('visible',y>520&&!scrollingDown&&!blocked);
+  lastScrollY=y;
+  stickyTicking=false;
+};
+const onScroll=()=>{
+  if(stickyTicking)return;
+  stickyTicking=true;
+  requestAnimationFrame(updateStickyBar);
+};
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',updateStickyBar,{passive:true});
+updateStickyBar();
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('.faq__question').forEach(button=>{button.addEventListener('click',()=>{const item=button.closest('.faq__item');const isOpen=item.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen))})});
