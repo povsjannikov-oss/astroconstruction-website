@@ -228,8 +228,8 @@ button { border: 0; background: none; cursor: pointer; }
 .intro__text { display: grid; gap: 22px; font-size: 19px; color: #3c3c3a; max-width: 760px; }
 .intro__panel { background: var(--c-graphite); color: var(--c-white); padding: var(--sp-5); border-radius: var(--radius-md); }
 .intro__panel-title { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--c-sand-light); margin-bottom: var(--sp-3); font-weight: var(--fw-semibold); }
-.intro__facts { display: grid; gap: 22px; }
-.fact { padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.intro__facts { display: grid; gap: 20px; }
+.fact { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.12); }
 .fact:last-child { border-bottom: 0; padding-bottom: 0; }
 .fact__value { display: block; font-size: 42px; line-height: 1; font-weight: var(--fw-light); margin-bottom: 6px; }
 .fact__label { color: rgba(255,255,255,.7); font-size: 14px; }
@@ -431,10 +431,6 @@ button { border: 0; background: none; cursor: pointer; }
             <div class="fact">
               <span class="fact__value">2007</span>
               <span class="fact__label">praktiska pieredze būvniecības procesos kopš 2007. gada</span>
-            </div>
-            <div class="fact">
-              <span class="fact__value">2016</span>
-              <span class="fact__label">projektu vadības pieredze kopš 2016. gada</span>
             </div>
             <div class="fact">
               <span class="fact__value">19981</span>
@@ -679,6 +675,5 @@ document.querySelectorAll('.reveal').forEach(element => observer.observe(element
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>
-
 
 
