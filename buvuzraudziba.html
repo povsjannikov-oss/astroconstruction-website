@@ -454,36 +454,41 @@ input,textarea{font-family:var(--font)}
 </head>
 <body>
 <!-- NAV -->
-<nav class="nav" id="nav" role="navigation" aria-label="Galvenā navigācija">
+<nav class="nav" id="nav" aria-label="Galvenā navigācija">
   <div class="nav__inner">
-    <a href="/" class="nav__logo" aria-label="ASTRO CONSTRUCTION — sākumlapa">ASTRO CONSTRUCTION</a>
-    <div class="nav__links" role="list">
-      <a href="/index.html#pakalpojumi" class="nav__link" role="listitem">Pakalpojumi</a>
-      <a href="/par-mums.html" class="nav__link" role="listitem">Par mums</a>
-      <a href="/index.html#pakalpojumi" class="nav__link" role="listitem">Projekti</a>
-      <a href="/kontakti.html" class="nav__link" role="listitem">Kontakti</a>
-    </div>
+    <a href="/" class="nav__logo" aria-label="ASTRO CONSTRUCTION — sākums">ASTRO CONSTRUCTION</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="/pakalpojumi.html" class="nav__link">Pakalpojumi</a></li>
+      <li><a href="/projekti.html" class="nav__link">Projekti</a></li>
+      <li><a href="/#buvniecibas-cels" class="nav__link">Būvniecības ceļš</a></li>
+      <li><a href="/par-mums.html" class="nav__link">Par mums</a></li>
+      <li><a href="/kontakti.html" class="nav__link">Kontakti</a></li>
+    </ul>
+
     <div class="nav__actions">
       <a href="tel:+37129963618" class="nav__phone">+371 29 963 618</a>
-      <a href="#sazinaties" class="btn-nav">Sazināties</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Atvērt izvēlni" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <a href="/#cta" class="btn btn-primary" aria-label="Sazināties ar ASTRO CONSTRUCTION">Sazināties</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobilā izvēlne" aria-hidden="true" inert hidden>
-  <nav class="nav__mobile-links">
-    <a href="/index.html#pakalpojumi" class="nav__mobile-link">Pakalpojumi</a>
-    <a href="/par-mums.html" class="nav__mobile-link">Par mums</a>
-    <a href="/index.html#pakalpojumi" class="nav__mobile-link">Projekti</a>
-    <a href="/kontakti.html" class="nav__mobile-link">Kontakti</a>
-  </nav>
+<div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobilā navigācija" aria-hidden="true" aria-modal="true" inert hidden>
+  <ul class="nav__mobile-links" role="list">
+    <li><a href="/pakalpojumi.html" class="nav__mobile-link">Pakalpojumi</a></li>
+    <li><a href="/projekti.html" class="nav__mobile-link">Projekti</a></li>
+    <li><a href="/#buvniecibas-cels" class="nav__mobile-link">Būvniecības ceļš</a></li>
+    <li><a href="/par-mums.html" class="nav__mobile-link">Par mums</a></li>
+    <li><a href="/kontakti.html" class="nav__mobile-link">Kontakti</a></li>
+  </ul>
   <div class="nav__mobile-contact">
     <a href="tel:+37129963618">+371 29 963 618</a>
-    <a href="mailto:info@astroconstruction.lv">info@astroconstruction.lv</a>
+    <a href="https://wa.me/37129963618" target="_blank" rel="noopener">WhatsApp ↗</a>
   </div>
 </div>
 
@@ -1116,7 +1121,7 @@ window.addEventListener('scroll', onScroll, {passive: true});
 onScroll();
 
 const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
   const open = hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open', open);

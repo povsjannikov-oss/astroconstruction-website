@@ -35,16 +35,43 @@
   <link rel="stylesheet" href="/astro-lead-modal.css?v=20260722-city2">
 </head>
 <body>
-<header class="nav">
-  <div class="container nav__inner">
-    <a class="brand" href="/index.html">ASTRO CONSTRUCTION</a>
-    <nav class="nav__links" aria-label="Galvenā navigācija">
-      <a href="/pakalpojumi.html">Pakalpojumi</a>
-      <a href="/par-mums.html">Par mums</a>
-      <a href="/kontakti.html">Kontakti</a>
-    </nav>
+<nav class="nav" id="nav" aria-label="Galvenā navigācija">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="ASTRO CONSTRUCTION — sākums">ASTRO CONSTRUCTION</a>
+
+    <ul class="nav__links" role="list">
+      <li><a href="/pakalpojumi.html" class="nav__link">Pakalpojumi</a></li>
+      <li><a href="/projekti.html" class="nav__link">Projekti</a></li>
+      <li><a href="/#buvniecibas-cels" class="nav__link">Būvniecības ceļš</a></li>
+      <li><a href="/par-mums.html" class="nav__link">Par mums</a></li>
+      <li><a href="/kontakti.html" class="nav__link">Kontakti</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <a href="tel:+37129963618" class="nav__phone">+371 29 963 618</a>
+      <a href="/#cta" class="btn btn-primary" aria-label="Sazināties ar ASTRO CONSTRUCTION">Sazināties</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Atvērt izvēlni" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
-</header>
+</nav>
+
+<div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Mobilā navigācija" aria-hidden="true" aria-modal="true" inert hidden>
+  <ul class="nav__mobile-links" role="list">
+    <li><a href="/pakalpojumi.html" class="nav__mobile-link">Pakalpojumi</a></li>
+    <li><a href="/projekti.html" class="nav__mobile-link">Projekti</a></li>
+    <li><a href="/#buvniecibas-cels" class="nav__mobile-link">Būvniecības ceļš</a></li>
+    <li><a href="/par-mums.html" class="nav__mobile-link">Par mums</a></li>
+    <li><a href="/kontakti.html" class="nav__mobile-link">Kontakti</a></li>
+  </ul>
+  <div class="nav__mobile-contact">
+    <a href="tel:+37129963618">+371 29 963 618</a>
+    <a href="https://wa.me/37129963618" target="_blank" rel="noopener">WhatsApp ↗</a>
+  </div>
+</div>
 <main>
   <section class="hero">
     <div class="container">

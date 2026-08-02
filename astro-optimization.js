@@ -8,6 +8,7 @@
     const isHome = path === '' || path === '/index.html';
     document.body.classList.toggle('astro-page-home', isHome);
     document.body.classList.toggle('astro-page-inner', !isHome);
+    setupNavigationScroll();
     syncStickyBarState();
 
     window.addEventListener('resize', function () {
@@ -57,6 +58,19 @@
     });
   }
 
+  function setupNavigationScroll() {
+    const nav = document.getElementById('nav') || document.querySelector('.nav');
+    if (!nav || nav.dataset.astroScrollReady === 'true') return;
+    nav.dataset.astroScrollReady = 'true';
+
+    function updateNavState() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    updateNavState();
+  }
+
   function setupMobileNavigation() {
     const nav = document.querySelector('.nav');
     const toggle = document.querySelector('.nav__toggle, .nav__hamburger, #hamburger, [aria-controls="mobileMenu"], [aria-controls="mobile-menu"]');
@@ -94,12 +108,14 @@
 
     function openMenu() {
       if (nav) nav.classList.add('open');
+      toggle.classList.add('open');
       menu.hidden = false;
       menu.inert = false;
       menu.setAttribute('aria-hidden', 'false');
       setMenuFocusable(true);
       menu.classList.add('open');
       toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
       const first = focusableElements(menu)[0];
       if (first) first.focus({ preventScroll: true });
     }
@@ -107,11 +123,13 @@
     function closeMenu(returnFocus) {
       setMenuFocusable(false);
       if (nav) nav.classList.remove('open');
+      toggle.classList.remove('open');
       menu.classList.remove('open');
       menu.inert = true;
       menu.setAttribute('aria-hidden', 'true');
       menu.hidden = true;
       toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
       if (returnFocus) toggle.focus({ preventScroll: true });
     }
 
