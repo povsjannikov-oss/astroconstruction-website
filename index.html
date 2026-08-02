@@ -598,13 +598,13 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero h1 {
-  font-size: clamp(36px, 10vw, 76px);
+  font-size: clamp(35px, 9.2vw, 72px);
   font-weight: var(--fw-light);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
   color: var(--c-white);
-  max-width: 820px;
-  margin-bottom: var(--sp-4);
+  max-width: 880px;
+  margin-bottom: clamp(18px, 3vw, 26px);
 }
 
 .hero__subline {
@@ -619,8 +619,8 @@ body.astro-page-home .nav:not(.scrolled) {
 .hero-task-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  max-width: 760px;
+  gap: 8px;
+  max-width: 800px;
   margin-top: 0;
 }
 
@@ -637,14 +637,14 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero-task-card {
-  min-height: 74px;
+  min-height: 66px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  border: 1px solid rgba(255,255,255,0.13);
+  padding: 14px 15px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left-color: rgba(200,169,126,0.46);
   border-radius: var(--radius-sm);
-  background: rgba(255,255,255,0.055);
+  background: rgba(255,255,255,0.045);
   color: var(--c-white);
   font-size: clamp(14px, 2.7vw, 17px);
   font-weight: var(--fw-semibold);
@@ -665,18 +665,14 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero-task-card::before {
-  content: "✓";
-  flex: 0 0 auto;
-  color: var(--c-sand);
-  font-size: 15px;
-  line-height: 1;
+  content: none;
 }
 
 .hero-helper-link {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin-top: 8px;
+  margin-top: 6px;
   color: rgba(255,255,255,0.64);
   font-size: 14px;
   font-weight: var(--fw-medium);
@@ -700,15 +696,17 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero-construction {
-  max-width: 760px;
-  margin-top: var(--sp-4);
-  padding-top: var(--sp-4);
-  border-top: 1px solid rgba(200,169,126,0.36);
+  max-width: 800px;
+  margin-top: 14px;
+  padding: 15px;
+  border: 1px solid rgba(200,169,126,0.28);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.035);
   color: var(--c-white);
 }
 
 .hero-construction__title {
-  margin-bottom: 12px;
+  margin-bottom: 6px;
   color: var(--c-sand);
   font-size: 13px;
   font-weight: var(--fw-semibold);
@@ -718,7 +716,8 @@ body.astro-page-home .nav:not(.scrolled) {
 
 .hero-construction__text {
   max-width: 620px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  color: rgba(255,255,255,0.62);
   font-size: 13.5px;
   line-height: 1.45;
 }
@@ -726,18 +725,18 @@ body.astro-page-home .nav:not(.scrolled) {
 .hero-construction__links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .hero-construction__links a {
-  min-height: 58px;
+  min-height: 52px;
   display: inline-flex;
   align-items: center;
-  padding: 12px 14px;
-  border: 1px solid rgba(255,255,255,0.16);
+  padding: 11px 12px;
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius-sm);
   color: rgba(255,255,255,0.9);
-  font-size: clamp(14.5px, 1.5vw, 16px);
+  font-size: clamp(13.5px, 1.45vw, 15.5px);
   font-weight: var(--fw-semibold);
   line-height: 1.22;
   text-decoration: none;
@@ -758,18 +757,18 @@ body.astro-page-home .nav:not(.scrolled) {
 
 @media (max-width: 430px) {
   .hero-task-grid {
-    gap: 8px;
+    gap: 7px;
   }
 
   .hero-task-card {
-    min-height: 62px;
+    min-height: 58px;
     padding: 10px 11px;
-    font-size: 13.5px;
+    font-size: 13.4px;
   }
 
   .hero-construction {
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 12px;
+    padding: 13px;
   }
 
   .hero-construction__text {
@@ -778,14 +777,14 @@ body.astro-page-home .nav:not(.scrolled) {
   }
 
   .hero-construction__links {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
   }
 
   .hero-construction__links a {
     min-height: 48px;
-    padding: 10px 12px;
-    font-size: 13.5px;
+    padding: 10px;
+    font-size: 12.8px;
   }
 }
 
@@ -2451,24 +2450,25 @@ body.astro-page-home .nav:not(.scrolled) {
       </p>
 
       <h1 class="reveal reveal-delay-1">
-        Dokumenti, būvdarbi un nodošana ekspluatācijā.
+        Būvniecības process no dokumentiem līdz nodošanai.
       </h1>
 
       <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties dokumentu un atļauju uzdevumu">
-        <a href="/nodosana-ekspluatacija.html" class="hero-task-card">Nodot māju ekspluatācijā</a>
-        <a href="/bis-dokumentacija.html" class="hero-task-card">Sakārtot BIS dokumentāciju</a>
-        <a href="/legalizacija.html" class="hero-task-card">Legalizēt būvi</a>
-        <a href="/buvatlaujas-sanemsana.html" class="hero-task-card">Saņemt būvatļauju</a>
-        <a href="/bun-izpilde.html" class="hero-task-card">Izpildīt BUN nosacījumus</a>
-        <a href="/tames-apdrosinasanas-gadijumiem.html" class="hero-task-card">Sagatavot tāmi apdrošinātājam</a>
+        <a href="/nodosana-ekspluatacija.html" class="hero-task-card">Jānodod māja ekspluatācijā</a>
+        <a href="/bis-dokumentacija.html" class="hero-task-card">Jāsakārto BIS dokumentācija</a>
+        <a href="/legalizacija.html" class="hero-task-card">Jālegalizē būve</a>
+        <a href="/buvatlaujas-sanemsana.html" class="hero-task-card">Jāsaņem būvatļauja</a>
+        <a href="/bun-izpilde.html" class="hero-task-card">Jāizpilda BUN nosacījumi</a>
+        <a href="/tames-apdrosinasanas-gadijumiem.html" class="hero-task-card">Apdrošinātājs prasa tāmi</a>
       </div>
 
-      <a href="#astro-lead-modal" class="hero-helper-link hero-helper-cta reveal reveal-delay-4">Nezināt, kurš pakalpojums nepieciešams? Aprakstiet situāciju.</a>
+      <a href="#astro-lead-modal" class="hero-helper-link hero-helper-cta reveal reveal-delay-4">Nezināt, ar ko sākt? Aprakstiet situāciju.</a>
 
       <div class="hero-construction reveal reveal-delay-4" aria-labelledby="hero-construction-heading">
         <p class="hero-construction__title" id="hero-construction-heading">Būvniecība</p>
+        <p class="hero-construction__text">Ja process vēl tikai sākas vai jāvada darbi objektā.</p>
         <div class="hero-construction__links" aria-label="Būvniecības virzieni">
-          <a href="/privatmaju-buvnieciba.html">Dzīvojamo māju būvniecība</a>
+          <a href="/privatmaju-buvnieciba.html">Privātmāju būvniecība</a>
           <a href="/pilna-cikla-buvnieciba.html">Pilna cikla būvniecība</a>
           <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
           <a href="/geodezija-geologija.html">Ģeodēzija un ģeoloģija</a>
