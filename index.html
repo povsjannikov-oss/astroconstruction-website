@@ -635,6 +635,12 @@ input, textarea { font-family: var(--font); }
   }
 }
 
+@media (max-width: 859px) {
+  .hero-task-grid .hero-task-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
 .hero-task-card {
   min-height: 74px;
   display: flex;
@@ -671,6 +677,62 @@ input, textarea { font-family: var(--font); }
   line-height: 1;
 }
 
+.hero-construction {
+  max-width: 760px;
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.66);
+}
+
+.hero-construction__title {
+  margin-bottom: 4px;
+  color: var(--c-sand);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-construction__text {
+  max-width: 620px;
+  margin-bottom: 10px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.hero-construction__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-construction__links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,0.78);
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.hero-construction__links a:hover {
+  color: var(--c-white);
+  border-color: rgba(200,169,126,0.42);
+  background: rgba(255,255,255,0.045);
+}
+
+.hero-construction__links a:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px rgba(200,169,126,0.18);
+}
+
 @media (max-width: 430px) {
   .hero-task-grid {
     gap: 8px;
@@ -680,6 +742,26 @@ input, textarea { font-family: var(--font); }
     min-height: 62px;
     padding: 10px 11px;
     font-size: 13.5px;
+  }
+
+  .hero-construction {
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .hero-construction__text {
+    margin-bottom: 8px;
+    font-size: 12.5px;
+  }
+
+  .hero-construction__links {
+    gap: 6px;
+  }
+
+  .hero-construction__links a {
+    flex: 1 1 calc(50% - 6px);
+    padding: 0 10px;
+    font-size: 12.5px;
   }
 }
 
@@ -2376,13 +2458,23 @@ input, textarea { font-family: var(--font); }
         Izvēlieties savu situāciju un ejiet uz atbilstošo risinājumu.
       </p>
 
-      <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties būvniecības uzdevumu">
+      <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties dokumentu un atļauju uzdevumu">
         <a href="/nodosana-ekspluatacija.html" class="hero-task-card">Nodot māju ekspluatācijā</a>
         <a href="/bis-dokumentacija.html" class="hero-task-card">Sakārtot BIS dokumentāciju</a>
         <a href="/legalizacija.html" class="hero-task-card">Legalizēt būvi</a>
-        <a href="/buvdarbu-vadiba.html" class="hero-task-card">Būvniecība jau notiek</a>
-        <a href="/privatmaju-buvnieciba.html" class="hero-task-card">Uzbūvēt privātmāju</a>
-        <a href="/pilna-cikla-buvnieciba.html" class="hero-task-card">Industriālie projekti</a>
+        <a href="/bun-izpilde.html" class="hero-task-card">Būvatļauja un BUN</a>
+        <a href="/tames-apdrosinasanas-gadijumiem.html" class="hero-task-card">Sagatavot tāmi apdrošinātājam</a>
+      </div>
+
+      <div class="hero-construction reveal reveal-delay-4" aria-labelledby="hero-construction-heading">
+        <p class="hero-construction__title" id="hero-construction-heading">Būvniecība</p>
+        <p class="hero-construction__text">Māju būvniecība, būvdarbu vadība un būvniecības sagatavošanas darbi.</p>
+        <div class="hero-construction__links" aria-label="Būvniecības virzieni">
+          <a href="/privatmaju-buvnieciba.html">Dzīvojamo māju būvniecība</a>
+          <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
+          <a href="/pilna-cikla-buvnieciba.html">Pilna cikla būvniecība</a>
+          <a href="/geodezija-geologija.html">Ģeodēzija un ģeoloģija</a>
+        </div>
       </div>
     </div>
 
