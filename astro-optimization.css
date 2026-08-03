@@ -823,6 +823,84 @@ body.astro-consent-open .astro-floating-lead {
   body.astro-page-inner .hero + .section .contact-card {
     padding-top: 24px !important;
   }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero {
+    min-height: min(600px, 66svh) !important;
+    padding-top: calc(var(--nav-h, 72px) + 30px) !important;
+    padding-bottom: 34px !important;
+    align-items: flex-start !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero__inner {
+    padding-top: 52px !important;
+    padding-bottom: 42px !important;
+    transform: translateY(-18px) !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero h1 {
+    font-size: clamp(42px, 5.2vw, 72px) !important;
+    line-height: 1.04 !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero .breadcrumbs {
+    margin-bottom: 24px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero .label,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero .section-label {
+    margin-bottom: 12px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero__lead {
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+    margin-bottom: 16px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero__actions,
+  body:not(.astro-page-home):not(.astro-page-inner) .actions {
+    margin-top: 16px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section--white,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section--light {
+    padding-top: 24px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .section-head,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .head {
+    max-width: 720px !important;
+    margin-bottom: 12px !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .section-head h2,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .head h2 {
+    font-size: clamp(20px, 1.7vw, 26px) !important;
+    line-height: 1.16 !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .section-head p:not(.label):not(.section-label),
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .head p:not(.label):not(.section-label) {
+    max-width: 640px !important;
+    max-height: 2.7em !important;
+    margin-top: 6px !important;
+    overflow: hidden !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner):has(.hero + .section .service-grid, .hero + .section .portfolio-grid, .hero + .section .grid--three, .hero + .section .kc-public-topic-grid, .hero + .section .contact-cards) .hero h1 {
+    font-size: clamp(42px, 4.2vw, 58px) !important;
+    line-height: 1.05 !important;
+  }
+
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .project-card,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .card,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .kc-public-topic,
+  body:not(.astro-page-home):not(.astro-page-inner) .hero + .section .contact-card {
+    padding-top: 24px !important;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1199px) {
