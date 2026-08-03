@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
+      <script>
+  (function () {
+    var consent = 'denied';
+    try {
+      consent = localStorage.getItem('astro_cookie_consent') === 'accepted' ? 'granted' : 'denied';
+    } catch (error) {}
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    window.gtag = window.gtag || gtag;
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
       'ad_personalization': 'denied',
       'analytics_storage': 'denied'
     });
+    if (consent === 'granted') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    }
     gtag('js', new Date());
-    gtag('config', 'G-EMQY2FGLHD');
+    gtag('config', 'G-EMQY2FGLHD', { 'send_page_view': false });
+  })();
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQY2FGLHD"></script>
-  <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "xwlhus001w");
-  </script>
 <title>Privātuma politika | ASTRO CONSTRUCTION</title>
   <meta name="description" content="Informācija par personas datu apstrādi, sazinoties ar SIA ASTRO CONSTRUCTION.">
   <link rel="canonical" href="https://astroconstruction.lv/privatuma-politika.html">
@@ -140,8 +148,13 @@
       </div>
       <div class="block">
         <h2>Sīkdatnes</h2>
-        <p>Vietnē var tikt izmantots Google Tag Manager un Google Analytics 4, lai saprastu, kuras lapas un saziņas iespējas palīdz apmeklētājiem atrast vajadzīgo informāciju. Analītikas dati netiek izmantoti, lai vietnē nosūtītu vārdu, tālruni, e-pastu, adresi, ziņas tekstu vai pievienoto failu nosaukumus.</p>
-        <p>Analītikas sīkdatnes tiek izmantotas tikai pēc jūsu piekrišanas. Jūs varat atteikties no analītikas sīkdatnēm vai vēlāk mainīt izvēli, izmantojot vietnē pieejamo sīkdatņu izvēles pogu.</p>
+        <p>Vietne izmanto nepieciešamās tehniskās sīkdatnes un lokālo pārlūka glabātuvi, lai nodrošinātu vietnes darbību un saglabātu jūsu sīkdatņu izvēli. Šī izvēle tiek saglabāta pārlūkā ar atslēgu <code>astro_cookie_consent</code>, lai jautājums netiktu rādīts katrā lapā.</p>
+        <p>Pēc jūsu piekrišanas vietnē var tikt izmantots Google Analytics 4 (mērījuma ID <code>G-EMQY2FGLHD</code>) un Microsoft Clarity (projekta ID <code>xwlhus001w</code>). Šie rīki palīdz saprast, kuras lapas, navigācijas ceļi un saziņas iespējas apmeklētājiem ir noderīgas, kā arī pamanīt vietnes lietojamības problēmas.</p>
+        <p>Analītikas dati var ietvert lapas adresi, aptuvenu ierīces un pārlūka informāciju, notikuma laiku, mijiedarbību ar lapas elementiem, ritināšanu, klikšķus un līdzīgus vietnes lietošanas datus. Mēs apzināti nesūtām šiem rīkiem formās ievadītu vārdu, tālruni, e-pastu, adresi, ziņas tekstu, dokumentu saturu vai pievienoto failu nosaukumus.</p>
+        <p>Analītikas sīkdatņu un līdzīgu tehnoloģiju izmantošanas tiesiskais pamats ir jūsu piekrišana. Reklāmas, remarketinga vai personalizētas reklāmas piekrišana vietnē netiek prasīta un netiek piešķirta, jo šādi tagi pašlaik netiek izmantoti.</p>
+        <p>Google Analytics 4 var izmantot pirmās puses sīkdatnes, piemēram, <code>_ga</code> un ar <code>_ga_</code> sākas sīkdatnes. Microsoft Clarity var izmantot sīkdatnes, piemēram, <code>_clck</code> un <code>_clsk</code>. Precīzs glabāšanas termiņš var būt atkarīgs no pakalpojuma iestatījumiem un pārlūka, bet šo rīku sīkdatnes tiek aktivizētas tikai pēc piekrišanas analītikai.</p>
+        <p>Jūs varat jebkurā brīdī piekrist analītikai, noraidīt analītiku, izvēlēties tikai nepieciešamās sīkdatnes vai atsaukt iepriekš doto piekrišanu, izmantojot vietnes kājenē pieejamo pogu "Sīkdatņu iestatījumi". Atsaucot piekrišanu, vietne atjauno Google piekrišanas stāvokli uz <code>denied</code>, paziņo Microsoft Clarity par noraidītu analītikas piekrišanu un mēģina dzēst no šīs vietnes domēna tehniski dzēšamās analītikas sīkdatnes.</p>
+        <p>Papildu informācija par pakalpojumu sniedzēju datu apstrādi ir pieejama Google privātuma politikā (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>), Google Analytics palīdzības materiālos (<a href="https://support.google.com/analytics/answer/6004245" target="_blank" rel="noopener">support.google.com/analytics/answer/6004245</a>) un Microsoft privātuma paziņojumā (<a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">privacy.microsoft.com/privacystatement</a>).</p>
       </div>
       <div class="block">
         <h2>Kontaktinformācija</h2>

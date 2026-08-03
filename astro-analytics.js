@@ -1,7 +1,16 @@
 (function () {
   'use strict';
 
+  function hasAnalyticsConsent() {
+    try {
+      return localStorage.getItem('astro_cookie_consent') === 'accepted';
+    } catch (error) {
+      return false;
+    }
+  }
+
   function pushEvent(eventName, params) {
+    if (!hasAnalyticsConsent()) return;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(Object.assign({
       event: eventName,

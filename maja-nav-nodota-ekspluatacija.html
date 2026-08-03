@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
+      <script>
+  (function () {
+    var consent = 'denied';
+    try {
+      consent = localStorage.getItem('astro_cookie_consent') === 'accepted' ? 'granted' : 'denied';
+    } catch (error) {}
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    window.gtag = window.gtag || gtag;
     gtag('consent', 'default', {
       'ad_storage': 'denied',
       'ad_user_data': 'denied',
       'ad_personalization': 'denied',
       'analytics_storage': 'denied'
     });
+    if (consent === 'granted') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    }
     gtag('js', new Date());
-    gtag('config', 'G-EMQY2FGLHD');
+    gtag('config', 'G-EMQY2FGLHD', { 'send_page_view': false });
+  })();
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQY2FGLHD"></script>
-  <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "xwlhus001w");
-  </script>
 <title>Māja nav nodota ekspluatācijā | Ko darīt tālāk | ASTRO CONSTRUCTION</title>
   <meta name="description" content="Māja ir uzbūvēta, bet nav nodota ekspluatācijā? SIA ASTRO CONSTRUCTION organizē nepieciešamos darbus, dokumentāciju un nodošanas procesu līdz ēkas pieņemšanai ekspluatācijā.">
   <meta name="keywords" content="māja nav nodota ekspluatācijā, mājas nodošana ekspluatācijā, privātmājas nodošana ekspluatācijā, dokumenti nodošanai ekspluatācijā, izpilddokumentācija, atzinumi nodošanai ekspluatācijā, BIS nodošana ekspluatācijā">
