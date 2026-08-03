@@ -50,12 +50,15 @@
     return output;
   }
 
-  function track(eventName, params) {
+  function track(eventName, params, options) {
     if (!hasAnalyticsConsent()) return false;
     if (typeof window.gtag !== 'function') return false;
     const safeParams = filteredParams(eventName, params);
     if (!safeParams) return false;
     safeParams.send_to = GA_ID;
+    if (options && typeof options.event_callback === 'function') safeParams.event_callback = options.event_callback;
+    if (options && options.event_timeout) safeParams.event_timeout = options.event_timeout;
+    if (options && options.transport_type) safeParams.transport_type = options.transport_type;
     window.gtag('set', 'page_location', pageLocation());
     window.gtag('event', eventName, safeParams);
     return true;
@@ -95,6 +98,39 @@
     return normalized.indexOf(scheme) === 0 && normalized.slice(scheme.length).trim().length > 0;
   }
 
+  function followLink(link, href) {
+    const target = link.getAttribute('target');
+    if (target && target !== '_self') {
+      window.open(href, target);
+      return;
+    }
+    window.location.href = href;
+  }
+
+  function trackContactClick(event, link, eventName, location, options) {
+    const href = link.getAttribute('href') || '';
+    if (!hasAnalyticsConsent()) return;
+    event.preventDefault();
+
+    let followed = false;
+    const continueNavigation = function () {
+      if (followed) return;
+      followed = true;
+      followLink(link, href);
+    };
+
+    const trackOptions = {
+      event_callback: continueNavigation,
+      event_timeout: 700
+    };
+    if (options && options.transport_type) trackOptions.transport_type = options.transport_type;
+
+    const sent = track(eventName, { link_location: location }, trackOptions);
+
+    if (!sent) continueNavigation();
+    window.setTimeout(continueNavigation, 800);
+  }
+
   window.AstroAnalytics = Object.assign({}, window.AstroAnalytics || {}, {
     hasAnalyticsConsent: hasAnalyticsConsent,
     track: track,
@@ -110,12 +146,12 @@
     const location = linkLocation(link);
 
     if (isValidSchemeLink(href, 'tel:')) {
-      track('contact_phone_click', { link_location: location });
+      trackContactClick(event, link, 'contact_phone_click', location, { transport_type: 'beacon' });
       return;
     }
 
     if (isValidSchemeLink(href, 'mailto:')) {
-      track('contact_email_click', { link_location: location });
+      trackContactClick(event, link, 'contact_email_click', location);
     }
   }, true);
 })();
