@@ -1034,16 +1034,52 @@ body.astro-page-home .nav:not(.scrolled) {
 
 @media (min-width: 720px) {
   .entry-paths__overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .entry-service-group:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .entry-paths__overview {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .entry-service-group:last-child {
+    grid-column: auto;
   }
 }
 
 .entry-service-group {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 14px;
-  padding-top: var(--sp-2);
-  border-top: 1px solid var(--c-border);
+  min-height: 100%;
+  padding: clamp(22px, 3vw, 28px);
+  padding-right: clamp(48px, 5vw, 60px);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-white);
+  color: var(--c-graphite);
+  text-decoration: none;
+  transition: background 180ms var(--ease-out),
+              border-color 180ms var(--ease-out),
+              transform 180ms var(--ease-out);
+}
+
+.entry-service-group:hover {
+  background: var(--c-warm-white);
+  border-color: rgba(200,169,126,0.62);
+  transform: translateY(-1px);
+}
+
+.entry-service-group:focus-visible {
+  outline: 2px solid var(--c-sand);
+  outline-offset: 4px;
+  border-color: rgba(200,169,126,0.72);
 }
 
 .entry-service-group h3 {
@@ -1063,16 +1099,50 @@ body.astro-page-home .nav:not(.scrolled) {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 12px;
-  margin-top: 2px;
+  margin-top: 4px;
   color: var(--c-grey);
   font-size: 13.5px;
 }
 
-.entry-paths__links a {
+.entry-paths__links span {
   color: var(--c-graphite);
-  text-decoration: underline;
-  text-decoration-color: rgba(200,169,126,0.45);
-  text-underline-offset: 4px;
+  line-height: 1.45;
+}
+
+.entry-paths__links span::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--c-sand);
+  vertical-align: 0.16em;
+}
+
+.entry-paths__arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  color: var(--c-sand);
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 180ms var(--ease-out);
+}
+
+.entry-service-group:hover .entry-paths__arrow {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-service-group,
+  .entry-paths__arrow {
+    transition: none;
+  }
+
+  .entry-service-group:hover {
+    transform: none;
+  }
 }
 
 .entry-paths__actions {
@@ -2507,46 +2577,51 @@ body.astro-page-home .nav:not(.scrolled) {
         <p class="section-label reveal">Pēc izvēles</p>
         <h2 id="entry-paths-heading" class="reveal reveal-delay-1">Par mūsu pakalpojumiem</h2>
         <p class="entry-paths__intro">
-          ASTRO CONSTRUCTION palīdz sakārtot būvniecības procesu no dokumentācijas un BIS līdz būvdarbu vadībai un ēkas nodošanai ekspluatācijā.
+          ASTRO CONSTRUCTION nodrošina būvniecības procesa vadību — no dokumentācijas un BIS līdz būvdarbu vadībai un ēkas nodošanai ekspluatācijā.
         </p>
       </div>
 
       <div class="entry-paths__overview">
-        <article class="entry-service-group">
+        <a class="entry-service-group" href="/bis-dokumentacija.html" aria-label="Dokumentācija un BIS">
           <h3>Dokumentācija un BIS</h3>
           <p>
-            Palīdzam sakārtot BIS dokumentāciju, būvatļaujas un BUN jautājumus, izpilddokumentāciju un trūkstošos dokumentus vienotā procesā.
+            Būvniecības dokumentācija un BIS — būvatļaujas, BUN nosacījumi, izpilddokumentācija un trūkstošie dokumenti.
           </p>
           <div class="entry-paths__links" aria-label="Dokumentācijas pakalpojumu saites">
-            <a href="/bis-dokumentacija.html">BIS dokumentācija</a>
-            <a href="/bun-izpilde.html">BUN izpilde</a>
-            <a href="/izpilddokumentacija.html">Izpilddokumentācija</a>
+            <span>BIS dokumentācija</span>
+            <span>BUN izpilde</span>
+            <span>Izpilddokumentācija</span>
           </div>
-        </article>
+          <span class="entry-paths__arrow" aria-hidden="true">→</span>
+        </a>
 
-        <article class="entry-service-group">
+        <a class="entry-service-group" href="/nodosana-ekspluatacija.html" aria-label="Nodošana un legalizācija">
           <h3>Nodošana un legalizācija</h3>
           <p>
-            Koordinējam ēku nodošanu ekspluatācijā, būvju legalizāciju un nepieciešamo atzinumu vai dokumentu sakārtošanu pirms iesniegšanas.
+            Ēku nodošana ekspluatācijā, būvju legalizācija, nepieciešamo atzinumu un būvniecības dokumentu sagatavošana.
           </p>
           <div class="entry-paths__links" aria-label="Nodošanas un legalizācijas saites">
-            <a href="/nodosana-ekspluatacija.html">Nodošana ekspluatācijā</a>
-            <a href="/legalizacija.html">Legalizācija</a>
-            <a href="/trukst-izpilddokumentacijas.html">Trūkst dokumentu</a>
+            <span>Nodošana ekspluatācijā</span>
+            <span>Legalizācija</span>
+            <span>Trūkst dokumentu</span>
           </div>
-        </article>
+          <span class="entry-paths__arrow" aria-hidden="true">→</span>
+        </a>
 
-        <article class="entry-service-group">
+        <a class="entry-service-group" href="/pilna-cikla-buvnieciba.html" aria-label="Būvniecība un projektu vadība">
           <h3>Būvniecība un projektu vadība</h3>
           <p>
-            Strādājam ar privātmāju būvniecību, būvdarbu vadību, industriāliem un komerciāliem projektiem, kur vajadzīga pilna cikla koordinēšana.
+            Dzīvojamo māju, privātmāju, industriālo un komerciālo objektu būvniecība un būvdarbu vadība.
           </p>
           <div class="entry-paths__links" aria-label="Būvniecības un projektu vadības saites">
-            <a href="/privatmaju-buvnieciba.html">Privātmāju būvniecība</a>
-            <a href="/buvdarbu-vadiba.html">Būvdarbu vadība</a>
-            <a href="/pilna-cikla-buvnieciba.html">Pilna cikla būvniecība</a>
+            <span>Dzīvojamo māju būvniecība</span>
+            <span>Privātmāju būvniecība</span>
+            <span>Industriālo objektu būvniecība</span>
+            <span>Komerciālo objektu būvniecība</span>
+            <span>Būvdarbu vadība</span>
           </div>
-        </article>
+          <span class="entry-paths__arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </section>
