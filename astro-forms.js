@@ -13,11 +13,8 @@
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
   function pushDataLayer(eventName, params) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({
-      event: eventName,
-      page_path: window.location.pathname
-    }, params || {}));
+    void eventName;
+    void params;
   }
 
   function persistUtmParams() {
@@ -71,6 +68,9 @@
     '/tames-apdrosinasanas-gadijumiem.html': { type: 'Apdrošināšanas tāme', service: 'Tāme apdrošināšanas gadījumam' }
   };
 
+  const FORM_IDS_BY_NAME = {};
+  let anonymousFormCount = 0;
+
   const styles = document.createElement('style');
   styles.textContent = [
     '.astro-form-consent{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.62);margin:14px 0 14px;}',
@@ -89,6 +89,69 @@
       type: document.title || 'Kontaktforma',
       service: ''
     };
+  }
+
+  function slugify(value) {
+    return String(value || 'lead-form')
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 60) || 'lead-form';
+  }
+
+  function ensureFormTrackingMeta(form, config) {
+    if (!form.dataset.astroFormId) {
+      if (form.id) {
+        form.dataset.astroFormId = form.id;
+      } else if (form.getAttribute('name')) {
+        form.dataset.astroFormId = slugify(form.getAttribute('name'));
+      } else {
+        const base = slugify(config.type || 'lead-form');
+        FORM_IDS_BY_NAME[base] = (FORM_IDS_BY_NAME[base] || 0) + 1;
+        const suffix = FORM_IDS_BY_NAME[base] > 1 ? '-' + FORM_IDS_BY_NAME[base] : '';
+        form.dataset.astroFormId = base + suffix;
+      }
+    }
+
+    if (!form.dataset.astroFormName) {
+      form.dataset.astroFormName = config.type || form.getAttribute('aria-label') || document.title || 'Kontaktforma';
+    }
+
+    if (!form.dataset.astroFormId) {
+      anonymousFormCount += 1;
+      form.dataset.astroFormId = 'lead-form-' + anonymousFormCount;
+    }
+  }
+
+  function formTrackingParams(form) {
+    return {
+      form_id: form.dataset.astroFormId || form.id || 'lead-form',
+      form_name: form.dataset.astroFormName || 'Kontaktforma'
+    };
+  }
+
+  function isMeaningfulFormField(target) {
+    if (!target || !target.matches || !target.matches('input, textarea, select')) return false;
+    const type = String(target.type || '').toLowerCase();
+    if (target.disabled || target.readOnly) return false;
+    if (type === 'hidden' || type === 'submit' || type === 'button' || type === 'reset') return false;
+    if (target.name === 'company_url') return false;
+    return true;
+  }
+
+  function trackFormStart(form, event) {
+    if (event && event.isTrusted === false) return;
+    if (window.AstroAnalytics && typeof window.AstroAnalytics.formStart === 'function') {
+      window.AstroAnalytics.formStart(form, formTrackingParams(form));
+    }
+  }
+
+  function trackGenerateLead(form) {
+    if (window.AstroAnalytics && typeof window.AstroAnalytics.generateLead === 'function') {
+      window.AstroAnalytics.generateLead(form, formTrackingParams(form));
+    }
   }
 
   function addConsent(form, submitButton) {
@@ -402,11 +465,20 @@
     const button = form.querySelector('button[type="submit"], input[type="submit"]');
     if (!button) return;
     form.dataset.astroFormReady = 'true';
+    const config = getConfig();
+    ensureFormTrackingMeta(form, config);
     addConsent(form, button);
     addHoneypot(form);
     const errorBox = addErrorBox(form, button);
     const successElement = findSuccessElement(form);
-    const config = getConfig();
+
+    form.addEventListener('input', function (event) {
+      if (isMeaningfulFormField(event.target)) trackFormStart(form, event);
+    }, true);
+
+    form.addEventListener('change', function (event) {
+      if (isMeaningfulFormField(event.target)) trackFormStart(form, event);
+    }, true);
 
     form.querySelectorAll('input[type="file"]').forEach(function (input) {
       input.addEventListener('change', function () {
@@ -454,23 +526,7 @@
         const payload = buildPayload(form, values, attachments, requestId);
         submitToAppsScript(payload, requestId);
         const response = await pollForConfirmation(requestId);
-        pushDataLayer('form_submit_success', {
-          form_type: payload.formType,
-          service: payload.service,
-          request_id: requestId,
-          duplicate_acknowledgement: response && response.duplicate ? 'yes' : 'no',
-          file_upload_used: attachments.length > 0 ? 'yes' : 'no',
-          is_test: /test|tests|тест|pārbaude/i.test([payload.name, payload.phone, payload.email, payload.message].join(' ')) ? 'yes' : 'no'
-        });
-        pushDataLayer('generate_lead', {
-          page_location: payload.extraFields.page_url || window.location.href,
-          page_title: payload.extraFields.page_title || document.title,
-          source_page: payload.sourcePage,
-          source_cta: payload.extraFields.source_cta || '',
-          service: payload.service || '',
-          city: payload.extraFields.city || '',
-          request_id: requestId
-        });
+        if (!response || !response.duplicate) trackGenerateLead(form);
         form.dataset.astroSubmittedRequestId = requestId;
         delete form.dataset.astroPendingRequestId;
         showSuccess(form, successElement, button, requestId);
