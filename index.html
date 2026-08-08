@@ -652,7 +652,7 @@ body.astro-page-home .nav:not(.scrolled) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  max-width: 760px;
+  max-width: 1040px;
   margin-top: var(--sp-4);
 }
 
@@ -669,9 +669,11 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero-task-card {
-  min-height: 74px;
+  min-height: 86px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   gap: 10px;
   padding: 14px 16px;
   border: 1px solid rgba(255,255,255,0.13);
@@ -697,44 +699,38 @@ body.astro-page-home .nav:not(.scrolled) {
 }
 
 .hero-task-card::before {
-  content: "✓";
-  flex: 0 0 auto;
-  color: var(--c-sand);
-  font-size: 15px;
-  line-height: 1;
+  content: none;
 }
 
-.hero-construction {
-  max-width: 760px;
-  margin-top: var(--sp-3);
-  padding-top: var(--sp-3);
-  border-top: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.66);
-}
-
-.hero-construction__title {
-  margin-bottom: 4px;
+.hero-task-card__kicker {
+  display: block;
   color: var(--c-sand);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: var(--fw-semibold);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
-.hero-construction__text {
-  max-width: 620px;
-  margin-bottom: 10px;
-  font-size: 13.5px;
-  line-height: 1.45;
+.hero-task-card--build {
+  background: rgba(200,169,126,0.13);
+  border-color: rgba(200,169,126,0.34);
 }
 
-.hero-construction__links {
+.hero-task-card--build:hover {
+  background: rgba(200,169,126,0.18);
+  border-color: rgba(200,169,126,0.62);
+}
+
+.hero-task-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
+  max-width: 1040px;
+  margin-top: var(--sp-3);
 }
 
-.hero-construction__links a {
+.hero-task-actions a {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -748,13 +744,13 @@ body.astro-page-home .nav:not(.scrolled) {
   transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
 }
 
-.hero-construction__links a:hover {
+.hero-task-actions a:hover {
   color: var(--c-white);
   border-color: rgba(200,169,126,0.42);
   background: rgba(255,255,255,0.045);
 }
 
-.hero-construction__links a:focus-visible {
+.hero-task-actions a:focus-visible {
   outline: 2px solid var(--c-sand);
   outline-offset: 4px;
   box-shadow: 0 0 0 4px rgba(200,169,126,0.18);
@@ -771,21 +767,16 @@ body.astro-page-home .nav:not(.scrolled) {
     font-size: 13.5px;
   }
 
-  .hero-construction {
+  .hero-task-card__kicker {
+    font-size: 9px;
+  }
+
+  .hero-task-actions {
     margin-top: 14px;
-    padding-top: 14px;
-  }
-
-  .hero-construction__text {
-    margin-bottom: 8px;
-    font-size: 12.5px;
-  }
-
-  .hero-construction__links {
     gap: 6px;
   }
 
-  .hero-construction__links a {
+  .hero-task-actions a {
     flex: 1 1 calc(50% - 6px);
     padding: 0 10px;
     font-size: 12.5px;
@@ -2555,24 +2546,21 @@ body.astro-page-home .nav:not(.scrolled) {
         Izvēlieties savu situāciju un ejiet uz atbilstošo risinājumu.
       </p>
 
-      <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties dokumentu un atļauju uzdevumu">
-        <a href="/nodosana-ekspluatacija" class="hero-task-card">Nodot māju ekspluatācijā</a>
-        <a href="/bis-dokumentacija" class="hero-task-card">Sakārtot BIS dokumentāciju</a>
-        <a href="/legalizacija" class="hero-task-card">Legalizēt būvi</a>
-        <a href="/buvatlaujas-sanemsana" class="hero-task-card">Saņemt būvatļauju</a>
-        <a href="/bun-izpilde" class="hero-task-card">Izpildīt BUN nosacījumus</a>
-        <a href="/tames-apdrosinasanas-gadijumiem" class="hero-task-card">Sagatavot tāmi apdrošinātājam</a>
+      <div class="hero-task-grid reveal reveal-delay-3" aria-label="Izvēlieties būvniecības virzienu vai situāciju">
+        <a href="/privatmaju-buvnieciba" class="hero-task-card hero-task-card--build"><span class="hero-task-card__kicker">Būvniecība</span>Dzīvojamo māju būvniecība</a>
+        <a href="/buvdarbu-vadiba" class="hero-task-card hero-task-card--build"><span class="hero-task-card__kicker">Būvniecība</span>Būvdarbu vadība</a>
+        <a href="/pilna-cikla-buvnieciba" class="hero-task-card hero-task-card--build"><span class="hero-task-card__kicker">Būvniecība</span>Pilna cikla būvniecība</a>
+        <a href="/nodosana-ekspluatacija" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Nodot māju ekspluatācijā</a>
+        <a href="/bis-dokumentacija" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Sakārtot BIS dokumentāciju</a>
+        <a href="/legalizacija" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Legalizēt būvi</a>
+        <a href="/bun-izpilde" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Izpildīt būvdarbu uzsākšanas nosacījumus</a>
+        <a href="/buvatlaujas-sanemsana" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Saņemt būvatļauju</a>
+        <a href="/tames-apdrosinasanas-gadijumiem" class="hero-task-card"><span class="hero-task-card__kicker">Situācija</span>Sagatavot tāmi apdrošinātājam</a>
       </div>
 
-      <div class="hero-construction reveal reveal-delay-4" aria-labelledby="hero-construction-heading">
-        <p class="hero-construction__title" id="hero-construction-heading">Būvniecība</p>
-        <p class="hero-construction__text">Māju būvniecība, būvdarbu vadība un būvniecības sagatavošanas darbi.</p>
-        <div class="hero-construction__links" aria-label="Būvniecības virzieni">
-          <a href="/privatmaju-buvnieciba">Dzīvojamo māju būvniecība</a>
-          <a href="/buvdarbu-vadiba">Būvdarbu vadība</a>
-          <a href="/pilna-cikla-buvnieciba">Pilna cikla būvniecība</a>
-          <a href="/geodezija-geologija">Ģeodēzija un ģeoloģija</a>
-        </div>
+      <div class="hero-task-actions reveal reveal-delay-4" aria-label="Plašāka izvēle">
+        <a href="/situacijas">Skatīt visas situācijas</a>
+        <a href="/pakalpojumi">Skatīt visus pakalpojumus</a>
       </div>
     </div>
 
