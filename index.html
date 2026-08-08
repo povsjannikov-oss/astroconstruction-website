@@ -2404,6 +2404,84 @@ body.astro-page-home .nav:not(.scrolled) {
 .footer__legal-link:hover { color: rgba(255,255,255,0.6); }
 
 /* ============================================================
+   CLIENT REVIEWS (OWNER-SUPPLIED CONTENT)
+   ============================================================ */
+.reviews {
+  background: var(--c-warm-white);
+  padding: var(--sp-8) 0;
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.reviews__head {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 760px;
+  margin-bottom: var(--sp-5);
+}
+
+.reviews__head h2 {
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.05;
+  font-weight: var(--fw-light);
+  letter-spacing: 0;
+}
+
+.reviews__head p {
+  color: var(--c-grey);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.reviews__grid {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.review-card {
+  min-height: 220px;
+  border: 1px dashed rgba(168, 139, 92, 0.42);
+  border-radius: var(--radius-md);
+  background: var(--c-white);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-card__status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(168, 139, 92, 0.1);
+  color: var(--c-sand-dark);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.review-card__text {
+  margin: var(--sp-4) 0;
+  color: var(--c-graphite);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.review-card__meta {
+  color: var(--c-grey);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (min-width: 900px) {
+  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ============================================================
    MOBILE STICKY BAR
    ============================================================ */
 .sticky-bar {
@@ -2837,6 +2915,33 @@ body.astro-page-home .nav:not(.scrolled) {
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" aria-labelledby="reviews-heading" data-owner-content="real-client-reviews-required">
+    <div class="container">
+      <div class="reviews__head">
+        <p class="section-label reveal">Klientu atsauksmes</p>
+        <h2 id="reviews-heading" class="reveal reveal-delay-1">Vieta reālām klientu atsauksmēm.</h2>
+        <p class="reveal reveal-delay-2">Šeit paredzētas tikai ar klientu apstiprinātas atsauksmes. Līdz tekstu apstiprināšanai publiski netiek rādītas izdomātas citāti, vārdi vai vērtējumi.</p>
+      </div>
+      <div class="reviews__grid" aria-label="Atsauksmju publicēšanas statuss">
+        <article class="review-card reveal">
+          <span class="review-card__status">Gaida apstiprinājumu</span>
+          <p class="review-card__text">Atsauksmes teksts tiks ievietots pēc klienta piekrišanas.</p>
+          <p class="review-card__meta">Privātpersona vai uzņēmums · pakalpojuma virziens</p>
+        </article>
+        <article class="review-card reveal reveal-delay-1">
+          <span class="review-card__status">Gaida apstiprinājumu</span>
+          <p class="review-card__text">Atsauksmes teksts tiks ievietots pēc klienta piekrišanas.</p>
+          <p class="review-card__meta">Objekta tips · rezultāta konteksts</p>
+        </article>
+        <article class="review-card reveal reveal-delay-2">
+          <span class="review-card__status">Gaida apstiprinājumu</span>
+          <p class="review-card__text">Atsauksmes teksts tiks ievietots pēc klienta piekrišanas.</p>
+          <p class="review-card__meta">Dokumentācija, būvdarbi vai nodošana</p>
+        </article>
       </div>
     </div>
   </section>
