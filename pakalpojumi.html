@@ -438,7 +438,7 @@ body.services-page .faq__answer{padding:0 20px 20px}
         <div>
           <p class="label">Saziņa</p>
           <h2 id="request-heading">Aprakstiet savu situāciju</h2>
-          <p>Norādiet objekta adresi, nepieciešamo pakalpojumu un pieejamos dokumentus. Mēs izvērtēsim situāciju un sazināsimies par nākamo soli.</p>
+          <p>Norādiet pakalpojuma virzienu, objekta aprakstu un pieejamos dokumentus. Mēs izvērtēsim situāciju un sazināsimies par nākamo soli.</p>
         </div>
         <form class="request-form" id="services-request-form" novalidate aria-label="Pakalpojuma pieteikuma forma">
           <input type="hidden" name="source_cta" value="Pakalpojumu katalogs">
@@ -458,32 +458,18 @@ body.services-page .faq__answer{padding:0 20px 20px}
               <input class="form-input" type="email" id="services-email" name="email" autocomplete="email">
             </div>
             <div class="form-field">
-              <label for="services-service">Pakalpojums</label>
+              <label for="services-service">Pakalpojums / situācija</label>
               <select class="form-select" id="services-service" name="service" required aria-required="true">
-                <option value="">Izvēlieties pakalpojumu</option>
-                <option>BIS dokumentācija</option>
-                <option>Būvatļaujas saņemšana</option>
-                <option>BUN nosacījumu izpilde</option>
-                <option>Izpilddokumentācija</option>
-                <option>Būvdarbu žurnāls BIS</option>
-                <option>DVP izstrāde</option>
-                <option>EDLUS organizēšana</option>
-                <option>Kalendārie grafiki</option>
+                <option value="">Izvēlieties virzienu</option>
+                <option>Būvniecība</option>
+                <option>Dokumentācija un BIS</option>
+                <option>BUN</option>
                 <option>Nodošana ekspluatācijā</option>
-                <option>Nodošanas procesa vadīšana</option>
                 <option>Legalizācija</option>
-                <option>Elektroinstalāciju pārbaudes</option>
-                <option>Ģeodēzija</option>
-                <option>Ģeoloģija</option>
-                <option>Tāmes apdrošināšanas gadījumiem</option>
-                <option>Dzīvojamo māju būvniecība</option>
-                <option>Pilna cikla būvniecība</option>
-                <option>Būvdarbu vadība</option>
-                <option>Pasūtītāja interešu pārstāvība būvniecības procesā</option>
                 <option>Būvuzraudzība</option>
-                <option>Būvkomersanta pakalpojumi</option>
-                <option>Darba aizsardzība</option>
-                <option>Vēlos saprast piemērotāko pakalpojumu</option>
+                <option>Apdrošināšanas tāme</option>
+                <option>Pasūtītāja interešu pārstāvība</option>
+                <option>Cita situācija</option>
               </select>
             </div>
           </div>
@@ -493,7 +479,7 @@ body.services-page .faq__answer{padding:0 20px 20px}
               <input class="form-input" type="text" id="services-address" name="address" autocomplete="street-address">
             </div>
             <div class="form-field">
-              <label for="services-message">Situācijas apraksts</label>
+              <label for="services-message">Objekta apraksts</label>
               <textarea class="form-textarea" id="services-message" name="message" rows="5" required aria-required="true"></textarea>
             </div>
           </div>
