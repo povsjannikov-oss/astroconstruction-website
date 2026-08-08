@@ -162,7 +162,7 @@
       '<div class="astro-consent__text">',
       '<strong>Sīkdatņu izvēle</strong>',
       '<span>Analītikas sīkdatnes palīdz saprast vietnes lietošanu. Google Analytics 4 un Microsoft Clarity tiks aktivizēti tikai tad, ja piekritīsiet analītikai.</span>',
-      '<a href="/privatuma-politika.html">Privātuma un sīkdatņu politika</a>',
+      '<a href="/privatuma-politika">Privātuma un sīkdatņu politika</a>',
       '</div>',
       '<div class="astro-consent__actions">',
       '<button type="button" class="astro-consent__button" data-consent="accepted">Piekrist analītikai</button>',

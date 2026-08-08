@@ -346,7 +346,7 @@
       '<input type="hidden" name="utm_term">',
       '<input type="hidden" name="utm_content">',
       '<button class="astro-lead-form__submit" type="submit"><span class="submit-text">Nosūtīt pieteikumu</span></button>',
-      '<p class="astro-lead-form__privacy astro-form-consent">Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — <a href="/privatuma-politika.html">Privātuma politikā</a>.</p>',
+      '<p class="astro-lead-form__privacy astro-form-consent">Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — <a href="/privatuma-politika">Privātuma politikā</a>.</p>',
       '</form>',
       '<div class="form-success" aria-live="polite" tabindex="-1">Paldies! Jūsu pieteikums ir nosūtīts.</div>',
       '</div>'
@@ -496,13 +496,13 @@
       const hasForm = hasNativeForm();
       const source = ctaText(link);
 
-      if (hasForm && (href.startsWith('#') || href.includes('#') || href.startsWith('/kontakti.html') || href.startsWith('mailto:'))) {
+      if (hasForm && (href.startsWith('#') || href.includes('#') || href.startsWith('/kontakti') || href.startsWith('mailto:'))) {
         event.preventDefault();
         scrollToNativeForm(source);
         return;
       }
 
-      if (!hasForm && (href.startsWith('#') || href.startsWith('/kontakti.html') || href.startsWith('mailto:'))) {
+      if (!hasForm && (href.startsWith('#') || href.startsWith('/kontakti') || href.startsWith('mailto:'))) {
         event.preventDefault();
         openModal(source, link);
       }

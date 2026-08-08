@@ -5,7 +5,7 @@
 
   function setupPageState() {
     const path = window.location.pathname.replace(/\/+$/, '');
-    const isHome = path === '' || path === '/index.html';
+    const isHome = path === '' || path === '/';
     document.body.classList.toggle('astro-page-home', isHome);
     document.body.classList.toggle('astro-page-inner', !isHome);
     setupNavigationScroll();

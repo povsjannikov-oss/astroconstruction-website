@@ -3,7 +3,7 @@
 
   const ENDPOINT_PLACEHOLDER = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
   const WEB_APP_URL = window.ASTRO_FORM_ENDPOINT || 'https://script.google.com/macros/s/AKfycbyJffuU0zuLpn3bpt0qQpSEpsJVf_x55GsWQKNoGD8UICt4OigA_sfbROWMTkLuOcRY/exec';
-  const PRIVACY_URL = '/privatuma-politika.html';
+  const PRIVACY_URL = '/privatuma-politika';
   const SUBMIT_TIMEOUT_MS = 45000;
   const STATUS_POLL_INITIAL_DELAY_MS = 800;
   const STATUS_POLL_INTERVAL_MS = 1500;
@@ -54,18 +54,17 @@
   }
 
   const FORM_CONFIG = {
-    '/index.html': { type: 'Galvenā kontaktforma', service: 'Vispārīgs pieprasījums' },
     '/': { type: 'Galvenā kontaktforma', service: 'Vispārīgs pieprasījums' },
-    '/bis-dokumentacija.html': { type: 'BIS dokumentācija', service: 'BIS dokumentācija' },
-    '/bun-izpilde.html': { type: 'BUN prasību pieteikums', service: 'Būvdarbu uzsākšanas nosacījumu izpilde' },
-    '/buvuzraudziba.html': { type: 'Būvuzraudzība', service: 'Būvuzraudzība' },
-    '/elektroinstalaciju-parbaudes.html': { type: 'Elektroinstalācijas pārbaude', service: 'Elektroinstalācijas pārbaudes' },
-    '/geodezija.html': { type: 'Ģeodēzija', service: 'Ģeodēzijas darbi' },
-    '/izpilddokumentacija.html': { type: 'Izpilddokumentācija', service: 'Izpilddokumentācija' },
-    '/legalizacija.html': { type: 'Legalizācija', service: 'Ēkas legalizācija' },
-    '/nodosana-ekspluatacija.html': { type: 'Nodošana ekspluatācijā', service: 'Nodošana ekspluatācijā' },
-    '/nodosanas-procesa-vadisana.html': { type: 'Nodošanas procesa vadīšana', service: 'Nodošanas procesa vadīšana' },
-    '/tames-apdrosinasanas-gadijumiem.html': { type: 'Apdrošināšanas tāme', service: 'Tāme apdrošināšanas gadījumam' }
+    '/bis-dokumentacija': { type: 'BIS dokumentācija', service: 'BIS dokumentācija' },
+    '/bun-izpilde': { type: 'BUN prasību pieteikums', service: 'Būvdarbu uzsākšanas nosacījumu izpilde' },
+    '/buvuzraudziba': { type: 'Būvuzraudzība', service: 'Būvuzraudzība' },
+    '/elektroinstalaciju-parbaudes': { type: 'Elektroinstalācijas pārbaude', service: 'Elektroinstalācijas pārbaudes' },
+    '/geodezija': { type: 'Ģeodēzija', service: 'Ģeodēzijas darbi' },
+    '/izpilddokumentacija': { type: 'Izpilddokumentācija', service: 'Izpilddokumentācija' },
+    '/legalizacija': { type: 'Legalizācija', service: 'Ēkas legalizācija' },
+    '/nodosana-ekspluatacija': { type: 'Nodošana ekspluatācijā', service: 'Nodošana ekspluatācijā' },
+    '/nodosanas-procesa-vadisana': { type: 'Nodošanas procesa vadīšana', service: 'Nodošanas procesa vadīšana' },
+    '/tames-apdrosinasanas-gadijumiem': { type: 'Apdrošināšanas tāme', service: 'Tāme apdrošināšanas gadījumam' }
   };
 
   const FORM_IDS_BY_NAME = {};
