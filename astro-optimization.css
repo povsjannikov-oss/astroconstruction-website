@@ -55,6 +55,31 @@ body {
   overflow-x: clip;
 }
 
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: calc(var(--astro-z-modal, 10000) + 1);
+  transform: translateY(-140%);
+  padding: 10px 14px;
+  border-radius: 4px;
+  background: #0f0f0e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(15, 15, 14, .18);
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid #c8a97e;
+  outline-offset: 3px;
+}
+
 .nav {
   z-index: var(--astro-z-header) !important;
 }
