@@ -528,12 +528,12 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-home .hero {
-    min-height: 86svh !important;
+    min-height: min(610px, 72svh) !important;
   }
 
   .hero__inner {
-    padding-top: calc(var(--nav-h, 72px) + 30px) !important;
-    padding-bottom: 34px !important;
+    padding-top: calc(var(--nav-h, 72px) + 22px) !important;
+    padding-bottom: 28px !important;
   }
 
   body.astro-page-inner .hero {
@@ -685,7 +685,7 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-home .hero {
-    min-height: min(760px, 88svh) !important;
+    min-height: min(700px, 76svh) !important;
   }
 
   body.astro-page-inner .hero {
@@ -705,8 +705,8 @@ body.astro-consent-open .astro-floating-lead {
   }
 
   body.astro-page-home .hero__inner {
-    padding-top: calc(var(--nav-h, 72px) + 50px) !important;
-    padding-bottom: 46px !important;
+    padding-top: calc(var(--nav-h, 72px) + 34px) !important;
+    padding-bottom: 38px !important;
   }
 
   .hero__breadcrumb {
