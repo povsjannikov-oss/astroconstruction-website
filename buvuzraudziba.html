@@ -1187,6 +1187,7 @@ stickyIO.observe(heroEl);
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
+    if (e.currentTarget.classList.contains('skip-link')) return;
     const target = document.querySelector(a.getAttribute('href'));
     if (target) { e.preventDefault(); target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
   });

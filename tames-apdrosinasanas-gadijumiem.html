@@ -1245,6 +1245,7 @@ input,textarea{font-family:var(--font)}
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
+      if (e.currentTarget.classList.contains('skip-link')) return;
       const target = document.querySelector(a.getAttribute('href'));
       if(!target) return; e.preventDefault();
       window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 24, behavior:'smooth' });
@@ -1259,5 +1260,4 @@ input,textarea{font-family:var(--font)}
   <script src="/astro-analytics.js" defer></script>
 </body>
 </html>
-
 

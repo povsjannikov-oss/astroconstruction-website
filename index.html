@@ -3442,6 +3442,7 @@ body.astro-page-home .nav:not(.scrolled) {
   /* --- SMOOTH ANCHOR SCROLLING ------------------------------ */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
+      if (e.currentTarget.classList.contains('skip-link')) return;
       const targetSelector = anchor.getAttribute('href');
       const target = document.querySelector(targetSelector);
       if (!target) return;
