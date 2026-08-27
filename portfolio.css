@@ -113,6 +113,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-sand); outlin
 .role-note p { margin-top: var(--sp-2); color: var(--c-grey); }
 .result-band { background: var(--c-graphite); color: var(--c-white); border-radius: var(--radius-md); padding: clamp(32px, 5vw, 64px); }
 .result-band p { color: rgba(255,255,255,.74); font-size: 20px; max-width: 850px; }
+.case-testimonial { background: var(--c-white); border: 1px solid var(--c-border); border-left: 4px solid var(--c-sand); border-radius: var(--radius-md); padding: clamp(28px, 4vw, 48px); }
+.case-testimonial blockquote { color: var(--c-graphite); font-size: clamp(20px, 2.4vw, 30px); line-height: 1.45; font-weight: var(--fw-light); }
+.case-testimonial figcaption { margin-top: var(--sp-3); color: var(--c-grey); font-size: 15px; font-weight: var(--fw-semibold); }
 .related-card { display: block; min-height: 150px; transition: transform 180ms ease, border-color 180ms ease; }
 .related-card:hover { transform: translateY(-3px); border-color: rgba(200,169,126,.55); }
 .related-card span { display: block; margin-bottom: var(--sp-2); color: var(--c-sand); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: var(--fw-semibold); }
@@ -172,6 +175,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-sand); outlin
 @media (min-width: 760px) { .sticky-bar { display: none; } }
 @media (max-width: 640px) {
   .hero { min-height: auto; padding-bottom: 56px; }
+  .hero__inner, .hero h1, .hero__lead { max-width: calc(100vw - 48px) !important; }
+  .hero__lead { max-width: 30ch !important; }
   .hero h1 { font-size: clamp(34px, 10.4vw, 43px); line-height: 1.08; }
   .hero__actions a, .cta__actions a { width: 100%; }
   .section, .cta { padding: var(--sp-10) 0; }
