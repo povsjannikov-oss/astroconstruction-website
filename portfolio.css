@@ -77,12 +77,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-sand); outlin
 .btn-text { min-height: auto; padding: 0; color: var(--c-sand); }
 .btn-primary:hover, .btn-outline:hover, .btn-dark:hover { transform: translateY(-2px); }
 
-.section { padding: var(--sp-16) 0; }
+.section { padding: clamp(72px, 8vw, 112px) 0; }
 .section--white { background: var(--c-white); }
 .section--light { background: var(--c-ultra-light); }
 .section--dark { background: var(--c-graphite); color: var(--c-white); }
-.section-head { max-width: 860px; margin-bottom: var(--sp-8); }
-.section-head h2, .split h2, .cta h2 { font-size: clamp(34px, 5vw, 66px); font-weight: var(--fw-light); line-height: 1.07; letter-spacing: 0; overflow-wrap: anywhere; }
+.section-head { max-width: 860px; margin-bottom: var(--sp-5); }
+.section-head h2, .split h2, .cta h2 { font-size: clamp(30px, 4vw, 54px); font-weight: var(--fw-light); line-height: 1.08; letter-spacing: 0; overflow-wrap: anywhere; }
 .section-head p, .split__lead { margin-top: var(--sp-3); color: var(--c-grey); font-size: 19px; max-width: 780px; }
 .section--dark .section-head p, .section--dark .split__lead { color: rgba(255,255,255,.7); }
 .split { display: grid; gap: var(--sp-8); align-items: start; }
@@ -113,9 +113,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-sand); outlin
 .role-note p { margin-top: var(--sp-2); color: var(--c-grey); }
 .result-band { background: var(--c-graphite); color: var(--c-white); border-radius: var(--radius-md); padding: clamp(32px, 5vw, 64px); }
 .result-band p { color: rgba(255,255,255,.74); font-size: 20px; max-width: 850px; }
-.case-testimonial { background: var(--c-white); border: 1px solid var(--c-border); border-left: 4px solid var(--c-sand); border-radius: var(--radius-md); padding: clamp(28px, 4vw, 48px); }
-.case-testimonial blockquote { color: var(--c-graphite); font-size: clamp(20px, 2.4vw, 30px); line-height: 1.45; font-weight: var(--fw-light); }
-.case-testimonial figcaption { margin-top: var(--sp-3); color: var(--c-grey); font-size: 15px; font-weight: var(--fw-semibold); }
+.case-testimonial { background: var(--c-white); border: 1px solid var(--c-border); border-left: 4px solid var(--c-sand); border-radius: var(--radius-md); padding: clamp(24px, 4vw, 44px); box-shadow: 0 18px 44px rgba(15,15,14,.05); }
+.case-testimonial__label { display: block; margin-bottom: var(--sp-3); color: var(--c-sand); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: var(--fw-semibold); }
+.case-testimonial blockquote { color: var(--c-graphite); font-size: clamp(19px, 2vw, 26px); line-height: 1.5; font-weight: var(--fw-light); }
+.case-testimonial cite { display: block; margin-top: var(--sp-3); color: var(--c-grey); font-size: 15px; font-style: normal; font-weight: var(--fw-semibold); }
 .related-card { display: block; min-height: 150px; transition: transform 180ms ease, border-color 180ms ease; }
 .related-card:hover { transform: translateY(-3px); border-color: rgba(200,169,126,.55); }
 .related-card span { display: block; margin-bottom: var(--sp-2); color: var(--c-sand); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: var(--fw-semibold); }
@@ -131,7 +132,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-sand); outlin
 .case-gallery__item:hover { transform: translateY(-2px); border-color: rgba(200,169,126,.55); }
 .case-gallery__item:focus-visible { outline: 2px solid var(--c-sand); outline-offset: 4px; }
 .case-gallery__media { display: block; width: 100%; aspect-ratio: 4 / 3; background: var(--c-ultra-light); overflow: hidden; }
-.case-gallery__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.case-gallery__media img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .case-gallery__caption { display: block; padding: 14px 16px 16px; color: var(--c-grey); font-size: 14px; line-height: 1.45; }
 
 .portfolio-lightbox { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: clamp(16px, 3vw, 36px); background: rgba(15,15,14,.97); color: var(--c-white); }
