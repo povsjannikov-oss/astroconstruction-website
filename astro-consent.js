@@ -239,13 +239,15 @@
   document.addEventListener('DOMContentLoaded', function () {
     injectStyles();
     const consent = getStoredConsent();
+    const suppressBanner = document.body && document.body.dataset.astroConsentBanner === 'hidden';
 
     if (consent) {
       applyConsent(consent);
       showSettingsControl();
     } else {
       applyConsent('necessary');
-      showBanner();
+      if (suppressBanner) showSettingsControl();
+      else showBanner();
     }
   });
 })();

@@ -7,7 +7,10 @@
     form_start: ['form_id', 'form_name', 'page_path', 'page_title'],
     generate_lead: ['form_id', 'form_name', 'lead_source', 'page_path', 'page_title'],
     contact_phone_click: ['link_location', 'page_path', 'page_title'],
-    contact_email_click: ['link_location', 'page_path', 'page_title']
+    contact_email_click: ['link_location', 'page_path', 'page_title'],
+    tool_calculation: ['tool_name', 'tool_mode', 'page_path', 'page_title'],
+    tool_copy_result: ['tool_name', 'page_path', 'page_title'],
+    tool_cta_click: ['tool_name', 'page_path', 'page_title']
   };
 
   function hasAnalyticsConsent() {
