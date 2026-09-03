@@ -263,6 +263,19 @@
     });
   }
 
+  function mimeTypeFromFileName(fileName) {
+    const name = String(fileName || '').toLowerCase();
+    if (name.endsWith('.pdf')) return 'application/pdf';
+    if (name.endsWith('.jpg') || name.endsWith('.jpeg')) return 'image/jpeg';
+    if (name.endsWith('.png')) return 'image/png';
+    if (name.endsWith('.webp')) return 'image/webp';
+    if (name.endsWith('.heic')) return 'image/heic';
+    if (name.endsWith('.heif')) return 'image/heif';
+    if (name.endsWith('.doc')) return 'application/msword';
+    if (name.endsWith('.docx')) return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    return fileName ? '' : 'application/octet-stream';
+  }
+
   function acceptsFile(file, acceptValue) {
     if (!acceptValue) return true;
     const fileName = String(file.name || '').toLowerCase();
@@ -294,7 +307,7 @@
     return Promise.all(files.map(async function (file) {
       return {
         name: file.name,
-        type: file.type || 'application/octet-stream',
+        type: file.type || mimeTypeFromFileName(file.name),
         size: file.size,
         dataUrl: await toDataUrl(file)
       };
@@ -371,7 +384,9 @@
     requestInput.name = 'requestId';
     requestInput.value = requestId;
     transport.appendChild(payloadInput);
-    transport.appendChild(legacyPayloadInput);
+    if (!payload.attachments || !payload.attachments.length) {
+      transport.appendChild(legacyPayloadInput);
+    }
     transport.appendChild(requestInput);
     document.body.appendChild(frame);
     document.body.appendChild(transport);
@@ -501,7 +516,12 @@
 
       const honeypot = form.querySelector('[name="company_url"]');
       if (honeypot && honeypot.value.trim()) {
-        showSuccess(form, successElement, button);
+        pushDataLayer('form_submit_error', {
+          form_type: config.type,
+          service: config.service,
+          error_type: 'spam_check_failed'
+        });
+        showError(errorBox, button, 'Pieteikumu neizdevās nosūtīt. Lūdzu, pārbaudiet ievadīto informāciju un mēģiniet vēlreiz vai rakstiet uz <a href="mailto:info@astroconstruction.lv">info@astroconstruction.lv</a>.');
         return;
       }
 
