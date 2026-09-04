@@ -11,6 +11,8 @@
   const MAX_TOTAL_FILE_BYTES = 18 * 1024 * 1024;
   const CONSENT_TEXT = 'Jūsu sniegtie dati tiks izmantoti, lai izskatītu pieteikumu un sazinātos ar jums. Plašāka informācija — Privātuma politikā.';
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  const HONEYPOT_FIELD_NAME = 'astro_hp_9f3b2c';
+  const LEGACY_HONEYPOT_FIELD_NAME = 'company_url';
 
   function pushDataLayer(eventName, params) {
     void eventName;
@@ -136,7 +138,7 @@
     const type = String(target.type || '').toLowerCase();
     if (target.disabled || target.readOnly) return false;
     if (type === 'hidden' || type === 'submit' || type === 'button' || type === 'reset') return false;
-    if (target.name === 'company_url') return false;
+    if (target.name === LEGACY_HONEYPOT_FIELD_NAME || target.dataset.astroHoneypot === 'true' || target.closest('.astro-form-honeypot')) return false;
     return true;
   }
 
@@ -162,7 +164,7 @@
   }
 
   function addHoneypot(form) {
-    if (form.querySelector('[name="company_url"]')) return;
+    if (form.querySelector('[data-astro-honeypot="true"]')) return;
     const wrap = document.createElement('div');
     wrap.className = 'astro-form-honeypot';
     wrap.setAttribute('aria-hidden', 'true');
@@ -170,12 +172,27 @@
     label.textContent = 'Neaizpildīt šo lauku';
     const input = document.createElement('input');
     input.type = 'text';
-    input.name = 'company_url';
+    input.name = HONEYPOT_FIELD_NAME;
+    input.dataset.astroHoneypot = 'true';
     input.tabIndex = -1;
-    input.autocomplete = 'off';
+    input.autocomplete = 'new-password';
+    input.inputMode = 'none';
+    input.spellcheck = false;
     label.appendChild(input);
     wrap.appendChild(label);
     form.appendChild(wrap);
+  }
+
+  function honeypotInputs(form) {
+    return Array.prototype.slice.call(form.querySelectorAll('[data-astro-honeypot="true"]'));
+  }
+
+  function honeypotNames(form) {
+    const names = [LEGACY_HONEYPOT_FIELD_NAME];
+    honeypotInputs(form).forEach(function (input) {
+      if (input.name) names.push(input.name);
+    });
+    return names;
   }
 
   function addErrorBox(form, submitButton) {
@@ -242,8 +259,9 @@
 
   function valuesFromForm(form) {
     const values = {};
+    const ignoredNames = honeypotNames(form);
     new FormData(form).forEach(function (value, key) {
-      if (key === 'company_url' || value instanceof File) return;
+      if (ignoredNames.indexOf(key) !== -1 || value instanceof File) return;
       if (Object.prototype.hasOwnProperty.call(values, key)) {
         if (!Array.isArray(values[key])) values[key] = [values[key]];
         values[key].push(value);
@@ -316,7 +334,8 @@
 
   function buildPayload(form, values, attachments, requestId) {
     const config = getConfig();
-    const known = ['name', 'phone', 'email', 'message', 'city', 'service', 'need', 'requirements', 'source_cta', 'source_page', 'page_url', 'page_title', 'referrer', 'company_url']
+    const known = ['name', 'phone', 'email', 'message', 'city', 'service', 'need', 'requirements', 'source_cta', 'source_page', 'page_url', 'page_title', 'referrer']
+      .concat(honeypotNames(form))
       .concat(UTM_KEYS);
     const extra = {};
     const enteredContact = String(values.phone || '').trim();
@@ -514,8 +533,10 @@
       errorBox.classList.remove('visible');
       if (!form.reportValidity()) return;
 
-      const honeypot = form.querySelector('[name="company_url"]');
-      if (honeypot && honeypot.value.trim()) {
+      const honeypotFilled = honeypotInputs(form).some(function (input) {
+        return input.value.trim();
+      });
+      if (honeypotFilled) {
         pushDataLayer('form_submit_error', {
           form_type: config.type,
           service: config.service,

@@ -45,7 +45,7 @@ async function withFormPage(test, options = {}) {
       });
     });
     await page.goto('http://astro-form-test.local/', { waitUntil: 'domcontentloaded' });
-    await page.addScriptTag({ content: source });
+    await page.addScriptTag({ content: options.source || source });
     await test(page);
   } finally {
     await browser.close();
@@ -56,10 +56,20 @@ async function run() {
   const endpoint = 'https://example.test/submit';
 
   await withFormPage(async (page) => {
+    let postCount = 0;
+    await page.route(endpoint + '*', async (route) => {
+      if (route.request().method() === 'POST') {
+        postCount += 1;
+        await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html>ok' });
+        return;
+      }
+      await route.fulfill({ status: 200, contentType: 'application/javascript', body: 'void 0;' });
+    });
+
     await page.fill('[name="name"]', 'Test User');
     await page.fill('[name="phone"]', '+37100000000');
     await page.fill('[name="message"]', 'Honeypot regression test');
-    await page.fill('[name="company_url"]', 'https://spam.example');
+    await page.fill('[data-astro-honeypot="true"]', 'bot-filled-value');
     await page.click('button[type="submit"]');
 
     const state = await page.evaluate(() => ({
@@ -72,9 +82,49 @@ async function run() {
 
     assert.strictEqual(state.successVisible, false, 'honeypot submissions must not show success');
     assert.strictEqual(state.errorVisible, true, 'honeypot submissions should show an error state');
+    assert.strictEqual(postCount, 0, 'honeypot submissions must not create backend requests');
     assert.strictEqual(state.nameValue, 'Test User', 'failed submissions must not clear the name');
     assert.strictEqual(state.phoneValue, '+37100000000', 'failed submissions must not clear the phone');
     assert.strictEqual(state.messageValue, 'Honeypot regression test', 'failed submissions must not clear the message');
+  }, { endpoint });
+
+  await withFormPage(async (page) => {
+    let postCount = 0;
+    let submittedPayload = null;
+    await page.route(endpoint + '*', async (route) => {
+      const request = route.request();
+      const url = new URL(request.url());
+      if (request.method() === 'POST') {
+        postCount += 1;
+        const params = new URLSearchParams(request.postData() || '');
+        submittedPayload = JSON.parse(Buffer.from(params.get('payloadBase64'), 'base64').toString('utf8'));
+        await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html>ok' });
+        return;
+      }
+      const callback = url.searchParams.get('callback');
+      const requestId = url.searchParams.get('request_id');
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/javascript',
+        body: `${callback}(${JSON.stringify({ ok: true, found: true, requestId, duplicate: false })});`
+      });
+    });
+
+    await page.fill('[name="name"]', 'Chrome Autofill User');
+    await page.fill('[name="phone"]', '+37100000004');
+    await page.fill('[name="message"]', 'Chrome autofill false-positive regression test');
+    await page.evaluate(() => {
+      const legacyField = document.querySelector('[name="company_url"]') || document.createElement('input');
+      legacyField.name = 'company_url';
+      legacyField.value = 'Chrome Autofill User';
+      if (!legacyField.isConnected) document.getElementById('contact-form').appendChild(legacyField);
+    });
+    await page.click('button[type="submit"]');
+    await page.waitForSelector('#form-success.visible', { timeout: 5000 });
+
+    assert.strictEqual(postCount, 1, 'Chrome-autofilled legacy company_url must not block submission');
+    assert.strictEqual(submittedPayload.name, 'Chrome Autofill User');
+    assert.strictEqual(submittedPayload.extraFields.company_url, undefined, 'legacy honeypot autofill value must not leak into payload extra fields');
   }, { endpoint });
 
   await withFormPage(async (page) => {
@@ -239,6 +289,50 @@ async function run() {
     assert.strictEqual(state.phoneValue, '+37100000002');
     assert.strictEqual(state.messageValue, 'Endpoint not configured test');
   }, { endpoint: 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' });
+
+  await withFormPage(async (page) => {
+    await page.route(endpoint + '*', async (route) => {
+      const request = route.request();
+      const url = new URL(request.url());
+      if (request.method() === 'POST') {
+        await route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html>ok' });
+        return;
+      }
+      const callback = url.searchParams.get('callback');
+      const requestId = url.searchParams.get('request_id');
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/javascript',
+        body: `${callback}(${JSON.stringify({ ok: true, found: false, requestId })});`
+      });
+    });
+
+    await page.fill('[name="name"]', 'Backend Failure User');
+    await page.fill('[name="phone"]', '+37100000005');
+    await page.fill('[name="message"]', 'Backend confirmation failure test');
+    await page.click('button[type="submit"]');
+    await page.waitForSelector('.astro-form-error.visible', { timeout: 5000 });
+
+    const state = await page.evaluate(() => ({
+      successVisible: document.getElementById('form-success').classList.contains('visible'),
+      errorText: document.querySelector('.astro-form-error').textContent,
+      nameValue: document.querySelector('[name="name"]').value,
+      phoneValue: document.querySelector('[name="phone"]').value,
+      messageValue: document.querySelector('[name="message"]').value
+    }));
+
+    assert.strictEqual(state.successVisible, false, 'backend confirmation failures must not show success');
+    assert.match(state.errorText, /Neizdevās automātiski apstiprināt pieteikumu/, 'backend confirmation failures must show the Latvian confirmation error');
+    assert.strictEqual(state.nameValue, 'Backend Failure User');
+    assert.strictEqual(state.phoneValue, '+37100000005');
+    assert.strictEqual(state.messageValue, 'Backend confirmation failure test');
+  }, {
+    endpoint,
+    source: source
+      .replace('const SUBMIT_TIMEOUT_MS = 45000;', 'const SUBMIT_TIMEOUT_MS = 1200;')
+      .replace('const STATUS_POLL_INITIAL_DELAY_MS = 800;', 'const STATUS_POLL_INITIAL_DELAY_MS = 20;')
+      .replace('const STATUS_POLL_INTERVAL_MS = 1500;', 'const STATUS_POLL_INTERVAL_MS = 50;')
+  });
 
   console.log('astro form regression tests passed');
 }
