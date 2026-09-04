@@ -302,7 +302,10 @@
         <form class="request-form" id="handover-form" novalidate aria-label="Nodošanas procesa vadīšanas pieteikuma forma">
           <div class="form-grid form-grid--two">
             <div><label class="form-label" for="name">Vārds / uzņēmums</label><input class="form-input" id="name" name="name" type="text" placeholder="Jūsu vārds vai uzņēmums" required></div>
-            <div><label class="form-label" for="phone">Tālrunis vai e-pasts</label><input class="form-input" id="phone" name="phone" type="text" placeholder="+371 vai e-pasts" required></div>
+            <div><label class="form-label" for="phone">Tālrunis</label><input class="form-input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+371" required></div>
+          </div>
+          <div class="form-grid">
+            <div><label class="form-label" for="email">E-pasts</label><input class="form-input" id="email" name="email" type="email" autocomplete="email"></div>
           </div>
           <div class="form-grid form-grid--two">
             <div><label class="form-label" for="object">Objekta tips</label><select class="form-select" id="object" name="object"><option value="">Izvēlieties</option><option>B2B / komercobjekts</option><option>Privātmāja</option><option>Daudzdzīvokļu ēka</option><option>Ražošanas vai noliktavas objekts</option><option>Cits objekts</option></select></div>

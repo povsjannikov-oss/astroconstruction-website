@@ -4,14 +4,9 @@
   const CTA_TEXT = /sazināties|nosūtīt|aprakstīt|pieteikt|pieteik|konsult|rakstīt/i;
   const CTA_CLASS = /btn|button|cta|sticky|nav__button/i;
   const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-  const CITY_DATA_URL = '/assets/data/latvia-cities.json';
-  const MAX_CITY_OPTIONS = 12;
   let modal;
   let form;
   let opener = null;
-  let cityComboboxId = 0;
-  let cityOptions = [];
-  let cityOptionsPromise = null;
 
   function nativeForm() {
     return document.querySelector('form:not(.astro-lead-form):not(.astro-form-honeypot)');
@@ -56,263 +51,14 @@
     field.id = id;
     field.name = name;
     if (type !== 'textarea') field.type = type;
+    if (name === 'name') field.autocomplete = 'name';
+    if (name === 'phone') field.autocomplete = 'tel';
+    if (name === 'email') field.autocomplete = 'email';
     if (required) field.required = true;
     if (placeholder) field.placeholder = placeholder;
     row.appendChild(labelEl);
     row.appendChild(field);
     return row;
-  }
-
-  function normalizeCity(value) {
-    return String(value || '')
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLocaleLowerCase('lv-LV')
-      .trim();
-  }
-
-  function loadCityOptions() {
-    if (cityOptionsPromise) return cityOptionsPromise;
-    cityOptionsPromise = fetch(CITY_DATA_URL, { cache: 'force-cache' })
-      .then(function (response) {
-        if (!response.ok) throw new Error('city_data_unavailable');
-        return response.json();
-      })
-      .then(function (data) {
-        const places = Array.isArray(data && data.places) ? data.places : [];
-        cityOptions = places
-          .filter(function (place) { return place && place.name; })
-          .map(function (place, index) {
-            const priority = Number(place.priority);
-            return {
-              name: String(place.name),
-              type: place.type ? String(place.type) : '',
-              priority: Number.isFinite(priority) ? priority : 1000 + index
-            };
-          });
-        return cityOptions;
-      })
-      .catch(function () {
-        cityOptions = [];
-        return cityOptions;
-      });
-    return cityOptionsPromise;
-  }
-
-  function cityOptionLabel(place) {
-    return place.type ? place.name + ' · ' + place.type : place.name;
-  }
-
-  function cityMatches(query) {
-    const normalizedQuery = normalizeCity(query);
-    const options = cityOptions.map(function (place, index) {
-      const normalizedCity = normalizeCity(place.name);
-      const starts = normalizedQuery && normalizedCity.indexOf(normalizedQuery) === 0;
-      const contains = normalizedQuery && normalizedCity.indexOf(normalizedQuery) > 0;
-      return { place: place, index: index, starts: starts, contains: contains };
-    }).filter(function (item) {
-      return !normalizedQuery || item.starts || item.contains;
-    });
-
-    return options.sort(function (a, b) {
-      if (a.starts !== b.starts) return a.starts ? -1 : 1;
-      if (a.place.priority !== b.place.priority) return a.place.priority - b.place.priority;
-      return a.index - b.index;
-    }).slice(0, MAX_CITY_OPTIONS).map(function (item) {
-      return item.place;
-    });
-  }
-
-  function inferCityFromPage() {
-    const source = normalizeCity([
-      document.body?.dataset?.city || '',
-      document.querySelector('meta[name="geo.placename"]')?.getAttribute('content') || '',
-      document.title || '',
-      window.location.pathname || ''
-    ].join(' '));
-    const match = cityOptions.find(function (place) {
-      return source.indexOf(normalizeCity(place.name)) !== -1;
-    });
-    return match ? match.name : '';
-  }
-
-  function setupCityCombobox(input) {
-    if (!input || input.dataset.astroCityCombobox === 'true') return;
-    input.dataset.astroCityCombobox = 'true';
-    input.setAttribute('role', 'combobox');
-    input.setAttribute('aria-autocomplete', 'list');
-    input.setAttribute('aria-expanded', 'false');
-
-    const wrapper = input.parentElement;
-    if (wrapper) wrapper.classList.add('astro-combobox');
-
-    const idBase = input.id || ('astro-city-combobox-' + (++cityComboboxId));
-    if (!input.id) input.id = idBase;
-    const listbox = document.createElement('div');
-    listbox.className = 'astro-city-listbox';
-    listbox.id = idBase + '-listbox';
-    listbox.setAttribute('role', 'listbox');
-    listbox.hidden = true;
-    document.body.appendChild(listbox);
-    input.setAttribute('aria-controls', listbox.id);
-
-    let options = [];
-    let activeIndex = -1;
-    let blurTimer = null;
-
-    loadCityOptions().then(function () {
-      if (!input.value) {
-        const inferredCity = inferCityFromPage();
-        if (inferredCity) input.value = inferredCity;
-      }
-      if (document.activeElement === input) render(input.value);
-    });
-
-    function positionListbox() {
-      if (listbox.hidden) return;
-      const rect = input.getBoundingClientRect();
-      const gap = 6;
-      const viewportGap = 12;
-      const availableBelow = window.innerHeight - rect.bottom - viewportGap;
-      const availableAbove = rect.top - viewportGap;
-      const openAbove = availableBelow < 170 && availableAbove > availableBelow;
-      const maxHeight = Math.max(160, Math.min(280, (openAbove ? availableAbove : availableBelow) - gap));
-
-      listbox.style.left = Math.max(viewportGap, rect.left) + 'px';
-      listbox.style.width = Math.min(rect.width, window.innerWidth - viewportGap * 2) + 'px';
-      listbox.style.maxHeight = maxHeight + 'px';
-      if (openAbove) {
-        listbox.style.top = 'auto';
-        listbox.style.bottom = (window.innerHeight - rect.top + gap) + 'px';
-      } else {
-        listbox.style.bottom = 'auto';
-        listbox.style.top = (rect.bottom + gap) + 'px';
-      }
-    }
-
-    function setExpanded(isExpanded) {
-      input.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-      listbox.hidden = !isExpanded;
-      if (!isExpanded) {
-        input.removeAttribute('aria-activedescendant');
-        activeIndex = -1;
-      } else {
-        positionListbox();
-      }
-    }
-
-    function setActive(index) {
-      activeIndex = index;
-      Array.prototype.forEach.call(listbox.querySelectorAll('[role="option"]'), function (option, optionIndex) {
-        const active = optionIndex === activeIndex;
-        option.classList.toggle('is-active', active);
-        option.setAttribute('aria-selected', active ? 'true' : 'false');
-        if (active) {
-          input.setAttribute('aria-activedescendant', option.id);
-          option.scrollIntoView({ block: 'nearest' });
-        }
-      });
-      if (activeIndex < 0) input.removeAttribute('aria-activedescendant');
-    }
-
-    function selectOption(value) {
-      input.value = value;
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-      setExpanded(false);
-    }
-
-    function render(query) {
-      if (!cityOptions.length) {
-        options = [];
-        listbox.innerHTML = '';
-        setExpanded(false);
-        return;
-      }
-      options = cityMatches(query);
-      listbox.innerHTML = '';
-      options.forEach(function (place, index) {
-        const option = document.createElement('div');
-        option.id = listbox.id + '-option-' + index;
-        option.className = 'astro-city-option';
-        option.setAttribute('role', 'option');
-        option.setAttribute('aria-selected', 'false');
-        option.textContent = cityOptionLabel(place);
-        option.addEventListener('pointerdown', function (event) {
-          event.preventDefault();
-          selectOption(place.name);
-          input.focus({ preventScroll: true });
-        });
-        listbox.appendChild(option);
-      });
-      setExpanded(options.length > 0);
-      setActive(-1);
-    }
-
-    input.addEventListener('focus', function () {
-      window.clearTimeout(blurTimer);
-      render(input.value);
-      loadCityOptions().then(function () {
-        if (document.activeElement === input) render(input.value);
-      });
-    });
-
-    input.addEventListener('input', function () {
-      render(input.value);
-      loadCityOptions().then(function () {
-        if (document.activeElement === input) render(input.value);
-      });
-    });
-
-    input.addEventListener('keydown', function (event) {
-      const expanded = input.getAttribute('aria-expanded') === 'true';
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        if (!expanded) render(input.value);
-        if (options.length) setActive((activeIndex + 1) % options.length);
-        return;
-      }
-      if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        if (!expanded) render(input.value);
-        if (options.length) setActive(activeIndex <= 0 ? options.length - 1 : activeIndex - 1);
-        return;
-      }
-      if (event.key === 'Enter' && expanded && activeIndex >= 0) {
-        event.preventDefault();
-        selectOption(options[activeIndex].name);
-        return;
-      }
-      if (event.key === 'Escape' && expanded) {
-        event.preventDefault();
-        event.stopPropagation();
-        setExpanded(false);
-      }
-      if (event.key === 'Tab') setExpanded(false);
-    });
-
-    input.addEventListener('blur', function () {
-      blurTimer = window.setTimeout(function () {
-        setExpanded(false);
-      }, 120);
-    });
-
-    window.addEventListener('resize', positionListbox);
-    window.addEventListener('scroll', positionListbox, true);
-  }
-
-  function setupCityComboboxes(root) {
-    Array.prototype.forEach.call((root || document).querySelectorAll('input[name="city"], input[data-city-combobox="true"]'), setupCityCombobox);
-  }
-
-  function closeCityComboboxes() {
-    Array.prototype.forEach.call(document.querySelectorAll('.astro-city-listbox'), function (listbox) {
-      listbox.hidden = true;
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('[role="combobox"][aria-controls]'), function (input) {
-      input.setAttribute('aria-expanded', 'false');
-      input.removeAttribute('aria-activedescendant');
-    });
   }
 
   function ensureModal() {
@@ -361,7 +107,6 @@
     form.insertBefore(createField('textarea', 'message', 'Komentārs', false, 'Īsi aprakstiet savu situāciju...'), submit);
 
     document.body.appendChild(modal);
-    setupCityComboboxes(form);
     modal.querySelector('.astro-lead-modal__close').addEventListener('click', closeModal);
     modal.addEventListener('click', function (event) {
       if (event.target === modal && !isDirty()) closeModal();
@@ -429,7 +174,6 @@
 
   function closeModal() {
     if (!modal) return;
-    closeCityComboboxes();
     modal.inert = true;
     modal.hidden = true;
     document.body.classList.remove('astro-modal-open');
@@ -524,7 +268,6 @@
   function init() {
     storedUtm();
     if (!hasNativeForm()) ensureModal();
-    setupCityComboboxes(document);
     setupCtaInterception();
     setupFloatingCta();
   }

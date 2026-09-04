@@ -444,8 +444,14 @@
               <input class="form-input" id="el-name" name="name" type="text" placeholder="Jūsu vārds" required aria-required="true">
             </div>
             <div>
-              <label class="form-label" for="el-phone">Tālrunis vai e-pasts</label>
-              <input class="form-input" id="el-phone" name="phone" type="text" placeholder="+371 vai e-pasts" required aria-required="true">
+              <label class="form-label" for="el-phone">Tālrunis</label>
+              <input class="form-input" id="el-phone" name="phone" type="tel" autocomplete="tel" placeholder="+371" required aria-required="true">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div>
+              <label class="form-label" for="el-email">E-pasts</label>
+              <input class="form-input" id="el-email" name="email" type="email" autocomplete="email">
             </div>
           </div>
           <div class="form-grid form-grid--two">

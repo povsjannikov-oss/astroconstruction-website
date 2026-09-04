@@ -142,6 +142,75 @@
     return true;
   }
 
+  function leadFormHasBaselineFields(form) {
+    return !!(form.querySelector('[name="name"]') && form.querySelector('[name="phone"]'));
+  }
+
+  function createEmailField(form) {
+    const input = document.createElement('input');
+    input.type = 'email';
+    input.name = 'email';
+    input.autocomplete = 'email';
+    input.id = (form.id ? form.id + '-' : 'astro-') + 'email';
+    input.className = 'form-input';
+    input.setAttribute('aria-label', 'E-pasts');
+
+    const phone = form.querySelector('[name="phone"]');
+    const phoneGroup = phone && phone.closest('.form-group');
+    if (phoneGroup) {
+      const row = document.createElement('div');
+      row.className = 'form-group';
+      input.placeholder = 'E-pasts';
+      const label = document.createElement('label');
+      label.className = 'form-label';
+      label.setAttribute('for', input.id);
+      label.textContent = 'E-pasts';
+      row.appendChild(input);
+      row.appendChild(label);
+      return row;
+    }
+
+    const phoneField = phone && phone.closest('.form-field');
+    if (phoneField) {
+      const row = document.createElement('div');
+      row.className = 'form-field';
+      const label = document.createElement('label');
+      label.setAttribute('for', input.id);
+      label.textContent = 'E-pasts';
+      row.appendChild(label);
+      row.appendChild(input);
+      return row;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'form-row';
+    const label = document.createElement('label');
+    label.className = 'form-label-static';
+    label.setAttribute('for', input.id);
+    label.textContent = 'E-pasts';
+    input.placeholder = 'E-pasts';
+    row.appendChild(label);
+    row.appendChild(input);
+    return row;
+  }
+
+  function addBaselineEmail(form) {
+    if (form.querySelector('[name="email"]') || !leadFormHasBaselineFields(form)) return;
+    const phone = form.querySelector('[name="phone"]');
+    const anchor = phone && (phone.closest('.form-group, .form-field, .form-row') || phone);
+    const emailField = createEmailField(form);
+    if (anchor) anchor.insertAdjacentElement('afterend', emailField);
+    else form.insertBefore(emailField, form.querySelector('button[type="submit"], input[type="submit"]'));
+  }
+
+  function removeRequiredConsentCheckbox(form) {
+    form.querySelectorAll('input[type="checkbox"][name*="consent"], input[type="checkbox"][name*="privacy"]').forEach(function (checkbox) {
+      const wrapper = checkbox.closest('.astro-form-consent, label');
+      if (wrapper) wrapper.remove();
+      else checkbox.remove();
+    });
+  }
+
   function trackFormStart(form, event) {
     if (event && event.isTrusted === false) return;
     if (window.AstroAnalytics && typeof window.AstroAnalytics.formStart === 'function') {
@@ -156,6 +225,7 @@
   }
 
   function addConsent(form, submitButton) {
+    removeRequiredConsentCheckbox(form);
     if (form.querySelector('.astro-form-consent')) return;
     const consent = document.createElement('p');
     consent.className = 'astro-form-consent';
@@ -363,6 +433,8 @@
       message: values.message || '',
       extraFields: Object.assign(extra, {
         city: values.city || '',
+        need: values.need || '',
+        requirements: values.requirements || '',
         source_cta: values.source_cta || form.dataset.sourceCta || '',
         page_url: values.page_url || window.location.href,
         page_title: values.page_title || document.title,
@@ -500,6 +572,7 @@
     form.dataset.astroFormReady = 'true';
     const config = getConfig();
     ensureFormTrackingMeta(form, config);
+    addBaselineEmail(form);
     addConsent(form, button);
     addHoneypot(form);
     const errorBox = addErrorBox(form, button);

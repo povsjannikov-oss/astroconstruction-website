@@ -1059,6 +1059,52 @@ body.astro-consent-open .astro-floating-lead {
   }
 }
 
+@media (min-width: 1024px) {
+  body.astro-page-inner .hero {
+    min-height: min(560px, 72svh) !important;
+    padding-top: calc(var(--nav-h, 72px) + 20px) !important;
+    padding-bottom: 30px !important;
+    align-items: flex-start !important;
+  }
+
+  body.astro-page-inner .hero__inner {
+    padding-top: 34px !important;
+    padding-bottom: 28px !important;
+    transform: none !important;
+  }
+
+  body.astro-page-inner .hero .hero__breadcrumb,
+  body.astro-page-inner .hero .breadcrumbs {
+    margin-bottom: 18px !important;
+  }
+
+  body.astro-page-inner .hero .hero__label,
+  body.astro-page-inner .hero .label,
+  body.astro-page-inner .hero .section-label {
+    margin-bottom: 10px !important;
+  }
+
+  body.astro-page-inner .hero h1 {
+    font-size: clamp(42px, 4.9vw, 68px) !important;
+    line-height: 1.04 !important;
+    max-width: 920px !important;
+    margin-bottom: 16px !important;
+  }
+
+  body.astro-page-inner .hero__subline,
+  body.astro-page-inner .hero__lead {
+    font-size: clamp(16px, 1.5vw, 18px) !important;
+    line-height: 1.46 !important;
+    max-width: 680px !important;
+    margin-bottom: 18px !important;
+  }
+
+  body.astro-page-inner .hero__actions,
+  body.astro-page-inner .actions {
+    margin-top: 0 !important;
+  }
+}
+
 @media (max-width: 480px) {
   .nav__brand {
     min-width: 0 !important;
