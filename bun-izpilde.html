@@ -43,7 +43,7 @@
   <meta property="og:locale" content="lv_LV">
   <meta property="og:url" content="https://astroconstruction.lv/bun-izpilde">
   <meta property="og:title" content="Būvdarbu uzsākšanas nosacījumu izpilde — ASTRO CONSTRUCTION">
-  <meta property="og:description" content="Bez izpildītiem BUN būvdarbus sākt nedrīkst. Sakārtojam BUN dokumentus, atbildīgās personas, polises un iesniegšanu BIS portālā.">
+  <meta property="og:description" content="Būvatļauja vēl ne vienmēr nozīmē, ka drīkst sākt būvdarbus. Sakārtojam būvdarbu uzsākšanas nosacījumu (BUN) izpildi, atbildīgās personas, polises un iesniegšanu BIS portālā.">
   <meta property="og:site_name" content="ASTRO CONSTRUCTION">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -219,10 +219,6 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
 .card h3 { font-size: 24px; line-height: 1.18; font-weight: var(--fw-medium); margin-bottom: var(--sp-2); }
 .card p { color: var(--c-grey); }
 .section--dark .card p { color: rgba(255,255,255,.68); }
-.bun-checklist { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px 24px; margin: 0; padding: 0; list-style: none; }
-.bun-checklist li { position: relative; padding-left: 22px; color: rgba(255,255,255,.76); line-height: 1.55; }
-.bun-checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--c-green); font-weight: 700; }
-.bun-result { margin-top: 28px; padding: 18px 20px; border: 1px solid rgba(74, 222, 128, .34); background: rgba(74, 222, 128, .08); color: var(--c-white); font-weight: 700; }
 .process { padding: var(--sp-16) 0; background: var(--c-warm-white); }
 .process__head { max-width: 780px; margin-bottom: var(--sp-8); }
 .process__head p { margin-top: var(--sp-3); color: var(--c-grey); font-size: 18px; }
@@ -374,12 +370,12 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
     <div class="container split">
       <div>
         <p class="section-label reveal">Būtiskākais</p>
-        <h2 id="problem-heading" class="reveal reveal-delay-1">BEZ IZPILDĪTIEM BUN BŪVDARBUS SĀKT NEDRĪKST.</h2>
-        <p class="split__lead reveal reveal-delay-2">Būvdarbu uzsākšana bez izpildītiem būvdarbu uzsākšanas nosacījumiem ir patvaļīga būvniecība.</p>
+        <h2 id="problem-heading" class="reveal reveal-delay-1">Būvatļauja vēl nenozīmē, ka drīkst sākt būvdarbus.</h2>
+        <p class="split__lead reveal reveal-delay-2">Daudzi klienti apstājas tieši šajā posmā: būvatļauja ir saņemta, bet būvatļaujā norādītie Būvdarbu uzsākšanas nosacījumi vēl nav izpildīti.</p>
       </div>
       <div class="notice reveal reveal-delay-1">
-        <h3>Atzīme BIS</h3>
-        <p>Būvdarbus drīkst sākt tikai tad, kad BIS lietā ir atzīme par būvdarbu uzsākšanas nosacījumu izpildi.</p>
+        <h3>Tas nav viens “papīrs”.</h3>
+        <p>Būvdarbu uzsākšanas nosacījumu izpilde ir prasību kopums, kas jāizpilda pirms faktisko darbu sākšanas. Kamēr BIS lietā nav redzama atzīme par šo nosacījumu izpildi, būvdarbus sākt nedrīkst. Pretējā gadījumā tas var tikt vērtēts kā patvaļīga būvniecība.</p>
       </div>
     </div>
   </section>
@@ -414,23 +410,31 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
   <section class="section section--dark" aria-labelledby="scope-heading">
     <div class="container split">
       <div>
-        <p class="section-label reveal">BUN prasības</p>
-        <h2 id="scope-heading" class="reveal reveal-delay-1">Kas nepieciešams BUN izpildei?</h2>
+        <p class="section-label reveal">Darba apjoms</p>
+        <h2 id="scope-heading" class="reveal reveal-delay-1">Ko ASTRO sakārto Būvdarbu uzsākšanas nosacījumu izpildē.</h2>
+        <p class="split__lead reveal reveal-delay-2">Mērķis ir aizvest lietu līdz atzīmei par nosacījumu izpildi, lai būvdarbus var sākt tiesiski un ar skaidru atbildību objektā.</p>
       </div>
-      <div class="split__content">
-        <ul class="bun-checklist reveal">
-          <li>Informācija par būvdarbu veicēju / būvkomersantu.</li>
-          <li>Informācija par atbildīgajiem būvspeciālistiem, tostarp atbildīgo būvdarbu vadītāju.</li>
-          <li>Būvdarbu līguma informācija.</li>
-          <li>Būvuzraudzības līguma informācija, ja būvuzraudzība konkrētajam objektam ir nepieciešama.</li>
-          <li>Būvuzraudzības plāns, ja tiek veikta būvuzraudzība.</li>
-          <li>Autoruzraudzības līguma informācija, ja tā konkrētajā procesā ir nepieciešama.</li>
-          <li>Būvdarbu veicēja civiltiesiskās atbildības apdrošināšana.</li>
-          <li>Atbildīgo būvspeciālistu profesionālās civiltiesiskās atbildības apdrošināšana.</li>
-          <li>Citi konkrētajā būvatļaujā vai normatīvajos aktos noteiktie dokumenti/informācija.</li>
-          <li>BUN izpildes iesniegšana/sakārtošana BIS līdz atzīmei par būvdarbu uzsākšanas nosacījumu izpildi.</li>
-        </ul>
-        <div class="bun-result reveal">Izpildīti BUN - var sākt būvdarbus.</div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__label">BIS portāls</div>
+          <h3>BIS lietas un būvatļaujas nosacījumu analīze</h3>
+          <p>Pārbaudām, kurā posmā atrodas būvniecības lieta, kuri nosacījumi jau izpildīti un kas vēl trūkst pirms iesniegšanas.</p>
+        </article>
+        <article class="card reveal reveal-delay-1">
+          <div class="card__label">Dokumenti</div>
+          <h3>Dokumentu saraksts un sagatavošana</h3>
+          <p>Sagatavojam nepieciešamo dokumentāciju un piesaistām vajadzīgos speciālistus atbilstoši konkrētā objekta būvatļaujas nosacījumiem.</p>
+        </article>
+        <article class="card reveal reveal-delay-2">
+          <div class="card__label">Lomas</div>
+          <h3>Atbildīgās personas, būvkomersants un polises</h3>
+          <p>Sakārtojam līgumus un atbildīgās personas: būvkomersantu, atbildīgo būvdarbu vadītāju, būvuzraugu, autoruzraugu, civiltiesiskās apdrošināšanas polises un citus prasītos dokumentus.</p>
+        </article>
+        <article class="card reveal reveal-delay-3">
+          <div class="card__label">Žurnāls</div>
+          <h3>Būvdarbu žurnāla sākuma loģika</h3>
+          <p>Pēc atzīmes par Būvdarbu uzsākšanas nosacījumu izpildi process pāriet uz būvdarbu fāzi, kur jāuztur būvdarbu žurnāls un izpilddokumentācija.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -446,12 +450,12 @@ button { font-family: var(--font); border: 0; background: none; cursor: pointer;
         <article class="step reveal">
           <div class="step__num">01</div>
           <h3>BIS lietas statusa pārbaude</h3>
-          <p>Pārbaudām, vai projektēšanas nosacījumi izpildīti un kādi būvdarbu uzsākšanas nosacījumi vēl ir aktuāli.</p>
+          <p>Noskaidrojam, vai projektēšanas nosacījumi izpildīti un kādi Būvdarbu uzsākšanas nosacījumi vēl ir aktuāli.</p>
         </article>
         <article class="step reveal reveal-delay-1">
           <div class="step__num">02</div>
-          <h3>BUN prasību komplekts</h3>
-          <p>Sakārtojam būvatļaujā un normatīvajos aktos noteikto informāciju: atbildīgās personas, līgumus, polises, plānus un BIS ierakstus.</p>
+          <h3>Dokumentu plāns</h3>
+          <p>Sastādām nepieciešamo dokumentu un iesaistīto pušu sarakstu konkrētajam objektam.</p>
         </article>
         <article class="step reveal reveal-delay-2">
           <div class="step__num">03</div>
