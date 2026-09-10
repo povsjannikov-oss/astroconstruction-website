@@ -507,6 +507,8 @@ let previewTrigger=null;
 let dvpAutoplayTimer=null;
 let dvpResumeTimer=null;
 let dvpPausedUntil=0;
+let dvpKeyboardFocusInside=false;
+let dvpKeyboardFocusIntent=false;
 const dvpAutoplayInterval=3000;
 const dvpManualPause=5000;
 const reducedMotionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -516,7 +518,7 @@ const getDvpShape=slide=>{
   if(ratio<1.05)return 'tall';
   return 'balanced';
 };
-const isDvpAutoplayPaused=()=>reducedMotionQuery.matches||document.hidden||gallery.matches(':hover')||gallery.contains(document.activeElement)||(previewDialog&&previewDialog.open);
+const isDvpAutoplayPaused=()=>reducedMotionQuery.matches||document.hidden||dvpKeyboardFocusInside||(previewDialog&&previewDialog.open);
 const stopDvpAutoplay=()=>{clearTimeout(dvpAutoplayTimer);dvpAutoplayTimer=null;if(gallery)gallery.dataset.dvpAutoplay='paused';};
 const scheduleDvpAutoplay=delay=>{
   if(!gallery)return;
@@ -569,16 +571,18 @@ const manualDvpSlide=index=>{
   pauseDvpAutoplay(dvpManualPause);
 };
 if(gallery){
+  document.addEventListener('keydown',event=>{if(event.key==='Tab')dvpKeyboardFocusIntent=true;});
+  document.addEventListener('pointerdown',()=>{dvpKeyboardFocusIntent=false;dvpKeyboardFocusInside=false;},{capture:true});
   gallery.querySelector('[data-dvp-prev]').addEventListener('click',()=>manualDvpSlide(activeDvpSlide-1));
   gallery.querySelector('[data-dvp-next]').addEventListener('click',()=>manualDvpSlide(activeDvpSlide+1));
   gallery.addEventListener('keydown',event=>{
+    dvpKeyboardFocusInside=true;
+    pauseDvpAutoplay();
     if(event.key==='ArrowLeft'){event.preventDefault();manualDvpSlide(activeDvpSlide-1);}
     if(event.key==='ArrowRight'){event.preventDefault();manualDvpSlide(activeDvpSlide+1);}
   });
-  gallery.addEventListener('mouseenter',()=>pauseDvpAutoplay());
-  gallery.addEventListener('mouseleave',()=>scheduleDvpAutoplay(dvpAutoplayInterval));
-  gallery.addEventListener('focusin',()=>pauseDvpAutoplay());
-  gallery.addEventListener('focusout',()=>window.setTimeout(()=>{if(!gallery.contains(document.activeElement))scheduleDvpAutoplay(dvpAutoplayInterval);},0));
+  gallery.addEventListener('focusin',()=>{if(dvpKeyboardFocusIntent){dvpKeyboardFocusInside=true;pauseDvpAutoplay();}});
+  gallery.addEventListener('focusout',()=>window.setTimeout(()=>{if(!gallery.contains(document.activeElement)){dvpKeyboardFocusInside=false;dvpKeyboardFocusIntent=false;scheduleDvpAutoplay(dvpAutoplayInterval);}},0));
   let startX=0;
   let startY=0;
   let trackingSwipe=false;
