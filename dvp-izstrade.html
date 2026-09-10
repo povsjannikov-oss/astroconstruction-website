@@ -213,7 +213,7 @@
           <p class="label reveal">Dokumentācijas piemēri</p>
           <h2 id="preview-heading" class="reveal d1">Kā izskatās DVP dokumentācija.</h2>
         </div>
-        <p class="lead reveal d2">Anonimizēti reālu DVP dokumentu fragmenti — grafiki, ģenerālplāns, tehnoloģiskie apraksti un shēmas.</p>
+        <p class="lead reveal d2">Reālu DVP dokumentu fragmenti: grafiki, ģenerālplāns, tehnoloģiskie apraksti un shēmas.</p>
       </div>
       <div class="dvp-gallery reveal d3" data-dvp-gallery aria-label="DVP dokumentācijas priekšskatījumi">
         <div class="dvp-gallery__viewport">
@@ -542,6 +542,12 @@ const pauseDvpAutoplay=delay=>{
     dvpResumeTimer=setTimeout(()=>{dvpPausedUntil=0;scheduleDvpAutoplay(dvpAutoplayInterval);},delay);
   }
 };
+const clearDvpKeyboardPause=()=>{
+  if(!dvpKeyboardFocusInside&&!dvpKeyboardFocusIntent)return;
+  dvpKeyboardFocusInside=false;
+  dvpKeyboardFocusIntent=false;
+  scheduleDvpAutoplay(dvpAutoplayInterval);
+};
 const applyDvpSlide=slide=>{
   galleryImage.src=slide.src;
   galleryImage.alt=slide.alt;
@@ -572,7 +578,7 @@ const manualDvpSlide=index=>{
 };
 if(gallery){
   document.addEventListener('keydown',event=>{if(event.key==='Tab')dvpKeyboardFocusIntent=true;});
-  document.addEventListener('pointerdown',()=>{dvpKeyboardFocusIntent=false;dvpKeyboardFocusInside=false;},{capture:true});
+  document.addEventListener('pointerdown',clearDvpKeyboardPause,{capture:true});
   gallery.querySelector('[data-dvp-prev]').addEventListener('click',()=>manualDvpSlide(activeDvpSlide-1));
   gallery.querySelector('[data-dvp-next]').addEventListener('click',()=>manualDvpSlide(activeDvpSlide+1));
   gallery.addEventListener('keydown',event=>{
