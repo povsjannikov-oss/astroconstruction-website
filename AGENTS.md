@@ -24,6 +24,25 @@ Use these files as project context instead of duplicating their changing details
 
 If documentation and current implementation disagree, verify the implementation and report the discrepancy.
 
+## Detailed Project Rules
+`docs/project-rules/PROJECT_RULES.md` is always applicable and is the main detailed project framework.
+
+For consequential work, use it together with only the specialized files materially relevant to the task. Do not load every specialized file automatically for every minor task.
+
+- For Codex engineering, implementation, repository work, model/reasoning selection, investigation, context control, subagents, root-cause analysis, reviews, verification, Git, or release workflow, read `docs/project-rules/CODEX_ORCHESTRATION.md`.
+- For tasks that create, edit, review, or could accidentally change user-facing copy, Latvian content, or BIS terminology, read `docs/project-rules/CONTENT_RULES.md`. Approved user-facing copy remains immutable unless the user explicitly authorizes content changes.
+- For product, page architecture, UX, UI, navigation, responsive design, SEO, GEO/AEO, Image SEO, CRO, accessibility, performance, Core Web Vitals, analytics, privacy, or security implications, read `docs/project-rules/PRODUCT_UX_SEO.md`.
+- Before changing an existing approved page, established UX/UI behavior, approved content, an existing technical baseline, or a decision that may already have been approved, read `docs/project-rules/DECISIONS.md`. Preserve the latest approved decision unless the user explicitly changes it.
+
+The root `DECISIONS.md` remains part of the project-state documentation listed above. `docs/project-rules/DECISIONS.md` is the detailed approved-decision and baseline registry used by this routing layer.
+
+Use these routing examples:
+
+- Exact local CSS fix: `PROJECT_RULES.md` + `CODEX_ORCHESTRATION.md`.
+- Approved content implementation: `PROJECT_RULES.md` + `CODEX_ORCHESTRATION.md` + `CONTENT_RULES.md`.
+- Major page redesign: `PROJECT_RULES.md` + `CODEX_ORCHESTRATION.md` + `PRODUCT_UX_SEO.md` + `DECISIONS.md`, and `CONTENT_RULES.md` if visible copy is affected.
+- Change to an already published or otherwise approved page: include `DECISIONS.md` together with the rule files relevant to the change.
+
 ## Static Site Architecture
 Public pages are physical `.html` source files.
 
