@@ -2,13 +2,11 @@
 
 Долгосрочные решения проекта ASTRO CONSTRUCTION.
 
-Последнее обновление: 2026-08-02.
+Последнее обновление: 2026-09-27.
 
 ## Назначение файла
 
 `DECISIONS.md` хранит устойчивые решения и причины, почему проект устроен именно так.
-
-Разница между файлами:
 
 ```text
 PROJECT_STATE.md -> что происходит сейчас
@@ -16,75 +14,70 @@ DECISIONS.md     -> почему приняты ключевые долгоср�
 TASKS.md         -> что делать дальше и в каком порядке
 ```
 
-Правила:
-
-- не хранить здесь текущие рабочие diff, временные задачи или подробный QA-журнал;
-- не превращать файл в changelog;
-- добавлять только решения, которые должны пережить изменение текущего состояния проекта;
-- не хранить секреты, credentials, private backend URLs, tokens, passwords или private keys.
+Не хранить здесь текущие diff, временные задачи, подробный QA-журнал, secrets, credentials, private backend URLs, tokens, passwords или private keys. Добавлять только решения, которые должны пережить изменение текущего состояния проекта.
 
 ## D001. Сайт остаётся static HTML/CSS/JS
 
 Решение: проект ведётся как plain static website без Astro/React/Vue build-процесса.
 
-Причина: текущий сайт опубликован как набор реальных HTML/CSS/JS-файлов, хорошо подходит для Cloudflare Pages, легко проверяется и не требует дополнительной сборочной инфраструктуры.
+Причина: текущий сайт опубликован как набор реальных HTML/CSS/JavaScript-файлов, подходит для Cloudflare Pages, напрямую проверяется и не требует дополнительной сборочной инфраструктуры.
 
-Следствие: не вводить framework, bundler или component system без отдельного архитектурного решения.
+Следствие: не вводить framework, bundler, package build system или broad architecture rewrite без отдельного архитектурного решения.
 
-## D002. Project management docs должны быть в Git
+## D002. Project-state documentation хранится в Git
 
-Решение: `PROJECT_STATE.md`, `DECISIONS.md` и `TASKS.md` являются частью проекта и должны храниться в репозитории.
+Решение: `PROJECT_STATE.md`, `DECISIONS.md` и `TASKS.md` являются частью проекта и хранятся в репозитории.
 
-Причина: новый чат Codex, другой компьютер или fresh clone должны получать актуальный контекст без длинных handoff-промптов.
+Причина: новый Codex task, другой компьютер или fresh clone должны получать актуальный контекст без длинных handoff-промптов.
 
-Следствие: эти файлы можно коммитить, но в них нельзя хранить секреты или приватные технические данные.
+Следствие: файлы можно коммитить, но нельзя использовать как changelog или хранилище приватных данных.
 
-## D003. `git add .` запрещён
+## D003. Используется только exact-path staging
 
-Решение: не использовать `git add .` в этом проекте.
+Решение: `git add .` и `git add -A` в этом проекте запрещены.
 
-Причина: рабочие папки могут содержать QA screenshots, JSON, prototypes, internal/private docs и локальные backup-материалы.
+Причина: рабочие каталоги могут содержать unrelated changes, QA artifacts, prototypes, internal/private documents и local backups.
 
-Следствие: использовать только точечный staging exact files для текущей задачи, затем проверять staged diff.
+Следствие: stage только exact approved files, затем проверять staged names и staged diff. При рискованном dirty checkout использовать отдельный clean worktree.
 
-## D004. V1 является утверждённой production-версией
+## D004. Текущая production-реализация - baseline, но не конечный design target
 
-Дата: 02.08.2026
+Дата обновления решения: 2026-09-27.
 
-Решение: Home V2 отклонена как основная визуальная версия из-за большого количества визуальных проблем. V1 признана более цельной, красивой и подходящей для production.
+Решение: текущий `main` / `origin/main` является рабочей production-базой. Ни августовский V1, ни Home V2 не являются автоматически утверждённой целью для восстановления или дальнейшего design development.
 
-Production rollback выполнен commit:
+Причина: после августовского rollback продукт существенно изменился: расширены services и expert content, BIS/document architecture, construction guide, forms, utilities, SEO, project evidence и shared behavior. Будущий дизайн должен исходить из текущего продукта, а не из старого snapshot.
 
-```text
-dcc1594d261186cbdd8fabc43d17e60f18b2a69b
-```
+Целевое направление: distinctive, calm и technically credible construction experience, а не generic AI/SaaS/crypto/legal template. Решения должны учитывать content hierarchy, trust, conversion, accessibility, performance и реальный строительный контекст.
 
-V1 tree SHA:
+Следствие: systematic redesign или design-system evolution выполняется как отдельная approved и audited задача. Обычная feature, content или maintenance задача не даёт разрешения на broad redesign. Это решение заменяет прежнее утверждение, что V1 является постоянным approved design baseline.
 
-```text
-f264db051ca057a3ba18bbc09e23ea248c537dc0
-```
+## D005. Scope определяется coherent task, а не обязательным правилом «один компонент - один commit»
 
-Последствия:
+Дата обновления решения: 2026-09-27.
 
-- `main` возвращён к V1;
-- Home V2 сохраняется только как архив идей и компонентов;
-- запрещена полная повторная интеграция Home V2 без нового отдельного решения;
-- любые будущие улучшения выполняются небольшими изолированными изменениями поверх V1;
-- визуальные изменения должны предварительно проверяться на отдельной preview-ветке.
+Решение: прежнее правило `one visual component -> one task -> one commit` больше не является постоянным ограничением проекта.
 
-## D005. Один визуальный компонент — одна задача — один commit
+Причина: exact staging, isolation, diff review и verification уже регулируются global Codex instructions и root `AGENTS.md`. Жёсткое дробление может мешать coherent design-system или shared-component work.
 
-Решение: визуальные изменения после rollback выполняются маленькими изолированными задачами.
+Следствие: изменения остаются минимальными и reviewable, но одна отдельно утверждённая задача может охватывать несколько связанных компонентов, если это необходимо для целостного результата. Unrelated work по-прежнему не объединяется.
 
-Причина: V1 утверждена как production baseline, поэтому крупные redesign-интеграции несут высокий риск регрессий.
+## D006. V1 snapshot сохраняется только как historical reference
 
-Следствие: не переносить несколько визуальных идей одним большим commit; каждый компонент должен иметь отдельную задачу, отдельную проверку и отдельный commit.
+Решение: локальный каталог `C:\Users\Pjotrs\Desktop\ASTRO LEGACY 2026-07-30` можно сохранять неизменным как исторический материал.
 
-## D006. Product Snapshot V1 является immutable reference
+Проверка: наличие каталога подтверждено 2026-09-27; содержимое и соответствие прежнему tree SHA в этой задаче повторно не проверялись.
 
-Решение: `C:\Users\Pjotrs\Desktop\ASTRO LEGACY 2026-07-30` является эталонным архивом V1.
+Причина: snapshot может быть полезен для сравнения прежних решений, но local filesystem path не является переносимой частью Git и не отражает текущий продукт.
 
-Причина: после rollback нужен стабильный визуальный и продуктовый reference для сравнения будущих изменений.
+Следствие: snapshot не использовать как production authority, обязательный visual baseline или автоматический источник восстановления. Не изменять и не удалять его без отдельного решения.
 
-Следствие: не изменять и не перезаписывать Product Snapshot; использовать его только для сверки.
+## D007. Codex instruction architecture остаётся компактной и разделённой по роли
+
+Дата: 2026-09-27.
+
+Решение: после commit `58ca3dc7283fc07d2415827e8e0d5294c12a736f` reusable working rules находятся в global Codex instructions, ASTRO-specific rules - в root `AGENTS.md`, а project state управляется тремя файлами `PROJECT_STATE.md`, `DECISIONS.md` и `TASKS.md`.
+
+Причина: прежние пять файлов в `docs/project-rules/` дублировали и усложняли instruction hierarchy.
+
+Следствие: `docs/project-rules/` не является действующим instruction layer. Не восстанавливать прежнюю архитектуру и не добавлять ссылки на удалённые rule files без нового явного решения. Текущие факты, durable decisions и backlog должны оставаться разделёнными между тремя project-state documents.

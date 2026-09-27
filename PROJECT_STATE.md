@@ -1,121 +1,87 @@
 # PROJECT_STATE.md
 
-Официальный источник актуального состояния проекта ASTRO CONSTRUCTION для новых задач Codex.
+Официальный источник текущего состояния проекта ASTRO CONSTRUCTION для новых задач Codex.
 
-Последнее обновление: 2026-08-02.
+Последнее обновление: 2026-09-27.
 
-## 1. Текущее состояние проекта
+## 1. Идентичность и production-база
 
-Проект находится в папке:
+ASTRO CONSTRUCTION - публичный сайт на plain static HTML/CSS/JavaScript. Это не Astro framework и не проект со сборочным процессом.
 
-```text
-C:\Users\Pjotrs\Desktop\CODEX &CLOUDE
-```
+Production baseline хранится в `main` / `origin/main`.
 
-Это plain static HTML/CSS/JS website без Astro framework build-процесса. Название ASTRO относится к бренду ASTRO CONSTRUCTION, а не к фреймворку.
-
-Production URL:
+На момент этого обновления актуальный `origin/main`:
 
 ```text
-https://astroconstruction-website.pages.dev/
+58ca3dc7283fc07d2415827e8e0d5294c12a736f
 ```
 
-Custom domain:
+Основной production domain:
 
 ```text
 https://astroconstruction.lv/
 ```
 
-Custom domain не менять без отдельной задачи.
+Сайт использует Cloudflare Pages. Репозиторий подтверждает исходные файлы и release history, но сам по себе не доказывает текущий deployment status, настройки Cloudflare или состояние live-сайта. Для production-утверждений нужна отдельная live-проверка.
 
-## 2. Production baseline
+## 2. Текущее состояние продукта
 
-Официальная production-версия после rollback:
+Сайт существенно развился после rollback-документации августа 2026 года. Текущая production-база включает взаимосвязанную систему:
+
+- service, client-situation и expert pages;
+- BIS и construction-document материалы;
+- knowledge architecture с `zinasanu-centrs/` и поисковым `buvniecibas-celvedis`;
+- project cases и технические изображения;
+- общие lead forms, CTA и modal behavior;
+- construction и calendar utilities;
+- canonical, Open Graph, JSON-LD, sitemap и crawler controls;
+- актуальные favicon и social preview assets;
+- repository-level Codex instructions.
+
+Это описание направлений продукта, а не исчерпывающий реестр страниц. Точное состояние определяется текущими tracked files и Git history.
+
+## 3. Состояние дизайна и UX
+
+Текущая реализация является рабочей production-базой, но не утверждённым конечным дизайн-направлением.
+
+Значительная часть визуального слоя сложилась как rapid-launch и legacy implementation. По оценке владельца, сайт местами выглядит визуально недоработанным и слишком похожим на generic AI/SaaS/crypto/legal template вместо узнаваемого construction product.
+
+Ожидаемое будущее направление - системная эволюция design system и UX на основе текущего продукта, контента, SEO, доверия, conversion, accessibility, performance и строительного позиционирования ASTRO.
+
+Это не разрешение на redesign в рамках обычных задач. Такой этап должен быть отдельной задачей с полным product audit, утверждённым направлением, управлением scope и regression verification.
+
+Ни V1, ни Home V2 не являются автоматической целью для восстановления. Их можно использовать только как исторический материал, если это полезно для конкретного анализа.
+
+## 4. Архитектура инструкций
+
+После commit `58ca3dc7283fc07d2415827e8e0d5294c12a736f` действует упрощённая архитектура инструкций:
 
 ```text
-dcc1594d261186cbdd8fabc43d17e60f18b2a69b
+global Codex instructions -> reusable cross-project working rules
+root AGENTS.md            -> ASTRO-specific repository instructions
+PROJECT_STATE.md          -> current project state
+DECISIONS.md              -> durable approved decisions and reasons
+TASKS.md                  -> current actionable backlog
 ```
 
-Approved design:
+Каталог `docs/project-rules/` и пять прежних detailed rule files удалены из текущего production tree этим commit. Не ссылаться на них как на действующий слой инструкций и не восстанавливать их без нового явного решения.
 
-```text
-V1
-```
+## 5. Исторические материалы
 
-V1 tree SHA:
+Августовский V1 rollback и Home V2 остаются частью истории проекта, но не определяют текущую product architecture и не ограничивают будущую работу формулой «только поверх V1».
 
-```text
-f264db051ca057a3ba18bbc09e23ea248c537dc0
-```
-
-Rollback к V1 выполнен 02.08.2026. `main` и `origin/main` должны оставаться на истории, где Home V2 сохранена предыдущими commit, а актуальное файловое дерево production снова совпадает с V1.
-
-## 3. Product Snapshot
-
-Эталонный архив V1:
+Локальный путь:
 
 ```text
 C:\Users\Pjotrs\Desktop\ASTRO LEGACY 2026-07-30
 ```
 
-Статус:
+существовал и был доступен при проверке 2026-09-27. В этой задаче проверено наличие каталога, но не проведён новый аудит его содержимого или tree equivalence. Это historical reference snapshot, а не authority для текущего production или будущего design direction. Путь является локальным и не переносится во fresh clone.
 
-```text
-immutable reference snapshot
-```
+Home V2 branches/worktrees также могут сохраняться как исторический материал. Их наличие не означает одобрение на reintegration.
 
-Этот архив используется как визуальный и продуктовый эталон V1. Не изменять, не перезаписывать и не использовать как рабочую папку.
+## 6. Актуализация состояния
 
-## 4. Home V2
-
-Home V2 status:
-
-```text
-archived experiment
-```
-
-Home V2 закрыта как отдельный эксперимент. Она не является approved production design и не должна автоматически возвращаться в `main`.
-
-Сохранять Home V2 branches/worktree как архив идей и компонентов. Не удалять их без отдельного решения.
-
-Запрещена полная повторная интеграция Home V2 в `main` без нового отдельного решения.
-
-## 5. Рабочее правило после rollback
-
-Дальнейшие изменения выполняются точечно поверх V1:
-
-```text
-one visual component -> one task -> one commit
-```
-
-Любые визуальные изменения сначала проверяются на отдельной preview-ветке. В `main` попадают только небольшие изолированные изменения после проверки.
-
-## 6. Git safety
-
-Перед любой задачей:
-
-```bash
-git status --short
-git branch --show-current
-```
-
-Правила:
-
-- не использовать `git add .`;
-- stage only exact files for current task;
-- не использовать force push;
-- не переписывать историю `main`;
-- не удалять Home V2 branches/worktree;
-- не менять Cloudflare без отдельной задачи;
-- не изменять Product Snapshot и backup.
-
-## 7. Документация
-
-Связанные файлы:
-
-```text
-DECISIONS.md -> долгосрочные решения и причины
-TASKS.md -> текущий backlog, статусы и правила задач
-```
-
-После завершения логического этапа проверить, нужно ли обновить `PROJECT_STATE.md`, `DECISIONS.md` и `TASKS.md`.
+- Не считать repository state доказательством live deployment.
+- Обновлять `PROJECT_STATE.md`, `DECISIONS.md` и `TASKS.md` только когда materially меняется текущее состояние, durable decision или backlog.
+- Не превращать эти файлы в release log или перечень каждого завершённого commit.
