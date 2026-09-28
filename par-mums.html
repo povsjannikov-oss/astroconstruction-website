@@ -34,22 +34,29 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQY2FGLHD"></script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Par ASTRO CONSTRUCTION — būvniecības process, BIS un dokumentācija</title>
-  <meta name="description" content="ASTRO CONSTRUCTION ir Latvijas inženieru un būvniecības uzņēmums, kas sakārto būvniecības procesu — no BIS un Būvdarbu uzsākšanas nosacījumu (BUN) izpildes līdz nodošanai ekspluatācijā.">
-  <meta name="keywords" content="ASTRO CONSTRUCTION, būvkomersants, būvniecības uzņēmums Latvijā, BIS dokumentācija, BUN izpilde, būvdarbu vadība, būvuzraudzība, nodošana ekspluatācijā">
+  <title>Par ASTRO CONSTRUCTION | Būvniecība, projektēšana un būvuzraudzība</title>
+  <meta name="description" content="ASTRO CONSTRUCTION būvē, projektē, vada būvniecības projektus, veic būvuzraudzību, sakārto būvniecības dokumentāciju un BIS, legalizē ēkas un nodod tās ekspluatācijā.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://astroconstruction.lv/par-mums">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="lv_LV">
   <meta property="og:url" content="https://astroconstruction.lv/par-mums">
-  <meta property="og:title" content="Par ASTRO CONSTRUCTION — inženiertehnisks būvniecības partneris">
-  <meta property="og:description" content="Sakārtojam klientu būvniecības procesu Latvijā: BIS, BUN, dokumentācija, būvdarbu vadība, būvuzraudzība un nodošana ekspluatācijā.">
+  <meta property="og:title" content="Par ASTRO CONSTRUCTION | Būvniecība, projektēšana un būvuzraudzība">
+  <meta property="og:description" content="ASTRO CONSTRUCTION būvē, projektē, vada būvniecības projektus, veic būvuzraudzību, sakārto būvniecības dokumentāciju un BIS, legalizē ēkas un nodod tās ekspluatācijā.">
   <meta property="og:site_name" content="ASTRO CONSTRUCTION">
+  <meta property="og:image" content="https://astroconstruction.lv/assets/social/astro-construction-og.jpg">
+  <meta property="og:image:secure_url" content="https://astroconstruction.lv/assets/social/astro-construction-og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ASTRO CONSTRUCTION - Būvniecība, dokumentācija, projektēšana un būvuzraudzība Latvijā">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Par ASTRO CONSTRUCTION">
-  <meta name="twitter:description" content="Inženiertehnisks būvniecības partneris Latvijā — no dokumentācijas un BIS līdz nodošanai ekspluatācijā.">
+  <meta name="twitter:title" content="Par ASTRO CONSTRUCTION | Būvniecība, projektēšana un būvuzraudzība">
+  <meta name="twitter:description" content="ASTRO CONSTRUCTION būvē, projektē, vada būvniecības projektus, veic būvuzraudzību, sakārto būvniecības dokumentāciju un BIS, legalizē ēkas un nodod tās ekspluatācijā.">
+  <meta name="twitter:image" content="https://astroconstruction.lv/assets/social/astro-construction-og.jpg">
+  <meta name="twitter:image:alt" content="ASTRO CONSTRUCTION - Būvniecība, dokumentācija, projektēšana un būvuzraudzība Latvijā">
 
   <!-- Fonts -->
   <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
@@ -71,34 +78,11 @@
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "Par ASTRO CONSTRUCTION",
-    "description": "ASTRO CONSTRUCTION sakārto būvniecības procesu Latvijā — no pirmās idejas, dokumentācijas un BIS līdz nodošanai ekspluatācijā.",
+    "@id": "https://astroconstruction.lv/par-mums#webpage",
+    "name": "Par ASTRO CONSTRUCTION | Būvniecība, projektēšana un būvuzraudzība",
+    "description": "ASTRO CONSTRUCTION būvē, projektē, vada būvniecības projektus, veic būvuzraudzību, sakārto būvniecības dokumentāciju un BIS, legalizē ēkas un nodod tās ekspluatācijā.",
     "url": "https://astroconstruction.lv/par-mums",
-    "mainEntity": {
-      "@type": "LocalBusiness",
-      "name": "SIA ASTRO CONSTRUCTION",
-      "url": "https://astroconstruction.lv",
-      "telephone": "+37129963618",
-      "email": "info@astroconstruction.lv",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Zentenes iela 18-29",
-        "addressLocality": "Rīga",
-        "postalCode": "LV-1069",
-        "addressCountry": "LV"
-      },
-      "areaServed": "LV",
-      "serviceType": [
-        "BIS dokumentācija",
-        "BUN izpilde",
-        "Būvdarbu vadība",
-        "Būvuzraudzība",
-        "Izpilddokumentācija",
-        "Nodošana ekspluatācijā",
-        "Legalizācija",
-        "Tāmes apdrošināšanas gadījumiem"
-      ]
-    }
+    "mainEntity": { "@id": "https://astroconstruction.lv/#organization" }
   }
   </script>
 
@@ -237,67 +221,6 @@ button { border: 0; background: none; cursor: pointer; }
 .btn-dark { background: var(--c-graphite); color: var(--c-white); }
 .btn-primary:hover, .btn-outline:hover, .btn-dark:hover { transform: translateY(-2px); }
 
-.intro { padding: var(--sp-16) 0; background: var(--c-warm-white); }
-.intro__grid { display: grid; gap: var(--sp-8); align-items: start; }
-.intro h2, .principles h2, .scope h2, .credentials h2, .process h2, .cta h2 { font-size: clamp(36px, 5vw, 68px); line-height: 1.06; font-weight: var(--fw-light); letter-spacing: 0; }
-.intro__text { display: grid; gap: 22px; font-size: 19px; color: #3c3c3a; max-width: 760px; }
-.intro__panel { background: var(--c-graphite); color: var(--c-white); padding: var(--sp-5); border-radius: var(--radius-md); }
-.intro__panel-title { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--c-sand-light); margin-bottom: var(--sp-3); font-weight: var(--fw-semibold); }
-.intro__facts { display: grid; gap: 20px; }
-.fact { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.12); }
-.fact:last-child { border-bottom: 0; padding-bottom: 0; }
-.fact__value { display: block; font-size: 42px; line-height: 1; font-weight: var(--fw-light); margin-bottom: 6px; }
-.fact__label { color: rgba(255,255,255,.7); font-size: 14px; }
-@media (min-width: 980px) { .intro__grid { grid-template-columns: minmax(0, 1.4fr) 380px; } }
-
-.principles { padding: var(--sp-16) 0; background: var(--c-white); }
-.principles__head { max-width: 760px; margin-bottom: var(--sp-8); }
-.principles__grid { display: grid; gap: 1px; background: var(--c-border); border: 1px solid var(--c-border); }
-.principle { background: var(--c-white); padding: var(--sp-5); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
-.principle__num { font-size: 13px; color: var(--c-sand); font-weight: var(--fw-semibold); margin-bottom: var(--sp-4); }
-.principle h3 { font-size: 25px; line-height: 1.22; font-weight: var(--fw-medium); margin-bottom: var(--sp-2); }
-.principle p { color: var(--c-grey); font-size: 16px; }
-@media (min-width: 760px) { .principles__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1080px) { .principles__grid { grid-template-columns: repeat(4, 1fr); } }
-
-.scope { padding: var(--sp-16) 0; background: var(--c-ultra-light); }
-.scope__layout { display: grid; gap: var(--sp-8); }
-.scope__copy { max-width: 580px; }
-.scope__copy p { margin-top: var(--sp-3); color: var(--c-grey); font-size: 18px; }
-.scope__list { display: grid; gap: 14px; }
-.scope-item {
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 16px;
-  padding: 22px;
-  background: var(--c-white);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-md);
-}
-.scope-item__mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: rgba(200,169,126,.16); color: var(--c-sand); font-weight: var(--fw-semibold); }
-.scope-item h3 { font-size: 19px; line-height: 1.25; margin-bottom: 4px; font-weight: var(--fw-semibold); }
-.scope-item p { color: var(--c-grey); font-size: 15px; line-height: 1.58; }
-@media (min-width: 980px) { .scope__layout { grid-template-columns: 420px 1fr; } }
-
-.credentials { padding: var(--sp-16) 0; background: var(--c-graphite); color: var(--c-white); }
-.credentials__grid { display: grid; gap: var(--sp-8); align-items: start; }
-.credentials__lead { color: rgba(255,255,255,.72); font-size: 19px; margin-top: var(--sp-3); max-width: 660px; }
-.registry { display: grid; gap: 1px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.12); }
-.registry__row { display: grid; gap: 4px; padding: 20px; background: rgba(255,255,255,.04); }
-.registry__label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--c-sand-light); font-weight: var(--fw-semibold); }
-.registry__value { color: rgba(255,255,255,.88); font-size: 17px; overflow-wrap: anywhere; }
-@media (min-width: 900px) { .credentials__grid { grid-template-columns: minmax(0, 1fr) 460px; } }
-
-.process { padding: var(--sp-16) 0; background: var(--c-warm-white); }
-.process__head { max-width: 760px; margin-bottom: var(--sp-8); }
-.process__head p { margin-top: var(--sp-3); color: var(--c-grey); font-size: 18px; }
-.steps { display: grid; gap: 1px; background: var(--c-border); border: 1px solid var(--c-border); }
-.step { background: var(--c-warm-white); padding: var(--sp-5); }
-.step__num { font-size: 12px; color: var(--c-sand); font-weight: var(--fw-semibold); letter-spacing: .12em; margin-bottom: var(--sp-3); }
-.step h3 { font-size: 24px; line-height: 1.2; font-weight: var(--fw-medium); margin-bottom: var(--sp-2); }
-.step p { color: var(--c-grey); }
-@media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); } }
-
 .cta { padding: var(--sp-16) 0; background: var(--c-white); }
 .cta__box {
   background: var(--c-graphite);
@@ -358,8 +281,165 @@ button { border: 0; background: none; cursor: pointer; }
     hyphens: auto;
   }
   .hero__actions a { width: 100%; }
-  .intro, .principles, .scope, .credentials, .process, .cta { padding: var(--sp-10) 0; }
-  .principle, .step { padding: var(--sp-4); }
+  .cta { padding: var(--sp-10) 0; }
+}
+
+/* About page editorial sections; navigation, footer and lead UI retain shared patterns. */
+.hero {
+  min-height: 0;
+  padding: calc(var(--nav-h) + 72px) 0 72px;
+}
+.hero__inner { max-width: 1000px; }
+.breadcrumbs { color: rgba(255,255,255,.68); }
+.breadcrumbs a { color: rgba(255,255,255,.82); }
+.hero h1 {
+  font-size: clamp(48px, 7.4vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.hero__lead { max-width: 780px; font-size: clamp(20px, 2.15vw, 26px); }
+.hero .btn-primary { position: relative; z-index: 2; }
+
+.about-intro { padding: 104px 0; background: var(--c-warm-white); }
+.about-intro p {
+  max-width: 1020px;
+  font-size: clamp(27px, 3.5vw, 45px);
+  line-height: 1.28;
+  font-weight: var(--fw-light);
+  letter-spacing: -.025em;
+}
+
+.about-identity { padding: 78px 0; background: var(--c-white); border-block: 1px solid var(--c-border); }
+.about-identity__grid { display: grid; gap: 44px; }
+.about-identity h2,
+.about-services h2,
+.about-process h2,
+.about-projects h2,
+.about-knowledge h2 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.08;
+  font-weight: var(--fw-light);
+  letter-spacing: -.035em;
+}
+.about-identity__link,
+.about-projects__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+}
+.about-identity__link::after,
+.about-projects__all::after { content: "↗"; font-size: 18px; line-height: 1; }
+.about-identity__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.about-identity__facts li {
+  min-width: 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--c-border);
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  overflow-wrap: anywhere;
+}
+
+.about-services { padding: 112px 0 128px; background: var(--c-ultra-light); }
+.about-services h2 { margin-bottom: 52px; }
+.about-services__list { display: grid; gap: 0 54px; list-style: none; }
+.about-service { min-width: 0; padding: 28px 0 34px; border-top: 1px solid #d5d2ca; }
+.about-service h3 {
+  margin-bottom: 12px;
+  font-size: clamp(21px, 2vw, 26px);
+  line-height: 1.2;
+  font-weight: var(--fw-semibold);
+  letter-spacing: -.02em;
+}
+.about-service h3 a { text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.about-service h3 a:hover { text-decoration-line: underline; }
+.about-service p { max-width: 610px; color: #41413e; font-size: 16px; line-height: 1.67; }
+
+.about-process { padding: 114px 0; background: var(--c-graphite); color: var(--c-white); }
+.about-process__grid { display: grid; gap: 42px; }
+.about-process__body { display: grid; gap: 24px; max-width: 710px; }
+.about-process__body p { color: rgba(255,255,255,.77); font-size: 18px; line-height: 1.7; }
+.about-process__body .about-process__lead {
+  color: var(--c-white);
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.34;
+  font-weight: var(--fw-light);
+}
+
+.about-projects { padding: 112px 0 122px; background: var(--c-white); }
+.about-projects h2 { margin-bottom: 50px; }
+.about-projects__featured { display: grid; gap: 24px; margin-bottom: 28px; }
+.about-project-feature { min-width: 0; border: 1px solid var(--c-border); background: var(--c-warm-white); }
+.about-project-feature__image,
+.about-project-feature picture,
+.about-project-feature img { display: block; width: 100%; }
+.about-project-feature__image { overflow: hidden; aspect-ratio: 16 / 10; }
+.about-project-feature picture,
+.about-project-feature img { height: 100%; }
+.about-project-feature img { object-fit: cover; }
+.about-project-feature__body { padding: clamp(24px, 3vw, 38px); }
+.about-project-feature h3 { margin-bottom: 14px; font-size: clamp(22px, 2.2vw, 29px); line-height: 1.2; font-weight: var(--fw-medium); }
+.about-project-feature p,
+.about-project-row p { color: #50504d; font-size: 16px; line-height: 1.65; }
+.about-project-feature h3 a:hover,
+.about-project-row h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.about-project-row {
+  display: grid;
+  gap: 12px;
+  padding: 27px 0;
+  border-top: 1px solid var(--c-border);
+}
+.about-project-row:last-child { border-bottom: 1px solid var(--c-border); }
+.about-project-row h3 { font-size: clamp(19px, 2vw, 24px); line-height: 1.3; font-weight: var(--fw-medium); }
+.about-projects__all { margin-top: 34px; }
+
+.about-knowledge { padding: 106px 0; background: var(--c-ultra-light); }
+.about-knowledge__grid { display: grid; gap: 30px; align-items: end; }
+.about-knowledge h2 { max-width: 750px; }
+.about-knowledge h2 a:hover { text-decoration: underline; text-underline-offset: 8px; }
+.about-knowledge p { max-width: 570px; color: #41413e; font-size: 18px; line-height: 1.65; }
+
+.cta { padding: 112px 0; }
+.cta h2 { font-size: clamp(38px, 4.8vw, 62px); line-height: 1.08; font-weight: var(--fw-light); letter-spacing: -.035em; }
+.cta__box { gap: 40px; }
+.cta__box > .btn-primary { white-space: nowrap; }
+
+main a:focus-visible { outline: 3px solid #8a642f; outline-offset: 4px; }
+.hero a:focus-visible,
+.about-process a:focus-visible,
+.cta a:focus-visible { outline-color: var(--c-sand-light); }
+
+@media (min-width: 900px) {
+  .about-identity__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .about-services__list,
+  .about-projects__featured { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-process__grid { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); }
+  .about-project-row { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 48px; }
+  .about-knowledge__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 70px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: calc(var(--nav-h) + 72px) 0 68px; }
+  .hero h1 { font-size: clamp(38px, 11vw, 52px); }
+  .hero__lead { font-size: 19px; }
+  .hero .btn-primary { width: 100%; }
+  .about-intro,
+  .about-identity,
+  .about-services,
+  .about-process,
+  .about-projects,
+  .about-knowledge,
+  .cta { padding-block: 76px; }
+  .about-identity__facts { grid-template-columns: 1fr; }
+  .about-services h2,
+  .about-projects h2 { margin-bottom: 34px; }
+  .about-project-feature__image { aspect-ratio: 4 / 3; }
+  .cta__box > .btn-primary { width: 100%; white-space: normal; }
 }
 </style>
 </head>
@@ -374,7 +454,7 @@ button { border: 0; background: none; cursor: pointer; }
       <li><a href="/riki" class="nav__link">Rīki</a></li>
       <li><a href="/projekti" class="nav__link">Projekti</a></li>
       <li><a href="/#buvniecibas-cels" class="nav__link">Būvniecības ceļš</a></li>
-      <li><a href="/par-mums" class="nav__link">Par mums</a></li>
+      <li><a href="/par-mums" class="nav__link" aria-current="page">Par mums</a></li>
       <li><a href="/kontakti" class="nav__link">Kontakti</a></li>
     </ul>
 
@@ -396,7 +476,7 @@ button { border: 0; background: none; cursor: pointer; }
     <li><a href="/riki" class="nav__mobile-link">Rīki</a></li>
     <li><a href="/projekti" class="nav__mobile-link">Projekti</a></li>
     <li><a href="/#buvniecibas-cels" class="nav__mobile-link">Būvniecības ceļš</a></li>
-    <li><a href="/par-mums" class="nav__mobile-link">Par mums</a></li>
+    <li><a href="/par-mums" class="nav__mobile-link" aria-current="page">Par mums</a></li>
     <li><a href="/kontakti" class="nav__mobile-link">Kontakti</a></li>
   </ul>
   <div class="nav__mobile-contact">
@@ -409,210 +489,176 @@ button { border: 0; background: none; cursor: pointer; }
   <section class="hero" aria-label="Par ASTRO CONSTRUCTION">
     <div class="container">
       <div class="hero__inner">
-        <div class="breadcrumbs reveal">
+        <div class="breadcrumbs">
           <a href="/">Sākums</a>
-          <span>/</span>
-          <span>Par mums</span>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Par mums</span>
         </div>
-        <p class="section-label reveal">Par uzņēmumu</p>
-        <h1 class="reveal reveal-delay-1">Inženiertehniska pieeja būvniecības procesam.</h1>
-        <p class="hero__lead reveal reveal-delay-2">
-          ASTRO CONSTRUCTION sakārto būvniecības procesu — no pirmās idejas, dokumentācijas un BIS līdz būvdarbu organizācijai un nodošanai ekspluatācijā.
-        </p>
-        <div class="hero__actions reveal reveal-delay-3">
-          <a href="#sazinaties" class="btn-primary">Aprakstīt situāciju</a>
-          <a href="tel:+37129963618" class="btn-outline">+371 29 963 618</a>
-        </div>
+        <h1>ASTRO CONSTRUCTION</h1>
+        <p class="hero__lead">Būvējam, vadām būvniecības projektus, veicam būvuzraudzību, projektējam, sakārtojam būvniecības dokumentāciju un BIS, legalizējam ēkas.</p>
+        <a href="#astro-lead-modal" class="btn-primary">Sazināties ar komandu</a>
       </div>
     </div>
   </section>
 
-  <section class="intro" aria-labelledby="intro-heading">
+  <section class="about-intro">
     <div class="container">
-      <div class="intro__grid">
+      <p>ASTRO CONSTRUCTION ir Latvijas būvniecības uzņēmums. Strādājam ar dažādas nozīmes ēkām, no privātmājām līdz lieliem un tehniski sarežģītiem objektiem.</p>
+    </div>
+  </section>
+
+  <section class="about-identity" aria-labelledby="identity-heading">
+    <div class="container about-identity__grid">
+      <div>
+        <h2 id="identity-heading">Uzņēmums</h2>
+        <a class="about-identity__link" href="https://bis.gov.lv/bisp/lv/construction_companies/19975" target="_blank" rel="noopener noreferrer">Pārbaudīt uzņēmumu BIS</a>
+      </div>
+      <ul class="about-identity__facts" role="list">
+        <li>SIA ASTRO CONSTRUCTION</li>
+        <li>Reģistrācijas Nr. 50203660251</li>
+        <li>Būvkomersanta reģistrācijas Nr. 19981</li>
+        <li>Darbības teritorija: Latvija</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about-services" aria-labelledby="services-heading">
+    <div class="container">
+      <h2 id="services-heading">Ko mēs darām</h2>
+      <ul class="about-services__list">
+        <li class="about-service">
+          <h3><a href="/pilna-cikla-buvnieciba">Būvniecība</a></h3>
+          <p>Būvējam komercēkas, ražošanas ēkas un privātmājas. Veicam ēku būvniecību, pārbūvi un atjaunošanu no būvdarbu sākuma līdz ēkas nodošanai ekspluatācijā.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/bis-dokumentacija">Būvniecības dokumentācija un BIS</a></h3>
+          <p>Sagatavojam, uzturam un nodrošinām būvniecības dokumentāciju: saņemam būvatļauju, izpildām BUN, aizpildām būvdarbu žurnālu, uzturam BIS sistēmu, izstrādājam DVP, sagatavojam izpilddokumentāciju un dokumentus objekta nodošanai ekspluatācijā.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/legalizacija">Patvaļīgas būvniecības legalizācija</a></h3>
+          <p>Legalizējam ēkas, piebūves un pārbūves, kas uzbūvētas bez projekta, neatbilst projektam vai uzceltas bez vajadzīgās būvniecības dokumentācijas. Sakārtojam īpašumu līdz likumīgam statusam.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/buvuzraudziba">Būvuzraudzība</a></h3>
+          <p>Būvuzraudzību veic sertificēti būvuzraugi ar praktisku būvdarbu vadības un projektu vadības pieredzi. Kontrolējam būvdarbu kvalitāti un tehnoloģiju ievērošanu, lai laikus pasargātu klientu no dīkstāves, pārbūves un papildu izmaksām.</p>
+        </li>
+        <li class="about-service">
+          <h3>Projektēšana</h3>
+          <p>Projektējam dzīvojamās ēkas, komercēkas un ražošanas ēkas. No pirmās idejas un skices līdz gatavam būvprojektam, būvniecībai un ēkas nodošanai ekspluatācijā.</p>
+        </li>
+        <li class="about-service">
+          <h3>Topogrāfija</h3>
+          <p>Veicam topogrāfisko uzmērīšanu un sagatavojam topogrāfisko plānu projektēšanai un būvniecībai.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/geodezija">Ģeodēzija</a></h3>
+          <p>Veicam ģeodēziskos darbus būvniecībai: būvasu un būvju nospraušanu, augstuma atzīmju pārnešanu, nivelēšanu, ģeodēziskā atbalsta tīkla ierīkošanu, kontrolmērījumus, horizontālos un vertikālos izpildmērījumus ēkām, būvēm un inženiertīkliem, būvkonstrukciju novietojuma kontroli, deformāciju novērojumus, kā arī būvdarbu apjomu un tilpumu uzmērījumus.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/geologija">Ģeoloģija</a></h3>
+          <p>Veicam ģeoloģisko un ģeotehnisko izpēti būvniecībai: grunts izpēti, urbumus, grunts slāņu noteikšanu, gruntsūdens līmeņa noteikšanu un sagatavojam ģeotehniskās izpētes pārskatu projektēšanai.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/edlus-organizesana">EDLUS</a></h3>
+          <p>Ieviešam un uzturam elektronisko darba laika uzskaites sistēmu būvlaukumā, veicam darbinieku un apakšuzņēmēju reģistrāciju, ikdienas darba laika uzskaiti, datu kontroli un nodošanu VEDLUDB.</p>
+        </li>
+        <li class="about-service">
+          <h3>Mērījumi un tehniskās pārbaudes</h3>
+          <p>Veicam elektroinstalāciju pārbaudes un mērījumus, ēku tehnisko apsekošanu un ēku energoefektivitātes novērtēšanu.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/tames-apdrosinasanas-gadijumiem">Tāmes apdrošināšanas gadījumiem</a></h3>
+          <p>Pēc īpašuma bojājumiem apsekojam objektu, nosakām remonta un atjaunošanas darbu apjomu un sagatavojam tehniski pamatotu tāmi apdrošinātājam. Pārbaudām arī bojājumus, kas nav uzreiz redzami, lai tāmē būtu iekļauts reālais remonta apjoms. Pēc atlīdzības saņemšanas varam veikt arī remonta un atjaunošanas darbus.</p>
+        </li>
+        <li class="about-service">
+          <h3><a href="/nodosana-ekspluatacija">Nodošana ekspluatācijā</a></h3>
+          <p>Pārņemam objekta nodošanas procesu, sakārtojam BIS un izpilddokumentāciju, saņemam nodošanai vajadzīgos atzinumus un sagatavojam objektu pieņemšanai ekspluatācijā. Procesu vedam līdz ēkas nodošanai ekspluatācijā.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about-process" aria-labelledby="process-heading">
+    <div class="container about-process__grid">
+      <h2 id="process-heading">Kā mēs strādājam</h2>
+      <div class="about-process__body">
+        <p class="about-process__lead">Varam pārņemt visu būvniecības procesu vai iesaistīties vienā konkrētā posmā.</p>
+        <p>Sākumā noskaidrojam objekta stadiju, dokumentācijas stāvokli un klienta mērķi. Pēc tam pārņemam posmus, par kuriem vienojamies.</p>
+        <p>Projektēšanu, būvdarbus, dokumentāciju, BIS, būvuzraudzību, mērījumus un nodošanu ekspluatācijā skatām kā vienu būvniecības procesu, lai darbi objektā un dokumentācija virzītos kopā.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-projects" aria-labelledby="projects-heading">
+    <div class="container">
+      <h2 id="projects-heading">Reāli projekti</h2>
+      <div class="about-projects__featured">
+        <article class="about-project-feature">
+          <div class="about-project-feature__image">
+            <picture>
+              <source type="image/webp" srcset="/assets/portfolio/p-01-ventspils-iela-63d/pagalma-kopskats-480.webp 480w, /assets/portfolio/p-01-ventspils-iela-63d/pagalma-kopskats-768.webp 768w, /assets/portfolio/p-01-ventspils-iela-63d/pagalma-kopskats-1200.webp 1200w" sizes="(min-width: 900px) 44vw, 100vw">
+              <img src="/assets/portfolio/p-01-ventspils-iela-63d/pagalma-kopskats-1200.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="Ražošanas ēkas Ventspils ielā 63D pagalma un fasādes kopskats pārbūves procesā">
+            </picture>
+          </div>
+          <div class="about-project-feature__body">
+            <h3><a href="/projekti/razosanas-ekas-parbuves-sakartosana">Ražošanas ēka, Ventspils iela 63D, Rīga</a></h3>
+            <p>BIS dokumentācija, projekta izmaiņu sakārtošana un nodošanas procesa noformēšana. Objekts nodots ekspluatācijā 13.12.2024.</p>
+          </div>
+        </article>
+        <article class="about-project-feature">
+          <div class="about-project-feature__image">
+            <picture>
+              <source type="image/webp" srcset="/assets/portfolio/p-07-brivibas-iela-74/pagraba-koridors-480.webp 480w, /assets/portfolio/p-07-brivibas-iela-74/pagraba-koridors-768.webp 768w, /assets/portfolio/p-07-brivibas-iela-74/pagraba-koridors-1200.webp 1200w" sizes="(min-width: 900px) 44vw, 100vw">
+              <img src="/assets/portfolio/p-07-brivibas-iela-74/pagraba-koridors-1200.webp" width="1536" height="2048" loading="lazy" decoding="async" alt="Brīvības ielas 74 pagraba koridors konstrukciju darbu procesa laikā">
+            </picture>
+          </div>
+          <div class="about-project-feature__body">
+            <h3><a href="/projekti/pagraba-konstrukciju-pastiprinasana">Pagraba konstrukciju pastiprināšana, Brīvības iela 74, Rīga</a></h3>
+            <p>Būvdarbu procesa vadība, dokumentācija un nodošanas procesa noformēšana. Objekts nodots ekspluatācijā 28.05.2026.</p>
+          </div>
+        </article>
+      </div>
+      <div class="about-projects__list">
+        <article class="about-project-row">
+          <h3><a href="/projekti/dzivojamas-ekas-fasades-atjaunosana">Dzīvojamās ēkas fasādes atjaunošana, Salaspils iela 16B, Rīga</a></h3>
+          <p>BUN, BIS dokumentācija, būvdarbu žurnāls, būvuzrauga piesaiste un nodošanas dokumenti. Objekts nodots ekspluatācijā 2024. gadā.</p>
+        </article>
+        <article class="about-project-row">
+          <h3>Privātmāja “Piktdienas”</h3>
+          <p>Sakārtojām nodošanas procesu un nodevām privātmāju ekspluatācijā.</p>
+        </article>
+        <article class="about-project-row">
+          <h3><a href="/projekti/dzerves-buvatlauja-un-bun">Atpūtas ēka “Dzērves”, Jelgavas novads</a></h3>
+          <p>Būvatļaujas, BUN un BIS procesa noformēšana. Būvatļauja un BUN saņemti divu dienu laikā.</p>
+        </article>
+        <article class="about-project-row">
+          <h3><a href="/projekti/komercelpu-parbuve">Komercelpas, Blaumaņa iela 38/40, Rīga</a></h3>
+          <p>BUN sakārtošana, procesa noformēšana un darbu secības kontrole.</p>
+        </article>
+        <article class="about-project-row">
+          <h3><a href="/projekti/privatmajas-bojajumu-apdrosinasanas-tame">Privātmāja Imantā, Rīga</a></h3>
+          <p>Bojājumu un tehniskā stāvokļa izvērtēšana, apdrošināšanas tāmes sagatavošana. Klientam piešķirta atlīdzība pilna remonta veikšanai.</p>
+        </article>
+      </div>
+      <a class="about-projects__all" href="/projekti">Skatīt visus projektus</a>
+    </div>
+  </section>
+
+  <section class="about-knowledge" aria-labelledby="knowledge-heading">
+    <div class="container about-knowledge__grid">
+      <h2 id="knowledge-heading"><a href="/buvniecibas-celvedis">Būvniecības dokumentu un procesu katalogs</a></h2>
+      <p>Skaidrojam būvniecības dokumentus un to vietu būvniecības procesā. Katram dokumentam norādām, kad tas vajadzīgs, kas to sagatavo un paraksta, kur to iesniedz un kas jādara pēc tam.</p>
+    </div>
+  </section>
+
+  <section class="cta" id="sazinaties" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="cta__box">
         <div>
-          <p class="section-label reveal">Ko mēs darām</p>
-          <h2 id="intro-heading" class="reveal reveal-delay-1">Sakārtojam ne tikai būvdarbus, bet arī procesu ap tiem.</h2>
-          <div class="intro__text reveal reveal-delay-2">
-            <p>
-              Būvniecībā rezultāts nav tikai uzbūvēta ēka. Rezultāts ir arī pareizi sagatavoti dokumenti, skaidrs BIS lietas statuss, izpildīti Būvdarbu uzsākšanas nosacījumi, sakārtots būvdarbu žurnāls, saprotama komunikācija ar būvvaldi un dokumentācija, kas ļauj procesu turpināt.
-            </p>
-            <p>
-              Mūsu darbs ir noteikt, kas konkrētajā situācijā jādara, kādi dokumenti var būt nepieciešami un kā procesu organizēt tā, lai tas nekļūtu par haosu starp projektētāju, būvnieku, būvvaldi, BIS un citām iesaistītajām pusēm.
-            </p>
-          </div>
+          <h2 id="contact-heading">Sazinieties ar mūsu komandu</h2>
+          <p>Pastāstiet, ko vēlaties paveikt vai atrisināt. Ja ir foto, rasējumi vai dokumenti, pievienojiet tos. Mēs iepazīsimies ar informāciju un sazināsimies ar jums.</p>
         </div>
-        <aside class="intro__panel reveal reveal-delay-3" aria-label="ASTRO CONSTRUCTION pieredze">
-          <div class="intro__panel-title">Pieredze un statuss</div>
-          <div class="intro__facts">
-            <div class="fact">
-              <span class="fact__value">2007</span>
-              <span class="fact__label">praktiska pieredze būvniecības procesos kopš 2007. gada</span>
-            </div>
-            <div class="fact">
-              <span class="fact__value">19981</span>
-              <span class="fact__label">būvkomersanta reģistrācijas numurs</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="principles" aria-labelledby="principles-heading">
-    <div class="container">
-      <div class="principles__head">
-        <p class="section-label reveal">Pieeja</p>
-        <h2 id="principles-heading" class="reveal reveal-delay-1">Mierīgi, precīzi un bez tukšiem solījumiem.</h2>
-      </div>
-      <div class="principles__grid">
-        <article class="principle reveal">
-          <div>
-            <div class="principle__num">01</div>
-            <h3>Vispirms saprotam situāciju</h3>
-          </div>
-          <p>Pirms piedāvāt risinājumu, pārbaudām dokumentus, BIS lietas statusu, būvvaldes prasības un faktisko objekta stāvokli.</p>
-        </article>
-        <article class="principle reveal reveal-delay-1">
-          <div>
-            <div class="principle__num">02</div>
-            <h3>Runājam klientam saprotami</h3>
-          </div>
-          <p>BIS, BUN, EDLUS un izpilddokumentācija nav jāpaliek nesaprotamu terminu līmenī. Mēs izskaidrojam nākamos soļus praktiski.</p>
-        </article>
-        <article class="principle reveal reveal-delay-2">
-          <div>
-            <div class="principle__num">03</div>
-            <h3>Strādājam juridiski piesardzīgi</h3>
-          </div>
-          <p>Lēmumus pieņem kompetentās institūcijas. Mēs sagatavojam dokumentāciju, sakārtojam procesu un samazinām kļūdu riskus.</p>
-        </article>
-        <article class="principle reveal reveal-delay-3">
-          <div>
-            <div class="principle__num">04</div>
-            <h3>Turam kopā tehnisko un dokumentālo pusi</h3>
-          </div>
-          <p>Būvdarbi, dokumenti, termiņi, atzinumi un komunikācija ir viena sistēma. Tieši tā mēs skatāmies uz būvniecības procesu.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="scope" aria-labelledby="scope-heading">
-    <div class="container">
-      <div class="scope__layout">
-        <div class="scope__copy">
-          <p class="section-label reveal">Kompetences</p>
-          <h2 id="scope-heading" class="reveal reveal-delay-1">Kur ASTRO ir visnoderīgākais.</h2>
-          <p class="reveal reveal-delay-2">
-            Mēs pieslēdzamies brīžos, kad klientam vajag ne tikai izpildīt vienu darbu, bet saprast un sakārtot visu būvniecības situāciju.
-          </p>
-        </div>
-        <div class="scope__list">
-          <div class="scope-item reveal">
-            <div class="scope-item__mark">✓</div>
-            <div>
-              <h3>BIS, BUN un dokumentācija</h3>
-              <p>Sakārtojam būvniecības lietu, dokumentu sagatavošanu, BUN izpildes procesu un būvdarbu žurnāla loģiku.</p>
-            </div>
-          </div>
-          <div class="scope-item reveal reveal-delay-1">
-            <div class="scope-item__mark">✓</div>
-            <div>
-              <h3>Nodošana ekspluatācijā</h3>
-              <p>Pārbaudām izpilddokumentāciju, atzinumu nepieciešamību un sagatavojam procesu līdz iesniegšanai BIS.</p>
-            </div>
-          </div>
-          <div class="scope-item reveal reveal-delay-2">
-            <div class="scope-item__mark">✓</div>
-            <div>
-              <h3>Būvdarbu vadība un būvuzraudzība</h3>
-              <p>Organizējam būvdarbu procesu, sakārtojam iesaistīto pušu darbības un kontrolējam atbilstību projektam un normatīvajām prasībām.</p>
-            </div>
-          </div>
-          <div class="scope-item reveal reveal-delay-3">
-            <div class="scope-item__mark">✓</div>
-            <div>
-              <h3>Legalizācija un sarežģītas situācijas</h3>
-              <p>Izvērtējam nesakārtotus objektus, dokumentu trūkumus un situācijas, kur nepieciešams skaidrs ceļš caur būvvaldi vai BIS.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="credentials" aria-labelledby="credentials-heading">
-    <div class="container">
-      <div class="credentials__grid">
-        <div>
-          <p class="section-label reveal">Dati un caurspīdīgums</p>
-          <h2 id="credentials-heading" class="reveal reveal-delay-1">Oficiāls būvniecības partneris.</h2>
-          <p class="credentials__lead reveal reveal-delay-2">
-            ASTRO CONSTRUCTION ir Latvijas uzņēmums un būvkomersants. Mēs strādājam ar privātpersonām, uzņēmumiem un būvniecības procesa dalībniekiem visā Latvijā, īpaši Rīgā un Pierīgā.
-          </p>
-        </div>
-        <div class="registry reveal reveal-delay-3">
-          <div class="registry__row">
-            <div class="registry__label">Uzņēmums</div>
-            <div class="registry__value">SIA ASTRO CONSTRUCTION</div>
-          </div>
-          <div class="registry__row">
-            <div class="registry__label">Reģistrācijas nr.</div>
-            <div class="registry__value">50203660251</div>
-          </div>
-          <div class="registry__row">
-            <div class="registry__label">Būvkomersanta reģ. nr.</div>
-            <div class="registry__value">19981</div>
-          </div>
-          <div class="registry__row">
-            <div class="registry__label">Juridiskā adrese</div>
-            <div class="registry__value">Zentenes iela 18-29, Rīga, LV-1069</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="process" aria-labelledby="process-heading">
-    <div class="container">
-      <div class="process__head">
-        <p class="section-label reveal">Kā sākam</p>
-        <h2 id="process-heading" class="reveal reveal-delay-1">No neskaidrības līdz rīcības plānam.</h2>
-        <p class="reveal reveal-delay-2">Pirmais uzdevums nav pārdot pakalpojumu. Pirmais uzdevums ir saprast, kur process atrodas un kas objektīvi vajadzīgs tālāk.</p>
-      </div>
-      <div class="steps">
-        <article class="step reveal">
-          <div class="step__num">01</div>
-          <h3>Jūs aprakstāt situāciju</h3>
-          <p>Kas ir uzbūvēts, kādi dokumenti ir pieejami, kāds ir BIS lietas statuss un kas šobrīd traucē turpināt procesu.</p>
-        </article>
-        <article class="step reveal reveal-delay-1">
-          <div class="step__num">02</div>
-          <h3>Mēs izvērtējam dokumentus</h3>
-          <p>Pārbaudām galvenos riskus, trūkstošos dokumentus un iesaistītās puses: būvvalde, projektētājs, būvnieks, operatori.</p>
-        </article>
-        <article class="step reveal reveal-delay-2">
-          <div class="step__num">03</div>
-          <h3>Jūs saņemat nākamos soļus</h3>
-          <p>Skaidrs darbību virziens: ko sagatavot, ko pārbaudīt, ko iesniegt un kur ASTRO var pārņemt procesa vadību.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="sazinaties" aria-label="Sazināties ar ASTRO CONSTRUCTION">
-    <div class="container">
-      <div class="cta__box reveal">
-        <div>
-          <p class="section-label">Sazinieties</p>
-          <h2>Aprakstiet savu būvniecības situāciju.</h2>
-          <p>Pastāstiet, kas ir jāsakārto: BIS, BUN, būvdarbi, dokumentācija, legalizācija vai nodošana ekspluatācijā. Mēs noteiksim nākamos soļus.</p>
-        </div>
-        <div class="cta__actions">
-          <a href="tel:+37129963618" class="btn-primary">Zvanīt</a>
-          <a href="#astro-lead-modal" class="btn-outline">Rakstīt e-pastu</a>
-        </div>
+        <a href="#astro-lead-modal" class="btn-primary">Sazināties ar komandu</a>
       </div>
     </div>
   </section>
@@ -636,7 +682,7 @@ button { border: 0; background: none; cursor: pointer; }
         <div class="footer__title">Uzņēmums</div>
         <a href="/projekti" class="footer__link">Projekti</a>
         <a href="/riki" class="footer__link">Rīki</a>
-        <a href="/par-mums" class="footer__link">Par mums</a>
+        <a href="/par-mums" class="footer__link" aria-current="page">Par mums</a>
         <a href="/kontakti" class="footer__link">Kontakti</a>
       </div>
       <div>
