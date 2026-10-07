@@ -287,7 +287,51 @@ assert.ok(calendar2027Html.includes('26-TA-1023'), '2027 page discloses official
   assert.ok(html.includes('href="/darba-dienu-kalendars-2026"'), 'year switcher links 2026');
   assert.ok(html.includes('href="/darba-dienu-kalendars-2027"'), 'year switcher links 2027');
 });
-assert.ok(sitemapXml.includes('https://astroconstruction.lv/darba-dienu-kalendars-2027'), 'sitemap includes 2027 page');
+// Generic utilities stay available to users while excluded from the search index.
+const noindexUtilityRoutes = [
+  '/cipari-vardiem',
+  '/dienu-kalkulators',
+  '/darba-dienu-kalkulators',
+  '/darba-dienu-kalendars-2025',
+  '/darba-dienu-kalendars-2026',
+  '/darba-dienu-kalendars-2027'
+];
+const indexableToolRoutes = ['/armaturas-svara-kalkulators', '/metala-svara-kalkulators', '/riki'];
+const sitemapUrls = [...sitemapXml.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/g)].map((match) => match[1]);
+const toolsHubHtml = fs.readFileSync('riki.html', 'utf8');
+
+function seoAttribute(tag, name) {
+  const match = tag.match(new RegExp('(?:^|\\s)' + name + '\\s*=\\s*(?:"([^"]*)"|\x27([^\x27]*)\x27|([^\\s>]+))', 'i'));
+  return match ? (match[1] ?? match[2] ?? match[3]) : '';
+}
+
+function assertToolSeo(route, expectedRobots) {
+  const html = fs.readFileSync(route.slice(1) + '.html', 'utf8');
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1];
+  assert.ok(head, route + ' has a head');
+  const metadata = head.replace(/<!--[\s\S]*?-->|<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+  const robots = [...metadata.matchAll(/<meta\b[^>]*>/gi)].map((match) => match[0])
+    .filter((tag) => /^(robots|googlebot(?:-.*)?|bingbot)$/i.test(seoAttribute(tag, 'name')));
+  assert.strictEqual(robots.length, 1, route + ' has exactly one effective robots directive');
+  assert.strictEqual(seoAttribute(robots[0], 'name').toLowerCase(), 'robots', route + ' uses a general robots directive');
+  assert.strictEqual(seoAttribute(robots[0], 'content'), expectedRobots, route + ' has the approved robots directive');
+  const canonicals = [...metadata.matchAll(/<link\b[^>]*>/gi)].map((match) => match[0])
+    .filter((tag) => /(?:^|\s)canonical(?:\s|$)/i.test(seoAttribute(tag, 'rel')));
+  assert.strictEqual(canonicals.length, 1, route + ' has exactly one canonical');
+  assert.strictEqual(seoAttribute(canonicals[0], 'href'), 'https://astroconstruction.lv' + route, route + ' retains its self-canonical URL');
+  return html;
+}
+
+noindexUtilityRoutes.forEach((route) => {
+  const html = assertToolSeo(route, 'noindex, follow');
+  assert.ok(!sitemapUrls.includes('https://astroconstruction.lv' + route), route + ' is excluded from the sitemap');
+  assert.ok([...toolsHubHtml.matchAll(/<a\b[^>]*>/gi)].some((match) => seoAttribute(match[0], 'href') === route), route + ' remains publicly linked from the tools hub');
+  assert.ok([...html.matchAll(/<script\b[^>]*>/gi)].some((match) => /^\/riki\.js(?:\?|$)/.test(seoAttribute(match[0], 'src'))), route + ' retains the utility script');
+});
+indexableToolRoutes.forEach((route) => {
+  assertToolSeo(route, 'index, follow');
+  assert.strictEqual(sitemapUrls.filter((url) => url === 'https://astroconstruction.lv' + route).length, 1, route + ' remains sitemap-listed exactly once');
+});
 
 assert.ok(!source.includes('class="special-dates"'), 'calendar renderer does not add duplicated annual special-dates section');
 assert.ok(source.includes('month-note__date'), 'month-specific special dates render as structured event rows');
