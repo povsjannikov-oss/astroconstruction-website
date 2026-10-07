@@ -333,6 +333,20 @@ indexableToolRoutes.forEach((route) => {
   assert.strictEqual(sitemapUrls.filter((url) => url === 'https://astroconstruction.lv' + route).length, 1, route + ' remains sitemap-listed exactly once');
 });
 
+const calendarPdfPaths = ['2025', '2026', '2027'].map((year) => '/assets/pdf/darba-dienu-kalendars-' + year + '.pdf');
+const staticHeaders = fs.readFileSync('_headers', 'utf8').replace(/\r\n/g, '\n');
+assert.deepStrictEqual(
+  staticHeaders.trim().split(/\n\s*\n/),
+  calendarPdfPaths.map((path) => path + '\n  X-Robots-Tag: noindex'),
+  'static headers contain only the three exact calendar PDF noindex rules'
+);
+assert.ok(!staticHeaders.includes('*'), 'calendar PDF headers must not use wildcards');
+calendarPdfPaths.forEach((path, index) => {
+  assert.ok(fs.existsSync(path.slice(1)), path + ' remains available as a static asset');
+  const html = [calendar2025Html, calendar2026Html, calendar2027Html][index];
+  assert.ok(html.includes('href="' + path + '"'), path + ' remains linked from its calendar page');
+});
+
 assert.ok(!source.includes('class="special-dates"'), 'calendar renderer does not add duplicated annual special-dates section');
 assert.ok(source.includes('month-note__date'), 'month-specific special dates render as structured event rows');
 assert.ok(source.includes('month-totals__metric'), 'monthly statistics render as fixed metric groups');
