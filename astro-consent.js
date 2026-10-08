@@ -101,6 +101,14 @@
     }
   }
 
+  function loadGoogleAnalytics() {
+    if (document.querySelector('script[src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '"]')) return;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(script);
+  }
+
   function loadClarity() {
     if (window.__astroClarityLoaded) return;
     window.__astroClarityLoaded = true;
@@ -119,6 +127,7 @@
     gtagConsent('update', granted);
 
     if (granted) {
+      loadGoogleAnalytics();
       loadClarity();
       sendGaPageView();
     } else {
